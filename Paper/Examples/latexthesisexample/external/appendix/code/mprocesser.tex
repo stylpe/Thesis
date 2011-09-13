@@ -1,0 +1,157 @@
+\subsection*{Modified Processer}
+
+\footnotesize
+\begin{verbatim}
+- module(processer).
+- export([start/3]).
+- include("message.hrl").
+- include("routingtable.hrl").
+- record(environment, {
+         message_for_processing,
+         own_process_ip_address,
+         incoming_messages}).
+
+start(Message_for_processing, Own_process_ip_address, Incoming_messages) -> 
+    Env = #environment {message_for_processing = Message_for_processing, 
+                        own_process_ip_address = Own_process_ip_address, 
+                        incoming_messages = Incoming_messages},
+    receive_incoming_message(Env).
+
+rrep_target(Env) ->
+    io:format("Was RREP target~n", []),
+    Msg = Env#environment.message_for_processing,
+    Id1 = 1,
+    Receiver1 = list_to_atom("establishchecker_ID" ++ integer_to_list(Id1) ++ 
+                             "_new_connection_established"),
+    Receiver1 ! {send, get_ip(Msg)},    
+    receive_incoming_message(Env).
+
+get_ip(Msg) ->
+    Msg#message.orig_addr.
+
+rrep_forward(Env) -> 
+    io:format("Was rrep_forward~n", []),
+    Msg = Env#environment.message_for_processing,
+    Ip = Env#environment.own_process_ip_address,
+    routing_table ! {get, self()},
+    receive 
+       Rota -> 
+           Rota
+    end,
+    seqnum ! {get, self()},
+    receive 
+        Seqnum -> 
+            Seqnum
+    end,     
+    routing_table ! {set, Rota},
+    seqnum ! {set, Seqnum},
+    Id1 = 1,
+    Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++ 
+                             "_dymo_to_network"),
+    {Receiver1, network@user} ! {send, forward_RREP(Ip, Msg, Rota)},
+    receive_incoming_message(Env).
+
+forward_RREP(Own_ip, Msg, Rota) ->
+    Entry = util:get_entry(Msg#message.target_addr, Rota),
+    Next_hop_address = Entry#routing_table_entry.next_hop_address,
+    #message {src = Own_ip, dest = Next_hop_address, 
+       target_addr = Msg#message.target_addr, orig_addr = Msg#message.orig_addr, 
+       orig_seqnum = Msg#message.orig_seqnum, hop_limit = Msg#message.hop_limit-1, 
+       dist = Msg#message.dist + 1, msg_type = 'RREP'}.
+
+rreq_target(Env) -> 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     routing_table ! {get, self()},
+     receive 
+        Rota -> 
+            Rota
+     end,
+     seqnum ! {get, self()},
+     receive 
+        Seqnum -> 
+            Seqnum
+     end,
+     routing_table ! {set, Rota},
+     seqnum ! {set, Seqnum},     
+     io:format("Was RREQ target~n", []),     
+     Id1 = 1,
+     Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++ 
+                              "_dymo_to_network"),
+     {Receiver1, network@user} ! {send, create_RREP(Msg, Ip, Rota, Seqnum)},
+     receive_incoming_message(Env).
+
+create_RREP(Msg, Own_ip, Rota, SeqNum) ->
+     Entry = util:get_entry(Msg#message.orig_addr, Rota),
+     Next_hop_address = Entry#routing_table_entry.next_hop_address,
+     #message {src = Own_ip, dest = Next_hop_address, 
+               target_addr = Msg#message.orig_addr, orig_addr = Own_ip, 
+               orig_seqnum = SeqNum, hop_limit = 5, dist = 1, msg_type = 'RREP'}.
+
+
+rreq_forward(Env) -> 
+     io:format("Was rreq_forward~n", []), 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     NewEnv = Env#environment {},
+     Id1 = 1,
+     Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++ 
+                              "_dymo_to_network"),
+     if
+         Msg#message.hop_limit > 1 ->
+             {Receiver1, network@user} ! {send, forward_RREQ(Ip, Msg)};
+         true ->
+           io:format("Hop limit reached.~n")
+     end,
+     receive_incoming_message(NewEnv).
+
+
+forward_RREQ(Own_ip, Msg) ->
+     #message {src = Own_ip, dest = 'LL_MANET_ROUTERS', 
+         target_addr = Msg#message.target_addr, orig_addr = Msg#message.orig_addr, 
+         orig_seqnum = Msg#message.orig_seqnum, hop_limit = Msg#message.hop_limit-1, 
+         dist = Msg#message.dist + 1, msg_type = 'RREQ'}.
+
+
+receive_incoming_message(Env) -> 
+     routing_table ! {get, self()},
+     receive 
+        Rota -> 
+            Rota
+     end,
+     routing_table ! {set, Rota},
+     util:print_route_table(Rota),     
+     Incoming_messages = Env#environment.incoming_messages,
+     Incoming_messages ! get,
+     receive 
+        Msg -> 
+            Msg
+     end,    
+     io:format("Processing msg~n", []),
+     util:print_msg(Msg),    
+     NewEnv = Env#environment {message_for_processing = Msg},
+     Own_ip = NewEnv#environment.own_process_ip_address,
+     Is_target = is_Target(Own_ip, Msg),
+     Is_RREP = is_RREP(Msg),
+     Is_RREQ = is_RREQ(Msg),
+     if
+         Is_RREP, Is_target ->
+            rrep_target(NewEnv);
+         Is_RREP, not Is_target  ->
+            rrep_forward(NewEnv);
+         Is_RREQ, Is_target ->
+            rreq_target(NewEnv);
+         Is_RREQ, not Is_target ->
+            rreq_forward(NewEnv)
+    end.
+
+is_Target(Own_ip, Msg) ->
+    Msg#message.target_addr == Own_ip.
+
+is_RREP(Msg) ->
+    Msg#message.msg_type == 'RREP'.
+
+is_RREQ(Msg) ->
+    Msg#message.msg_type == 'RREQ'.
+\end{verbatim}
+\normalsize

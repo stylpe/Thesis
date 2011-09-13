@@ -1,0 +1,24 @@
+\subsection*{Modified System}
+\footnotesize
+\begin{verbatim}
+- module(system).
+- export([start/4]).
+
+start(Node_id, Target_node_id, Initiate_rreq, Check_route_established) -> 
+     register(target_ip, spawn(shared, start, [Target_node_id])),
+     register(is_route_established, spawn(shared, start, [Check_route_established])),
+     register(routing_table, spawn(shared, start, [[]])),
+     register(seqnum, spawn(shared, start, [1])),     
+     register(establishchecker_ID1_new_connection_established, 
+                                     spawn(buffer, start, [establishchecker_ID1])),
+     register(receiver_ID1_network_to_dymo, spawn(buffer, start, [receiver_ID1])),
+     register(processer_ID1_incoming_messages, spawn(buffer, start, [processer_ID1])),     
+     register(establishchecker_ID1, spawn(establishchecker, start, ['no_node1', 'no_node2',
+                                     establishchecker_ID1_new_connection_established])),
+     register(receiver_ID1, spawn(receiver, start, ['', [], receiver_ID1_network_to_dymo])),
+     register(processer_ID1, spawn(processer, start, 
+                                      ['', Node_id, processer_ID1_incoming_messages])),     
+     timer:sleep(5000),
+     register(initiator_ID1, spawn(initiator, start, [1, Initiate_rreq, Node_id])).
+\end{verbatim}
+\normalsize

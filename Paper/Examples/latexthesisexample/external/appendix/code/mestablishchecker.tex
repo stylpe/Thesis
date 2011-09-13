@@ -1,0 +1,141 @@
+\subsection*{Modified Establish checker}
+
+\footnotesize
+\begin{verbatim}
+- module(establishchecker).
+- export([start/3]).
+- record(environment, {
+         new_ip_address,
+         target_ip_address,
+         new_connection_established}).
+
+start(New_ip_address, Target_ip_address, New_connection_established) -> 
+     Env = #environment {new_ip_address = New_ip_address, 
+                        target_ip_address = Target_ip_address,
+                        new_connection_established = New_connection_established},
+     start_loop(Env).
+
+start_loop(Env) -> 
+     Env#environment.new_connection_established ! has_element,
+     receive 
+        New_connection_established_has_elements -> 
+            New_connection_established_has_elements
+     end,
+     Guard_oldip = Env#environment.new_ip_address,
+     Guard_targetip = Env#environment.target_ip_address,
+
+
+     is_route_established ! {get, self()},
+     receive 
+        Established -> 
+            Established
+     end,
+     is_route_established ! {set, Established},
+          
+     if
+        Guard_oldip /= Guard_targetip, New_connection_established_has_elements ->
+            wating_for_new_ip(Env);
+        Guard_oldip == Guard_targetip ->
+            route_established(Env), not Established;
+         true ->
+            if
+                not New_connection_established_has_elements ->
+                    Env#environment.new_connection_established ! interrupt_me
+            end
+     end,
+     receive 
+        interrupt -> 
+            start_loop(Env)
+     end.
+ 
+route_established(Env) -> 
+     is_route_established ! {get, self()},
+     receive 
+        Established -> 
+            Established
+     end,
+     NewEnv = Env#environment {},
+     is_route_established ! {set, true},
+     route_established_loop(NewEnv).
+
+route_established_loop(Env) -> 
+     Env#environment.new_connection_established ! has_element,
+     receive 
+        New_connection_established_has_elements -> 
+            New_connection_established_has_elements
+     end,
+     Guard_oldip = Env#environment.new_ip_address,
+     Guard_targetip = Env#environment.target_ip_address,
+     
+     is_route_established ! {get, self()},
+     receive 
+        Established -> 
+            Established
+    end,
+     is_route_established ! {set, Established},
+     
+     if
+        Guard_oldip /= Guard_targetip, New_connection_established_has_elements ->
+            wating_for_new_ip(Env);
+        Guard_oldip == Guard_targetip, not Established ->
+            route_established(Env);
+         true ->
+            if
+                not New_connection_established_has_elements ->
+                    Env#environment.new_connection_established ! interrupt_me
+            end
+     end,
+     receive 
+        interrupt -> 
+            route_established_loop(Env)
+     end.
+
+wating_for_new_ip(Env) -> 
+     New_connection_established = Env#environment.new_connection_established,
+     New_connection_established ! get,
+     receive 
+        Newip -> 
+            Newip
+     end,
+     target_ip ! {get, self()},
+     receive 
+        Ip -> 
+            Ip
+     end,
+     NewEnv = Env#environment {new_ip_address = Newip, target_ip_address = Ip},
+     target_ip ! {set, Ip},
+     wating_for_new_ip_loop(NewEnv).
+
+wating_for_new_ip_loop(Env) -> 
+     Env#environment.new_connection_established ! has_element,
+     receive 
+        New_connection_established_has_elements -> 
+            New_connection_established_has_elements
+     end,
+     Guard_oldip = Env#environment.new_ip_address,
+     Guard_targetip = Env#environment.target_ip_address,
+     
+     is_route_established ! {get, self()},
+     receive 
+        Established -> 
+            Established
+     end,
+     is_route_established ! {set, Established},
+     
+     if
+        Guard_oldip /= Guard_targetip, New_connection_established_has_elements ->
+            wating_for_new_ip(Env);
+        Guard_oldip == Guard_targetip, not Established ->
+            route_established(Env);
+         true ->
+            if
+                not New_connection_established_has_elements ->
+                    Env#environment.new_connection_established ! interrupt_me
+            end
+     end,
+     receive 
+        interrupt -> 
+            wating_for_new_ip_loop(Env)
+    end.
+\end{verbatim}
+\normalsize

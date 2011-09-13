@@ -1,0 +1,28 @@
+\chapter{Translation}
+\label{chap:translation}
+In this chapter we explain the techniques developed for translating a CPN model into program source code. The producer-consumer system is used to illustrate each phase of the translation. The translation from CPN models to the target language is divided into five phases. The idea is to move closer and closer to the target language in small steps. Fig.~\ref{fig:translationphases123} illustrates the first three phases of the translation. These phases are independent of the target language, i.e., there are not made any assumptions about the target language. This means that the target language could, e.g., belong to the imperative or the functional language paradigm.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{translation/graphics/phasesfigure01.eps}
+\caption{The first three phases of the translation}
+\label{fig:translationphases123}
+\end{figure}
+
+The first phase consists of decorating the different parts the CPN model with types. The CPN model is assumed to be a ProPCPN model as defined in section \ref{chap:netclass}. The second phase translates from the decorated CPN model into a control flow graph (CFG). A CFG representing the control flow is constructed for each process partition. In the third phase the CFG is translated into an abstract syntax tree (AST) for a simple language. We have designed the language to be abstract enough such that it can be translated into any common type of programming language. The control flow represented by the structure of the CFG is made explicit by, e.g., goto statements in the AST. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.75]{translation/graphics/phasesfigure02.eps}
+\caption{The last two phases of the translation}
+\label{fig:translationphases45}
+\end{figure}
+
+The last two phases of the translation are illustrated in Fig.~\ref{fig:translationphases45}. These phases are language dependent, i.e., the phases are designed for a specific programming language. In Fig.~\ref{fig:translationphases45} two possible target language are illustrated. In the top of the figure, the AST is translated into an Erlang syntax tree (EST) and then into Erlang source code. In the bottom of the figure, the AST is translated into a Java syntax tree (JST) and then into Java source code. We have choosen Erlang as the target language, thus the AST is translated into an EST. The EST can then be transformed into a textual representation by traversing it and printing the nodes according to the Erlang grammar.
+
+\input{translation/cpn_to_dcpn/cpn_to_dcpn}
+\input{translation/dcpn_to_cfg/dcpn_to_cfg}
+\input{translation/cfg_to_ast/cfg_to_ast}
+\input{translation/ast_to_est/ast_to_est}
+\input{translation/est_to_code/est_to_code}
+\input{translation/advancedissues/advancedissues}

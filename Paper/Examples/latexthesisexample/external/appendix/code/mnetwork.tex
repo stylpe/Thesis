@@ -1,0 +1,59 @@
+\subsection*{Modified Network}
+\footnotesize
+\begin{verbatim}
+- module(network).
+- export([start/1]).
+- include("message.hrl").
+- record(environment, {
+         dymo_to_network}).
+
+start(Dymo_to_network) -> 
+     Env = #environment {dymo_to_network = Dymo_to_network},
+     network(Env).
+
+network(Env) -> 
+     Dymo_to_network = Env#environment.dymo_to_network,
+     Dymo_to_network ! get,
+     receive 
+        Msg -> 
+            Msg
+     end,
+    
+     Dest = Msg#message.dest,
+     if
+        Dest == 'LL_MANET_ROUTERS' ->
+            Src = Msg#message.src,
+            Connected_nodes = topology(Src),
+            lists:map(fun(Node_id) -> send(Node_id, Msg) end, Connected_nodes);
+        true ->
+            send(Dest, Msg)
+     end,
+     network(Env).
+
+send(Node_id, Msg) ->
+     io:format("Sending message from ~w to ~w.~n", [Msg#message.src, Node_id]),
+     New_msg = Msg#message {dest = Node_id},
+     Receiver = list_to_atom("receiver_ID" ++ integer_to_list(1) ++ 
+                             "_network_to_dymo"),
+     {Receiver, Node_id} ! {send, New_msg}.
+
+%% Test topology (c)
+topology(Node_id) ->
+    if
+        Node_id == node1@user ->
+            [node2@user, node3@user];
+        Node_id == node2@user ->
+            [node1@user, node4@user];
+        Node_id == node3@user ->
+            [node1@user, node4@user];
+        Node_id == node4@user ->
+            [node2@user, node3@user, node5@user];
+        Node_id == node5@user ->
+            [node4@user, node6@user];
+        Node_id == node6@user ->
+            [node5@user, node7@user];
+        Node_id == node7@user ->
+            [node6@user]
+    end.
+\end{verbatim}
+\normalsize

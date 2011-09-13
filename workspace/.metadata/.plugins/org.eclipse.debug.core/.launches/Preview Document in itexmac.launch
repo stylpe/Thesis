@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="net.sourceforge.texlipse.viewer.launchConfigurationType">
+<stringAttribute key="itexmac.arguments" value="-a &quot;/Applications/iTeXMac 1.3.15/iTeXMac.app&quot; %file"/>
+<stringAttribute key="itexmac.command" value=""/>
+<stringAttribute key="itexmac.ddeCloseCommand" value=""/>
+<stringAttribute key="itexmac.ddeCloseServer" value=""/>
+<stringAttribute key="itexmac.ddeCloseTopic" value=""/>
+<stringAttribute key="itexmac.ddeViewCommand" value=""/>
+<stringAttribute key="itexmac.ddeViewServer" value=""/>
+<stringAttribute key="itexmac.ddeViewTopic" value=""/>
+<stringAttribute key="viewerCurrent" value="itexmac"/>
+</launchConfiguration>

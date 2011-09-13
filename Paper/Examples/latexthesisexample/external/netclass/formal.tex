@@ -1,0 +1,138 @@
+\section{The Formal Definition of ProPCP-nets}
+\label{sec:netclassformal}
+This section summarises the formal definition of the syntax of the ProPCPN modelling language presented above. We define two functions associating transitions with a process partition:
+
+\begin{enumerate}
+\item $C_{T} : T \rightarrow \Sigma_{P}$ \textit{maps each transition to a unique process colour set.}
+\item $V_{T} : T \rightarrow V$ \textit{maps each transition to a unique process variable where for all} $t \in T$ : $Type[V_{T}(t)] = C_{T}(t)$
+\end{enumerate}
+
+\noindent
+These functions are used in definition~\ref{def:propcpn} which summarises the definition of ProPCP-net from section~\ref{sec:netclassinformal}:
+
+% ProPCPN
+\begin{definition}
+\label{def:propcpn}
+A \defconcept{Process-Partitioned Coloured Petri Net} is a Coloured Petri Net $\mathit{CPN} =
+(P,T,A,\Sigma,V,C,G,E,I)$, where:
+
+\begin{enumerate}
+%% TYPES
+\item $\Sigma = \Sigma_{P} \uplus \Sigma_{D} \uplus \Sigma_{C}$, where $\Sigma_{C} = \{\sigma_{p} \times \sigma_{d} \mid \sigma_{p} \in \Sigma_{P}, \sigma_{d} \in \Sigma_{D}\}$.
+
+%% PLACE TYPES
+\item $P = P_{pro} \uplus P_{loc} \uplus P_{buf} \uplus P_{sha}$
+
+\begin{enumerate}
+\item $C(p) \in \Sigma_{P}$ for $p \in P_{pro}$
+\item $C(p) \in \Sigma_{D}$ for $p \in P_{sha}$
+\item $C(p) \in \Sigma_{C}$ for $p \in P_{loc} \cup P_{buf}$
+\end{enumerate}
+
+%% LOCAL PLACES
+\item Let $p \in P_{loc}$ and $C(p) = C_{P} \times C_{D}$:
+
+\begin{enumerate}
+\item $(p, t) \in A \Leftrightarrow (t, p) \in A$
+%\item $(p, t) \in A \Rightarrow C_{P} = C_{T}(t)$
+\item $E(p, t) = (V_{T}(t), v_{D}) \in V \times V$
+\item $E(t, p) = (V_{T}(t), e)$ where $e$ is an expression%$e \in EXPR_{C_{D}}$.
+\end{enumerate}
+
+\item For all $p \in P_{buf}$ : $E(p, t) = (V_{T}(t), v_{d}) \in V \times V$.
+
+\item For all $p \in P_{sha}$ : $(p, t) \in A \Leftrightarrow (t, p) \in A$.
+%\\
+%\\
+%\textbf{Initial markings}
+%%% INITIAL MARKINGS
+%\item For all $\sigma \in \Sigma_{P} $ :
+%\begin{equation*}
+%\mssum_{p \in P_{pro}, C(p) = \sigma} I(p)\langle \rangle = \sigma
+%\end{equation*}
+%and there exists a place $p \in P_{pro}$ where $I(p)\langle \rangle = \sigma$
+%
+%\item For all $p \in P_{loc}$ where $C(p) = C_{P} \times C_{D}$ : $\mid I(p)\langle \rangle \mid = \mid C_{P} \mid$ and for all $c_{p} \in C_{P}$ there exists $c_{D} \in C_{D}$ such that $(c_{P}, c_{D}) \in I(p)\langle \rangle$.
+%\item For all $p \in P_{buf}$ : $I(p)\langle \rangle = \emptyset$
+%\item For all $p \in P_{sha}$ : $\mid I(p)\langle \rangle \mid = 1$
+%\\
+%\\
+%\textbf{Transitions}
+%%% TRANSITIONER
+%%\item For all $t \in T$ there exists $p \in P_{pro}$ such that $(p, t) \in A$ and $(t, p) \in A$.
+%
+%\item For all $t \in T$ : $\mid \{ (p, t) \mid p \in P_{pro}, (p, t) \in A \}\mid = \mid \{ (t, p) \mid p \in P_{pro}, (t, p) \in A \}\mid = 1$
+%
+%\item For all $t \in T$ there exists exactly one $p_{1} \in P_{pro}$ and exactly one $p_{2} \in P_{pro}$ where $(t, p_{1}) \in A$ and $(p_{2}, t) \in A$ : $E(t, p_{1}) = E(p_{2}, t) = v \in V$ and $C_{T}(t) = Type[v]$.
+%\\
+%\\
+%\textbf{Bindings and variables}
+%% BINDINGS
+\item For all $(p, t), (t, p) \in A$ and for all $b \in BE(t)$ :\\
+$\mid E(p, t)\langle b \rangle \mid = \mid E(t, p)\langle b \rangle \mid = 1$
+
+%% GUARDS
+\item For all $t \in T$ : $G(t) \in EXPR_{V^{\prime}}$ where
+
+\begin{equation*}
+V^{\prime} = \bigcup_{p \in P_{loc}, (p, t) \in A} Var(E(p, t)) \setminus {V_{T}(t)}
+\end{equation*}
+
+%% VARIABLES
+\item For all $t \in T$ and for $p_{1}, p_{2} \in P$ where $p_{1} \neq p_{2}$ :\\
+$Var(E(p_{1}, t)) \cap Var(E(p_{2}, t)) \subseteq \{V_{T}(t)\}$
+
+\item For all $t \in T$ : for all $(t, p) \in A$.
+
+\begin{equation*}
+Var(E(t, p)) \subseteq \bigcup_{(p^{\prime}, t) \in A} Var(E(p^{\prime}, t))
+\end{equation*}
+
+\item The initial marking is process initialising. (See definition \ref{def:processinit})
+\item All transitions are flow preserving. (See definition \ref{def:flowpreserving})
+
+\end{enumerate}
+\flushright $\square$
+\end{definition}
+
+\noindent
+The enabling and occurrence of steps in a ProPCP-net is the same as for general CP-nets, i.e., ProPCP-nets follows the definition of semantics in general CP-nets and the concepts defined in definition~\ref{def:semanticconcepts}. Next, we define the concept of an initial marking being process initialising.
+
+\begin{definition}
+\label{def:processinit}
+For an initial marking to be \defconcept{process initialising} it must hold that:
+
+\begin{enumerate}
+\item For all $\sigma \in \Sigma_{P} $ :
+\begin{equation*}
+\mssum_{p \in P_{pro}, C(p) = \sigma} I(p)\langle \rangle = \sigma
+\end{equation*}
+and there exists a place $p \in P_{pro}$ where $I(p)\langle \rangle = \sigma$
+
+%\item For all $p \in P_{loc}$ where $C(p) = C_{P} \times C_{D}$ : $\mid I(p)\langle \rangle \mid = \mid C_{P} \mid$ and for all $c_{p} \in C_{P}$ there exists $c_{D} \in C_{D}$ such that $(c_{P}, c_{D}) \in I(p)\langle \rangle$.
+
+\item For all $p \in P_{loc}$ : $I(p)\langle \rangle_{1} = C_{P}$
+\item For all $p \in P_{buf}$ : $I(p)\langle \rangle = \emptyset$
+\item For all $p \in P_{sha}$ : $\mid I(p)\langle \rangle \mid = 1$
+\end{enumerate}
+\flushright $\square$
+\end{definition}
+
+\noindent
+Finally, in definition \ref{def:flowpreserving} we define the concept of a transition being flow preserving.
+
+\begin{definition}
+\label{def:flowpreserving}
+For a transition to be \defconcept{flow preserving} it must hold that:
+
+\begin{enumerate}
+\item For $t \in T$ :\\
+$\mid \{ (p, t) \mid p \in P_{pro}, (p, t) \in A \}\mid = \mid \{ (t, p) \mid p \in P_{pro}, (t, p) \in A \}\mid = 1$
+
+%\item For $t \in T$ there exists exactly one $p_{1} \in P_{pro}$ and exactly one $p_{2} \in P_{pro}$ where $(t, p_{1}) \in A$ and $(p_{2}, t) \in A$ : $E(t, p_{1}) = E(p_{2}, t) = v \in V$ and $C_{T}(t) = Type[v]$.
+
+\item For all $t \in T$, $p_{1}, p_{2} \in P_{pro}$ where $(t, p_{1}) \in A$ and $(p_{2}, t) \in A$ : $E(t, p_{1}) = E(p_{2}, t) = v \in V$ and $C_{T}(t) = Type[v]$.
+
+\end{enumerate}
+\flushright $\square$
+\end{definition}

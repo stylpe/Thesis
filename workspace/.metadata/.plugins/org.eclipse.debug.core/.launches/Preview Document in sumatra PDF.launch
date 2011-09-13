@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="net.sourceforge.texlipse.viewer.launchConfigurationType">
+<stringAttribute key="acroread.arguments" value="%file"/>
+<stringAttribute key="acroread.command" value=""/>
+<stringAttribute key="acroread.ddeCloseCommand" value="[DocClose(&quot;%fullfile&quot;)]"/>
+<stringAttribute key="acroread.ddeCloseServer" value="acroview"/>
+<stringAttribute key="acroread.ddeCloseTopic" value="control"/>
+<stringAttribute key="acroread.ddeViewCommand" value="[DocOpen(&quot;%fullfile&quot;)][FileOpen(&quot;%fullfile&quot;)]"/>
+<stringAttribute key="acroread.ddeViewServer" value="acroview"/>
+<stringAttribute key="acroread.ddeViewTopic" value="control"/>
+<stringAttribute key="acroread.format" value="pdf"/>
+<stringAttribute key="acroread.forward" value="false"/>
+<stringAttribute key="acroread.inverse" value="no"/>
+<stringAttribute key="gv.arguments" value="%file"/>
+<stringAttribute key="gv.command" value=""/>
+<stringAttribute key="gv.ddeCloseCommand" value=""/>
+<stringAttribute key="gv.ddeCloseServer" value=""/>
+<stringAttribute key="gv.ddeCloseTopic" value=""/>
+<stringAttribute key="gv.ddeViewCommand" value=""/>
+<stringAttribute key="gv.ddeViewServer" value=""/>
+<stringAttribute key="gv.ddeViewTopic" value=""/>
+<stringAttribute key="gv.format" value="ps"/>
+<stringAttribute key="gv.forward" value="false"/>
+<stringAttribute key="gv.inverse" value="no"/>
+<stringAttribute key="itexmac.arguments" value="-a &quot;/Applications/iTeXMac 1.3.15/iTeXMac.app&quot; %file"/>
+<stringAttribute key="itexmac.command" value=""/>
+<stringAttribute key="itexmac.ddeCloseCommand" value=""/>
+<stringAttribute key="itexmac.ddeCloseServer" value=""/>
+<stringAttribute key="itexmac.ddeCloseTopic" value=""/>
+<stringAttribute key="itexmac.ddeViewCommand" value=""/>
+<stringAttribute key="itexmac.ddeViewServer" value=""/>
+<stringAttribute key="itexmac.ddeViewTopic" value=""/>
+<stringAttribute key="itexmac.format" value="pdf"/>
+<stringAttribute key="itexmac.forward" value="false"/>
+<stringAttribute key="itexmac.inverse" value="run"/>
+<stringAttribute key="kdvi.arguments" value="%file"/>
+<stringAttribute key="kdvi.command" value=""/>
+<stringAttribute key="kdvi.ddeCloseCommand" value=""/>
+<stringAttribute key="kdvi.ddeCloseServer" value=""/>
+<stringAttribute key="kdvi.ddeCloseTopic" value=""/>
+<stringAttribute key="kdvi.ddeViewCommand" value=""/>
+<stringAttribute key="kdvi.ddeViewServer" value=""/>
+<stringAttribute key="kdvi.ddeViewTopic" value=""/>
+<stringAttribute key="kdvi.format" value="dvi"/>
+<stringAttribute key="kdvi.forward" value="true"/>
+<stringAttribute key="kdvi.inverse" value="run"/>
+<stringAttribute key="none.arguments" value=""/>
+<stringAttribute key="none.command" value=""/>
+<stringAttribute key="none.ddeCloseCommand" value=""/>
+<stringAttribute key="none.ddeCloseServer" value=""/>
+<stringAttribute key="none.ddeCloseTopic" value=""/>
+<stringAttribute key="none.ddeViewCommand" value=""/>
+<stringAttribute key="none.ddeViewServer" value=""/>
+<stringAttribute key="none.ddeViewTopic" value=""/>
+<stringAttribute key="none.format" value="pdf"/>
+<stringAttribute key="none.forward" value="false"/>
+<stringAttribute key="none.inverse" value="no"/>
+<stringAttribute key="sumatra PDF.arguments" value="-reuse-instance %file"/>
+<stringAttribute key="sumatra PDF.command" value="D:\Apps\SumatraPDF\SumatraPDF.exe"/>
+<stringAttribute key="sumatra PDF.ddeCloseCommand" value=""/>
+<stringAttribute key="sumatra PDF.ddeCloseServer" value=""/>
+<stringAttribute key="sumatra PDF.ddeCloseTopic" value=""/>
+<stringAttribute key="sumatra PDF.ddeViewCommand" value="[ForwardSearch(&quot;%fullfile&quot;,&quot;%texfile&quot;,%line,0)]"/>
+<stringAttribute key="sumatra PDF.ddeViewServer" value="SUMATRA"/>
+<stringAttribute key="sumatra PDF.ddeViewTopic" value="control"/>
+<stringAttribute key="sumatra PDF.format" value="pdf"/>
+<stringAttribute key="sumatra PDF.forward" value="true"/>
+<stringAttribute key="sumatra PDF.inverse" value="run"/>
+<stringAttribute key="viewerCurrent" value="sumatra PDF"/>
+<stringAttribute key="xdvi.arguments" value="-editor &quot;echo %f:%l&quot; -sourceposition &quot;%line %texfile&quot; %file"/>
+<stringAttribute key="xdvi.command" value=""/>
+<stringAttribute key="xdvi.ddeCloseCommand" value=""/>
+<stringAttribute key="xdvi.ddeCloseServer" value=""/>
+<stringAttribute key="xdvi.ddeCloseTopic" value=""/>
+<stringAttribute key="xdvi.ddeViewCommand" value=""/>
+<stringAttribute key="xdvi.ddeViewServer" value=""/>
+<stringAttribute key="xdvi.ddeViewTopic" value=""/>
+<stringAttribute key="xdvi.format" value="dvi"/>
+<stringAttribute key="xdvi.forward" value="true"/>
+<stringAttribute key="xdvi.inverse" value="std"/>
+<stringAttribute key="yap.arguments" value="-1 -s &quot;%line %texfile&quot; %file"/>
+<stringAttribute key="yap.command" value="D:\Apps\MiKTeX 2.9\miktex\bin\yap.exe"/>
+<stringAttribute key="yap.ddeCloseCommand" value=""/>
+<stringAttribute key="yap.ddeCloseServer" value=""/>
+<stringAttribute key="yap.ddeCloseTopic" value=""/>
+<stringAttribute key="yap.ddeViewCommand" value=""/>
+<stringAttribute key="yap.ddeViewServer" value=""/>
+<stringAttribute key="yap.ddeViewTopic" value=""/>
+<stringAttribute key="yap.format" value="dvi"/>
+<stringAttribute key="yap.forward" value="true"/>
+<stringAttribute key="yap.inverse" value="run"/>
+</launchConfiguration>

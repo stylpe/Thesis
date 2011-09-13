@@ -1,0 +1,28 @@
+\begin{verbatim}
+- module(consumer).
+- export([start/2]).
+- record(environment, {
+        received_data,
+        buffer}).
+
+start(Received_data, Buffer) -> 
+    Env = #environment {received_data = Received_data,
+    buffer = Buffer},
+    receive_data(Env).
+
+consume_data(Env) -> 
+    Data = Env#environment.received_data,
+    NewEnv = Env#environment {},
+    receive_data(NewEnv).
+
+receive_data(Env) -> 
+    Rdata = Env#environment.received_data,
+    Buffer = Env#environment.buffer,
+    Buffer ! get,
+    receive 
+        Data -> 
+            Data
+    end,
+    NewEnv = Env#environment {received_data = Data},
+    consume_data(NewEnv).
+\end{verbatim}

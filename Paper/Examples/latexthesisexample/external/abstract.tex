@@ -1,0 +1,8 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+% motivate models and automatic code generation
+Constructing an abstract description in the form of a model can give useful insight into a given system. The model can be used to investigate important properties of the system -- either through simulation or state space analysis. A typical approach is to use the model as inspiration for the implementation, and manually implement the system. The problem is that a manual implemention may introduce errors in the code that did not exist in the model. Having an automatic code generation from the model saves a lot of resources spent on writing code, and eliminates errors introduced during the manual implementation. 
+
+% Our approach
+Coloured Petri Nets (CPNs) is a graphical modelling language for creating models of concurrent systems. In this thesis we present an approach to automatically generate code from a CPN model. We propose a technique where patterns and structures are recognised in the model, and describe a subclass of CPNs where these structures can be recognised. This class is referred to as Process Partitioned CPNs (ProPCPNs), and as a proof of concept we implement a tool based on our technique which given a ProPCPN model generates source code in the Erlang programming language. We validate the generated code by comparing executions of the code to simulations of the model. We demonstrate the expressive power of the ProPCPN class by creating a model of the Dynamic MANET On-demand (DYMO) routing protocol. DYMO is an industrial-sized reactive routing protocol for mobile ad-hoc networks developed by the Internet Engineering Task Force (IETF). We generate code from the DYMO model and validate the correctness of the generated code.

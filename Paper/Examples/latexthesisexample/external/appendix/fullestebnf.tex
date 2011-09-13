@@ -1,0 +1,70 @@
+\chapter{The Full EST EBNF}
+\label{app:estebnffull}
+
+\footnotesize
+\begin{verbatim}
+<Program>              ::= *<ModuleDecl>
+<ModuleDecl>           ::= <ModuleName> *<HeaderForm> <ProgramForm> 
+<ModuleName>           ::= string
+<HeaderForm>           ::= <ExportAttribute> | 
+                           <RecordDecl>
+<ProgramForm>          ::= <FunctionDecl> |
+                           *<ProgramForm> <FunctionDecl> |
+                           *<ProgramForm> <RecordDecl> 
+<ExportAttribute>      ::= *<FunctionName>
+<RecordDecl>           ::= <RecordType> *<RecordFieldDecl>
+<FunctionDecl>         ::= *<FunctionClause>  
+<FunctionName>         ::= <FunctionSymbol> <arity>
+<FunctionSymbol>       ::= string
+<RecordType>           ::= string
+<RecordFieldDecl>      ::= <RecordFieldName> ?<Expression>
+<arity>                ::= int
+<FunctionClause>       ::= <FunctionSymbol> ?<Pattern> *<Expression>
+<RecordFieldName>      ::= string
+
+<Pattern>              ::= <AtomicLiteral> |
+                           <Variable> |
+                           <TuplePattern> |
+                           <RecordPattern> |
+                           <ListPattern>
+<AtomicLiteral>        ::= string
+<Variable>             ::= string
+<TuplePattern>         ::= *<Pattern>
+<RecordPattern>        ::= <RecordType> <RecordFieldPattern>
+<RecordType>           ::= string
+<RecordFieldPattern>   ::= <RecordFieldName> <Pattern>
+<RecordFieldName>      :: string
+<ListPattern>          ::= *<Pattern>
+
+<Expression>           ::= <ApplicationExp> |
+                           <AtomicLiteral> |
+                           <BinaryOperatorExp> |
+                           <IfExp> |
+                           <ListSkeleton> |
+                           <MatchExp> |
+                           <ParenthesizedExp> |
+                           <ReceiveExp> |
+                           <RecordExp> |
+                           <SendExp> |
+                           <TupleSkeleton> |
+                           <Variable> 
+
+<ApplicationExp>       ::= <Expression> *<Expression>
+<BinaryOperatorExp>    ::= <Expression> <Operator> <Expression>
+<Operator>             ::= string
+<IfExp>                ::= *<IfClause>
+<IfClause>             ::= *<Expression> *<Expression>
+<ListSkeleton>         ::= *<Expression>
+<MatchExp>             ::= <Pattern> <Expression>
+<ParenthesizedExp>     ::= <Expression>
+<ReceiveExp>           ::= *<CrClause>
+<CrClause>             ::= <Pattern> *<Expression>
+<RecordExp>            ::= ?<Expression> <RecordType> <RecordFieldNameExp> |
+                           ?<Expression> <RecordType> <RecordUpdateTupleExp>
+<RecordFieldNameExp>   ::= <RecordFieldName> 
+<RecordUpdateTupleExp> ::= *<RecordFieldUpdate>
+<RecordFieldUpdate>    ::= <RecordFieldName> <Expression>
+<SendExp>              ::= <Expression> <Expression>
+<TupleSkeleton>        ::= *<Expression>
+\end{verbatim}
+\normalsize

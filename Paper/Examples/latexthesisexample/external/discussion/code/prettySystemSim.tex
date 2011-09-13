@@ -1,0 +1,20 @@
+%\lstset{language=erlang}
+\begin{figure}[h!]
+\begin{verbatim}
+- module(system).
+- export([start/0]).
+
+start() -> 
+  register(next_consumer, spawn(shared, start, [1])),
+  register(consumer_ID1,
+           spawn(consumer, start, [undefined])),
+  register(consumer_ID2,
+           spawn(consumer, start, [undefined])),
+  register(producer_ID1,
+           spawn(producer, start, [undefined, 1])),
+  register(producer_ID2,
+           spawn(producer, start, [undefined, 2])).
+\end{verbatim}
+\end{figure}
+
+

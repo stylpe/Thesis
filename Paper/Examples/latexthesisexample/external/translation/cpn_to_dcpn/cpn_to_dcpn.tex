@@ -1,0 +1,60 @@
+\section{Phase 1: Decorating the CPN Model}
+\label{sec:cpntodcpn}
+The purpose of this phase is to identify different parts of the CPN model and decorate them with a type. This is done in order to simplify the translation from the CPN model to the CFG. This phase uses properties of the ProPCPN net class to perform the identification.
+
+\subsection{Finding Process Partitions}
+This phase assumes that the CPN model is a ProPCPN model. When a ProPCPN model is decorated the first thing that needs to be done is to divide it into \emph{process partitions}, i.e., for every node and arc identify which process partition they belong to and decorate them with this information. This is done by using the information provided by the declarations in the ProPCPN model. A process partition is defined with an index colour set declaration which has \code{declare pid} attached to it. The producer-consumer model contains the following declaration:
+
+\begin{verbatim}
+colset PRODUCER = index p with 1..2 declare pid;
+\end{verbatim}
+ 
+This declaration is an index colour set declaration with a range from 1 to 2, and it has \code{declare} \code{pid} attached. The definition of ProPCPNs defines this to be a process partition named \code{PRODUCER}. The \emph{process variable} related to the process partition is a variable declaration with the type \code{PRODUCER}. In the producer-consumer model we find the declaration:
+
+\begin{verbatim}
+var prod : PRODUCER;
+\end{verbatim}
+
+This declaration is a variable declaration with the variable name \code{prod} of type \code{PRODUCER}. According to the definition this is a process variable of the \code{PRODUCER} process partition. Analogously, declared index colour set and variable can be found for the \code{CONSUMER} process partition.
+
+\subsection{The Steps of the Decoration}
+To illustrate how decorating works for the producer of the producer-consumer system we have decorated the model with labels specifying what type a place or an arc has. The decoration has six steps which are presented in turn.
+
+\begin{description}
+\item[Step 1] In this step all \emph{process places} are decorated with the process place type and the corresponding process partition. This is done using the assumption from the definition that only process places have the process type as colour set. Both the \code{PRODUCER} and the \code{CONSUMER} process partitions have two process places, e.g., the places \figitem{Producing} and \figitem{Sending} are labelled as process places for the \code{PRODUCER} process partition since they have the type \code{PRODUCER}. The decoration of the producer process partition can be seen in Fig.~\ref{fig:decoratedproducerconsumerprocessplaces}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{translation/cpn_to_dcpn/graphics/decorated_model_process_places.eps}
+\caption{The producer decorated with process places}
+\label{fig:decoratedproducerconsumerprocessplaces}
+\end{figure}
+
+\item[Step 2] The \emph{transitions} in the model are decorated with the process partition they belong. According to the definition, it is only allowed for transitions to move process tokens from its own process partition. Furthermore, a transition must move at least one process token, thus the process partition of the connected process places determine the process partition of the transition. The transitions \figitem{ProduceData} and \figitem{SendData} are both connected to process places from the \code{PRODUCER} process partition and therefore these transitions belong to this partition.
+
+\item[Step 3] Then, \emph{local places} are identified. The definition specifies that for a place to be a local place it must only be connected to transitions from a single process partition. A local place also has the product colour set, where the first component is a process type, and the second component is a data. Since all transitions already have been decorated with their process partition, the task is to look at places with the above mentioned colour set and check that the transitions connected to that place all belong to the same process partition. The producer-consumer model has three local places, namely \figitem{Data}, \figitem{ProducedData} and \figitem{ReceivedData}. These are local places because they have a colour set of the correct form, and they are only connected to transitions from one process partition. The decoration of the producer process partition with local places, buffer places, and shared places can be seen in Fig.~\ref{fig:decoratedproducerconsumerotherplaces}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{translation/cpn_to_dcpn/graphics/decorated_model_other_places.eps}
+\caption{Decoration with local places, a buffer place, and a shared place}
+\label{fig:decoratedproducerconsumerotherplaces}
+\end{figure}
+
+\newpage
+
+\item[Step 4] Next, the \emph{buffer places} are decorated. They have colour sets on the same form as local places, but they are connected to transitions from more than one process partition. The place \figitem{Buffer} is the only buffer place in the model.
+
+\item[Step 5] The last places to be identified are \emph{shared places}. They are the only places which have a non-process colour set, and that are not a pair with a process identifier. The place \figitem{NextConsumer} is identified as a shared place because the colour set of this place is not a product and not a process type.
+
+\item[Step 6] In the final step of the decoration the \emph{arcs} are decorated. Arcs are decorated according to the type of place they are connected to, e.g., the arcs connected to the local place \figitem{Data} are local arcs. Similar the arc from \figitem{ProduceData} to \figitem{Sending} is a process arc. The decoration of the producer process partition with arc types can be seen in Fig.~\ref{fig:decoratedproducerconsumerallarcs}.
+\end{description}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{translation/cpn_to_dcpn/graphics/decorated_model_all_arcs.eps}
+\caption{The producer-consumer CPN model decorated arc types}
+\label{fig:decoratedproducerconsumerallarcs}
+\end{figure}
+
+After these steps, all nodes and arcs in the CPN model have been decorated. The model is now ready to be translated from a CP-net into a control flow graph.

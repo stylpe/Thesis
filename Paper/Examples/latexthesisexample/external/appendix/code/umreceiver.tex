@@ -1,0 +1,125 @@
+\subsection*{Unmodified Receiver}
+
+\footnotesize
+\begin{verbatim}
+- module(receiver).
+- export([start/3]).
+- record(environment, {
+         new_message,
+          routing_table_copy,
+          network_to_dymo}).
+
+start(New_message, Routing_table_copy, Network_to_dymo) -> 
+     Env = #environment {new_message = New_message, 
+                         routing_table_copy = Routing_table_copy, 
+                         network_to_dymo = Network_to_dymo},
+     receive_new_message(Env).
+
+stale(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     NewEnv = Env#environment {},
+     receive_new_message(NewEnv).
+
+loop_possible(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     NewEnv = Env#environment {},
+     receive_new_message(NewEnv).
+
+inferior(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     NewEnv = Env#environment {},
+     receive_new_message(NewEnv).
+
+superior(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     routing_table ! {get, self()},
+     receive 
+        Oldrota -> 
+            Oldrota
+     end,
+     NewEnv = Env#environment {},
+     routing_table ! {set, %% CGupdateRouteEntry (msg, rota)
+                            undefined},
+     Id1 = 1,
+     Receiver1 = list_to_atom("processer_ID" ++ 
+                          integer_to_list(Id1) ++ "_incoming_messages"),
+     Receiver1 ! {send, Msg},
+     receive_new_message(NewEnv).
+
+new_route(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     routing_table ! {get, self()},
+     receive 
+        Oldrota -> 
+            Oldrota
+     end,
+     NewEnv = Env#environment {},
+     routing_table ! {set, %% CGnewRouteEntry (msg, rota)
+                           undefined},
+     Id1 = 1,
+     Receiver1 = list_to_atom("processer_ID" ++ integer_to_list(Id1) ++ 
+                              "_incoming_messages"),
+     Receiver1 ! {send, Msg},
+     receive_new_message(NewEnv).
+
+discard_own_messages(Env) -> 
+     Msg = Env#environment.new_message,
+     Rota = Env#environment.routing_table_copy,
+     NewEnv = Env#environment {},
+     receive_new_message(NewEnv).
+
+receive_new_message(Env) -> 
+     Oldrota = Env#environment.routing_table_copy,
+     Oldmsg = Env#environment.new_message,
+     Network_to_dymo = Env#environment.network_to_dymo,
+     Network_to_dymo ! get,
+     receive 
+        Msg -> 
+            Msg
+     end,
+     routing_table ! {get, self()},
+     receive 
+        Rota -> 
+            Rota
+     end,
+     NewEnv = Env#environment {new_message = Msg, routing_table_copy = Rota},
+     routing_table ! {set, Rota},
+     Guard_stale_msg = NewEnv#environment.new_message,
+     Guard_stale_rota = NewEnv#environment.routing_table_copy,
+     Guard_loop_possible_msg = NewEnv#environment.new_message,
+     Guard_loop_possible_rota = NewEnv#environment.routing_table_copy,
+     Guard_inferior_msg = NewEnv#environment.new_message,
+     Guard_inferior_rota = NewEnv#environment.routing_table_copy,
+     Guard_superior_msg = NewEnv#environment.new_message,
+     Guard_superior_rota = NewEnv#environment.routing_table_copy,
+     Guard_new_route_msg = NewEnv#environment.new_message,
+     Guard_new_route_rota = NewEnv#environment.routing_table_copy,
+     Guard_discard_own_messages_msg = NewEnv#environment.new_message,
+     Guard_discard_own_messages_rota = NewEnv#environment.routing_table_copy,
+     if
+        %% CGisStale (msg, rota)
+        undefined ->
+            stale(NewEnv);
+         %% CGisLoopPossible (msg, rota)
+        undefined ->
+            loop_possible(NewEnv);
+         %% CGisInferior (msg, rota)
+        undefined ->
+            inferior(NewEnv);
+         %% CGisSuperior (msg, rota)
+        undefined ->
+            superior(NewEnv);
+         %% CGisNewRoute (msg, rota)
+        undefined ->
+            new_route(NewEnv);
+         %% CGisOwnMessage (msg)
+        undefined ->
+            discard_own_messages(NewEnv)
+    end.
+\end{verbatim}
+\normalsize

@@ -1,0 +1,123 @@
+\subsection*{Unmodified The Initiator}
+
+\footnotesize
+\begin{verbatim}
+- module(initiator).
+- export([start/3]).
+- record(environment, {
+        rreq_tries,
+        cancel,
+        own_ip_address}).
+
+start(Rreq_tries, Cancel, Own_ip_address) -> 
+    Env = #environment {rreq_tries = Rreq_tries, cancel = Cancel, 
+                        own_ip_address = Own_ip_address},
+    Guard_cancel_request_cancel = Env#environment.cancel,
+    Guard_rreq_tries_reached_count = Env#environment.rreq_tries,
+    Guard_rreq_tries_reached_cancel = Env#environment.cancel,
+    Guard_create_rreq_count = Env#environment.rreq_tries,
+    Guard_create_rreq_cancel = Env#environment.cancel,
+    Guard_create_rreq_ip = Env#environment.own_ip_address,
+    if
+      %% cancel
+      undefined ->
+         cancel_request(Env);
+       %% count = 0, not cancel
+      undefined ->
+         rreq_tries_reached(Env);
+       %% not cancel, count > 0
+      undefined ->
+         create_rreq(Env)
+   end.
+
+rreq_tries_reached(Env) -> 
+    Count = Env#environment.rreq_tries,
+    Cancel = Env#environment.cancel,
+    NewEnv = Env#environment {cancel = %% true
+                       undefined},
+    Guard_cancel_request_cancel = NewEnv#environment.cancel,
+    Guard_rreq_tries_reached_count = NewEnv#environment.rreq_tries,
+    Guard_rreq_tries_reached_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_count = NewEnv#environment.rreq_tries,
+    Guard_create_rreq_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_ip = NewEnv#environment.own_ip_address,
+    if
+      %% cancel
+      undefined ->
+         cancel_request(NewEnv);
+      %% count = 0, not cancel
+      undefined ->
+         rreq_tries_reached(NewEnv);
+      %% not cancel, count > 0
+      undefined ->
+         create_rreq(NewEnv)
+   end.
+
+create_rreq(Env) -> 
+    Count = Env#environment.rreq_tries,
+    Cancel = Env#environment.cancel,
+    Ip = Env#environment.own_ip_address,
+    is_route_established ! {get, self()},
+    receive 
+      Established -> 
+         Established
+    end,
+    target_ip ! {get, self()},
+    receive 
+      Targetip -> 
+         Targetip
+    end,
+    seqnum ! {get, self()},
+    receive 
+      Seqnum -> 
+         Seqnum
+    end,
+    NewEnv = Env#environment {rreq_tries = Count - 1, cancel = Established},
+    is_route_established ! {set, Established},
+    target_ip ! {set, Targetip},
+    seqnum ! {set, Seqnum + 1},
+    Id1 = 1,
+    Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) 
+                             ++ "_dymo_to_network"),
+    Receiver1 ! {send, %% CGcreateRREQ (targetip, ip, seqNum)
+                  undefined},
+    Guard_cancel_request_cancel = NewEnv#environment.cancel,
+    Guard_rreq_tries_reached_count = NewEnv#environment.rreq_tries,
+    Guard_rreq_tries_reached_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_count = NewEnv#environment.rreq_tries,
+    Guard_create_rreq_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_ip = NewEnv#environment.own_ip_address,
+    if
+      %% cancel
+      undefined ->
+         cancel_request(NewEnv);
+       %% count = 0, not cancel
+      undefined ->
+         rreq_tries_reached(NewEnv);
+       %% not cancel, count > 0
+      undefined ->
+         create_rreq(NewEnv)
+   end.
+
+cancel_request(Env) -> 
+    Cancel = Env#environment.cancel,
+    NewEnv = Env#environment {},
+    Guard_cancel_request_cancel = NewEnv#environment.cancel,
+    Guard_rreq_tries_reached_count = NewEnv#environment.rreq_tries,
+    Guard_rreq_tries_reached_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_count = NewEnv#environment.rreq_tries,
+    Guard_create_rreq_cancel = NewEnv#environment.cancel,
+    Guard_create_rreq_ip = NewEnv#environment.own_ip_address,
+    if
+      %% cancel
+      undefined ->
+         cancel_request(NewEnv);
+       %% count = 0, not cancel
+      undefined ->
+         rreq_tries_reached(NewEnv);
+       %% not cancel, count > 0
+      undefined ->
+         create_rreq(NewEnv)
+   end.
+\end{verbatim}
+\normalsize

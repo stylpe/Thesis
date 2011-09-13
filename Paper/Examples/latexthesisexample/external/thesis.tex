@@ -1,0 +1,142 @@
+% Document class: Should be two sided in final print.
+
+\documentclass[twoside,11pt,openright]{report} %- should by used for final print
+%\documentclass[final, 11pt, a4paper, oneside, openright]{report}
+\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{a4}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+%\usepackage{amsthm}
+\usepackage{amssymb,amsmath}
+\usepackage[danish,UKenglish]{babel}
+
+% K: Fixme is draft so that document class can be final (enables both figures and fixme notes). Should be changes reaching deadline :)
+\usepackage[final]{fixme}
+
+\usepackage{hyperref}
+
+\usepackage{url}
+
+
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+
+
+\usepackage[]{listings}
+\lstset{language=erlang, showspaces=false}
+% listings style defination
+\lstdefinestyle{erlangcode}{numbers=left, firstnumber=1, numberstyle=\tiny, frame=lines, basicstyle=\ttfamily\small, showstringspaces=false}
+
+\pagestyle{headings}
+
+%\usepackage[nottoc]{tocbibind}
+
+%% code command:
+\newcommand{\code}[1]{\texttt{#1}}
+% figitem for cpn related
+\newcommand{\figitem}[1]{\textsf{#1}} 
+
+%% strong command:
+\newcommand{\strong}[1]{\textbf{#1}}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\input{macros}
+
+\begin{document}
+
+\thispagestyle{empty} 
+\pagenumbering{roman}
+%\setcounter{secnumdepth}{-1}
+\vspace*{\fill}
+\begin{flushright}
+  {\Huge\sf Automathgtfic Code Generation}\\[2ex]
+  {\Huge\sf from Process-Partitioned}\\[2ex]
+  {\Huge\sf Coloured Petri Net Models}\\[4ex]
+  {\huge\sf Kristian Leth Espensen (20032701)\\Mads Keblov Kjeldsen (20033046)} 
+\end{flushright}
+\noindent\rule{\linewidth}{1mm}\\[-.5ex]
+\noindent\rule{\linewidth}{2.5mm}
+\vfill
+\begin{center}
+  {\huge\sf Master's Thesis}\\[\fill]
+  \includegraphics{au-segl.ps}\\[\fill]
+  {\sf Department of Computer Science\\University of Aarhus\\Denmark}
+\end{center}
+\begin{center}
+  {\sf \makeatletter\@date\makeatother\\Supervisors\\Lars Michael Kristensen \& Michael Westergaard}
+\end{center}
+\vspace*{\fill}
+\clearemptydoublepage
+
+
+%\title{Automatic Code Generation from Process-Partitioned Coloured Petri Net Models}
+
+%\authorrunning{Kristian Leth Espensen \and Mads Keblov Kjeldsen}
+%\author{Kristian Leth Espensen \and Mads Keblov Kjeldsen}
+
+%\institute{
+%  Department of Computer Science, University of Aarhus \\
+%  IT-parken, Aabogade 34, DK-8200 Aarhus N, DENMARK,\\
+%  \email{\{espensen,keblov\}@daimi.au.dk}
+%}
+
+%\maketitle
+
+
+
+\pagestyle{myheadings}
+\renewcommand{\chaptermark}[1]{\markboth{\textit{\chaptername\
+      \thechapter. #1}}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\textit{\thesection. #1}}}
+
+\thispagestyle{empty}     % no pagenumber on header of following page 
+\clearemptydoublepage
+
+\pagenumbering{roman}
+\input{abstract}
+\input{dkresume}
+\input{acknowledgements}
+
+
+%\clearpage
+%\listoffixmes
+
+\clearpage
+\tableofcontents
+\clearemptydoublepage
+
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{introduction/introduction}
+\input{background/background}
+\input{discussion/discussion}
+\input{netclass/netclass}
+\input{translation/translation}
+\input{techniques_and_tool/techniques_and_tool}
+\input{dymo/dymo}
+\input{conclusion/conclusion_future_work}
+
+%\clearpage
+
+\bibliographystyle{plain}
+%\renewcommand{\bibname}{References}
+\bibliography{literature}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+
+\appendix
+%\addappheadtotoc
+\input{appendix/appendix}
+
+\end{document}
+
+

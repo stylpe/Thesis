@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="27" version="2.0">
+<workbench progressCount="15" version="2.0">
 <workbenchAdvisor/>
-<window height="798" width="1214" x="99" y="2">
+<window height="1200" width="927" x="66" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
-<itemSize x="160"/>
+<itemSize x="187"/>
 </perspectiveBar>
-<coolbarLayout locked="0">
+<coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="53" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="53" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -24,37 +24,56 @@
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1308068479553" focus="true" label="Workspace - LaTeX">
+<page aggregateWorkingSetId="Aggregate for window 1308068479553" focus="true" label="Workspace - &lt;LaTeX&gt;">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="2"/>
+<part id="1"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="document.tex" partName="document.tex" path="D:/Documents/Master/Thesis/workspace/Thesis Proposal/document.tex" title="document.tex" tooltip="Thesis Proposal/document.tex" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Thesis Proposal/document.tex"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="252" selectionTopPixel="0"/>
+<editor id="net.sourceforge.texlipse.TexEditor" name="main.tex" partName="main.tex" path="D:/Documents/Master/Thesis/workspace/Paper/main.tex" title="main.tex" tooltip="Paper/main.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Paper/main.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="957" selectionTopPixel="117"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="introduction.tex" partName="introduction.tex" path="D:/Documents/Master/Thesis/workspace/Paper/introduction/introduction.tex" title="introduction.tex" tooltip="Paper/introduction/introduction.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Paper/introduction/introduction.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="84" selectionTopPixel="0"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="abstract.tex" partName="abstract.tex" path="D:/Documents/Master/Thesis/workspace/Paper/abstract.tex" title="abstract.tex" tooltip="Paper/abstract.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Paper/abstract.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="192" selectionTopPixel="0"/>
+</editor>
+<editor id="net.sourceforge.texlipse.TexEditor" name="background.tex" partName="background.tex" path="D:/Documents/Master/Thesis/workspace/Paper/background/background.tex" title="background.tex" tooltip="Paper/background/background.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Paper/background/background.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="49" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="net.sourceforge.texlipse.TexEditor" name="technology.tex" partName="technology.tex" path="D:/Documents/Master/Thesis/workspace/Paper/technology/technology.tex" title="technology.tex" tooltip="Paper/technology/technology.tex" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Paper/technology/technology.tex"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="173" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
-<view id="net.sourceforge.texlipse.TableView" partName="LaTeX Table View">
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" currentWorkingSetName="Aggregate for window 1308068479553" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="net.sourceforge.texlipse.FullOutline" partName="Full Latex Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
-<view id="net.sourceforge.texlipse.FullOutline" partName="Full Latex Outline"/>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Errors (2 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -68,7 +87,7 @@
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
-<viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
+<viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1308068479553">
 <customFilters userDefinedPatternsEnabled="false">
 <xmlDefinedFilters>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
@@ -86,33 +105,14 @@
 <child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.FieldsFilter" isEnabled="false"/>
-<child filterId="jdt.external.source.project.filter" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*" isEnabled="true"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter" isEnabled="true"/>
 <child filterId="org.eclipse.pde.ui.BinaryProjectFilter1" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter" isEnabled="true"/>
-<child filterId="org.eclipse.mylyn.java.ui.MembersFilter" isEnabled="false"/>
 </xmlDefinedFilters>
 </customFilters>
-</viewState>
-</view>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
-<viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
-<sorter groupBy="CATEGORY_QUERY">
-<sorter>
-<sort0 sortDirection="1" sortKey="PRIORITY"/>
-<sort1 sortDirection="1" sortKey="RANK"/>
-<sort2 sortDirection="1" sortKey="DATE_CREATED"/>
-<sort3 sortDirection="1" sortKey="NONE"/>
-<sort4 sortDirection="1" sortKey="NONE"/>
-<sort5 sortDirection="1" sortKey="NONE"/>
-<sort6 sortDirection="1" sortKey="NONE"/>
-<sort7 sortDirection="1" sortKey="NONE"/>
-</sorter>
-</sorter>
-<filteredTreeFindHistory/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks">
@@ -133,12 +133,9 @@
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="net.sourceforge.texlipse.TexEditor" activePerspective="net.sourceforge.texlipse.TexlipsePerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="&lt;LaTeX&gt;">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
@@ -195,7 +192,6 @@
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -240,7 +236,7 @@
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@780af5" ratio="0.7496689" ratioLeft="566" ratioRight="189" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
@@ -260,10 +256,7 @@
 </layout>
 </perspective>
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
-<descriptor class="net.sourceforge.texlipse.TexPerspectiveFactory" id="net.sourceforge.texlipse.TexlipsePerspective" label="LaTeX"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
-<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<descriptor descriptor="net.sourceforge.texlipse.TexlipsePerspective" id="&lt;LaTeX&gt;" label="&lt;LaTeX&gt;"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
@@ -290,7 +283,6 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
-<view id="net.sourceforge.texlipse.TableView"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -309,24 +301,24 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.1799517" ratioLeft="298" ratioRight="1358" relationship="2" relative="org.eclipse.ui.internal.ViewStack@19fd66a"/>
+<info part="org.eclipse.ui.editorss" ratio="0.25165564" ratioLeft="228" ratioRight="678" relationship="2" relative="org.eclipse.ui.internal.ViewStack@19fd66a"/>
 <info folder="true" part="bottom" ratio="0.7" ratioLeft="567" ratioRight="243" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
-<page content="net.sourceforge.texlipse.TableView" label="LaTeX Table View"/>
+<page content="net.sourceforge.texlipse.TableView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="3"/>
 </presentation>
 </folder>
 </info>
 <info folder="true" part="left" ratio="0.5" ratioLeft="405" ratioRight="405" relationship="4" relative="org.eclipse.ui.internal.ViewStack@19fd66a">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<folder activePageID="net.sourceforge.texlipse.FullOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="net.sourceforge.texlipse.FullOutline" label="Full Latex Outline"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -342,24 +334,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Thesis Proposal/document.tex"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.pnml.tools.epnk.pnmlcoremodel.presentation.PnmlcoremodelEditorPNML" path="/Thesis Proposal/My.pnml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Paper/main.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Paper/introduction/introduction.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Paper/abstract.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Paper/background/background.tex"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" path="/Paper/technology/technology.tex"/>
 </editors>
-<item historyLabel="document.tex" index="0">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="78" y="6"/>
 </item>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item historyLabel="My.pnml" index="1"/>
-<item active="true" historyLabel="document.tex" index="0">
-<position info="not_deleted" x="252" y="0"/>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="280" y="45"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="192" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="761" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="78" y="6"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="131" y="3"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="53" y="0"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="98" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="761" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="240" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="420" y="51"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="473" y="46"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="581" y="33"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="638" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="25" y="5"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="819" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="78" y="5"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="977" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="88" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="0" y="84"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="47" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="112" y="0"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="1104" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="0" y="88"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="0" y="88"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="110" y="0"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="170" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="1104" y="0"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="0" y="88"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="96" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="78" y="5"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="928" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="49" y="0"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="96" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="78" y="5"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="53" y="0"/>
+</item>
+<item historyLabel="background.tex" index="3">
+<position info="not_deleted" x="49" y="0"/>
+</item>
+<item historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="84" y="0"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="96" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="84" y="0"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="192" y="0"/>
+</item>
+<item historyLabel="main.tex" index="0">
+<position info="not_deleted" x="957" y="0"/>
+</item>
+<item historyLabel="abstract.tex" index="2">
+<position info="not_deleted" x="192" y="0"/>
+</item>
+<item historyLabel="introduction.tex" index="1">
+<position info="not_deleted" x="84" y="0"/>
+</item>
+<item active="true" historyLabel="technology.tex" index="4">
+<position info="not_deleted" x="173" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -378,6 +507,30 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="technology.tex" tooltip="Paper/technology/technology.tex">
+<persistable path="/Paper/technology/technology.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="background.tex" tooltip="Paper/background/background.tex">
+<persistable path="/Paper/background/background.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="introduction.tex" tooltip="D:\Documents\Master\Thesis\Paper\introduction\introduction.tex">
+<persistable uri="file:/D:/Documents/Master/Thesis/Paper/introduction/introduction.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="abstract.tex" tooltip="D:\Documents\Master\Thesis\Paper\abstract.tex">
+<persistable uri="file:/D:/Documents/Master/Thesis/Paper/abstract.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="abstract.tex" tooltip="Paper/abstract.tex">
+<persistable path="/Paper/abstract.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="introduction.tex" tooltip="Paper/introduction/introduction.tex">
+<persistable path="/Paper/introduction/introduction.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="main.tex" tooltip="D:\Documents\Master\Thesis\Paper\main.tex">
+<persistable uri="file:/D:/Documents/Master/Thesis/Paper/main.tex"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="net.sourceforge.texlipse.TexEditor" name="main.tex" tooltip="Paper/main.tex">
+<persistable path="/Paper/main.tex"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.pnml.tools.epnk.pnmlcoremodel.presentation.PnmlcoremodelEditorPNML" name="My.pnml" tooltip="Thesis Proposal/My.pnml">
 <persistable path="/Thesis Proposal/My.pnml"/>
 </file>

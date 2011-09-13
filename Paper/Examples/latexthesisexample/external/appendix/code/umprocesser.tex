@@ -1,0 +1,122 @@
+\subsection*{Unmodified Processer}
+
+\footnotesize
+\begin{verbatim}
+- module(processer).
+- export([start/3]).
+- record(environment, {
+         message_for_processing,
+         own_process_ip_address,
+         incoming_messages}).
+
+start(Message_for_processing, Own_process_ip_address, Incoming_messages) -> 
+     Env = #environment {message_for_processing = Message_for_processing, 
+                         own_process_ip_address = Own_process_ip_address, 
+                         incoming_messages = Incoming_messages},
+     receive_incoming_message(Env).
+
+rrep_target(Env) -> 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     NewEnv = Env#environment {},
+     Id1 = 1,
+     Receiver1 = list_to_atom("establishchecker_ID" ++  integer_to_list(Id1) ++ 
+                              "_new_connection_established"),
+     Receiver1 ! {send, %% CGgetIP(msg)
+                        undefined},
+     receive_incoming_message(NewEnv).
+
+rrep_forward(Env) -> 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     routing_table ! {get, self()},
+     receive 
+        Rota -> 
+            Rota
+     end,
+     seqnum ! {get, self()},
+     receive 
+        Seqnum -> 
+            Seqnum
+     end,
+     NewEnv = Env#environment {},
+     routing_table ! {set, Rota},
+     seqnum ! {set, Seqnum},
+     Id1 = 1,
+     Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++
+                              "_dymo_to_network"),
+     Receiver1 ! {send, %% CGforwardRREP (ip, msg, rota)
+                        undefined},
+     receive_incoming_message(NewEnv).
+
+rreq_target(Env) -> 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     routing_table ! {get, self()},
+     receive 
+        Rota -> 
+            Rota
+     end,
+     seqnum ! {get, self()},
+     receive 
+        Seqnum -> 
+            Seqnum
+     end,
+     NewEnv = Env#environment {},
+     routing_table ! {set, Rota},
+     seqnum ! {set, Seqnum},
+     Id1 = 1,
+     Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++ 
+                              "_dymo_to_network"),
+     Receiver1 ! {send, %% CGcreateRREP(ip, msg, rota, seqNum)
+                       undefined},
+     receive_incoming_message(NewEnv).
+
+rreq_forward(Env) -> 
+     Msg = Env#environment.message_for_processing,
+     Ip = Env#environment.own_process_ip_address,
+     NewEnv = Env#environment {},
+     Id1 = 1,
+     Receiver1 = list_to_atom("network_ID" ++ integer_to_list(Id1) ++
+                               "_dymo_to_network"),
+     Receiver1 ! {send, %% CGforwardRREQ (ip, msg)
+                        undefined},
+     receive_incoming_message(NewEnv).
+
+receive_incoming_message(Env) -> 
+     Oldmsg = Env#environment.message_for_processing,
+     Incoming_messages = Env#environment.incoming_messages,
+     Incoming_messages ! get,
+     receive 
+        Msg -> 
+            Msg
+     end,
+     NewEnv = Env#environment {message_for_processing = Msg},
+     Guard_rrep_target_msg = NewEnv#environment.message_for_processing,
+     Guard_rrep_target_ip = NewEnv#environment.own_process_ip_address,
+     Guard_rrep_forward_msg = NewEnv#environment.message_for_processing,
+     Guard_rrep_forward_ip = NewEnv#environment.own_process_ip_address,
+     Guard_rreq_target_msg = NewEnv#environment.message_for_processing,
+     Guard_rreq_target_ip = NewEnv#environment.own_process_ip_address,
+     Guard_rreq_forward_msg = NewEnv#environment.message_for_processing,
+     Guard_rreq_forward_ip = NewEnv#environment.own_process_ip_address,
+     if
+        %% CGisRREP(msg),
+                %%  CGisTarget (msg, ip)
+        undefined ->
+            rrep_target(NewEnv);
+         %% CGisRREP(msg),
+                %% not (CGisTarget (msg, ip))
+        undefined ->
+            rrep_forward(NewEnv);
+         %% CGisRREQ(msg), 
+                %%  CGisTarget (msg, ip)
+        undefined ->
+            rreq_target(NewEnv);
+         %% CGisRREQ(msg),
+                %%  not (CGisTarget (msg, ip))
+        undefined ->
+            rreq_forward(NewEnv)
+    end.
+\end{verbatim}
+\normalsize

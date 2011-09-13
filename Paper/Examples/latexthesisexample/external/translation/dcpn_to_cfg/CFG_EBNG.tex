@@ -1,0 +1,32 @@
+\begin{figure}
+\small
+\begin{verbatim}
+              <Program> ::= *<Process> *<ProgramVariable>
+      <ProgramVariable> ::= <Name> <Expression>
+              <Process> ::= <Name> <NumberOfProcesses>
+                            *<Variable> *<BasicBlock>
+                            <EntryBlock>
+                 <Name> ::= string
+    <NumberOfProcesses> ::= integer
+      <ProcessVariable> ::= <Name> *<PIDInitialExpression>
+          <BasicBlock>  ::= <Name> *<Input> *<Output> *<Receive>
+                            *<Send> *<BBlockConditionPair>
+           <EntryBlock> ::= <BasicBlock>
+  <BBlockConditionPair> ::= <BasicBlock> <Condition> 
+            <Condition> ::= string
+ <PIDInitialExpression> ::= <Expression> <ProcessID>
+ <ProcessVariableInput> ::= <Expression> <VariableName>
+<ProcessVariableOutput> ::= <Expression> <VariableName>
+ <ProgramVariableInput> ::= <Expression> <VariableName>
+<ProgramVariableOutput> ::= <Expression> <VariableName>
+              <Receive> ::= <Expression>
+                 <Send> ::= <Expression> <ProcessIDString>
+         <VariableName> ::= string
+      <ProcessIDString> ::= string
+            <ProcessID> ::= integer
+           <Expression> ::= string
+\end{verbatim}
+\normalsize
+\caption{The EBNF for the control flow graph}
+\label{fig:CFGEBNF}
+\end{figure}

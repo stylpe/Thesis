@@ -1,16 +1,14 @@
-#Wed Jun 15 13:49:23 CEST 2011
-viewerNames.TEMP=yap (),none (),xdvi (),itexmac (),kdvi (),gv (),acroread ()
-class\ net.sourceforge.texlipse.builder.MakeindexRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\makeindex.exe
-class\ net.sourceforge.texlipse.builder.LatexRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\latex.exe
-class\ net.sourceforge.texlipse.builder.KpsewhichRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\kpsewhich.exe
+#Tue Sep 13 10:51:25 CEST 2011
+viewerNames.TEMP=sumatra PDF (D\:\\Apps\\SumatraPDF\\SumatraPDF.exe),yap (D\:\\Apps\\MiKTeX 2.9\\miktex\\bin\\yap.exe),xdvi (),itexmac (),kdvi (),gv (),acroread (),none ()
+viewerCurrent=sumatra PDF
+class\ net.sourceforge.texlipse.builder.PdflatexRunner_args=-synctex\=-1 -interaction\=nonstopmode --src-specials %input
 builderNum=2
-class\ net.sourceforge.texlipse.builder.XelatexRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\xelatex.exe
-class\ net.sourceforge.texlipse.builder.DvipdfRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\dvipdfm.exe
-class\ net.sourceforge.texlipse.builder.MakeindexNomenclRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\makeindex.exe
-class\ net.sourceforge.texlipse.builder.DvipsRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\dvips.exe
+TeXTemplates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+styleCompletionSet=bold\=\\textbf{,teletype\=\\texttt{,emphasize\=\\emph{,italic\=\\textit{,slanted\=\\textsl{,roman\=\\textrm{,sans serif\=\\textsf{,small caps\=\\textsc{
 outputFormat=pdf
 BiBTeXTemplates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 eclipse.preferences.version=1
-class\ net.sourceforge.texlipse.builder.BibtexRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\bibtex.exe
-class\ net.sourceforge.texlipse.builder.PdflatexRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\pdflatex.exe
-class\ net.sourceforge.texlipse.builder.Ps2pdfRunner_prog=D\:\\Apps\\MiKTeX 2.8\\miktex\\bin\\ps2pdf.exe
+viewerNames=sumatra PDF,yap,xdvi,itexmac,kdvi,gv,acroread,none
+sumatra\ PDF.ddeViewCommand=[ForwardSearch("%fullfile","%texfile",%line,0)]
+sumatra\ PDF.command=D\:\\Apps\\SumatraPDF\\SumatraPDF.exe
+sumatra\ PDF.inverse=run

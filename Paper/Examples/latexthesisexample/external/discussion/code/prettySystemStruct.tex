@@ -1,0 +1,16 @@
+%\lstset{language=erlang}
+\begin{figure}[h!]
+\begin{lstlisting}[style=erlangcode, caption=The Erlang module \code{system}, label=fig:structsystem]
+- module(system).
+- export([start/1]).
+
+start(NodeName) -> 
+  register(next_consumer, spawn(NodeName, shared, start, [1])),
+  register(consumer_ID1, spawn(NodeName, consumer, start, [undefined])),
+  register(consumer_ID2, spawn(NodeName, consumer, start, [undefined])),
+  spawn(NodeName, producer, start, [undefined, 1]),
+  spawn(NodeName, producer, start, [undefined, 2]).
+\end{lstlisting}
+\end{figure}
+
+

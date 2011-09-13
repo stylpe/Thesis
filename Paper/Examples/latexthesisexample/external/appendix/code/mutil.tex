@@ -1,0 +1,46 @@
+\subsection*{Util}
+
+\footnotesize
+\begin{verbatim}
+- module(util).
+- export([get_entry/2, print_msg/1, print_route_entry/1, print_route_table/1]).
+- include("routingtable.hrl").
+- include("message.hrl").
+
+get_entry(Address, Routing_table) ->
+    RT_entry = lists:filter(
+                   fun(Entry) -> Entry#routing_table_entry.address == Address end,
+        Routing_table),
+    if
+        RT_entry == [] ->
+            undefined;
+        true ->
+            hd(RT_entry)
+    end.
+      
+print_msg(Msg) ->
+    io:format("Message type ~w: ~n Dest: ~w, Target_Addr: ~w, 
+        Orig_Addr: ~w, Orig_Seq: ~w, Hop_Limit: ~w, dist: ~w ~n",
+        [Msg#message.msg_type, Msg#message.dest, 
+         Msg#message.target_addr, Msg#message.orig_addr, 
+         Msg#message.orig_seqnum, Msg#message.hop_limit, Msg#message.dist]).
+
+
+print_route_entry(Entry) ->
+    io:format("Route entry: ~n  - Address: ~w ~n  - SeqNum: ~w ~n 
+          - NextHopAdrr: ~w ~n  - Dist: ~w ~n", 
+          [Entry#routing_table_entry.address, Entry#routing_table_entry.seqnum,
+          Entry#routing_table_entry.next_hop_address, Entry#routing_table_entry.dist]).
+
+print_route_table(Rota) ->
+    io:format("Route table: ~n",[]),
+    
+    if
+        Rota == [] ->
+            io:format("Empty routing table", []);
+        true ->
+            lists:map(fun(Entry) -> print_route_entry(Entry) end, Rota)
+    end.
+
+\end{verbatim}
+\normalsize

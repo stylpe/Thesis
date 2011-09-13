@@ -1,0 +1,20 @@
+\chapter{Process-Partitioned Coloured~Petri~Nets}
+\label{chap:netclass}
+%\begin{itemize}
+%\item motivation: why do we need this class, what does it capture 
+%\item net class explained through the producer-consumer example.
+%\item formel def. 
+%\item Intuitiv forklaring af netklassen
+%\item Formel definition
+%\end{itemize}
+
+A general Coloured Petri Net is not limited to regular control flow structures in the same way common programming languages are. For this reason it is not easy to capture the behaviour of a CPN model by using common programming constructs, e.g., sequences, loops, and case-statements. Because of this, a restricted class of CPNs is needed in order to be able to automatically generate code from a CPN model. In this section we present a subclass of CPNs called \emph{Process-Partitioned Coloured Petri Nets} (ProPCPNs or ProPCP-nets). ProPCP-nets are restricted in such a way that it is possible to recognise structures that can be translated into common programming language constructers. The definition of ProPCP-nets is inspired by the definition made by Kristensen and Valmari in \cite{RefWorks:82}.
+
+The main property of ProPCP-nets is that they are partitioned into separate processes. This means that process partitions can be executed in parallel without influencing the behaviour of each other except for some synchronisation points. Another important property of ProPCP-nets is that each process partition has the control flow of the process explicitly represented in the structure of the net. This has the consequence that the state of the model always reflects where in the control flow the process is. Furthermore, access to stored values local to each process partition, is also represented explicitly in the model to be able to determine the local state of the process.
+
+Section~\ref{sec:cpnformal} presents the formal definition of CP-nets along with some concepts concerning the semantics. In section \ref{sec:netclassinformal} we introduce and motivate ProPCP-nets by showing how the CPN model of the producer-consumer system fits into this class of CPN models. Then, in section \ref{sec:netclassformal}, the class of ProPCP-nets is summarised in a formal definition.
+
+
+\input{netclass/cpnformal}
+\input{netclass/informal}
+\input{netclass/formal}

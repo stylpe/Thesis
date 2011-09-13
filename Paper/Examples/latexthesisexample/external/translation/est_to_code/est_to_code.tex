@@ -1,0 +1,28 @@
+\section{Phase 5: Translating the EST to Erlang Code}
+\label{sec:esttocode}
+
+The last phase is translating the Erlang syntax tree (EST) into a textual representation. The EST is a concrete representation of Erlang so the task is to traverse the tree, and print a textual representation of each node to a file. The nodes are printed according to a subset of the Erlang grammar \cite{RefWorks:91} which can be found in appendix \ref{app:fullerlanggrammar}. The traversal of the tree is a depth-first traversal. A traversal is made for each module declaration because they represent one text file each. A depth-first traversal starts at the root of the tree which in this case is the module declaration. It then explores as far as possible along each branch before backtracking and exploring the next branch.
+
+The producer-consumer system is used to illustrate how the traversal is performed and Listing~\ref{fig:generatedproducercode} shows a part of the generated Erlang code for the producer module. Fig.~\ref{fig:prodmoduledecl} presented in section~\ref{sec:astest} shows the module declaration of the \code{producer} module along with its children. The traversal starts at the module declaration, which is printed as line 1 in the generated code. Next, the export of the function \code{start} (the first child) is visited, and line 2 is printed. Then the record declaration for the \code{environment} record is visited along with its children, i.e., the two record field declarations for \code{data} and \code{produced\_data}, which prints line 3-5.
+
+\begin{figure}
+\begin{verbatim}
+- module(producer).
+- export([start/2]).
+- record(environment, {
+ 	produced_data,
+ 	data}).
+
+produce_data(Env) -> 
+ 	Data = Env#environment.data,
+ 	NewEnv = Env#environment {produced_data = Data,
+ 	data = Data + 2},
+ 	send_data(NewEnv).
+\end{verbatim}
+\end{figure}
+
+Moving on to the first function declaration (see Fig.~\ref{fig:prodproducefunc} showing the function \code{produce\_data} in the \code{producer} module) we find that it has one clause, namely the function clause named \code{produce\_data}. The function clause has one argument which is the variable child node for the \code{Env} variable. This clause is printed as line 7 in the generated code. The clause node has three other children and the first to be explored is a match expression node. The first child is the left hand side of the expression which is a variable called \code{Data}, and second child is the right hand side which is a record field name that gets the value of the field \code{data} form the variable \code{Env}. This subtree is printed as line 8.
+
+Next, we find another match expression which is similar to the first one, except that here is a record update tuple on the right hand side. This node has two children which are both record field update nodes. One updates the \code{produced\_data} field with the value of the variable \code{Data} and the other updates the \code{data} field with a binary operator expression. The nodes in this subtree are printed as line 9 and 10.
+
+The last child of the function clause node is an application expression node. It has two children, an atom literal \code{send\_data} and a variable node \code{NewEnv}. This application expression node is printed as line 11, i.e., the function call the \code{send\_data} function with the argument \code{NewEnv}.

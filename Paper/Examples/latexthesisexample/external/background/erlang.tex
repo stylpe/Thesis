@@ -1,0 +1,11 @@
+\section{The Erlang Language}
+\label{sec:erlang}
+Erlang -- named after the Danish mathematician Agner Krarup Erlang (1878-1929)~\cite{RefWorks:76} -- is a concurrent message-oriented functional programming language. In order to understand Erlang it is helpful to first understand the history of Erlang. The following is built on the experience of Joe Armstrong - one of the creators of Erlang \cite{RefWorks:75}. The Erlang language was a result of research done by Ericsson in the 1980's. The overall goal for Ericsson was to have a language that was suitable for programming large telephone switches, i.e., could handle a lot of concurrent phone calls and establish connections within a few milliseconds. It started out as a dialect of Prolog in 1987, but in 1990 the Erlang language was born with its own syntax, virtual machine, and function libraries.
+
+In the early nineties Erlang was used in product development at Ericsson and in 1993 the first commercial version was released. In 1998 a very large project was finished with the AXD301 ATM (Asynchronous Transfer Mode) switch used by, e.g., the British Telecom. The software on the AXD301 consists of 2.6 million lines of code which is very large for a functional language. The AXD301 is extremely reliable (the measured reliability is a down time of 31 ms per year) and each node can handle millions of calls per day. The same year Ericsson decided to discontinue the development of Erlang due to changes in business strategy and made Erlang open source and free to download~\cite{RefWorks:76}. 
+
+A recent example of the use of Erlang in a larger projects is the chat system on Facebook \cite{Facebook,RefWorks:81} which can handle millions concurrent users. The chat system is an example of how Erlang can be used in the parts of a system where Erlang has its advantages, while leaving other parts to more fitted programming languages. For instance the user interface of the chat system is written in PHP/JavaScript and the logging of messages in C++. 
+
+\input{background/erlang_language_overview}
+
+\input{background/erlang_producer_consumer_ex}

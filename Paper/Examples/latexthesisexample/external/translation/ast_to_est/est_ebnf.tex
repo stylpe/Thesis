@@ -1,0 +1,38 @@
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+<Program>              ::= *<ModuleDecl>
+<ModuleDecl>           ::= <ModuleName> *<HeaderForm> <ProgramForm> 
+<ModuleName>           ::= string
+<HeaderForm>           ::= <ExportAttribute> | <RecordDecl>
+<ProgramForm>          ::= <FunctionDecl> | 
+                           *<ProgramForm> <FunctionDecl> |
+                           *<ProgramForm> <RecordDecl> 
+<ExportAttribute>      ::= *<FunctionName>
+<FunctionDecl>         ::= *<FunctionClause>  
+<FunctionName>         ::= <FunctionSymbol> <arity>
+<FunctionClause>       ::= <FunctionSymbol> ?<Pattern> *<Expression>
+<Pattern>              ::= <AtomicLiteral> | <Variable>
+... 
+<AtomicLiteral>        ::= string
+<Variable>             ::= string
+<Expression>           ::= <ApplicationExp> | <AtomicLiteral> |
+                           <BinaryOperatorExp> | <MatchExp> | <ReceiveExp> |
+                           <RecordExp> | <SendExp> | <Variable> 
+...
+<ApplicationExp>       ::= <Expression> *<Expression>
+<BinaryOperatorExp>    ::= <Expression> <Operator> <Expression>
+<MatchExp>             ::= <Pattern> <Expression>
+<ReceiveExp>           ::= *<CrClause>
+<CrClause>             ::= <Pattern> *<Expression>
+<RecordExp>            ::= ?<Expression> <RecordType> <RecordFieldNameExp> |
+                           ?<Expression> <RecordType> <RecordUpdateTupleExp>
+<RecordFieldNameExp>   ::= <RecordFieldName> 
+<RecordUpdateTupleExp> ::= *<RecordFieldUpdate>
+<RecordFieldUpdate>    ::= <RecordFieldName> <Expression>
+<SendExp>              ::= <Expression> <Expression>
+\end{verbatim}
+\normalsize
+\caption{The EBNF for the Erlang syntax tree}
+\label{fig:ESTEBNF}
+\end{figure}
