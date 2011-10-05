@@ -1,4 +1,4 @@
-#Tue Sep 13 10:51:25 CEST 2011
+#Tue Sep 13 12:24:16 CEST 2011
 viewerNames.TEMP=sumatra PDF (D\:\\Apps\\SumatraPDF\\SumatraPDF.exe),yap (D\:\\Apps\\MiKTeX 2.9\\miktex\\bin\\yap.exe),xdvi (),itexmac (),kdvi (),gv (),acroread (),none ()
 viewerCurrent=sumatra PDF
 class\ net.sourceforge.texlipse.builder.PdflatexRunner_args=-synctex\=-1 -interaction\=nonstopmode --src-specials %input

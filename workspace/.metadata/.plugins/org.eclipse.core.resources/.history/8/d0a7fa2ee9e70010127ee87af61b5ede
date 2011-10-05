@@ -1,0 +1,24 @@
+\chapter{Background}
+\label{chap:background}
+
+
+\section{Coloured Petri Nets}
+Hello!
+
+Example net: 
+
+\section{WebSocket}
+This section is about the WebSocket
+protocol \cite{draft-ietf-hybi-thewebsocketprotocol}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{background/figures/Overview.eps}
+\caption{Overview of CPN model of the WebSocket protocol}
+\label{fig:overview}
+\end{figure}
+
+Shown in Fig.~\ref{fig:overview} is the top-level overview of the WebSocket
+protocol as a CPN model.
+
+Now, for our next trick

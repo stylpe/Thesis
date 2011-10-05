@@ -1,0 +1,11 @@
+\chapter{Background}
+\label{chap:background}
+
+
+\section{Coloured Petri Nets}
+Hello!
+
+Example net: \includegraphics{figures/Overview.eps}
+
+\section{WebSocket}
+About \cite{draft-ietf-hybi-thewebsocketprotocol}.

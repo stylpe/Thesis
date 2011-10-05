@@ -1,0 +1,58 @@
+\chapter{Background}
+\label{chap:background}
+
+
+
+\section{Coloured Petri Nets}
+Common usage: Simulation, verification
+
+Short intro to places, transitions and arcs.
+
+\section{CPN Tools}
+
+Graphical tool used to design CPN models. 
+
+Reference, with url
+
+\subsection{Standard ML}
+
+Functional language
+
+\section{WebSocket}
+
+This section is about the WebSocket
+protocol \cite{draft-ietf-hybi-thewebsocketprotocol}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{figures/Overview.eps}
+\caption{Overview of CPN model of the WebSocket protocol}
+\label{fig:overview}
+\end{figure}
+
+Shown in Fig.~\ref{fig:overview} is the top-level overview of the WebSocket
+protocol as a CPN model. 
+
+Resembles part of OSI model (ref), where top level is levels 6 and 7, middle
+level is level 5, and bottom level is levels 4 through 1. Two-way communication
+between levels.
+
+Circles represent places. Double-bordered
+recangles represent subpages, and will be further detailed.
+
+\subsection{Client Application}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{figures/ClientApplication.eps}
+\caption{The Client Application}
+\label{fig:client_app}
+\end{figure}
+
+Laid out from top to bottom to loosely show sequence. 
+
+Bottom places represent interface to WebSocket library.
+
+Connect to server
+Wait for result
+Send and receive data

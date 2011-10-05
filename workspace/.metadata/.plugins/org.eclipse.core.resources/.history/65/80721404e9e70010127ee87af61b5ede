@@ -1,0 +1,17 @@
+\chapter{Background}
+\label{chap:background}
+
+
+\section{Coloured Petri Nets}
+Hello!
+
+Example net: 
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{background/figures/Overview.eps}
+\caption{The initial marking $M_0$ showing the producer part of the model}
+\label{fig:systemmoduleProducerM0}
+\end{figure}
+
+\section{WebSocket}
+About \cite{draft-ietf-hybi-thewebsocketprotocol}.
