@@ -1,0 +1,7 @@
+#Sun Oct 09 17:08:13 CEST 2011
+CVSSSH2PreferencePage.PREF_AUTH_METHODS_ORDER=gssapi-with-mic,publickey,password,keyboard-interactive
+eclipse.preferences.version=1
+CVSSSH2PreferencePage.PREF_AUTH_METHODS=gssapi-with-mic,publickey,password,keyboard-interactive
+org.eclipse.jsch.core.hasMigratedSsh2Preferences=true
+SSH2HOME=C\:\\Users\\Stylpe\\.ssh
+org.eclipse.jsch.core.hasChangedDefaultWin32SshHome=true

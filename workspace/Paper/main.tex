@@ -5,15 +5,43 @@
 
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{calc}
 
+\lstdefinelanguage{CPNML}
+{
+	morekeywords={colset,var,val,fun,let,in,end},
+	morekeywords={union,bool,string,int,unit,enum,index},
+	morekeywords={list,record,product,subset,alias},
+	sensitive=true,
+	morecomment=[s]{(*}{*)},
+	morestring=[b]",
+}
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
 
+\newcommand{\fig}[4][0.5]{
+	\begin{figure}
+	\centering
+	\includegraphics[scale=#1]{figures/#2}
+	\caption{#3}
+	\label{fig:#4}
+	\end{figure}
+}
+\newcommand{\figrot}[4][0.5]{
+	\begin{figure}
+	\centering
+	\includegraphics[scale=#1,angle=90]{figures/#2}
+	\caption{#3}
+	\label{fig:#4}
+	\end{figure}
+}
+\newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\lstref}[1]{Listing~\ref{lst:#1}}
 
 \begin{document}
-
-
+\lstset{language=CPNML,tabsize=1}
 
 \pagestyle{empty}
 \pagenumbering{roman}
@@ -63,8 +91,9 @@
 \input{conclusion/conclusion}
 
 \appendix
-\bibliographystyle{alpha}\bibliography{literature}
+\bibliographystyle{alpha}\bibliography{literature,rfc}
 \listoffigures
+\lstlistoflistings
 
 
 \end{document}

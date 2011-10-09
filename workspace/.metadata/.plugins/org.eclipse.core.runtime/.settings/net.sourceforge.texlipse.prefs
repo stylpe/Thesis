@@ -1,10 +1,11 @@
-#Tue Sep 13 12:24:16 CEST 2011
+#Wed Oct 05 16:42:50 CEST 2011
 viewerNames.TEMP=sumatra PDF (D\:\\Apps\\SumatraPDF\\SumatraPDF.exe),yap (D\:\\Apps\\MiKTeX 2.9\\miktex\\bin\\yap.exe),xdvi (),itexmac (),kdvi (),gv (),acroread (),none ()
 viewerCurrent=sumatra PDF
 class\ net.sourceforge.texlipse.builder.PdflatexRunner_args=-synctex\=-1 -interaction\=nonstopmode --src-specials %input
-builderNum=2
 TeXTemplates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
-styleCompletionSet=bold\=\\textbf{,teletype\=\\texttt{,emphasize\=\\emph{,italic\=\\textit{,slanted\=\\textsl{,roman\=\\textrm{,sans serif\=\\textsf{,small caps\=\\textsc{
+builderNum=2
+indentTabs=true
+styleCompletionSet=bold\=\\textbf{,teletype\=\\texttt{,emphasize\=\\emph{,italic\=\\textit{,roman\=\\textrm{,slanted\=\\textsl{,sans serif\=\\textsf{,small caps\=\\textsc{
 outputFormat=pdf
 BiBTeXTemplates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 eclipse.preferences.version=1

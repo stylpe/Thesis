@@ -1,8 +1,10 @@
-#Sun Sep 18 14:15:41 CEST 2011
-eclipse.preferences.version=1
-TASKS_FILTERS_MIGRATE=true
-tipsAndTricks=true
-platformState=1315901025999
-EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
-quickStart=false
+#Wed Oct 05 16:42:50 CEST 2011
 PROBLEMS_FILTERS_MIGRATE=true
+quickStart=false
+tipsAndTricks=true
+TASKS_FILTERS_MIGRATE=true
+eclipse.preferences.version=1
+IMPORT_FILES_AND_FOLDERS_MODE=prompt
+platformState=1315901026092
+IMPORT_FILES_AND_FOLDERS_VIRTUAL_FOLDER_MODE=prompt
+EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false

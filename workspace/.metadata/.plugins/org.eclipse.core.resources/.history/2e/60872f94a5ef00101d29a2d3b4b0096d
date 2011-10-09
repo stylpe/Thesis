@@ -1,0 +1,87 @@
+\documentclass[twoside, 11pt, openright]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{listings}
+
+\lstdefinelanguage{CPNML}
+{
+	morekeywords={colset,var,val,fun,let,in,end},
+	morekeywords={union,bool,string,int,unit,enum,index},
+	morekeywords={list,record,product,subset,alias},
+	sensitive=true,
+	morecomment=[s]{(*}{*)},
+	morestring=[b]",
+}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\newcommand{\fig}[3]{
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{#1}
+	\caption{#2}
+	\label{figg:#3}
+	\end{figure}
+}
+
+
+\begin{document}
+\lstset{language=CPNML}
+
+\pagestyle{empty}
+\pagenumbering{roman}
+
+\vspace*{\fill}
+\begin{flushright}
+  {\Huge\sf Design and Evaluation of a}\\[2ex]
+  {\Huge\sf Framework for Annotating}\\[2ex]
+  {\Huge\sf Coloured Petri Net Models}\\[2ex]
+  {\Huge\sf with Code Generation Pragmatics}\\[4ex]
+  {\huge\sf Mikal Hitsøy Henriksen (mhe108)} 
+\end{flushright}
+\noindent\rule{\linewidth}{1mm}\\[-.5ex]
+\noindent\rule{\linewidth}{2.5mm}
+\vfill
+\begin{center}
+  {\huge\sf Master's Thesis}\\[\fill]
+%  \includegraphics{au-segl.ps}\\[\fill]
+  {\sf Institute of Computer Science\\University of Bergen\\Norway}
+\end{center}
+\begin{center}
+  {\sf \makeatletter\@date\makeatother\\Supervisor\\Lars Michael Kristensen}
+\end{center}
+\vspace*{\fill}
+\clearemptydoublepage
+
+
+
+\input{abstract}
+
+\clearpage
+\tableofcontents
+\clearemptydoublepage
+
+
+
+\pagestyle{headings}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{introduction/introduction}
+\input{background/background}
+\input{technology/technology}
+\input{analysis/analysis}
+\input{implementation/implementation}
+\input{evaluation/evaluation}
+\input{conclusion/conclusion}
+
+\appendix
+\bibliographystyle{alpha}\bibliography{literature}
+\listoffigures
+\lstlistoflistings
+
+
+\end{document}

@@ -1,0 +1,29 @@
+
+@TechReport{draft-ietf-hybi-thewebsocketprotocol,
+  author =       "I. Fette and A. Melnikov",
+  title =        "The WebSocket protocol",
+  type =         "Internet-Draft",
+  institution =  "Internet Engineering Task Force",
+  number =       "draft-ietf-hybi-thewebsocketprotocol-15",
+  day =          "17",
+  month =        sep,
+  year =         "2011",
+  url =          "https://datatracker.ietf.org/doc/draft-ietf-hybi-thewebsocketprotocol/?include_text=1",
+  online =       "yes",
+  status =       "PROPOSED STANDARD",
+}
+
+@techreport{fips.180-2
+    author = {National\~{}institute\~{}of\~{}standards\~{}and\~{}technology},
+    citeulike-article-id = {2947523},
+    citeulike-linkout-0 = {http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf},
+    day = {26},
+    institution = {DEPARTMENT OF COMMERCE},
+    keywords = {cryptography, hash, standard},
+    month = aug,
+    posted-at = {2008-07-01 11:49:48},
+    priority = {2},
+    title = {{FIPS} 180-2, Secure Hash Standard, Federal Information Processing Standard ({FIPS}), Publication 180-2},
+    url = {http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf},
+    year = {2002}
+}

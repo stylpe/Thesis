@@ -1,0 +1,17 @@
+
+@TechReport{draft-ietf-hybi-thewebsocketprotocol,
+  author =       "I. Fette and A. Melnikov",
+  title =        "The WebSocket protocol",
+  type =         "Internet-Draft",
+  institution =  "Internet Engineering Task Force",
+  number =       "draft-ietf-hybi-thewebsocketprotocol-15",
+  day =          "17",
+  month =        sep,
+  year =         "2011",
+  url =          "https://datatracker.ietf.org/doc/draft-ietf-hybi-thewebsocketprotocol/?include_text=1",
+  online =       "yes",
+  status =       "PROPOSED STANDARD",
+}
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, October 2006.
