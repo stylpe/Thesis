@@ -1,8 +1,10 @@
-#Wed Oct 05 16:42:45 CEST 2011
+#Tue Nov 01 21:09:16 CET 2011
 content_assist_proposals_foreground=0,0,0
-spelling_ignore_urls=true
 spelling_locale_initialized=true
+spelling_ignore_urls=true
+markOccurrences=false
 spelling_ignore_non_letters=true
+org.eclipse.jdt.ui.text.templates_migrated=true
 spelling_ignore_ampersand_in_properties=true
 useAnnotationsPrefPage=true
 eclipse.preferences.version=1
@@ -11,16 +13,20 @@ tabWidthPropagated=true
 org.eclipse.jdt.ui.editor.tab.width=
 spelling_ignore_single_letters=true
 fontPropagated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 org.eclipse.jdt.ui.javadoclocations.migrated=true
 proposalOrderMigrated=true
 spelling_user_dictionary_encoding=Cp1252
 spelling_ignore_mixed=true
 spelling_ignore_java_strings=true
-content_assist_proposals_background=255,255,255
 org.eclipse.jdt.ui.formatterprofiles.version=12
+content_assist_proposals_background=255,255,255
 org.eclipse.jdt.internal.ui.navigator.layout=2
 content_assist_number_of_computers=13
 spelling_ignore_digits=true
 spelling_ignore_upper=true
 useQuickDiffPrefPage=true
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
 spelling_ignore_sentence=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true

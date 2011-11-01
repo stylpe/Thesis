@@ -4,24 +4,30 @@
 		<item value="147" key="DIALOG_Y_ORIGIN"/>
 		<item value="475" key="DIALOG_X_ORIGIN"/>
 	</section>
+	<section name="InstallationDialogSettings">
+		<item value="1187" key="DIALOG_WIDTH"/>
+		<item value="16" key="DIALOG_Y_ORIGIN"/>
+		<item value="737" key="DIALOG_HEIGHT"/>
+		<item value="3" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
 	<section name="NewWizardAction">
-		<item value="net.sourceforge.texlipse.wizards.TexlipseNewTexFileWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.pnml.tools.epnk.pnmlcoremodel.presentation.PnmlcoremodelModelPNMLWizardID" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="texlipse.category1"/>
+			<item value="org.pnml.tools.epnk.wizards.category"/>
 		</list>
 	</section>
-	<section name="InstallationDialogSettings">
-		<item value="700" key="DIALOG_WIDTH"/>
-		<item value="16" key="DIALOG_Y_ORIGIN"/>
-		<item value="3" key="DIALOG_X_ORIGIN"/>
-		<item value="737" key="DIALOG_HEIGHT"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	<section name="EditorSelectionDialog">
 	</section>
 	<section name="org.eclipse.ui.preferences.keysPreferencePage">
 		<item value="true" key="uncategorizedFilter"/>
 		<item value="true" key="internalFilter"/>
 		<item value="true" key="actionSetFilter"/>
 	</section>
-	<section name="EditorSelectionDialog">
+	<section name="ImportExportAction">
+		<item value="org.eclipse.pde.ui.PluginImportWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.pde.ui.PluginDevelopment"/>
+		</list>
 	</section>
 </section>
