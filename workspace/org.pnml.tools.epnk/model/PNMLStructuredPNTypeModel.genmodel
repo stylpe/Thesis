@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="This file is part of the ePNK project (Petri Net Kernel for eclipse). The ePNK&#xD;&#xA;is platform for Petri net tools based on the PNML transfer format. Its&#xD;&#xA;main idea is to provide generic Petri net types which can be easily plugged&#xD;&#xA;in and a simple generic GMF editor, that can be used for graphically editing&#xD;&#xA;nets of any plugged in type. Additional functionality can be plugged in.&#xD;&#xA;&#xD;&#xA;Note that this project is still in an experimental phase, and is also used&#xD;&#xA;as a case study for EMF/GMF based Model-based Software Engineering.&#xD;&#xA;&#xD;&#xA;Copyright (C) 2010 Ekkart Kindler, eki@imm.dtu.dk&#xD;&#xA;The license under which this software will be distributed is still to be decided -&#xD;&#xA;it will probably be the EPL."
+    modelDirectory="/org.pnml.tools.epnk/src" modelPluginID="org.pnml.tools.epnk"
+    modelName="PNMLStructuredPNTypeModel" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="PNMLCoreModel.genmodel#//pnmlcoremodel">
+  <foreignModel>PNMLStructuredPNTypeModel.ecore</foreignModel>
+  <genPackages prefix="Structuredpntypemodel" basePackage="org.pnml.tools.epnk" resource="XML"
+      disposableProviderFactory="true" ecorePackage="PNMLStructuredPNTypeModel.ecore#/">
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//StructuredPetriNetType">
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//StructuredPetriNetType/getLinker"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute PNMLStructuredPNTypeModel.ecore#//StructuredLabel/text"/>
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//StructuredLabel/getStructuralFeature"/>
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//StructuredLabel/parse">
+        <genParameters ecoreParameter="PNMLStructuredPNTypeModel.ecore#//StructuredLabel/parse/input"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//Linker">
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//Linker/getglobalLinks">
+        <genParameters ecoreParameter="PNMLStructuredPNTypeModel.ecore#//Linker/getglobalLinks/petrinet"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//SymbolUseMapping">
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//SymbolUseMapping/getSymbolUses"/>
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//SymbolUseMapping/getSymbolDef">
+        <genParameters ecoreParameter="PNMLStructuredPNTypeModel.ecore#//SymbolUseMapping/getSymbolDef/symbolUse"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//SymbolDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PNMLStructuredPNTypeModel.ecore#//SymbolDef/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PNMLStructuredPNTypeModel.ecore#//SymbolUse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PNMLStructuredPNTypeModel.ecore#//SymbolUse/name"/>
+      <genOperations ecoreOperation="PNMLStructuredPNTypeModel.ecore#//SymbolUse/getRefFeature"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

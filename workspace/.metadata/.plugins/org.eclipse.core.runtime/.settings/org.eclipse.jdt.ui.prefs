@@ -1,8 +1,10 @@
-#Tue Nov 01 21:09:16 CET 2011
+#Sat Nov 12 20:30:31 CET 2011
 content_assist_proposals_foreground=0,0,0
 spelling_locale_initialized=true
 spelling_ignore_urls=true
+content_assist_disabled_computers=org.eclipse.jdt.ui.templateProposalCategory\u0000org.eclipse.jdt.ui.swtProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.textProposalCategory\u0000
 markOccurrences=false
+content_assist_category_order=org.eclipse.jdt.ui.templateProposalCategory\:65535\u0000org.eclipse.jdt.ui.swtProposalCategory\:65536\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\:65537\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\:65538\u0000org.eclipse.jdt.ui.textProposalCategory\:65539\u0000org.eclipse.jdt.ui.javaAllProposalCategory\:65540\u0000org.eclipse.pde.api.tools.ui.apitools_proposal_category\:6\u0000
 spelling_ignore_non_letters=true
 org.eclipse.jdt.ui.text.templates_migrated=true
 spelling_ignore_ampersand_in_properties=true

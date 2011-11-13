@@ -1,0 +1,8 @@
+1319524686338	Delete element
+1319525688648	Rename field 'mainPage'
+1319659774904	Rename local variable 'fis'
+1319660142118	Rename local variable 'net'
+1319661958972	Extract method 'convertPage'
+1319661979475	Rename local variable 'nameLabel2'
+1319668340340	Rename local variable 'p'
+1319669444185	Rename method 'convertObject'

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+		<item value="org.pnml.tools.epnk.pnmlcoremodel.presentation.PnmlcoremodelModelPNMLWizardID" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.pnml.tools.epnk.wizards.category"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item value="importer.importWizards.ImportWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="importer.importWizards.sampleCategory"/>
+		</list>
+	</section>
+</section>

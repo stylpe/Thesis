@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ptnet"
+    nsURI="http://org.pnml.tools/epnk/types/ptnet" nsPrefix="ptnet">
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Place">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialMarking" eType="#//PTMarking"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inscription" eType="#//PTArcAnnotation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTMarking" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType ../../org.pnml.tools.epnk/model/PNMLDataTypes.ecore#//NonNegativeInteger"
+        defaultValueLiteral="0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTArcAnnotation" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType ../../org.pnml.tools.epnk/model/PNMLDataTypes.ecore#//PositiveInteger"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTNet" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNetType"/>
+</ecore:EPackage>

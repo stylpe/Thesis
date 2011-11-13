@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="527" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk.pntypes.hlpng.pntd" provider="%providerName">
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="528" localization="plugin" name="%pluginName" project="org.cpntools.accesscpn.model" provider="%providerName">
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="529" class="importer.Activator" localization="OSGI-INF/l10n/bundle" name="Importer" project="Importer"/>
+	<bundle bundleID="530" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk.pntypes" provider="%providerName">
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="531" class="org.pnml.tools.epnk.Activator" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk" provider="%providerName">
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="532" localization="OSGI-INF/l10n/bundle" name="ePNK Tutorials" project="org.pnml.tools.epnk.functions.tutorials" provider="DTU Informatics"/>
+	<bundle bundleID="533" localization="OSGI-INF/l10n/bundle" name="CPN Model Importer Plug-in" project="org.cpntools.accesscpn.model.importer" provider="CPN Group"/>
+</map>

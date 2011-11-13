@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.pnml.tools.epnk.pntypes.hlpng.pntd/src"
+    modelPluginID="org.pnml.tools.epnk.pntypes.hlpng.pntd" modelName="HLPNGSerialisation"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.genmodel#//datatypes ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel ../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.genmodel#//structuredpntypemodel ../../org.pnml.tools.epnk/model/Serialisation.genmodel#//serialisation">
+  <foreignModel>HLPNGSerialisation.ecore</foreignModel>
+  <genPackages prefix="Hlpngserialisation" basePackage="org.pnml.tools.epnk.pntypes.hlpng.pntd"
+      resource="XML" disposableProviderFactory="true" ecorePackage="HLPNGSerialisation.ecore#/">
+    <genClasses ecoreClass="HLPNGSerialisation.ecore#//SortAssoc"/>
+    <genClasses ecoreClass="HLPNGSerialisation.ecore#//DeclAssoc"/>
+    <genClasses ecoreClass="HLPNGSerialisation.ecore#//TermAssoc"/>
+    <genClasses ecoreClass="HLPNGSerialisation.ecore#//VariableDeclAssoc"/>
+  </genPackages>
+</genmodel:GenModel>

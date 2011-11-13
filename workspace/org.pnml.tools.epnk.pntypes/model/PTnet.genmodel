@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="This file is part of the ePNK project (Petri Net Kernel for eclipse). The ePNK&#xD;&#xA;is platform for Petri net tools based on the PNML transfer format. Its&#xD;&#xA;main idea is to provide generic Petri net types which can be easily plugged&#xD;&#xA;in and a simple generic GMF editor, that can be used for graphically editing&#xD;&#xA;nets of any plugged in type. Additional functionality can be plugged in.&#xD;&#xA;&#xD;&#xA;Note that this project is still in an experimental phase, and is also used&#xD;&#xA;as a case study for EMF/GMF based Model-based Software Engineering.&#xD;&#xA;&#xD;&#xA;Copyright (C) 2010 Ekkart Kindler, eki@imm.dtu.dk&#xD;&#xA;The license under which this software will be distributed is still to be decided -&#xD;&#xA;it will probably be the EPL."
+    modelDirectory="/org.pnml.tools.epnk.pntypes/src" modelPluginID="org.pnml.tools.epnk.pntypes"
+    modelName="PTnet" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" language="" usedGenPackages="../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel ../../org.pnml.tools.epnk/model/PNMLDataTypes.genmodel#//pnmldatatypes">
+  <foreignModel>PTnet.ecore</foreignModel>
+  <genPackages prefix="Ptnet" basePackage="org.pnml.tools.epnk.pntypes" disposableProviderFactory="true"
+      ecorePackage="PTnet.ecore#/">
+    <genClasses ecoreClass="PTnet.ecore#//Place">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PTnet.ecore#//Place/initialMarking"/>
+    </genClasses>
+    <genClasses ecoreClass="PTnet.ecore#//Arc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PTnet.ecore#//Arc/inscription"/>
+    </genClasses>
+    <genClasses ecoreClass="PTnet.ecore#//PTMarking">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PTnet.ecore#//PTMarking/text"/>
+    </genClasses>
+    <genClasses ecoreClass="PTnet.ecore#//PTArcAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PTnet.ecore#//PTArcAnnotation/text"/>
+    </genClasses>
+    <genClasses ecoreClass="PTnet.ecore#//PTNet"/>
+  </genPackages>
+</genmodel:GenModel>

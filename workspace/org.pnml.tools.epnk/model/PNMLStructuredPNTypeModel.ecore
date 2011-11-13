@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="structuredpntypemodel"
+    nsURI="http://org.pnml.tools/epnk/structuedpntypesmodel" nsPrefix="structuredpntypemodel">
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredPetriNetType" abstract="true"
+      eSuperTypes="PNMLCoreModel.ecore#//PetriNetType">
+    <eOperations name="getLinker" eType="#//Linker"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredLabel" abstract="true" eSuperTypes="PNMLCoreModel.ecore#//Label">
+    <eOperations name="getStructuralFeature" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eOperations name="parse" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject">
+      <eParameters name="input" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Linker" abstract="true" interface="true">
+    <eOperations name="getglobalLinks" eType="#//SymbolUseMapping">
+      <eParameters name="petrinet" eType="ecore:EClass PNMLCoreModel.ecore#//PetriNet"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SymbolUseMapping" abstract="true" interface="true">
+    <eOperations name="getSymbolUses" upperBound="-1" eType="#//SymbolUse"/>
+    <eOperations name="getSymbolDef" eType="#//SymbolDef">
+      <eParameters name="symbolUse" eType="#//SymbolUse"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SymbolDef" abstract="true" interface="true"
+      eSuperTypes="PNMLCoreModel.ecore#//ID">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SymbolUse" abstract="true" interface="true">
+    <eOperations name="getRefFeature" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

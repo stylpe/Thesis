@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net type="http://www.pnml.org/version-2009/grammar/highlevelnet" id="n1">
+    <page id="pg1">
+      <toolspecific tool="org.pnml.tools.epnk.diagraminfo" version="0.9.2">
+        <diagram visible="true" type="PNMLCoreModel" element="pg1" name="Page null" measurementUnit="Pixel">
+          <children visible="true" type="2002" element="p3">
+            <styles xsi:type="notation:ShapeStyle" fontColor="0" fontName="Tahoma" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="165" y="275" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2001" element="p1">
+            <styles xsi:type="notation:ShapeStyle" fontColor="0" fontName="Tahoma" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="350" y="215" width="-1" height="-1"/>
+          </children>
+          <children visible="true" type="2001" element="p2">
+            <styles xsi:type="notation:ShapeStyle" fontColor="0" fontName="Tahoma" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="490" y="260" width="-1" height="-1"/>
+          </children>
+          <children xsi:type="notation:Shape" visible="true" type="2003" element="t1" fontColor="0" fontName="Segoe UI" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false" description="" fillColor="16777215" transparency="-1" lineColor="11579568" lineWidth="-1" roundedBendpointsRadius="0">
+            <layoutConstraint xsi:type="notation:Bounds" x="271" y="355" width="-1" height="-1"/>
+          </children>
+          <styles xsi:type="notation:DiagramStyle" pageX="0" pageY="0" pageWidth="100" pageHeight="100" description=""/>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="a1" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.0" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.3" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Segoe UI" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[-5, -4, -91, -68]$[66, 64, -20, 0]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(1.0,0.9)"/>
+          </edges>
+          <edges xsi:type="notation:Connector" visible="true" type="4001" element="a2" source="//@net.0/@page.0/@toolspecific.0/@diagram/@children.3" target="//@net.0/@page.0/@toolspecific.0/@diagram/@children.2" roundedBendpointsRadius="0" routing="Manual" smoothness="None" avoidObstructions="false" closestDistance="false" jumpLinkStatus="None" jumpLinkType="Semicircle" jumpLinksReverse="false" lineColor="11579568" lineWidth="-1">
+            <styles xsi:type="notation:FontStyle" fontColor="0" fontName="Segoe UI" fontHeight="9" bold="false" italic="false" underline="false" strikeThrough="false"/>
+            <bendpoints xsi:type="notation:RelativeBendpoints" points="[4, 2, -211, 99]$[143, 85, -72, 182]$[206, -76, -9, 21]"/>
+            <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.9,0.5)"/>
+            <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.8,0.45)"/>
+          </edges>
+        </diagram>
+      </toolspecific>
+      <referencePlace id="p3" ref="p1">
+        <graphics>
+          <position x="164.5" y="274.5"/>
+          <dimension x="40.0" y="40.0"/>
+        </graphics>
+      </referencePlace>
+      <place id="p1">
+        <graphics>
+          <position x="349.5" y="214.5"/>
+          <dimension x="40.0" y="40.0"/>
+        </graphics>
+      </place>
+      <place id="p2">
+        <graphics>
+          <position x="489.5" y="259.5"/>
+          <dimension x="40.0" y="40.0"/>
+        </graphics>
+      </place>
+      <transition id="t1">
+        <graphics>
+          <position x="270.5" y="354.5"/>
+          <dimension x="40.0" y="40.0"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="p3" target="t1">
+        <graphics>
+          <position x="159.0" y="270.0"/>
+          <position x="230.0" y="338.0"/>
+        </graphics>
+      </arc>
+      <arc id="a2" source="t1" target="p2">
+        <graphics>
+          <position x="274.0" y="356.0"/>
+          <position x="413.0" y="439.0"/>
+          <position x="476.0" y="278.0"/>
+        </graphics>
+      </arc>
+    </page>
+  </net>
+</pnml>

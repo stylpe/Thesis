@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ This file is part of the ePNK project (Petri Net Kernel for eclipse). The ePNK
+ is platform for Petri net tools based on the PNML transfer format. Its
+ main idea is to provide generic Petri net types which can be easily plugged
+ in and a simple generic GMF editor, that can be used for graphically editing
+ nets of any plugged in type. Additional functionality can be plugged in.
+ 
+ Note that this project is still in an experimental phase, and is also used
+ as a case study for EMF/GMF based Model-based Software Engineering.
+ 
+ Copyright (C) 2010 Ekkart Kindler, eki@imm.dtu.dk
+ The license under which this software will be distributed is still to be decided -
+ it will probably be the EPL.
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"
+            class="org.pnml.tools.epnk.pntypes.hlpng.pntd.hlpngdefinition.HlpngdefinitionPackage"
+            genModel="model/HLPNGDefinition.genmodel"/>
+   </extension>
+
+   <extension
+         id="org.pnml.tools.epnk.pntypes.hlpng.pntd.hlpngdefinition"
+         name="HLPNG"
+         point="org.pnml.tools.epnk.pntd">
+      <type
+            class="org.pnml.tools.epnk.pntypes.hlpng.pntd.hlpngdefinition.impl.HLPNGImpl"
+            description="Petri Net Type Definition for HLPNGs ">
+      </type>
+   </extension>
+   
+      <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true">
+         <package
+               namespaceUri="http://org.pnml.tools/epnk/pnmlcoremodel">
+         </package>    
+       
+         <constraints categories="org.pnml.tools.epnk.validation">
+            <constraint
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.PT_TP_ArcsOnly"
+                  lang="OCL"
+                  mode="Live"
+                  name="PT or TP Arcs only"
+                  severity="ERROR"
+                  statusCode="301">
+               <message>
+                  The arc {0} must run from a place to a transition or vice versa.
+               </message>
+               <description>
+                 Arcs between two places or transitions are forbidden in
+                 HLPNGs (see Clause 5.3.2 of ISO/IEC 15909-2).
+               </description>
+               <target
+                     class="Arc:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng">
+                  <event
+                        name="Set">
+                     <feature
+                           name="source">
+                     </feature>
+                     <feature
+                           name="target">
+                     </feature>
+                  </event>
+               </target>               
+               <![CDATA[
+                 ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
+                   self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) ) or
+                 ( self.source.oclIsKindOf(pnmlcoremodel::TransitionNode) and
+                   self.target.oclIsKindOf(pnmlcoremodel::PlaceNode) )
+               ]]>
+            </constraint>      
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectMarkingType"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Marking correctly typed"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectMarkingType"
+                  statusCode="318">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The marking of the place must be a multiset over the sort of the place.
+               </description>
+               <message>
+                  The term {2} for the marking of place {0} is not a multiset over the place's type {1}.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.MarkingIsGroundTerm"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Marking is ground term"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.MarkingIsGroundTerm"
+                  statusCode="319">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The marking of the place must be a ground term (must not contain variables).
+               </description>
+               <message>
+                  The term {1} for the marking of place {0} is not a ground term (contains variables).
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.NoSyntaxErrorinTermLabels"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Syntactical correct terms"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.NoSyntaxErrorInTermLabels"
+                  statusCode="310">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <target class="Transition:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <target class="Arc:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The term associated with this object is syntactically incorrect.
+               </description>
+               <message>
+                  The term {1} associated with {0} is syntactically incorrect.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.ConditionIsBoolType"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Condition is of type boolean"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.ConditionIsBoolType"
+                  statusCode="314">
+               <target class="Transition:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The condition must be of type BOOL.
+               </description>
+               <message>
+                  The condition {1} of transition {0} is not of type BOOL.
+               </message>
+            </constraint>     
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.NoSyntaxErrorInPlaceType"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Place must have correct type"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.NoSyntaxErrorInPlaceType"
+                  statusCode="311">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The place must have a syntactically correct type (sort).
+               </description>
+               <message>
+                  The type {1} of place {0} does not exist or is syntactically incorrect.
+               </message>
+            </constraint>   
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectArcAnnotationType"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Arc annotation correctly typed"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectArcAnnotationType"
+                  statusCode="313">
+               <target class="Arc:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The annotation of a place must be a multiset over the sort of the associated place.
+               </description>
+               <message>
+                  The term {2} for the annotation of arc {0} is not a multiset over the place's type {1}.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectSortDeclaration"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Named sort resolvable"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectSortDeclaration"
+                  statusCode="315">
+               <target class="NamedSort:http://org.pnml.tools/epnk/types/hlpngs/datatypes/terms"/>
+               <description>
+                  The defining sort of this named sort must be resolvable (i.e. the definition exists and is acyclic).
+               </description>
+               <message>
+                  The named sort {0} does not resolve (undefined or cyclic).
+               </message>
+            </constraint>  
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectVariableDeclaration"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Correct variabled declaration"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectVariableDeclaration"
+                  statusCode="316">
+               <target class="VariableDecl:http://org.pnml.tools/epnk/types/hlpngs/datatypes/terms"/>
+               <description>
+                  The sort of this variable declaration must be resolvable.
+               </description>
+               <message>
+                  The sort {1} of variable declaration {0} does not resolve.
+               </message>
+            </constraint>  
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectOperatorDeclaration"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Correct variabled declaration"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.CorrectOperatorDeclaration"
+                  statusCode="317">
+               <target class="NamedOperator:http://org.pnml.tools/epnk/types/hlpngs/datatypes/terms"/>
+               <description>
+                  The definition of an operator must be resolvable.
+               </description>
+               <message>
+                  The declaration of operation {0} does not resolve.
+               </message>
+            </constraint> 
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DistinctParameterNamesInOperatorDeclaration"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="Correct variabled declaration"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DistinctParameterNamesInOperatorDeclaration"
+                  statusCode="320">
+               <target class="NamedOperator:http://org.pnml.tools/epnk/types/hlpngs/datatypes/terms"/>
+               <description>
+                  The parameter names of an operator declaration should be different (but if the
+                  structure is correct, this is not an error).
+               </description>
+               <message>
+                  There are duplicate parameter names {1} in the declaration of operator {0}.
+               </message>
+            </constraint>   
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DistinctNamesForDeclarations"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="Distinct names for declarations"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DistinctNamesForDeclarations"
+                  statusCode="321">
+               <target class="PetriNet:http://org.pnml.tools/epnk/pnmlcoremodel"/>
+               <description>
+                  The names for globally defined sorts, operators, and variables should be different
+                  (but if the structure is correct, this is not an error).
+               </description>
+               <message>
+                  There are duplicate names in sort, operator, and variable declarations: {0}, {1}, {2}.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.IsDotNetTerm"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Dot net constructs only"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.IsDotNetTerm"
+                  statusCode="331">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <target class="Arc:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>
+               <description>
+                  The terms for places and arcs annotations may contain only construcs for dots.
+               </description>
+               <message>
+                  The term {1} in the label for {0} contains constructs that are illegal in "dot nets".
+               </message>
+            </constraint>   
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.PlaceHasDotNetType"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Dot net constructs only"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.PlaceHasDotNetType"
+                  statusCode="332">
+               <target class="Place:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <description>
+                  The only type allowed for a places is the DOT.
+               </description>
+               <message>
+                  The sort {1} of {0} is not DOT.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.TransitionConditionOfDotNetTypeIsTrue"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Dot net condition (true) only"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.TransitionConditionOfDotNetTypeIsTrue"
+                  statusCode="333">
+               <target class="Transition:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <description>
+                  The only legal transition condition for Petri nets of type dot type is "true".
+               </description>
+               <message>
+                  The condition {1} of {0} is not true.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DotNetTypeHasNoDeclarations"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="No declarations in dot nets."
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.DotNetTypeHasNoDeclarations"
+                  statusCode="334">
+               <target class="Declaration:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <description>
+                  Petri nets of type Dot Net must not have declarations.
+               </description>
+               <message>
+                  There is a declaration {1}, which is not legal in Dot Nets.
+               </message>
+            </constraint>                                                                                                
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.IsSNLabel"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="SN constructs only"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.IsSNLabel"
+                  statusCode="340">
+               <target class="Type:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <target class="HLMarking:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <target class="Condition:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <target class="HLAnnotation:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <target class="Declaration:http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng"/>               
+               <description>
+                  Restriction of labels for Symmetric nets.
+               </description>
+               <message>
+                  Lable {1} of {0} contains constructs that are illegal in symmetric nets: {2}
+               </message>
+            </constraint>    
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.FiniteIntRangeConstantCorrect"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="IntRange constant must be within its range"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.FiniteIntRangeConstantCorrect"
+                  statusCode="341">
+               <target class="FiniteIntConstant:http://org.pnml.tools/epnk/types/hlpngs/datatypes/finiteintranges"/>                            
+               <description>
+                  IntRange constant must be within its range
+               </description>
+               <message>
+                  Int range constant {0} must be within its range.
+               </message>
+            </constraint>  
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.FiniteIntRangeCorrect"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Bounds of IntRange correct"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.FiniteIntRangeCorrect"
+                  statusCode="342">
+               <target class="FiniteIntRange:http://org.pnml.tools/epnk/types/hlpngs/datatypes/finiteintranges"/>                            
+               <description>
+                  IntRange start must be less or equal than its end.
+               </description>
+               <message>
+                  The bounds of IntRange {0} are incorrect.
+               </message>
+            </constraint> 
+            <constraint
+                  lang="Java"
+                  class="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.PartitionElementConstantsCorrect"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Partition element constants correctly typed"
+                  id="org.pnml.tools.epnk.pntypes.hlpng.pntd.validation.PartitionElementConstantsCorrect"
+                  statusCode="343">
+               <target class="Partition:http://org.pnml.tools/epnk/types/hlpngs/datatypes/partitions"/>                            
+               <description>
+                  The partition element constants must be of the same sort as the partitions def sort.
+               </description>
+               <message>
+                  The partition element constants are incorrectly typed.
+               </message>
+            </constraint>                                                                                      
+         </constraints>          
+      </constraintProvider>
+   </extension>
+</plugin>

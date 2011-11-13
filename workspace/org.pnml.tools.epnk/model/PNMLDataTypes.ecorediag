@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_J7Xy4Y3vEd-TCbEUz-zHsw" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_luVRkI3xEd-TCbEUz-zHsw" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_lufCkI3xEd-TCbEUz-zHsw" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_lufCkY3xEd-TCbEUz-zHsw" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_luVRkY3xEd-TCbEUz-zHsw" fontColor="4210752" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="PNMLDataTypes.ecore#//PositiveInteger"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_luVRko3xEd-TCbEUz-zHsw" x="105" y="145"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_yKzZUI3xEd-TCbEUz-zHsw" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_yKzZU43xEd-TCbEUz-zHsw" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_yKzZVI3xEd-TCbEUz-zHsw" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_yKzZUY3xEd-TCbEUz-zHsw" fontColor="4210752" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="PNMLDataTypes.ecore#//NonNegativeInteger"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yKzZUo3xEd-TCbEUz-zHsw" x="105" y="55"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_J7Xy4o3vEd-TCbEUz-zHsw"/>
+  <element xmi:type="ecore:EPackage" href="PNMLDataTypes.ecore#/"/>
+</notation:Diagram>

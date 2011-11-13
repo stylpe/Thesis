@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="ePNK"
+            id="org.pnml.tools.epnk.wizards.category">
+      </category>
+      <wizard
+            name="Multi-agent Mutex Net Wizard"
+            icon="icons/PetriNetDoc.gif"
+            category="org.pnml.tools.epnk.wizards.category"
+            class="org.pnml.tools.epnk.functions.tutorials.wizards.MultiAgentMutexNetWizard"
+            id="org.pnml.tools.epnk.functions.tutorials.wizards.MultiAgentMutexNetWizard">
+      </wizard>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="ePNK"
+            id="org.pnml.tools.epnk.views.category">
+      </category>
+      <view
+            allowMultiple="false"
+            category="org.pnml.tools.epnk.views.category"
+            class="org.pnml.tools.epnk.functions.tutorials.overviewview.PNMLFileOverviewView"
+            icon="icons/PetriNetDoc.gif"
+            id="org.pnml.tools.epnk.extensions.tutorials.pnmloverview"
+            name="ePNK File Overview">
+      </view>
+   </extension>
+
+</plugin>

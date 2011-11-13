@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hlpngdefinition"
+    nsURI="http://org.pnml.tools/epnk/pntypes/hlpng/pntd/hlpng" nsPrefix="hlpngdefinition">
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Place">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hlinitialMarking" eType="#//HLMarking"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Transition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Condition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hlinscription" eType="#//HLAnnotation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declaration" upperBound="-1"
+        eType="#//Declaration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="ecore:EClass ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.ecore#//terms/Sort"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HLMarking" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="ecore:EClass ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.ecore#//terms/Term"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="ecore:EClass ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.ecore#//terms/Term"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HLAnnotation" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="ecore:EClass ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.ecore#//terms/Term"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declaration" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredLabel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structure" eType="ecore:EClass ../../org.pnml.tools.epnk.pntypes.hlpngs.datatypes/model/HLPNGDataTypes.ecore#//terms/Declarations"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HLPNG" eSuperTypes="../../org.pnml.tools.epnk/model/PNMLStructuredPNTypeModel.ecore#//StructuredPetriNetType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//HLPNGKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HLPNGKind">
+    <eLiterals name="FULL" literal="http://www.pnml.org/version-2009/grammar/highlevelnet"/>
+    <eLiterals name="SN" value="1" literal="http://www.pnml.org/version-2009/grammar/symmetricnet"/>
+    <eLiterals name="PTN" value="2" literal="http://www.pnml.org/version-2009/grammar/pt-hlpng"/>
+  </eClassifiers>
+</ecore:EPackage>

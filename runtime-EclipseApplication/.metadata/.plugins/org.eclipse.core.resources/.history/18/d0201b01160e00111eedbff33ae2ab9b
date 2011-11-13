@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net type="http://www.pnml.org/version-2009/grammar/highlevelnet">
+    <name>
+      <text>MyNet</text>
+    </name>
+    <page id="ID1412649590">
+      <name>
+        <text>Overview</text>
+      </name>
+      <place id="ID1412664067">
+        <name>
+          <text>Client Message</text>
+        </name>
+      </place>
+      <place id="ID1412664980">
+        <name>
+          <text>Client Event</text>
+        </name>
+      </place>
+      <place id="ID1412674370">
+        <name>
+          <text>Client Send</text>
+        </name>
+      </place>
+      <place id="ID1412677198">
+        <name>
+          <text>Client Receive</text>
+        </name>
+      </place>
+      <place id="ID1412677621">
+        <name>
+          <text>Server Send</text>
+        </name>
+      </place>
+      <place id="ID1412678047">
+        <name>
+          <text>Server Receieve</text>
+        </name>
+      </place>
+      <place id="ID1413758222">
+        <name>
+          <text>Server Message</text>
+        </name>
+      </place>
+      <place id="ID1413763222">
+        <name>
+          <text>Server Event</text>
+        </name>
+      </place>
+      <arc id="ID1412667863" target="ID1412664067"/>
+      <arc id="ID1412668886" source="ID1412664980"/>
+      <arc id="ID1412745716" target="ID1412674370"/>
+      <arc id="ID1412745720" source="ID1412677198"/>
+      <arc id="ID1412745722" target="ID1412664980"/>
+      <arc id="ID1412745724" source="ID1412664067"/>
+      <arc id="ID1412746522" source="ID1412674370"/>
+      <arc id="ID1412746524" target="ID1412678047"/>
+      <arc id="ID1412746526" target="ID1412677198"/>
+      <arc id="ID1412746528" source="ID1412677621"/>
+      <arc id="ID1413821994" target="ID1412677621"/>
+      <arc id="ID1413821998" source="ID1412678047"/>
+      <arc id="ID1413824520" source="ID1413763222"/>
+      <arc id="ID1413821996" target="ID1413763222"/>
+      <arc id="ID1413821992" source="ID1413758222"/>
+      <arc id="ID1413824522" target="ID1413758222"/>
+      <page id="ID6">
+        <name>
+          <text>ClientApplication</text>
+        </name>
+        <place id="ID1412338304">
+          <name>
+            <text>Target server</text>
+          </name>
+        </place>
+        <place id="ID1414333369">
+          <name>
+            <text>Active Connection</text>
+          </name>
+        </place>
+        <place id="ID1414339285">
+          <name>
+            <text>Messages to be sent</text>
+          </name>
+        </place>
+        <place id="ID1414432417">
+          <name>
+            <text>Messages received</text>
+          </name>
+        </place>
+        <place id="ID1415845685">
+          <name>
+            <text>Connection
+failed</text>
+          </name>
+        </place>
+        <transition id="ID1412344990">
+          <name>
+            <text>Request connection</text>
+          </name>
+        </transition>
+        <transition id="ID1414351148">
+          <name>
+            <text>Success</text>
+          </name>
+        </transition>
+        <transition id="ID1414384025">
+          <name>
+            <text>Send data</text>
+          </name>
+        </transition>
+        <transition id="ID1414435470">
+          <name>
+            <text>Receive data</text>
+          </name>
+        </transition>
+        <transition id="ID1415879655">
+          <name>
+            <text>Fail</text>
+          </name>
+        </transition>
+        <arc id="ID1412345310" source="ID1412338304" target="ID1412344990"/>
+        <arc id="ID1414357116" source="ID1414351148" target="ID1414333369"/>
+        <arc id="ID1414387031" source="ID1414333369" target="ID1414384025"/>
+        <arc id="ID1414390036" source="ID1414339285" target="ID1414384025"/>
+        <arc id="ID1414393044" source="ID1414384025"/>
+        <arc id="ID1414441581" source="ID1414333369" target="ID1414435470"/>
+        <arc id="ID1414444640" source="ID1414435470" target="ID1414333369"/>
+        <arc id="ID1414530034" target="ID1414435470"/>
+        <arc id="ID1414536586" source="ID1414435470" target="ID1414432417"/>
+        <arc id="ID1415888115" source="ID1415879655" target="ID1415845685"/>
+        <arc id="ID1417252488" source="ID1414384025" target="ID1414339285"/>
+        <arc id="ID1417286986" source="ID1414432417" target="ID1414435470"/>
+        <arc id="ID1418335664" source="ID1412344990"/>
+        <arc id="ID1418973612" target="ID1414351148"/>
+        <arc id="ID1418990322" target="ID1415879655"/>
+        <arc id="ID1428334798" source="ID1415879655"/>
+        <arc id="ID1428338510" source="ID1414351148"/>
+        <arc id="ID1428342300" source="ID1414435470"/>
+        <arc id="ID1428386740" target="ID1414384025"/>
+        <arc id="ID1428389807" target="ID1412344990"/>
+        <page id="ID1412745726">
+          <name>
+            <text>ClientWebSocket</text>
+          </name>
+          <place id="ID1412745739">
+            <name>
+              <text>To send</text>
+            </name>
+          </place>
+          <place id="ID1413202218">
+            <name>
+              <text>Waiting for
+HTTP response</text>
+            </name>
+          </place>
+          <place id="ID1417317296">
+            <name>
+              <text>Active connection</text>
+            </name>
+          </place>
+          <transition id="ID1427769397">
+            <name>
+              <text>Mask</text>
+            </name>
+          </transition>
+          <arc id="ID1417738414" target="ID1413202218"/>
+          <arc id="ID1417813598"/>
+          <arc id="ID1417813600" source="ID1413202218"/>
+          <arc id="ID1417813602" target="ID1417317296"/>
+          <arc id="ID1417907263"/>
+          <arc id="ID1417907265"/>
+          <arc id="ID1417907267" source="ID1417317296"/>
+          <arc id="ID1417908305" source="ID1412745739"/>
+          <arc id="ID1417908307"/>
+          <arc id="ID1417908309" source="ID1417317296"/>
+          <arc id="ID1419257262"/>
+          <arc id="ID1419260785"/>
+          <arc id="ID1419873917" source="ID1412745739"/>
+          <arc id="ID1421996192"/>
+          <arc id="ID1427772422" source="ID1412745739" target="ID1427769397"/>
+          <arc id="ID1427772850" source="ID1427769397" target="ID1412745739"/>
+          <arc id="ID1427773308" source="ID1427769397"/>
+          <arc id="ID1427773781" target="ID1427769397"/>
+          <arc id="ID1428085431"/>
+          <page id="ID1417738418">
+            <name>
+              <text>NewConnection</text>
+            </name>
+            <transition id="ID1417738420">
+              <name/>
+            </transition>
+            <arc id="ID1417738430" source="ID1417738420"/>
+            <arc id="ID1417738432" target="ID1417738420"/>
+            <arc id="ID1417738437" source="ID1417738420"/>
+            <arc id="ID1417738443" target="ID1417738420"/>
+            <arc id="ID1428468616" source="ID1417738420"/>
+            <page id="ID1417813604">
+              <name>
+                <text>ProcessResponse</text>
+              </name>
+              <transition id="ID1417813606">
+                <name/>
+              </transition>
+              <arc id="ID1417813616" source="ID1417813606"/>
+              <arc id="ID1417813622" source="ID1417813606"/>
+              <arc id="ID1417813627" target="ID1417813606"/>
+              <arc id="ID1417813632" source="ID1417813606"/>
+              <arc id="ID1417813634" target="ID1417813606"/>
+              <arc id="ID1428413687" target="ID1417813606"/>
+              <page id="ID1417907269">
+                <name>
+                  <text>UnwrapAndReceive</text>
+                </name>
+                <place id="ID1419934063">
+                  <name>
+                    <text>Closing Connection</text>
+                  </name>
+                </place>
+                <place id="ID1424625578">
+                  <name>
+                    <text>Received
+WS Frame</text>
+                  </name>
+                </place>
+                <transition id="ID1417907271">
+                  <name>
+                    <text>Receive</text>
+                  </name>
+                </transition>
+                <transition id="ID1419937632">
+                  <name/>
+                </transition>
+                <transition id="ID1421055441">
+                  <name>
+                    <text>Waiting for Close</text>
+                  </name>
+                </transition>
+                <transition id="ID1424637543">
+                  <name>
+                    <text>Non-fragmented</text>
+                  </name>
+                </transition>
+                <transition id="ID1424792704">
+                  <name>
+                    <text>Close</text>
+                  </name>
+                </transition>
+                <arc id="ID1417907281" source="ID1417907271"/>
+                <arc id="ID1417907292" target="ID1417907271"/>
+                <arc id="ID1417907294" target="ID1417907271"/>
+                <arc id="ID1419567289" source="ID1417907271"/>
+                <arc id="ID1419955499" source="ID1419934063" target="ID1419937632"/>
+                <arc id="ID1419959083" source="ID1419937632"/>
+                <arc id="ID1420005911" target="ID1419937632"/>
+                <arc id="ID1421059836" target="ID1421055441"/>
+                <arc id="ID1421064230" source="ID1421055441"/>
+                <arc id="ID1421117156" target="ID1421055441"/>
+                <arc id="ID1421121589" source="ID1421055441"/>
+                <arc id="ID1421599707" source="ID1417907271"/>
+                <arc id="ID1424625898" source="ID1417907271" target="ID1424625578"/>
+                <arc id="ID1424629916" source="ID1424625578" target="ID1417907271"/>
+                <arc id="ID1424637963" source="ID1424625578" target="ID1424637543"/>
+                <arc id="ID1424654831" source="ID1424637543"/>
+                <arc id="ID1424708976" source="ID1424637543" target="ID1424625578"/>
+                <arc id="ID1424798815" target="ID1424792704"/>
+                <arc id="ID1424799846" source="ID1424792704"/>
+                <arc id="ID1424800880" source="ID1424792704"/>
+                <arc id="ID1424801917" target="ID1424792704"/>
+                <arc id="ID1424819958" source="ID1424792704" target="ID1419934063"/>
+                <arc id="ID1426962658" source="ID1424625578"/>
+                <arc id="ID1426962660"/>
+                <arc id="ID1428479828" target="ID1424637543"/>
+                <page id="ID1426962662">
+                  <name>
+                    <text>Defrag</text>
+                  </name>
+                  <place id="ID1426962664">
+                    <name>
+                      <text>Buffer</text>
+                    </name>
+                  </place>
+                  <transition id="ID1426962667">
+                    <name>
+                      <text>Last</text>
+                    </name>
+                  </transition>
+                  <transition id="ID1426962673">
+                    <name>
+                      <text>First</text>
+                    </name>
+                  </transition>
+                  <transition id="ID1426962679">
+                    <name>
+                      <text>Mid</text>
+                    </name>
+                  </transition>
+                  <arc id="ID1426962685" source="ID1426962679" target="ID1426962664"/>
+                  <arc id="ID1426962687" source="ID1426962664" target="ID1426962679"/>
+                  <arc id="ID1426962689" source="ID1426962664" target="ID1426962667"/>
+                  <arc id="ID1426962691" source="ID1426962673" target="ID1426962664"/>
+                  <arc id="ID1426962696" source="ID1426962673"/>
+                  <arc id="ID1426962698" source="ID1426962667"/>
+                  <arc id="ID1426962700" source="ID1426962679"/>
+                  <arc id="ID1426962702" target="ID1426962673"/>
+                  <arc id="ID1426962708" source="ID1426962667"/>
+                  <arc id="ID1426962710" target="ID1426962667"/>
+                  <arc id="ID1426962712" target="ID1426962679"/>
+                  <arc id="ID1428509257" target="ID1426962667"/>
+                  <page id="ID1417908311">
+                    <name>
+                      <text>WrapAndSend</text>
+                    </name>
+                    <place id="ID1423546091">
+                      <name>
+                        <text>Next</text>
+                      </name>
+                    </place>
+                    <transition id="ID1417908313">
+                      <name>
+                        <text>Wrap and send</text>
+                      </name>
+                    </transition>
+                    <arc id="ID1417908323" source="ID1417908313"/>
+                    <arc id="ID1417908331" target="ID1417908313"/>
+                    <arc id="ID1417908336" target="ID1417908313"/>
+                    <arc id="ID1419480820" source="ID1417908313"/>
+                    <arc id="ID1423557065" source="ID1423546091" target="ID1417908313"/>
+                    <arc id="ID1423722879" source="ID1417908313" target="ID1423546091"/>
+                    <arc id="ID1424509656"/>
+                    <arc id="ID1426450114" target="ID1423546091"/>
+                    <page id="ID1426379574">
+                      <name>
+                        <text>FragmentAndQueue</text>
+                      </name>
+                      <place id="ID1426379615">
+                        <name>
+                          <text>Control</text>
+                        </name>
+                      </place>
+                      <place id="ID1426379618">
+                        <name>
+                          <text>Data</text>
+                        </name>
+                      </place>
+                      <transition id="ID1426379582">
+                        <name/>
+                      </transition>
+                      <transition id="ID1426379588">
+                        <name>
+                          <text>Queue control</text>
+                        </name>
+                      </transition>
+                      <transition id="ID1426379594">
+                        <name>
+                          <text>Queue data</text>
+                        </name>
+                      </transition>
+                      <arc id="ID1426379633" source="ID1426379582" target="ID1426379615"/>
+                      <arc id="ID1426379635" source="ID1426379615" target="ID1426379582"/>
+                      <arc id="ID1426379637" source="ID1426379615" target="ID1426379588"/>
+                      <arc id="ID1426379639" source="ID1426379588" target="ID1426379615"/>
+                      <arc id="ID1426379641" source="ID1426379594" target="ID1426379618"/>
+                      <arc id="ID1426379643" source="ID1426379618" target="ID1426379594"/>
+                      <arc id="ID1426379645" target="ID1426379582"/>
+                      <arc id="ID1426379647" source="ID1426379588"/>
+                      <arc id="ID1426379649" target="ID1426379588"/>
+                      <arc id="ID1426379651" source="ID1426379594"/>
+                      <arc id="ID1426379653" target="ID1426379594"/>
+                      <arc id="ID1426379655" source="ID1426379582" target="ID1426379618"/>
+                      <arc id="ID1426379657" source="ID1426379618" target="ID1426379582"/>
+                      <arc id="ID1428541076" source="ID1426379582"/>
+                      <page id="ID1412746530">
+                        <name>
+                          <text>Connection</text>
+                        </name>
+                        <transition id="ID1412756330">
+                          <name/>
+                        </transition>
+                        <transition id="ID1412757432">
+                          <name/>
+                        </transition>
+                        <arc id="ID1412759309" target="ID1412756330"/>
+                        <arc id="ID1412765173" source="ID1412756330"/>
+                        <arc id="ID1412767091" target="ID1412757432"/>
+                        <arc id="ID1412769003" source="ID1412757432"/>
+                        <arc id="ID1412779316" source="ID1412756330"/>
+                        <arc id="ID1412780514" target="ID1412756330"/>
+                        <arc id="ID1412797163" target="ID1412757432"/>
+                        <arc id="ID1412798311" source="ID1412757432"/>
+                        <page id="ID1413822000">
+                          <name>
+                            <text>ServerWebSocket</text>
+                          </name>
+                          <place id="ID1413822033">
+                            <name>
+                              <text>Valid WS Frame</text>
+                            </name>
+                          </place>
+                          <place id="ID1413962721">
+                            <name>
+                              <text>Pending
+Connection</text>
+                            </name>
+                          </place>
+                          <place id="ID1425205291">
+                            <name>
+                              <text>Active
+Connection</text>
+                            </name>
+                          </place>
+                          <place id="ID1425212797">
+                            <name>
+                              <text>Server Message</text>
+                            </name>
+                          </place>
+                          <place id="ID1428031686">
+                            <name>
+                              <text>Connection
+Reply</text>
+                            </name>
+                          </place>
+                          <transition id="ID1428005567">
+                            <name>
+                              <text>Validate</text>
+                            </name>
+                          </transition>
+                          <transition id="ID1428025237">
+                            <name/>
+                          </transition>
+                          <transition id="ID1428027721">
+                            <name/>
+                          </transition>
+                          <arc id="ID1425192580" source="ID1413822033"/>
+                          <arc id="ID1425251782" source="ID1425205291"/>
+                          <arc id="ID1425257599"/>
+                          <arc id="ID1425324748"/>
+                          <arc id="ID1426876171" source="ID1413962721"/>
+                          <arc id="ID1426876173"/>
+                          <arc id="ID1426876175" target="ID1425205291"/>
+                          <arc id="ID1425255613" target="ID1425212797"/>
+                          <arc id="ID1426928705"/>
+                          <arc id="ID1426928709" target="ID1413962721"/>
+                          <arc id="ID1427305965"/>
+                          <arc id="ID1427314909" source="ID1425205291"/>
+                          <arc id="ID1427303778" source="ID1425212797"/>
+                          <arc id="ID1428007052" target="ID1428005567"/>
+                          <arc id="ID1428008320" source="ID1428005567"/>
+                          <arc id="ID1428012120" source="ID1428005567" target="ID1413822033"/>
+                          <arc id="ID1428013412" source="ID1413822033" target="ID1428005567"/>
+                          <arc id="ID1428025675" target="ID1428025237"/>
+                          <arc id="ID1428026356" source="ID1428025237" target="ID1425212797"/>
+                          <arc id="ID1428030736" target="ID1428027721"/>
+                          <arc id="ID1428031979" source="ID1428027721" target="ID1428031686"/>
+                          <arc id="ID1428032350" source="ID1428031686"/>
+                          <arc id="ID1428092880"/>
+                          <arc id="ID1428572588" source="ID1425212797" target="ID1428025237"/>
+                          <arc id="ID1428574491" source="ID1428025237"/>
+                          <arc id="ID1428605787" source="ID1428027721"/>
+                          <page id="ID1426876177">
+                            <name>
+                              <text>ConnectionResponse</text>
+                            </name>
+                            <transition id="ID1426876179">
+                              <name>
+                                <text>Send Accept</text>
+                              </name>
+                            </transition>
+                            <transition id="ID1428047863">
+                              <name>
+                                <text>Send Reject</text>
+                              </name>
+                            </transition>
+                            <arc id="ID1426876188" target="ID1426876179"/>
+                            <arc id="ID1426876194" target="ID1426876179"/>
+                            <arc id="ID1426876199" source="ID1426876179"/>
+                            <arc id="ID1426876201" source="ID1426876179"/>
+                            <arc id="ID1426922487" target="ID1426876179"/>
+                            <arc id="ID1428048283" target="ID1428047863"/>
+                            <arc id="ID1428051399" target="ID1428047863"/>
+                            <arc id="ID1428052389" source="ID1428047863"/>
+                            <arc id="ID1428059289" target="ID1428047863"/>
+                            <page id="ID1426928711">
+                              <name>
+                                <text>ConnectionRequest</text>
+                              </name>
+                              <transition id="ID1426928713">
+                                <name>
+                                  <text>Connection Request</text>
+                                </name>
+                              </transition>
+                              <arc id="ID1426928723" source="ID1426928713"/>
+                              <arc id="ID1426928729" target="ID1426928713"/>
+                              <arc id="ID1426928734" source="ID1426928713"/>
+                              <arc id="ID1426928736" source="ID1426928713"/>
+                              <arc id="ID1428551914" target="ID1426928713"/>
+                              <page id="ID1413824526">
+                                <name>
+                                  <text>ServerApplication</text>
+                                </name>
+                                <place id="ID1416862959">
+                                  <name>
+                                    <text>Received</text>
+                                  </name>
+                                </place>
+                                <place id="ID1416905272">
+                                  <name>
+                                    <text>To send</text>
+                                  </name>
+                                </place>
+                                <place id="ID1422877052">
+                                  <name>
+                                    <text>Active
+Connection</text>
+                                  </name>
+                                </place>
+                                <transition id="ID1414999731">
+                                  <name/>
+                                </transition>
+                                <transition id="ID1416910052">
+                                  <name/>
+                                </transition>
+                                <transition id="ID1427418028">
+                                  <name/>
+                                </transition>
+                                <arc id="ID1415003241" target="ID1414999731"/>
+                                <arc id="ID1416867728" source="ID1414999731" target="ID1416862959"/>
+                                <arc id="ID1416914732" source="ID1416905272" target="ID1416910052"/>
+                                <arc id="ID1416924148" source="ID1416910052"/>
+                                <arc id="ID1416980638" source="ID1416862959" target="ID1414999731"/>
+                                <arc id="ID1416985419" source="ID1416910052" target="ID1416905272"/>
+                                <arc id="ID1422897702" source="ID1422877052" target="ID1416910052"/>
+                                <arc id="ID1422902939" source="ID1422877052" target="ID1414999731"/>
+                                <arc id="ID1427362603" source="ID1414999731" target="ID1422877052"/>
+                                <arc id="ID1427419772" source="ID1427418028" target="ID1422877052"/>
+                                <arc id="ID1427421504" target="ID1427418028"/>
+                                <arc id="ID1427756776" source="ID1427418028"/>
+                                <arc id="ID1428422747" target="ID1416910052"/>
+                                <arc id="ID1428437284" target="ID1427418028"/>
+                                <arc id="ID1428449376" source="ID1427418028"/>
+                                <arc id="ID1428460316" source="ID1414999731"/>
+                              </page>
+                            </page>
+                          </page>
+                        </page>
+                      </page>
+                    </page>
+                  </page>
+                </page>
+              </page>
+            </page>
+          </page>
+        </page>
+      </page>
+    </page>
+  </net>
+</pnml>

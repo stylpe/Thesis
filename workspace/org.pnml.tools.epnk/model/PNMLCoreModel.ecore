@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pnmlcoremodel"
+    nsURI="http://org.pnml.tools/epnk/pnmlcoremodel" nsPrefix="pnmlcoremodel">
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNetDoc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" upperBound="-1"
+        eType="#//PetriNet" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet" eSuperTypes="#//ID">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//PetriNetType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" upperBound="-1"
+        eType="#//Page" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolspecific" upperBound="-1"
+        eType="#//ToolInfo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unknown" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2003/XMLType#//AnyType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" upperBound="-1"
+        eType="#//Object" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageLabelProxy" upperBound="-1"
+        eType="#//PageLabelProxy" transient="true" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelproxy" upperBound="-1"
+        eType="#//LabelProxy" transient="true" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Object" abstract="true" eSuperTypes="#//ID">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolspecific" upperBound="-1"
+        eType="#//ToolInfo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="graphics" eType="#//Graphics"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unknown" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2003/XMLType#//AnyType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelProxy">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" lowerBound="1" eType="#//Label"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" eType="#//Object"
+        volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Graphics" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="out" upperBound="-1" eType="#//Arc"
+        transient="true" resolveProxies="false" eOpposite="#//Arc/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="in" upperBound="-1" eType="#//Arc"
+        transient="true" resolveProxies="false" eOpposite="#//Arc/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="#//Object">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Node" resolveProxies="false" eOpposite="#//Node/out"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Node" resolveProxies="false" eOpposite="#//Node/in"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlaceNode" abstract="true" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TransitionNode" abstract="true" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//PlaceNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RefPlace" eSuperTypes="#//PlaceNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//PlaceNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefTransition" eSuperTypes="#//TransitionNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//TransitionNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//TransitionNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Name" eSuperTypes="#//Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Label" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolspecific" upperBound="-1"
+        eType="#//ToolInfo" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="graphics" eType="#//Graphics"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unknown" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2003/XMLType#//AnyType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcGraphics" eSuperTypes="#//Graphics">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//Line" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" upperBound="-1"
+        eType="#//Coordinate" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeGraphics" eSuperTypes="#//Graphics">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//Coordinate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dimension" eType="#//Coordinate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//Line" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fill" eType="#//Fill" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationGraphics" eSuperTypes="#//Graphics">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fill" eType="#//Fill" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//Line" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offset" eType="#//Coordinate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="font" eType="#//Font" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Line">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" eType="#//LineShape"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="style" eType="#//LineStyle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="LineShape" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Color" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LineStyle" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Coordinate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        defaultValueLiteral="0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
+        defaultValueLiteral="0.0"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fill">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="#//Color"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" eType="#//URI"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gradientColor" eType="#//Color"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gradientrotation" eType="#//GradientRotation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="URI" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="GradientRotation" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Font">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="family" eType="#//FontFamily"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="style" eType="#//FontStyle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="#//FontWeight"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="#//FontSize"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decoration" eType="#//FontDecoration"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="align" eType="#//FontAlign"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rotation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontFamily" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontStyle" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontWeight" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontDecoration" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontSize" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="FontAlign" instanceClassName="org.pnml.tools.epnk.helpers.NotImplemented"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNetType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EmptyType" eSuperTypes="#//PetriNetType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolInfoText" eSuperTypes="#//ToolInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="info" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolInfo" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tool" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ID" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//ID"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageLabelProxy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" lowerBound="1" eType="#//Label"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" abstract="true" eSuperTypes="#//Label"/>
+</ecore:EPackage>
