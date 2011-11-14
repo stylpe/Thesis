@@ -16,6 +16,9 @@
 	sensitive=true,
 	morecomment=[s]{(*}{*)},
 	morestring=[b]",
+	basicstyle=\ttfamily,
+	breaklines=true,
+	frame=lines
 }
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
@@ -52,7 +55,7 @@
   {\Huge\sf Framework for Annotating}\\[2ex]
   {\Huge\sf Coloured Petri Net Models}\\[2ex]
   {\Huge\sf with Code Generation Pragmatics}\\[4ex]
-  {\huge\sf Mikal Hitsøy Henriksen (mhe108)} 
+  {\huge\sf Mikal Hitsøy Henriksen} 
 \end{flushright}
 \noindent\rule{\linewidth}{1mm}\\[-.5ex]
 \noindent\rule{\linewidth}{2.5mm}
@@ -60,7 +63,7 @@
 \begin{center}
   {\huge\sf Master's Thesis}\\[\fill]
 %  \includegraphics{au-segl.ps}\\[\fill]
-  {\sf Institute of Computer Science\\University of Bergen\\Norway}
+  {\sf Department of Computer Engineering\\Bergen University College\\Norway}
 \end{center}
 \begin{center}
   {\sf \makeatletter\@date\makeatother\\Supervisor\\Lars Michael Kristensen}
@@ -84,16 +87,16 @@
 
 \input{introduction/introduction}
 \input{background/background}
-\input{technology/technology}
-\input{analysis/analysis}
-\input{implementation/implementation}
-\input{evaluation/evaluation}
-\input{conclusion/conclusion}
+%\input{technology/technology}
+%\input{analysis/analysis}
+%\input{implementation/implementation}
+%\input{evaluation/evaluation}
+%\input{conclusion/conclusion}
 
-\appendix
+%\appendix
 \bibliographystyle{alpha}\bibliography{literature,rfc}
-\listoffigures
-\lstlistoflistings
+%\listoffigures
+%\lstlistoflistings
 
 
 \end{document}

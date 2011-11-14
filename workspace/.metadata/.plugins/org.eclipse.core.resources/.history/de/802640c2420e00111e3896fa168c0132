@@ -1,0 +1,718 @@
+\chapter{Background}
+\label{chap:background}
+
+
+\section{The WebSocket Protocol}
+The primary case study for this thesis is the WebSocket protocol 
+\cite{draft-ietf-hybi-thewebsocketprotocol}. From the abstract of the document:
+\begin{quote}The WebSocket protocol enables two-way communication between a
+client running untrusted code running in a controlled environment to a
+remote host that has opted-in to communications from that code.
+\end{quote}
+
+\fig[0.4]{WebSocketSequenceDiagram.pdf}{Sequence Diagram of the WebSocket
+protocol}{wssequence}
+
+\section{Coloured Petri Nets}
+TODO: color / colour inkonsistens
+
+Common usage: Process and protocol modeling, concurrent programming. Operations:
+Simulation, verification and analysis. More recently also software design.
+
+
+A Petri Net model is constructed and simulated by the following rules: A net
+consist of Places, Transitions and Arcs. An Arc goes between a Place and a
+Transition, either in a specified direction or both ways. A Place can contain
+Tokens. The State of the model is defined by the current number of Tokens in
+each place. A Transition can consume Tokens from Places if there is an Arc from
+the Place to the Transition, and produce new tokens in Places where there is an
+Arc from the Transition to the Place. This changes the State of the system.
+
+A Colored Petri Net builds on this by exchanging Tokens for Colors.
+A Color can mean a single value like the integer 3, the string ``Hello'' or
+simple units which resemble Tokens from regular Petri Nets. A Color Set is a
+set of such Colors, for example all integers, the integers from 1 to 100, all
+lowercase letters, or all strings of length 5. These are examples of simple
+Color Sets, as they each consist of basic data types. Compound Color Sets are
+made by combining the simple ones in different ways to create data structures, for
+example an int together with a string might describe a postal code and city.
+This will be described in more detail in the next section.
+
+Each place allows Colors from a specific Color Set. 
+All these expressions will be explained in detail in the following sections.
+
+\section{CPN Tools}
+
+Graphical tool used to design CPN models. 
+
+Reference, with url. Screenshot?
+
+\subsection{CPN ML}
+	
+	CPN Tools uses the CPN ML language to specify declarations and net inscriptions.
+	This language is an extension of the functional programming language Standard
+	ML, developed at Edinburgh University.
+
+\subsection{Declarations}
+	
+	All colorsets, variables, symbolic constants and functions have to be declared
+	before they are used in the model. In CPN Tools these declarations can be
+	grouped together, but they are still parsed sequentially, so if one declaration
+	depends on another, it has to be declared after its dependency.
+	
+	\subsubsection{Declaring Color Sets}
+	
+		Color sets are defined with the following syntax:
+		
+		\lstinline:colset name = <type-specific>;:
+		
+		Names are always capitalised in this thesis, but any CPN ML identifier is
+		valid. 
+		
+		The simple types available are unit, boolean, integer, string, enumerated
+		and index. A unit can have one value: \lstinline:():. Enumerated color sets
+		can have specified values, while index color sets define an indexed range of
+		values. 
+		
+		The compound types are:
+		\begin{description}
+		\item[Product] A combination of color sets separated by \lstinline:*:. The
+		postal code and city example from earlier would be
+		\lstinline:product INT*STRING:, and a color would be (5055,''Bergen'');
+		\item[List] A list of items that belong to the same color set.
+		\item[Record] Similar to a product, but each element is named. The postal code
+		and city example would give \lstinline-record Code:INT*City:STRING- and a
+		color would be \lstinline:{Code=5055,City="Bergen"}:
+		\item[Union] This is used if a place should be able to contain colors from
+		different color sets, or if such colors should be handled in the same way at a
+		point in the model. They can also contain simple identifiers, like an
+		enumeration. An example is shown in Listing \ref{lst:overview_colset}.
+		\end{description}
+		
+		For full syntax definition, please refer to the CPN Tools
+		documentation. (ref?)
+
+\subsection{Inscriptions}
+
+\section{The WebSocket CPN Model}
+
+In this section the model
+that has been built will be described in full detail.
+
+\subsection{Overview}
+
+	\fig{Overview.eps}{Overview of CPN model of the WebSocket protocol}{overview}
+	
+	\figref{overview} shows the top-level Overview module of the WebSocket
+	CPN model.
+	
+	The model has been laid out to resemble part of the OSI model \cite{osi7}, where
+	Client Application and Server Application each correspond to the top two
+	layers Application and Presentation, Client WebSocket and Server WebSocket
+	correspond to the Session layer, and Connection corresponds to the lower layers
+	Transport, Network, Data Link and Physical.
+	
+	Circles represent places. They can contain tokens of a specified colour, and
+	have markings to define initial tokens.
+	
+	Double-bordered rectangles represent substitution transitions which have
+	corresponding sub-modules. These are separate modules that have input and
+	output places that connect to the places on their parent page. This is done to
+	keep the model structured and readable, and also allows reuse of pages in
+	different parts of the model by instancing them, which will be described
+	toward the end of the chapter. The details of each subpage is described in
+	the following subsections.
+	
+	The places in the Overview have the following color sets:
+	
+	\begin{lstlisting}[label=lst:overview_colset,caption=Overview color
+	sets,gobble=1]
+	colset OPERATION = union CONNECT + TEXT + BINARY + PING + PONG + CLOSE;
+	
+	colset MESSAGE = record Op: OPERATION *	Message: STRING;
+	
+	colset MESSAGES = list MESSAGE;
+	
+	colset EVENT = union Msg:MESSAGE + ConnRequest + ConnResult:CONN_RESULT;
+	
+	colset EVENTS = list EVENT;
+	
+	colset CONN_REPLY = bool with (reject, accept);
+	
+	colset MSG_OR_CONN_REPLY = union Msg':MESSAGE + ConnReply:CONN_REPLY;
+	
+	colset MSGS_OR_CONN_REPLY = list MSG_OR_CONN_REPLY;
+	
+	colset PACKET = union HttpReq:HTTPREQ + HttpRes:HTTPRES + WsFrame:WSFRAME;
+	
+	colset PACKETLIST = list PACKET;
+	\end{lstlisting}
+	
+	A \lstinline:MESSAGE: consists of an \lstinline:OPERATION: and the
+	\lstinline:STRING: message body. We can also have a list of
+	\lstinline:MESSAGES: to keep them ordered. Lists will be explained in
+	detail later.
+	
+	The client application sends \lstinline:MESSAGES: to the WebSocket layer and
+	receives \lstinline:EVENTS: back, which can be either a \lstinline:MESSAGE: or a
+	\lstinline:ConnReply:. The server application also receives \lstinline:EVENTS:,
+	but can send either a \lstinline:MESSAGE: or a \lstinline:CONN_REPLY:, which is
+	used for connection attempts. The \lstinline:CONN_REPLY: colorset is simply a
+	boolean value with different names for true and false, for improving readability
+	and semantics.
+	
+	Both the client and server WebSocket layers send and receive
+	\lstinline:PACKET:s. These are abstract and not fully modeled or simulated
+	actual network packets, as this is not relevant to how WebSocket works.
+
+\subsection{Client Application}
+
+	\fig[0.4]{ClientApplication.eps}{The Client Application}{client_app}
+	
+	This page (\figref{client_app}) is laid out from top to bottom to loosely show
+	the sequence of operation, as is most of the other pages.
+	
+	The places at the bottom represent the interface to the WebSocket library. To
+	simplify the overview model and facilitate easier later modification
+	and expansion, we have only two places that act as input and output. These are
+	called Receive Client Events and Send Client Message, and are tagged In and
+	Out respectively. These are connected to the respective places on the
+	Overview, which are also connected to corresponding places in the WebSocket
+	Library.
+	
+	
+	\subsubsection{Variables}
+	
+		The arcs here have inscriptions on them containing variables. These are
+		declared globally and can only be bound to colors of the colorset they are
+		defined for. 
+		
+		When a transition fires, it will bind the tokens it is consuming to the
+		variables of the inscriptions on the arcs from the respective places. These
+		variables can then be used to produce new tokens, by direct manipulation
+		and/or in conditional statemens. The expression that will produce the desired
+		result is inscribed on the output arc. 
+		
+		A set of variables has been declared for the simple colorsets as follows:
+		
+		\begin{lstlisting}[label=lst:standard_vars,caption=Simple Colorset Variables]
+		var u, u1, u2, u3: UNIT;
+		var b, b1, b2, b3: BOOL;
+		var i, j, k: INT;
+		var s, s1, s2, s3: STRING;
+		var ss, ss1, ss2: STRINGLIST;
+		\end{lstlisting}
+		
+		Several variables for the same colorsets have been created for convenience in
+		the cases where colors of the same type is consumed from different places. If the same variable was
+		used on each arc from two different places, both places would need a token
+		with the same value. 
+		
+		Variable declarations will be listed as they are encountered in the model.
+		As a general guideline, most variables are named with the first letter of its
+		colorset for non-lists, and the same letter plus the letter s for lists. On
+		this subpage we have the following variables:
+		
+		\begin{lstlisting}[label=lst:client_app_vars,caption=Client Application
+		Variables]
+		var msg: MESSAGE;
+		var msgs, msgs2: MESSAGES;
+		var es: EVENTS;
+		\end{lstlisting}
+	
+	\subsubsection{Queues}
+	
+		A lot of the places in this model rely on tokens being consumed in the same
+		order they are produced, and to enforce this, queues are used, facilitated
+		by lists. To describe a list in SML, we use \lstinline:[]: square brackets. By
+		themselves they represent an empty list. To describe a populated list, we
+		write each token inside the brackets separated by commas. An example of this
+		is seen on the initial marking for the Messages to be sent place.
+		
+		To process such a list, we use the \lstinline-::- operator like this:
+		\lstinline-head::tail-, where head is the first element in the list, and tail
+		is all the following elements. To join two lists, we use the
+		\lstinline:^^: operator. 
+		
+		To emulate the queue behaviour we need, we use a list of a color instead of
+		using the actual color we want in that place. When we want to take an
+		element from the front of the queue, we use the \lstinline-::- operator to
+		bind the head and tail of the list to variables, and put only the tail back to
+		the source place. When we want to append an element to a queue, we concatenate
+		the queue using the \lstinline:^^: operator with a new list containing only
+		the new element. To improve readability of the model, these queue operations
+		have one arc slightly dimmed, to emphasise the flow direction of data.
+		
+		An example of this is seen on the Send data transition. On the left side, the
+		list in the Messages to be sent place is bound to the two variables msg and
+		msgs, and only msgs is put back. On the right side, we take the list in Send
+		Client Messages and bind it to the variable msgs2, and send back a
+		concatenation of this list and a new list containing msg, which was bound
+		earlier in the incoming arc from Messages to be sent. The total effect is that
+		we take the first element from Messages to be sent, and add it to the end of
+		the list in Send Client Message.
+
+	\subsubsection{Program Flow}
+	
+		The Request connection transition at the top is highlighted by a green border,
+		which means that it is enabled and ready to fire. If we were to fire this transition,
+		it would consume the \lstinline:STRING: token, named s, produce a
+		\lstinline:MESSAGE: token containing s, and add it to the queue in the Send
+		Client Message place.
+		
+		Next, the Client Application waits for a \lstinline:CONN_RESULT: token, and if
+		this is equal to \lstinline:success:, we add a \lstinline:UNIT: token to the
+		Active Connection place. If any other messages are received before this, they
+		will wait at the Receive Client Event place, since the Receive Data transition
+		will not fire unless the Active Connection place has a \lstinline:UNIT: token.
+		
+		If and when the Active Connection place has a \lstinline:UNIT: token, the
+		Client Application can start sending and receiving messages. A sample of
+		messages has been predefined at the Messages to be sent place, but this would
+		probably be dynamic in a real application.
+		
+		Finally, if the Client Application receives a \lstinline:MESSAGE: where the
+		\lstinline:OPERATOR: is \lstinline:CLOSE:, nothing is put back into the Active
+		Connection place, and the connection is effectively closed. 
+
+\subsection{Client WebSocket Library}
+
+	\fig{ClientWebSocket.eps}{The Client WebSocket Library}{client_wslib}
+
+	This page consists mostly of subpages. The only processing being done directly
+	on this page is masking of all websocket frames, which is required from the
+	client by the protocol specification. The rest is plumbing between the
+	subpages.
+	
+	The new colorsets are for HTTP requests and responses, WebSocket frames, and
+	packets. They have corresponding variables. 
+	
+	\begin{lstlisting}[label=lst:client_lib_colset,caption=Library color
+	sets,gobble=1]
+	colset HTTP_VERB = union
+	GET + POST + PUT + DELETE + HEAD;
+	
+	colset REQUEST_LINE = record
+	Verb: HTTP_VERB *
+	Path: STRING *
+	Version: STRING;
+	
+	colset HEADER = product STRING*STRING;
+	
+	colset HEADERS = list HEADER;
+	
+	colset HTTPREQ = record
+	RequestLine: REQUEST_LINE *
+	Headers: HEADERS;
+	
+	colset RESPONSE_LINE = record
+	Version: STRING *
+	Status: INT *
+	Message: STRING;
+	
+	colset HTTPRES = record
+	ResponseLine: RESPONSE_LINE *
+	Headers: HEADERS;
+	
+	colset MASK = list BYTE with 4..4;
+	
+	colset MASKING = union
+	Nomask + Mask:MASK;
+	
+	val opContinuation = 0x0;
+	val opText = 0x1;
+	val opBinary = 0x2
+	val opConnectionClose = 0x8;
+	val opPing = 0x9;
+	val opPong = 0xA;
+	
+	colset WSFRAME = record
+	Fin: BIT *
+	Rsv1: BIT *
+	Rsv2: BIT *
+	Rsv3: BIT *
+	Opcode: INT *
+	Masked: BIT *
+	Payload_length: INT *
+	Masking_key: MASKING *
+	Payload: STRING;
+	
+	colset WSFRAMES = list WSFRAME;
+	
+	colset PACKET = union 
+	HttpReq:HTTPREQ + 
+	HttpRes:HTTPRES +
+	WsFrame:WSFRAME;
+
+	colset PACKETLIST = list PACKET;
+	\end{lstlisting}
+	
+	\begin{lstlisting}[label=lst:client_lib_vars,caption=Library
+	variables,gobble=1]
+	var wsframe: WSFRAME;
+	var wsframes, wsframes2: WSFRAMES;
+	var httpreq: HTTPREQ;
+	var httpres: HTTPRES;
+	var p: PACKET;
+	var ps, ps1, ps2: PACKETLIST;
+	\end{lstlisting}
+	
+	There are also static values declared here, which correspond to WebSocket
+	frame operation identifiers.
+	
+	\subsubsection{New connection}
+		
+		\fig{NewConnection.eps}{New Connection subpage}{new_connection}
+		
+		This page is fairly straightforward. We take the first message
+		
+		The transition here has a guard inscription. It is used for two things: Only
+		accepting messages with the \lstinline:CONNECT: operation, and binding the url
+		variable by parsing the string in the message into a \lstinline:URL: color. 
+		
+		\begin{lstlisting}[label=lst:url,caption=URL Declarations,gobble=2]
+		colset URL = record
+		Protocol: STRING *
+		Host: STRING *
+		Port: INT *
+		Path: STRING;
+		
+		var url: URL;
+		
+		fun split2 (s, t, i) =
+		  let
+		    val ss = String.extract(s, i, NONE) 
+		  in 
+		    if String.isPrefix t ss then
+		      [substring(s, 0, i), 
+		      String.extract(s, i + String.size t, NONE)]
+		    else split2(s, t, i+1)
+		  end
+		
+		fun split (s, t) = 
+		  if String.isPrefix t s then
+		    [String.extract(s, String.size t, NONE)]
+		  else if String.isSubstring t s then
+		    split2 (s, t, 1)
+		  else [s]
+		
+		fun parseUrl (s) = 
+			let
+			  val proto'rest = split (s, "://")
+			  val proto'rest = 
+			    if length proto'rest = 1 
+			    then "ws" :: proto'rest 
+			    else proto'rest 
+			  val pro = List.hd(proto'rest)
+			
+			  val host'path = split (List.nth(proto'rest, 1), "/")
+			  val pat = if length host'path = 2
+			    then "/" ^ List.nth(host'path, 1)
+			    else "/"
+			  
+			  val host'port = split (List.hd(host'path), ":")
+			  val hos = List.hd(host'port)
+			
+			  val port'default = case pro of
+			    "wss" => 443
+			    | _ => 80
+			  val por = if length host'port = 1 
+			  then port'default
+			  else let
+			    val port'str = List.nth(host'port, 1)
+			    val port'int'opt = Int.fromString port'str
+			  in
+			    Option.getOpt(port'int'opt, port'default)
+			  end
+			in
+			  {Protocol=pro, 
+			    Host=hos, 
+			    Port=por, 
+			    Path=pat}
+			end;
+		\end{lstlisting}
+		
+		The function parseUrl takes a string argument and yields a URL color. The
+		functions split and split2 are used to split a string on a given substring.
+		
+		
+		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2]
+		fun httpReqFromUrl (url:URL) = 
+		{
+		  RequestLine={
+		    Verb=GET, 
+		    Path=(#Path url),
+		    Version=httpVersion
+		  },
+		  Headers=[
+		    ("Host", (#Host url)),
+		    ("Upgrade", "websocket"),
+		    ("Connection", "Upgrade"),
+		    ("Sec-WebSocket-Key", (B64 nonce)),
+		    ("Sec-WebSocket-Version", "13")
+		  ]
+		};
+		\end{lstlisting}
+		
+		The function httpReqFromUrl takes a URL argument and uses it to produce a
+		HTTPREQ color with headers according to the WebSocket protocol requirements.
+		Not all headers defined by the protocol are used, because it is assumed this
+		application is not browser based, and therefore specifying an origin does not
+		make sense.
+		
+		
+	\subsubsection{Process response}
+		
+		\fig{ProcessResponse.eps}{Process Response subpage}{process_response}
+		
+		On this page, the transition fires when a HTTPRES color is received from the
+		server (and the HTTPREQ color from earlier is still waiting in its place). The
+		boolean variable b is bound to the resunt from the isResponseValid function,
+		which checks if the server's reply is valid and conforms to the WebSocket
+		protocol specification.
+		
+		\begin{lstlisting}[label=lst:isResponseValid,caption=isResponseValid,gobble=2]
+		fun isResponseValid (res:HTTPRES, req:HTTPREQ) = let
+		  val rline = #ResponseLine res
+		  val headers = #Headers res
+		  val accepttoken = generateAccept(
+		    getHeader("Sec-WebSocket-Key",
+		      (#Headers req)))
+		in
+		  #Status rline = 101 andalso
+		  getHeader("Upgrade", headers) 
+		    = "websocket" andalso
+		  getHeader("Connection", headers) 
+		    = "Upgrade" andalso
+		  getHeader("Sec-WebSocket-Accept",headers)
+		    = accepttoken
+		end
+		\end{lstlisting}
+		
+		It sends the result directly to the Client App, and puts a
+		\lstinline:CONN_OPEN: color in the Active Connection place if b is true.
+		
+	\subsubsection{Wrap and send}
+		
+		\fig{WrapAndSend.eps}{Wrap And Send subpage}{wrap_and_send}
+		
+		This page takes new messages, wraps and optionally fragments them in the
+		Fragment and queue subpage (explained below), and sends them if there is
+		an open connection. If it sees a Close frame being sent, it will change the connection state to
+		\lstinline:CONN_CLOSING:, which prevents further sending.
+		
+		\paragraph{Fragment and queue}
+			
+			\fig{FragmentAndQueue.eps}{Fragment And Queue subpage}{fragment_and_queue}
+			
+			The top transition on this has two tasks: Making sure we don't process
+			CONNECT messages, and filtering data and control frames into different
+			places using the isData function. 
+			
+			\begin{lstlisting}[label=lst:isData,caption=isData,gobble=3]
+			fun isData (msg:MESSAGE) =
+			(#Op msg = TEXT) orelse
+			(#Op msg = BINARY);
+			\end{lstlisting}
+			
+			Control frames should never be fragmented, but data frames could be. This is
+			taken care of by the fragment function, which also converts the message into
+			a WSFRAME color. The control frames are converted in the same way by the
+			wrapmsg function. Both of these functions rely on the wrap function, and
+			therefore have to be declared after it.
+			
+			
+			\begin{lstlisting}[label=lst:fragment,caption=wrap wrapmsg and
+			fragment,gobble=3]
+			fun wrap (opc,payload,fin) = { Fin=fin,
+			  Rsv1=clear,
+			  Rsv2=clear,
+			  Rsv3=clear,
+			  Opcode=opc,
+			  Masked=clear,
+			  Payload_length=(String.size payload),
+			  Masking_key= Nomask,
+			  Payload=payload
+			}
+			
+			fun wrapmsg (msg:MESSAGE,fin) = 
+			  wrap(opSym2Hex(#Op msg), 
+			    (#Message msg), fin);
+			    
+			fun fragment (msg:MESSAGE) = let
+			  fun loop (opc, s, acc) = 
+			    if (String.size s) > fragSize
+			    then loop(
+			      opContinuation,
+			      String.extract(s,fragSize,NONE),
+			      acc^^[wrap(opc, 
+			        String.substring(s,0,fragSize), 
+			        clear
+			      )]
+			    )
+			    else 
+			      acc^^[wrap(opc, s, set)];
+			  in 
+			    loop(
+			      opSym2Hex(#Op msg), 
+			      (#Message msg), 
+			      [])
+			  end;
+			\end{lstlisting}
+			
+			The WSFRAME colors are then queued randomly one by one from the data queue or
+			the control frame queue. This allows control frames to be injected between
+			the parts of a fragmented data frame. If desired, control frames could be
+			prioritised, by adding a two-way arc from the Control place to the Queue data
+			transition, inscribed with \lstinline:[]:, which would prevent it from being
+			enabled if the list in the Control place was not empty.
+		
+	\subsubsection{Unwrap and receive}
+		
+		\figrot[0.4]{UnwrapAndReceive.eps}{Unwrap And Receive
+		subpage}{unwrap_and_receive}
+		
+		Received WebSocket frames that arrive in the Packet Received place at the
+		bottom can take three paths. 
+		
+		The first is to the left, and happens if the
+		connection is in the \lstinline:CONN_OPEN: state (checked on the arc) and the
+		frame is not a close frame (checked in the guard of the Receive transition). The WebSocket
+		frame is put in the Received WS Frame place, and if it is a Ping frame, a Pong
+		frame is immediately queued for sending with identical message body. 
+		
+		The received frame is then checked on two points for fragmentation: If the Fin
+		bit is set and the opcode is not continuation, it is not part of a fragmented
+		message and converted directly to a MESSAGE. If either or both of those
+		conditions are not true, tihs is part of a fragmented message and is processed
+		in the Defrag subpage (explained below).
+		
+		The second path a frame can take is to the right, and happens if the
+		connection is in the \lstinline:CONN_OPEN: state (checked on the arc) and the
+		frame is a close frame (checked in the guard of the Receive transition). A
+		close frame is created and set to be sent, and the
+		connection state is changed to \lstinline:CONN_CLOSED:, since we have both
+		received and sent a close frame. Note that the packetlist from Client Send is
+		not appended to but instead discarded, because we can not expect the other
+		end to process any more frames other than a close frame since it has already
+		sent a close frame of its own.
+		
+		The third path is upwards and happens if the connection state is
+		\lstinline:CONN_CLOSING:, which means a close frame has been sent and we are
+		waiting for a reply. Any payload is ignored, and the connection state stays
+		the same until a close frame is received, in which case the connection state
+		is set to \lstinline:CONN_CLOSED:. 
+		
+		\paragraph{Defragmenting fragmented frames}
+			
+			\fig{Defrag.eps}{Defragment}{defragment}
+			
+			Frames that are part of a fragmented message should always arrive in a
+			specific order, and correspond to each of the transitions on this page. 
+			
+			If the Fin bit is clear and the opcode is not continuation, this is the first
+			frame in the series. A mew \lstinline:MESSAGE: is created with the opcode and
+			payload from the WebSocket frame and put in the Buffer place.
+			
+			If the Fin bit is clear and the opcode is continuation, this frame belongs in
+			the middle of the sequence. The payload is appended to the
+			\lstinline:MESSAGE: in the Buffer place using the \lstinline:append():
+			function.
+			
+			\begin{lstlisting}[label=lst:append,caption=append,gobble=3]
+			fun append (msg:MESSAGE, s) = 
+			  {Op = #Op msg,
+			  Message = (#Message msg)^s}
+			\end{lstlisting}
+			
+			If the Fin bit is set and the opcode is continuation, this is the last frame
+			of the sequence. We append the payload to the message and put it in the final
+			Completed message place. 
+			
+			Note that the WebSocket protocol does not allow fragmented messages to be
+			interleaved, so it can be assumed that consecutive fragments belong to the
+			same message. Fragment inerleaving can be defined by subprotocols, but this
+			is not relevant to this model.
+			
+\subsection{Connection}
+
+	\fig{Connection.eps}{The Connection}{connection}
+	
+	Very little is happening here. The packets that come from the Client Send place
+	go to the Server Receive page, and from the Server Send place to the Client
+	Receive place. The transportation of data between the client and the server is
+	assumed to be taken care of by TCP, as the WebSocket protocol specifies, and is
+	not necessary to model in detail to show how WebSocket works.
+	
+	The packets are also not converted to pure bits or bytes. This decision was
+	made to keep inspection easier during simulation. 
+
+\subsection{The Server WebSocket Library}
+	
+	\fig{ServerWebSocket.eps}{The Server WebSocket Library}{server_wslib}
+	
+	The Server version of the WebSocket Library is very similar to the Client
+	version. The main differences are that instead of masking outgoing frames, we
+	are checking incoming frames for a mask and unmasking them, and that we are
+	checking for incoming connections and replying to them based on what the Server
+	Application decides.
+	
+	The Server Application can send two types of colorsets: \lstinline:MESSAGE: and
+	\lstinline:CONN_REPLY:. A special colorset has been made to accomodate this,
+	\lstinline:MSG_OR_CONN_REPLY:. 
+	
+	The Wrap and Send and the Unwrap and Receive substitution transitions are the
+	same as the ones for the Client Library. To be more precise, the Client Library
+	and Server Library both have instances of the same subpage, so that editing the
+	subpage model affects both parent pages but simulating them lets them have
+	different states.
+	
+	\subsubsection{Get Connection Request}
+		
+		\fig{ConnectionRequest.eps}{Get Connection Request}{connection_req}
+		
+		This is a very abstract representation of how connection requests are
+		received. The library simply sends a ConnRequest token to the app. In a real
+		world app, much more info might have been sent, for example IP address and
+		possibly authentication info, but for this model it is enough to show that
+		some info is being sent, while the details are abstracted away. 
+
+	\subsubsection{Send Connection Response}
+		
+		\fig{ConnectionResponse.eps}{Send Connection Response}{connection_res}
+		
+		When the Server Application has decided what to do with an incoming
+		connection, it will send a \lstinline:CONN_REPLY: to the library. If the
+		answer is \lstinline:accept:, we create a \lstinline:CONN_OPEN: token in the
+		Active Connection place and send a HTTP response back to the client, properly
+		formatted according to the rules of the WebSocket Protocol. This involves
+		generating a Sec-WebSocket-Accept header, which is done with the
+		generateAccept() function:
+		
+		
+		\begin{lstlisting}[label=lst:generateAccept,caption=generateAccept,gobble=2]
+		fun B64 str =
+		  "B64("^str^")";
+		
+		fun SHA1 str =
+		  "SHA1("^str^")";
+
+		fun generateAccept str =
+		  B64(SHA1(str^uuid));
+		\end{lstlisting}
+		
+		The two functions B64() \cite{rfc4648} and SHA1() \cite{fips.180-2} are
+		abscract versions of the Base64 encoding algorithm and the SHA1 hasing algorithm. We felt it was unneccessary
+		to actually implement these for the purpose of this model, and instead decided
+		to simply wrap the string argument to show that it had been encoded or hashed.
+		
+\subsection{Server Application}
+	
+	\fig{ServerApplication.eps}{The Server Application}{server_app}
+	
+	The Server Application has three tasks: Accept or reject incoming connections,
+	and send and retrieve data. The colorset \lstinline:MSGS_OR_CONN_REPLY: that
+	was defined in \lstref{overview_colset} is seen here. It has three
+	queued messages, which illustrate the capability of PONG frames to be used as
+	a heartbeat. A real world application would have more logic here, but the
+	interface to the library would be the same.

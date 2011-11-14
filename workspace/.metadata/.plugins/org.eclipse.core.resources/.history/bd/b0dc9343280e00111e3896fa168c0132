@@ -1,0 +1,54 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+Software development paradigms, 
+
+\section{Model Driven Software Development}
+
+Short explanation of MDD
+
+\subsection{Code Generation}
+
+Short intro to code generation from models, arguments for 
+
+\section{Related work}
+
+References to other works and theses, explaining their approaches
+
+Reference and longer explanation of current work of Simonsen, which defines the
+domain for the prototype
+
+\section{Thesis Aim}
+
+This thesis seeks to create a framework for annotating CPNs. The framework
+should be capable of supporting several classes of pragmatics, 
+categorised into General, Domain Specific, and MModel Specific Pragmatics.
+
+It should be possible to import CPN models created in CPN Tools. Annotations are
+placed through a tree editor, and also, if possible, through a graphical diagram
+editor. Errors highlighting?
+
+Finally, there should be an easy way to invoke the code generator from the
+editor.
+
+\section{Structure}
+
+The thesis is described below:
+
+\begin{description}
+\item[Chapter~\ref{chap:background}:~\nameref{chap:background}] Introduction to
+CPN, showing how to use it by using the WebSocket protocol as an example.
+Overview of related research. Describe CPN Tools.
+\item [Chapter~\ref{chap:technology}:~\nameref{chap:technology}] Explanation of
+the Eclipse Platform and its modules, which make up the foundation of our
+prototype
+\item [Chapter~\ref{chap:analysis}:~\nameref{chap:analysis}] Discussion and
+detailing of requirements for the editor. Overview and explanation of test cases.
+\item [Chapter~\ref{chap:implementation}:~\nameref{chap:implementation}]
+Describe how the implementation works. Explanation of chosen solutions to requirements. 
+\item [Chapter~\ref{chap:evaluation}:~\nameref{chap:evaluation}] Discuccion on
+which requirements have been met. Results from test cases and feedback from
+users.
+\item [Chapter~\ref{chap:conclusion}:~\nameref{chap:conclusion}] Summary,
+personal experience, limitations and suggested focus of future work.
+\end{description}
