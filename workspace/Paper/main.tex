@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 
+\usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{listings}
@@ -23,6 +24,9 @@
 
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
+\newcommand{\com}[1]{
+        \mbox{}
+       \marginpar{\hrule\footnotesize\raggedright\hspace{0pt}#1\vspace{2mm}}}
 
 \newcommand{\fig}[4][0.5]{
 	\begin{figure}
@@ -86,9 +90,9 @@
 \setcounter{page}{1}
 
 \input{introduction/introduction}
-\input{background/background}
-%\input{technology/technology}
-%\input{analysis/analysis}
+\input{background/bg2}
+\input{technology/technology}
+\input{analysis/analysis}
 %\input{implementation/implementation}
 %\input{evaluation/evaluation}
 %\input{conclusion/conclusion}

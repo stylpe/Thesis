@@ -7689,3 +7689,2118 @@ Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range:
 	at org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl.setValue(XMLHelperImpl.java:1162)
 	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.setFeatureValue(XMLHandler.java:2658)
 	... 53 more
+
+!ENTRY org.eclipse.ui 4 0 2011-11-24 02:52:17.323
+!MESSAGE Unable to create editor ID com.ge.research.sadl.Sadl: The editor class could not be instantiated. This usually indicates a missing no-arg constructor or that the editor's class name was mistyped in plugin.xml.
+!STACK 0
+org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter$TerminatingClassNotFoundException: An error occurred while automatically activating bundle com.ge.research.sadl.ui (381).
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:462)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:400)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:345)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1207)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin$1.run(WorkbenchPlugin.java:268)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:264)
+	at org.eclipse.ui.internal.registry.EditorDescriptor.createEditor(EditorDescriptor.java:235)
+	at org.eclipse.ui.internal.EditorManager.createPart(EditorManager.java:875)
+	at org.eclipse.ui.internal.EditorReference.createPartHelper(EditorReference.java:609)
+	at org.eclipse.ui.internal.EditorReference.createPart(EditorReference.java:465)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+	at org.eclipse.ui.internal.EditorAreaHelper.setVisibleEditor(EditorAreaHelper.java:271)
+	at org.eclipse.ui.internal.EditorManager.setVisibleEditor(EditorManager.java:1459)
+	at org.eclipse.ui.internal.EditorManager$5.runWithException(EditorManager.java:972)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4140)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3757)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$33.runWithException(Workbench.java:1595)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4140)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3757)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2604)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+Caused by: org.osgi.framework.BundleException: Exception in com.ge.research.sadl.ui.internal.SadlActivator.start() of bundle com.ge.research.sadl.ui.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:299)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:268)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	... 57 more
+Caused by: com.google.inject.internal.ComputationException: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.ConstructorInjectorStore.get(ConstructorInjectorStore.java:52)
+	at com.google.inject.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:57)
+	at com.google.inject.InjectorImpl.initializeBinding(InjectorImpl.java:377)
+	at com.google.inject.InjectorImpl.createJustInTimeBinding(InjectorImpl.java:645)
+	at com.google.inject.InjectorImpl.createJustInTimeBindingRecursive(InjectorImpl.java:581)
+	at com.google.inject.InjectorImpl.getJustInTimeBinding(InjectorImpl.java:172)
+	at com.google.inject.InjectorImpl.getBindingOrThrow(InjectorImpl.java:132)
+	at com.google.inject.InjectorImpl.getInternalFactory(InjectorImpl.java:651)
+	at com.google.inject.FactoryProxy.notify(FactoryProxy.java:48)
+	at com.google.inject.BindingProcessor.runCreationListeners(BindingProcessor.java:230)
+	at com.google.inject.InjectorBuilder.initializeStatically(InjectorBuilder.java:131)
+	at com.google.inject.InjectorBuilder.build(InjectorBuilder.java:105)
+	at com.google.inject.Guice.createInjector(Guice.java:92)
+	at com.google.inject.Guice.createInjector(Guice.java:69)
+	at com.google.inject.Guice.createInjector(Guice.java:59)
+	at com.ge.research.sadl.ui.internal.SadlActivator.start(SadlActivator.java:38)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 63 more
+Caused by: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.MembersInjectorStore.get(MembersInjectorStore.java:66)
+	at com.google.inject.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:69)
+	at com.google.inject.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:31)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:39)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:35)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 85 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Unknown Source)
+	at java.lang.Class.getDeclaredMethods(Unknown Source)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:395)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:393)
+	at com.google.inject.spi.InjectionPoint.addInjectorsForMembers(InjectionPoint.java:359)
+	at com.google.inject.spi.InjectionPoint.addInjectionPoints(InjectionPoint.java:353)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:296)
+	at com.google.inject.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:78)
+	at com.google.inject.MembersInjectorStore.access$000(MembersInjectorStore.java:35)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:43)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:40)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 95 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.parsetree.AbstractNode
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:513)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 109 more
+
+!ENTRY org.eclipse.ui 2 2 2011-11-24 02:52:17.563
+!MESSAGE Ignored attempt to add saveable that was already registered
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: unknown saveable: org.eclipse.ui.internal.DefaultSaveable@6871db from part: org.eclipse.ui.internal.ErrorEditorPart@6871db
+	at org.eclipse.ui.internal.SaveablesList.logWarning(SaveablesList.java:187)
+	at org.eclipse.ui.internal.SaveablesList.addModel(SaveablesList.java:117)
+	at org.eclipse.ui.internal.SaveablesList.addModels(SaveablesList.java:289)
+	at org.eclipse.ui.internal.SaveablesList.postOpen(SaveablesList.java:695)
+	at org.eclipse.ui.internal.PartList.partOpened(PartList.java:234)
+	at org.eclipse.ui.internal.PartList.access$0(PartList.java:210)
+	at org.eclipse.ui.internal.PartList$1.propertyChanged(PartList.java:40)
+	at org.eclipse.ui.internal.WorkbenchPartReference.fireInternalPropertyChange(WorkbenchPartReference.java:375)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:610)
+	at org.eclipse.ui.internal.EditorReference.getEditor(EditorReference.java:289)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditorBatched(WorkbenchPage.java:2945)
+	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:2850)
+	at org.eclipse.ui.internal.WorkbenchPage.access$11(WorkbenchPage.java:2842)
+	at org.eclipse.ui.internal.WorkbenchPage$10.run(WorkbenchPage.java:2793)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2789)
+	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:2773)
+	at org.eclipse.ui.actions.OpenWithMenu.openEditor(OpenWithMenu.java:331)
+	at org.eclipse.ui.actions.OpenWithMenu$2.handleEvent(OpenWithMenu.java:179)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4165)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3754)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SESSION 2011-11-24 11:12:24.960 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=no_NO
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2011-11-24 11:13:08.660
+!MESSAGE Both 'org.pnml.tools.epnk' and 'org.pnml.tools.epnk.diagram' register an extension parser for 'pnx'
+
+!ENTRY org.eclipse.jface 2 0 2011-11-24 11:13:19.516
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-24 11:13:19.516
+!MESSAGE A conflict occurred for ALT+SHIFT+D R:
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.debug,Debug RAP Application,
+		Debug RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.debug,Debug on Server,
+		Debug the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-24 11:13:19.516
+!MESSAGE A conflict occurred for ALT+SHIFT+X R:
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.run,Run RAP Application,
+		Run RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.run,Run on Server,
+		Run the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 4 0 2011-11-24 11:13:20.599
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2011-11-24 11:13:20.600
+!MESSAGE Unable to restore perspective: Workspace - <LaTeX>.
+!SUBENTRY 2 org.eclipse.ui 0 0 2011-11-24 11:13:20.600
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2011-11-24 11:13:20.600
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.600
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.601
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.601
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 4 2011-11-24 11:13:20.601
+!MESSAGE Could not create view: org.eclipse.egit.ui.StagingView
+!STACK 1
+org.eclipse.ui.PartInitException: Could not create view: org.eclipse.egit.ui.StagingView
+	at org.eclipse.ui.internal.ViewFactory.createView(ViewFactory.java:158)
+	at org.eclipse.ui.internal.Perspective.createReferences(Perspective.java:1249)
+	at org.eclipse.ui.internal.Perspective.restoreState(Perspective.java:1219)
+	at org.eclipse.ui.internal.WorkbenchPage$17.runWithException(WorkbenchPage.java:3211)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:134)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4041)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$31.runWithException(Workbench.java:1567)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:134)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4041)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2548)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2438)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:671)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:664)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:115)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:369)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:619)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:574)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1407)
+!SUBENTRY 3 org.eclipse.ui 4 0 2011-11-24 11:13:20.603
+!MESSAGE Could not create view: org.eclipse.egit.ui.StagingView
+!SUBENTRY 2 org.eclipse.ui 4 4 2011-11-24 11:13:20.603
+!MESSAGE Could not create view: org.eclipse.egit.ui.RepositoriesView
+!STACK 1
+org.eclipse.ui.PartInitException: Could not create view: org.eclipse.egit.ui.RepositoriesView
+	at org.eclipse.ui.internal.ViewFactory.createView(ViewFactory.java:158)
+	at org.eclipse.ui.internal.Perspective.createReferences(Perspective.java:1249)
+	at org.eclipse.ui.internal.Perspective.restoreState(Perspective.java:1219)
+	at org.eclipse.ui.internal.WorkbenchPage$17.runWithException(WorkbenchPage.java:3211)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:134)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4041)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$31.runWithException(Workbench.java:1567)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:134)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4041)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2548)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2438)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:671)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:664)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:115)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:369)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:619)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:574)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1407)
+!SUBENTRY 3 org.eclipse.ui 4 0 2011-11-24 11:13:20.604
+!MESSAGE Could not create view: org.eclipse.egit.ui.RepositoriesView
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2011-11-24 11:13:20.605
+!MESSAGE OK
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:31.451
+!MESSAGE Connection to http://download.eclipse.org/releases/helios/201102250900/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:32.377
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/helios/201102250900/content.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:32.521
+!MESSAGE Connection to http://download.eclipse.org/releases/helios/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:33.383
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/helios/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:33.507
+!MESSAGE Connection to http://download.eclipse.org/eclipse/updates/3.6/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:34.151
+!MESSAGE Unknown Host: http://download.eclipse.org/eclipse/updates/3.6/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:34.286
+!MESSAGE Connection to http://subclipse.tigris.org/update_1.6.x/p2.index failed on subclipse.tigris.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: subclipse.tigris.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:36.039
+!MESSAGE Unknown Host: http://subclipse.tigris.org/update_1.6.x/content.xml
+!STACK 0
+java.net.UnknownHostException: subclipse.tigris.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:36.465
+!MESSAGE Connection to http://sadl.sourceforge.net/update/p2.index failed on sadl.sourceforge.net. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: sadl.sourceforge.net
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:37.089
+!MESSAGE Unknown Host: http://sadl.sourceforge.net/update/content.xml
+!STACK 0
+java.net.UnknownHostException: sadl.sourceforge.net
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:37.216
+!MESSAGE Connection to http://texlipse.sourceforge.net/p2.index failed on texlipse.sourceforge.net. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: texlipse.sourceforge.net
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:37.882
+!MESSAGE Connection to http://texlipse.sourceforge.net/site.xml failed on texlipse.sourceforge.net. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: texlipse.sourceforge.net
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadActualSiteFile(UpdateSite.java:204)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadSiteFile(UpdateSite.java:172)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:142)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.initializeRepository(UpdateSiteMetadataRepositoryFactory.java:85)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.load(UpdateSiteMetadataRepositoryFactory.java:54)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:746)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:651)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:38.402
+!MESSAGE Unknown Host: http://texlipse.sourceforge.net/site.xml
+!STACK 0
+java.net.UnknownHostException: texlipse.sourceforge.net
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadActualSiteFile(UpdateSite.java:204)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.loadSiteFile(UpdateSite.java:172)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:142)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.initializeRepository(UpdateSiteMetadataRepositoryFactory.java:85)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.load(UpdateSiteMetadataRepositoryFactory.java:54)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:746)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:651)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:40.343
+!MESSAGE Connection to http://www2.imm.dtu.dk/~eki/projects/ePNK/update/p2.index failed on www2.imm.dtu.dk. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: www2.imm.dtu.dk
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:40.860
+!MESSAGE Unknown Host: http://www2.imm.dtu.dk/~eki/projects/ePNK/update/content.xml
+!STACK 0
+java.net.UnknownHostException: www2.imm.dtu.dk
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:40.979
+!MESSAGE Connection to http://download.eclipse.org/releases/helios/201009240900/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:41.550
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/helios/201009240900/content.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2011-11-24 11:13:41.658
+!MESSAGE Connection to http://download.eclipse.org/tools/mylyn/update/helios/p2.index failed on download.eclipse.org. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1142)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:710)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:889)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:576)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:98)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.sendRetrieveRequest(FileReader.java:342)
+	at org.eclipse.equinox.internal.p2.repository.FileReader.readInto(FileReader.java:288)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:71)
+	at org.eclipse.equinox.internal.p2.repository.RepositoryTransport.download(RepositoryTransport.java:127)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:718)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:639)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.repository 4 1006 2011-11-24 11:13:42.201
+!MESSAGE Unknown Host: http://download.eclipse.org/tools/mylyn/update/helios/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.events.socket.SocketEventCreateUtil.createSocket(SocketEventCreateUtil.java:43)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:81)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:73)
+	at org.eclipse.ecf.internal.provider.filetransfer.httpclient.ECFHttpClientProtocolSocketFactory.createSocket(ECFHttpClientProtocolSocketFactory.java:65)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.MultiThreadedHttpConnectionManager$HttpConnectionAdapter.open(MultiThreadedHttpConnectionManager.java:1361)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.eclipse.ecf.provider.filetransfer.httpclient.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:227)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.epp.usagedata.recording 2 0 2011-11-24 11:13:57.475
+!MESSAGE The usage data upload server at http://udc.eclipse.org/upload.php could not be found.
+!STACK 0
+java.net.UnknownHostException: udc.eclipse.org
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:80)
+	at org.apache.commons.httpclient.protocol.DefaultProtocolSocketFactory.createSocket(DefaultProtocolSocketFactory.java:122)
+	at org.apache.commons.httpclient.HttpConnection.open(HttpConnection.java:707)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:387)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:171)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:397)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:323)
+	at org.eclipse.epp.usagedata.internal.recording.uploading.BasicUploader.doUpload(BasicUploader.java:206)
+	at org.eclipse.epp.usagedata.internal.recording.uploading.BasicUploader.upload(BasicUploader.java:129)
+	at org.eclipse.epp.usagedata.internal.recording.uploading.BasicUploader$1.run(BasicUploader.java:105)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.team.core 4 0 2011-11-24 11:14:26.685
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.isMappedToCVS(CVSLightweightDecorator.java:192)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.decorate(CVSLightweightDecorator.java:147)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:371)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:331)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2011-11-24 11:14:26.685
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2011-11-24 11:14:40.172
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:101)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:298)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:811)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:91)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:64)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	... 25 more
+Caused by: org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	... 27 more
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 30 more
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 -6 2011-11-24 11:14:40.174
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:91)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:64)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:811)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	... 27 more
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 30 more
+!SUBENTRY 2 org.tigris.subversion.subclipse.core 4 -6 2011-11-24 11:14:40.174
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 0
+org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:811)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 30 more
+
+!ENTRY org.tigris.subversion.subclipse.core 4 0 2011-11-24 11:15:03.496
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:101)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:298)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:91)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:64)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	... 11 more
+Caused by: org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	... 13 more
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 16 more
+!SUBENTRY 1 org.tigris.subversion.subclipse.core 4 -6 2011-11-24 11:15:03.498
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 1
+org.tigris.subversion.subclipse.core.SVNException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.subclipse.core.SVNException.wrapException(SVNException.java:91)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:64)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	... 13 more
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 16 more
+!SUBENTRY 2 org.tigris.subversion.subclipse.core 4 -6 2011-11-24 11:15:03.498
+!MESSAGE org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+!STACK 0
+org.tigris.subversion.svnclientadapter.SVNClientException: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:542)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:514)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:507)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:62)
+	at org.tigris.subversion.subclipse.core.status.RecursiveStatusUpdateStrategy.statusesToUpdate(RecursiveStatusUpdateStrategy.java:46)
+	at org.tigris.subversion.subclipse.core.status.StatusCacheManager.refreshStatus(StatusCacheManager.java:273)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.refreshStatusInfitite(FileModificationManager.java:149)
+	at org.tigris.subversion.subclipse.core.resourcesListeners.FileModificationManager.resourceChanged(FileModificationManager.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.tigris.subversion.javahl.ClientException: Unsupported working copy format
+svn: The path 'D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model' appears to be part of a Subversion 1.7 or greater
+working copy.  Please upgrade your Subversion client to use this
+working copy.
+
+	at org.tigris.subversion.javahl.SVNClient.status(Native Method)
+	at org.tigris.subversion.svnclientadapter.javahl.AbstractJhlClientAdapter.getStatus(AbstractJhlClientAdapter.java:528)
+	... 16 more
+
+!ENTRY org.eclipse.core.jobs 4 2 2011-11-24 11:30:48.290
+!MESSAGE An internal error occurred during: "XtextReconcilerJob".
+!STACK 0
+java.lang.NullPointerException
+	at com.ge.research.sadl.model.ModelManager.classIsSubclassOf(ModelManager.java:1062)
+	at com.ge.research.sadl.model.ModelManager.validateClassInDomain(ModelManager.java:5267)
+	at com.ge.research.sadl.builder.SadlModelManager.checkPropertyDomainAndRange(SadlModelManager.java:2498)
+	at com.ge.research.sadl.builder.SadlModelManager.checkPropertyDomainAndRange(SadlModelManager.java:2467)
+	at com.ge.research.sadl.builder.SadlModelManager.validateRule(SadlModelManager.java:2409)
+	at com.ge.research.sadl.builder.SadlModelManager.caseRule(SadlModelManager.java:2351)
+	at com.ge.research.sadl.builder.SadlModelManager.caseRule(SadlModelManager.java:1)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:711)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:164)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:150)
+	at com.ge.research.sadl.builder.SadlModelManager.processModel(SadlModelManager.java:211)
+	at com.ge.research.sadl.ui.syntaxcoloring.SadlSemanticHighlightingCalculator.provideHighlightingFor(SadlSemanticHighlightingCalculator.java:45)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.MergingHighlightedPositionAcceptor.provideHighlightingFor(MergingHighlightedPositionAcceptor.java:48)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler.reconcilePositions(HighlightingReconciler.java:87)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler.modelChanged(HighlightingReconciler.java:275)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument.notifyModelListeners(XtextDocument.java:102)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.afterModify(XtextDocument.java:154)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.afterModify(XtextDocument.java:1)
+	at org.eclipse.xtext.util.concurrent.IStateAccess$AbstractImpl.modify(IStateAccess.java:58)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.modify(XtextDocument.java:161)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument.modify(XtextDocument.java:74)
+	at org.eclipse.xtext.ui.editor.reconciler.XtextDocumentReconcileStrategy.reconcile(XtextDocumentReconcileStrategy.java:27)
+	at org.eclipse.xtext.ui.editor.reconciler.XtextReconciler.run(XtextReconciler.java:233)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui 4 0 2011-11-24 11:34:49.471
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at com.ge.research.sadl.model.ModelManager.classIsSubclassOf(ModelManager.java:1062)
+	at com.ge.research.sadl.model.ModelManager.validateClassInDomain(ModelManager.java:5267)
+	at com.ge.research.sadl.builder.SadlModelManager.checkPropertyDomainAndRange(SadlModelManager.java:2498)
+	at com.ge.research.sadl.builder.SadlModelManager.checkPropertyDomainAndRange(SadlModelManager.java:2467)
+	at com.ge.research.sadl.builder.SadlModelManager.validateRule(SadlModelManager.java:2409)
+	at com.ge.research.sadl.builder.SadlModelManager.caseRule(SadlModelManager.java:2351)
+	at com.ge.research.sadl.builder.SadlModelManager.caseRule(SadlModelManager.java:1)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:711)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:164)
+	at com.ge.research.sadl.sadl.util.SadlSwitch.doSwitch(SadlSwitch.java:150)
+	at com.ge.research.sadl.builder.SadlModelManager.processModel(SadlModelManager.java:211)
+	at com.ge.research.sadl.ui.syntaxcoloring.SadlSemanticHighlightingCalculator.provideHighlightingFor(SadlSemanticHighlightingCalculator.java:45)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.MergingHighlightedPositionAcceptor.provideHighlightingFor(MergingHighlightedPositionAcceptor.java:48)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler.reconcilePositions(HighlightingReconciler.java:87)
+	at org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler.modelChanged(HighlightingReconciler.java:275)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument.notifyModelListeners(XtextDocument.java:102)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.afterModify(XtextDocument.java:154)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.afterModify(XtextDocument.java:1)
+	at org.eclipse.xtext.util.concurrent.IStateAccess$AbstractImpl.modify(IStateAccess.java:58)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.modify(XtextDocument.java:161)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.process(XtextDocument.java:182)
+	at org.eclipse.xtext.ui.editor.reconciler.XtextReconciler$DocumentListener.performNecessaryUpdates(XtextReconciler.java:77)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument.updateContentBeforeRead(XtextDocument.java:119)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.beforeReadOnly(XtextDocument.java:137)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument$XtextDocumentLocker.beforeReadOnly(XtextDocument.java:1)
+	at org.eclipse.xtext.util.concurrent.IStateAccess$AbstractImpl.readOnly(IStateAccess.java:39)
+	at org.eclipse.xtext.ui.editor.model.XtextDocument.readOnly(XtextDocument.java:70)
+	at org.eclipse.xtext.ui.editor.hyperlinking.DefaultHyperlinkDetector.detectHyperlinks(DefaultHyperlinkDetector.java:36)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:276)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseMove(HyperlinkManager.java:452)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:205)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4066)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2640)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2604)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2438)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:671)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:664)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:115)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:369)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:619)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:574)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1407)
+
+!ENTRY org.eclipse.core.resources 4 2 2011-11-27 15:38:11.079
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at net.sourceforge.texlipse.TexlipsePlugin.getCurrentWorkbenchPage(TexlipsePlugin.java:259)
+	at net.sourceforge.texlipse.TexlipsePlugin.getCurrentProject(TexlipsePlugin.java:221)
+	at net.sourceforge.texlipse.viewer.ViewerManager.initialize(ViewerManager.java:277)
+	at net.sourceforge.texlipse.viewer.ViewerManager.closeOutputDocument(ViewerManager.java:184)
+	at net.sourceforge.texlipse.builder.TexBuilder.buildResource(TexBuilder.java:218)
+	at net.sourceforge.texlipse.builder.AbstractBuilder.build(AbstractBuilder.java:121)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.buildFile(TexlipseBuilder.java:442)
+	at net.sourceforge.texlipse.builder.TexlipseBuilder.build(TexlipseBuilder.java:86)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:629)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:172)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:203)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:255)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:258)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:311)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:343)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2011-11-27 15:38:39.978 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=no_NO
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.equinox.registry 2 0 2011-11-27 15:38:47.968
+!MESSAGE The extensions and extension-points from the bundle "gov.sandia.jess" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.emf.ecore 2 0 2011-11-27 15:39:49.245
+!MESSAGE Both 'org.pnml.tools.epnk' and 'org.pnml.tools.epnk.diagram' register an extension parser for 'pnx'
+
+!ENTRY org.eclipse.jface 2 0 2011-11-27 15:40:01.122
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-27 15:40:01.122
+!MESSAGE A conflict occurred for ALT+SHIFT+D R:
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.debug,Debug RAP Application,
+		Debug RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.debug,Debug on Server,
+		Debug the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-27 15:40:01.122
+!MESSAGE A conflict occurred for ALT+SHIFT+X R:
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.run,Run RAP Application,
+		Run RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.run,Run on Server,
+		Run the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.team.core 4 0 2011-11-27 15:40:29.015
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.isMappedToCVS(CVSLightweightDecorator.java:192)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.decorate(CVSLightweightDecorator.java:147)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:371)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:331)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2011-11-27 15:40:29.018
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+!SESSION 2011-11-29 02:53:23.275 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=no_NO
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2011-11-29 02:54:09.725
+!MESSAGE Both 'org.pnml.tools.epnk' and 'org.pnml.tools.epnk.diagram' register an extension parser for 'pnx'
+
+!ENTRY org.eclipse.jface 2 0 2011-11-29 02:54:18.387
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-29 02:54:18.387
+!MESSAGE A conflict occurred for ALT+SHIFT+D R:
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.debug,Debug RAP Application,
+		Debug RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+D R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.debug,Debug on Server,
+		Debug the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-11-29 02:54:18.387
+!MESSAGE A conflict occurred for ALT+SHIFT+X R:
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.rap.ui.launch.RAPLaunchShortcut.run,Run RAP Application,
+		Run RAP Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X R,
+	ParameterizedCommand(Command(org.eclipse.wst.server.launchShortcut.run,Run on Server,
+		Run the current selection on a server,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.team.core 4 0 2011-11-29 02:54:39.799
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.isMappedToCVS(CVSLightweightDecorator.java:192)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.decorate(CVSLightweightDecorator.java:147)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:371)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:331)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2011-11-29 02:54:39.801
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Paper.
+
+!ENTRY org.eclipse.epp.usagedata.recording 1 0 2011-11-29 13:16:42.203
+!MESSAGE Usage data uploaded to http://udc.eclipse.org/upload.php in 8491 milliseconds.
+!SESSION 2011-12-11 22:37:26.485 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=no_NO
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 4 2 2011-12-11 22:38:46.085
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+org.eclipse.emf.common.util.WrappedException: org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Value 'PetriNet' is not legal. (file:/D:/Documents/Master/Thesis/workspace/.metadata/.plugins/org.eclipse.xtext.builder/builder.state, 3, 72)
+	at org.eclipse.xtext.builder.builderState.EMFBasedPersister.load(EMFBasedPersister.java:83)
+	at org.eclipse.xtext.builder.builderState.AbstractBuilderState.load(AbstractBuilderState.java:55)
+	at org.eclipse.xtext.builder.builderState.AbstractBuilderState.ensureLoaded(AbstractBuilderState.java:62)
+	at org.eclipse.xtext.builder.builderState.AbstractBuilderState.getAllResourceDescriptions(AbstractBuilderState.java:84)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.doRemoveProject(ToBeBuiltComputer.java:52)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.removeProject(ToBeBuiltComputer.java:48)
+	at org.eclipse.xtext.builder.impl.javasupport.JdtToBeBuiltComputer.removeProject(JdtToBeBuiltComputer.java:68)
+	at org.eclipse.xtext.builder.impl.ProjectOpenedOrClosedListener.scheduleRemoveProjectJob(ProjectOpenedOrClosedListener.java:122)
+	at org.eclipse.xtext.builder.impl.ProjectOpenedOrClosedListener$1.visit(ProjectOpenedOrClosedListener.java:99)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.xtext.builder.impl.ProjectOpenedOrClosedListener.resourceChanged(ProjectOpenedOrClosedListener.java:85)
+	at org.eclipse.xtext.ui.shared.internal.ComposedResourceChangeListener.resourceChanged(ComposedResourceChangeListener.java:29)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at org.tigris.subversion.subclipse.core.util.JobUtility$1.run(JobUtility.java:20)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Value 'PetriNet' is not legal. (file:/D:/Documents/Master/Thesis/workspace/.metadata/.plugins/org.eclipse.xtext.builder/builder.state, 3, 72)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.handleErrors(XMLLoadImpl.java:83)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:191)
+	at org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl.doLoad(XMLResourceImpl.java:242)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1511)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1290)
+	at org.eclipse.xtext.builder.builderState.EMFBasedPersister.load(EMFBasedPersister.java:64)
+	... 22 more
+Caused by: org.eclipse.emf.ecore.xmi.IllegalValueException: Value 'PetriNet' is not legal. (file:/D:/Documents/Master/Thesis/workspace/.metadata/.plugins/org.eclipse.xtext.builder/builder.state, 3, 72)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.setFeatureValue(XMLHandler.java:2663)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.setAttribValue(XMLHandler.java:2717)
+	at org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler.handleObjectAttribs(SAXXMIHandler.java:85)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.createObjectFromFactory(XMLHandler.java:2193)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.createObjectFromFeatureType(XMLHandler.java:2159)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.createObject(XMLHandler.java:2035)
+	at org.eclipse.emf.ecore.xmi.impl.XMIHandler.createObject(XMIHandler.java:134)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.handleFeature(XMLHandler.java:1840)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.processElement(XMLHandler.java:1023)
+	at org.eclipse.emf.ecore.xmi.impl.XMIHandler.processElement(XMIHandler.java:87)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.startElement(XMLHandler.java:1001)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.startElement(XMLHandler.java:712)
+	at org.eclipse.emf.ecore.xmi.impl.XMIHandler.startElement(XMIHandler.java:169)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(Unknown Source)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:181)
+	... 26 more
+Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.String.substring(Unknown Source)
+	at org.eclipse.xtext.util.Strings.unpack(Strings.java:334)
+	at org.eclipse.xtext.util.Strings.unpack(Strings.java:327)
+	at org.eclipse.xtext.builder.builderState.impl.BuilderStateFactoryImpl.createQualifiedNameFromString(BuilderStateFactoryImpl.java:200)
+	at org.eclipse.xtext.builder.builderState.impl.BuilderStateFactoryImpl.createFromString(BuilderStateFactoryImpl.java:92)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl.createFromString(XMLHelperImpl.java:1621)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHelperImpl.setValue(XMLHelperImpl.java:1162)
+	at org.eclipse.emf.ecore.xmi.impl.XMLHandler.setFeatureValue(XMLHandler.java:2658)
+	... 50 more
+
+!ENTRY org.eclipse.osgi 4 0 2011-12-11 22:38:50.896
+!MESSAGE An error occurred while automatically activating bundle com.ge.research.sadl.ui (381).
+!STACK 0
+org.osgi.framework.BundleException: Exception in com.ge.research.sadl.ui.internal.SadlActivator.start() of bundle com.ge.research.sadl.ui.
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:734)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:299)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:268)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:462)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:400)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:345)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1207)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.xtext.internal.ResourceServiceProviderDescriptor.get(ResourceServiceProviderDescriptor.java:40)
+	at org.eclipse.xtext.internal.ResourceServiceProviderDescriptor.get(ResourceServiceProviderDescriptor.java:1)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl$InternalData.getServiceProvider(ResourceServiceProviderRegistryImpl.java:40)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl.getResourceServiceProvider(ResourceServiceProviderRegistryImpl.java:75)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl.getResourceServiceProvider(ResourceServiceProviderRegistryImpl.java:91)
+	at org.eclipse.xtext.ui.resource.UriValidator.isValid(UriValidator.java:27)
+	at org.eclipse.xtext.ui.resource.Storage2UriMapperImpl.isValidUri(Storage2UriMapperImpl.java:99)
+	at org.eclipse.xtext.ui.resource.Storage2UriMapperImpl.getUri(Storage2UriMapperImpl.java:83)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.getUri(ToBeBuiltComputer.java:136)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateStorage(ToBeBuiltComputer.java:114)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer$2.visit(ToBeBuiltComputer.java:103)
+	at org.eclipse.core.internal.resources.Resource$2.visit(Resource.java:106)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:65)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:86)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:127)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:75)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:104)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:88)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateProject(ToBeBuiltComputer.java:98)
+	at org.eclipse.xtext.builder.impl.javasupport.JdtToBeBuiltComputer.updateProject(JdtToBeBuiltComputer.java:78)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateProjectNewResourcesOnly(ToBeBuiltComputer.java:73)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.fullBuild(XtextBuilder.java:180)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.build(XtextBuilder.java:85)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:321)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:396)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:618)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:597)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:124)
+	at org.eclipse.xtext.builder.impl.BuildScheduler$BuildJob.run(BuildScheduler.java:101)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: com.google.inject.internal.ComputationException: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.ConstructorInjectorStore.get(ConstructorInjectorStore.java:52)
+	at com.google.inject.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:57)
+	at com.google.inject.InjectorImpl.initializeBinding(InjectorImpl.java:377)
+	at com.google.inject.InjectorImpl.createJustInTimeBinding(InjectorImpl.java:645)
+	at com.google.inject.InjectorImpl.createJustInTimeBindingRecursive(InjectorImpl.java:581)
+	at com.google.inject.InjectorImpl.getJustInTimeBinding(InjectorImpl.java:172)
+	at com.google.inject.InjectorImpl.getBindingOrThrow(InjectorImpl.java:132)
+	at com.google.inject.InjectorImpl.getInternalFactory(InjectorImpl.java:651)
+	at com.google.inject.FactoryProxy.notify(FactoryProxy.java:48)
+	at com.google.inject.BindingProcessor.runCreationListeners(BindingProcessor.java:230)
+	at com.google.inject.InjectorBuilder.initializeStatically(InjectorBuilder.java:131)
+	at com.google.inject.InjectorBuilder.build(InjectorBuilder.java:105)
+	at com.google.inject.Guice.createInjector(Guice.java:92)
+	at com.google.inject.Guice.createInjector(Guice.java:69)
+	at com.google.inject.Guice.createInjector(Guice.java:59)
+	at com.ge.research.sadl.ui.internal.SadlActivator.start(SadlActivator.java:38)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	... 56 more
+Caused by: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.MembersInjectorStore.get(MembersInjectorStore.java:66)
+	at com.google.inject.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:69)
+	at com.google.inject.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:31)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:39)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:35)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 78 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Unknown Source)
+	at java.lang.Class.getDeclaredMethods(Unknown Source)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:395)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:393)
+	at com.google.inject.spi.InjectionPoint.addInjectorsForMembers(InjectionPoint.java:359)
+	at com.google.inject.spi.InjectionPoint.addInjectionPoints(InjectionPoint.java:353)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:296)
+	at com.google.inject.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:78)
+	at com.google.inject.MembersInjectorStore.access$000(MembersInjectorStore.java:35)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:43)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:40)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 88 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.parsetree.AbstractNode
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:513)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 102 more
+Root exception:
+com.google.inject.internal.ComputationException: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.ConstructorInjectorStore.get(ConstructorInjectorStore.java:52)
+	at com.google.inject.ConstructorBindingImpl.initialize(ConstructorBindingImpl.java:57)
+	at com.google.inject.InjectorImpl.initializeBinding(InjectorImpl.java:377)
+	at com.google.inject.InjectorImpl.createJustInTimeBinding(InjectorImpl.java:645)
+	at com.google.inject.InjectorImpl.createJustInTimeBindingRecursive(InjectorImpl.java:581)
+	at com.google.inject.InjectorImpl.getJustInTimeBinding(InjectorImpl.java:172)
+	at com.google.inject.InjectorImpl.getBindingOrThrow(InjectorImpl.java:132)
+	at com.google.inject.InjectorImpl.getInternalFactory(InjectorImpl.java:651)
+	at com.google.inject.FactoryProxy.notify(FactoryProxy.java:48)
+	at com.google.inject.BindingProcessor.runCreationListeners(BindingProcessor.java:230)
+	at com.google.inject.InjectorBuilder.initializeStatically(InjectorBuilder.java:131)
+	at com.google.inject.InjectorBuilder.build(InjectorBuilder.java:105)
+	at com.google.inject.Guice.createInjector(Guice.java:92)
+	at com.google.inject.Guice.createInjector(Guice.java:69)
+	at com.google.inject.Guice.createInjector(Guice.java:59)
+	at com.ge.research.sadl.ui.internal.SadlActivator.start(SadlActivator.java:38)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:702)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:683)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:381)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:299)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:440)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:268)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:462)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:400)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:476)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.loader.BundleLoader.loadClass(BundleLoader.java:345)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.loadClass(BundleHost.java:229)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.loadClass(AbstractBundle.java:1207)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.xtext.internal.ResourceServiceProviderDescriptor.get(ResourceServiceProviderDescriptor.java:40)
+	at org.eclipse.xtext.internal.ResourceServiceProviderDescriptor.get(ResourceServiceProviderDescriptor.java:1)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl$InternalData.getServiceProvider(ResourceServiceProviderRegistryImpl.java:40)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl.getResourceServiceProvider(ResourceServiceProviderRegistryImpl.java:75)
+	at org.eclipse.xtext.resource.impl.ResourceServiceProviderRegistryImpl.getResourceServiceProvider(ResourceServiceProviderRegistryImpl.java:91)
+	at org.eclipse.xtext.ui.resource.UriValidator.isValid(UriValidator.java:27)
+	at org.eclipse.xtext.ui.resource.Storage2UriMapperImpl.isValidUri(Storage2UriMapperImpl.java:99)
+	at org.eclipse.xtext.ui.resource.Storage2UriMapperImpl.getUri(Storage2UriMapperImpl.java:83)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.getUri(ToBeBuiltComputer.java:136)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateStorage(ToBeBuiltComputer.java:114)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer$2.visit(ToBeBuiltComputer.java:103)
+	at org.eclipse.core.internal.resources.Resource$2.visit(Resource.java:106)
+	at org.eclipse.core.internal.resources.Resource$1.visitElement(Resource.java:65)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:82)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.doIteration(ElementTreeIterator.java:86)
+	at org.eclipse.core.internal.watson.ElementTreeIterator.iterate(ElementTreeIterator.java:127)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:75)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:104)
+	at org.eclipse.core.internal.resources.Resource.accept(Resource.java:88)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateProject(ToBeBuiltComputer.java:98)
+	at org.eclipse.xtext.builder.impl.javasupport.JdtToBeBuiltComputer.updateProject(JdtToBeBuiltComputer.java:78)
+	at org.eclipse.xtext.builder.impl.ToBeBuiltComputer.updateProjectNewResourcesOnly(ToBeBuiltComputer.java:73)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.fullBuild(XtextBuilder.java:180)
+	at org.eclipse.xtext.builder.impl.XtextBuilder.build(XtextBuilder.java:85)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:321)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:396)
+	at org.eclipse.core.internal.resources.Project$1.run(Project.java:618)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.core.internal.resources.Project.internalBuild(Project.java:597)
+	at org.eclipse.core.internal.resources.Project.build(Project.java:124)
+	at org.eclipse.xtext.builder.impl.BuildScheduler$BuildJob.run(BuildScheduler.java:101)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: com.google.inject.internal.ComputationException: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:553)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:419)
+	at com.google.inject.internal.CustomConcurrentHashMap$ComputingImpl.get(CustomConcurrentHashMap.java:2041)
+	at com.google.inject.internal.FailableCache.get(FailableCache.java:46)
+	at com.google.inject.MembersInjectorStore.get(MembersInjectorStore.java:66)
+	at com.google.inject.ConstructorInjectorStore.createConstructor(ConstructorInjectorStore.java:69)
+	at com.google.inject.ConstructorInjectorStore.access$000(ConstructorInjectorStore.java:31)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:39)
+	at com.google.inject.ConstructorInjectorStore$1.create(ConstructorInjectorStore.java:35)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 78 more
+Caused by: java.lang.NoClassDefFoundError: org/eclipse/xtext/parsetree/AbstractNode
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Unknown Source)
+	at java.lang.Class.getDeclaredMethods(Unknown Source)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:395)
+	at com.google.inject.spi.InjectionPoint$Factory$2.getMembers(InjectionPoint.java:393)
+	at com.google.inject.spi.InjectionPoint.addInjectorsForMembers(InjectionPoint.java:359)
+	at com.google.inject.spi.InjectionPoint.addInjectionPoints(InjectionPoint.java:353)
+	at com.google.inject.spi.InjectionPoint.forInstanceMethodsAndFields(InjectionPoint.java:296)
+	at com.google.inject.MembersInjectorStore.createWithListeners(MembersInjectorStore.java:78)
+	at com.google.inject.MembersInjectorStore.access$000(MembersInjectorStore.java:35)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:43)
+	at com.google.inject.MembersInjectorStore$1.create(MembersInjectorStore.java:40)
+	at com.google.inject.internal.FailableCache$1.apply(FailableCache.java:35)
+	at com.google.inject.internal.MapMaker$StrategyImpl.compute(MapMaker.java:549)
+	... 88 more
+Caused by: java.lang.ClassNotFoundException: org.eclipse.xtext.parsetree.AbstractNode
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:513)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:429)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:417)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 102 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2011-12-11 22:38:56.700
+!MESSAGE JavaBuilder handling ImageBuilderInternalException while building: org.cpntools.accesscpn.model
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:793)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Could not delete '/org.cpntools.accesscpn.model/bin/org'.
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model\graphics.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2011-12-11 22:38:56.702
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete '/org.cpntools.accesscpn.model/bin/org'.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFolder(ResourceTree.java:798)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1935)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.cleanOutputFolders(BatchImageBuilder.java:114)
+	at org.eclipse.jdt.internal.core.builder.BatchImageBuilder.build(BatchImageBuilder.java:46)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildAll(JavaBuilder.java:254)
+	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:178)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: Problems encountered while deleting files.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model\graphics.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools.
+Contains: Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org.
+!SUBENTRY 3 org.eclipse.core.resources 4 273 2011-12-11 22:38:56.702
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model\graphics.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn\model.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools\accesscpn.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org\cpntools.
+!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2011-12-11 22:38:56.702
+!MESSAGE Could not delete: D:\Documents\Master\Thesis\workspace\org.cpntools.accesscpn.model\bin\org.
+!SESSION 2012-01-03 23:43:25.374 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_26
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=no_NO
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.ui.views.properties.tabbed 4 4 2012-01-03 23:56:49.901
+!MESSAGE Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in "org.eclipse.ui.navigator.resources" was unable to instantiate class "org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider".
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:194)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:186)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry.<init>(TabbedPropertyRegistry.java:129)
+	at org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistryFactory.createRegistry(TabbedPropertyRegistryFactory.java:74)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.initContributor(TabbedPropertySheetPage.java:406)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.<init>(TabbedPropertySheetPage.java:295)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.<init>(TabbedPropertySheetPage.java:274)
+	at org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetAdapterFactory.getAdapter(TabbedPropertySheetAdapterFactory.java:37)
+	at org.eclipse.core.internal.adapter.AdapterFactoryProxy.getAdapter(AdapterFactoryProxy.java:80)
+	at org.eclipse.core.internal.runtime.AdapterManager.getAdapter(AdapterManager.java:295)
+	at org.eclipse.ui.part.WorkbenchPart.getAdapter(WorkbenchPart.java:151)
+	at org.eclipse.ui.navigator.CommonNavigator.getAdapter(CommonNavigator.java:453)
+	at org.eclipse.ui.internal.views.ViewsPlugin.getAdapter(ViewsPlugin.java:103)
+	at org.eclipse.ui.views.properties.PropertySheet.doCreatePage(PropertySheet.java:207)
+	at org.eclipse.ui.part.PageBookView.createPage(PageBookView.java:408)
+	at org.eclipse.ui.part.PageBookView.partActivated(PageBookView.java:751)
+	at org.eclipse.ui.views.properties.PropertySheet.partActivated(PropertySheet.java:323)
+	at org.eclipse.ui.part.PageBookView.showBootstrapPart(PageBookView.java:920)
+	at org.eclipse.ui.part.PageBookView.createPartControl(PageBookView.java:491)
+	at org.eclipse.ui.views.properties.PropertySheet.createPartControl(PropertySheet.java:157)
+	at org.eclipse.ui.internal.ViewReference.createPartHelper(ViewReference.java:375)
+	at org.eclipse.ui.internal.ViewReference.createPart(ViewReference.java:229)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+	at org.eclipse.ui.internal.PartPane.setVisible(PartPane.java:313)
+	at org.eclipse.ui.internal.ViewPane.setVisible(ViewPane.java:534)
+	at org.eclipse.ui.internal.presentations.PresentablePart.setVisible(PresentablePart.java:180)
+	at org.eclipse.ui.internal.presentations.util.PresentablePartFolder.select(PresentablePartFolder.java:270)
+	at org.eclipse.ui.internal.presentations.util.LeftToRightTabOrder.select(LeftToRightTabOrder.java:65)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation.selectPart(TabbedStackPresentation.java:473)
+	at org.eclipse.ui.internal.PartStack.refreshPresentationSelection(PartStack.java:1245)
+	at org.eclipse.ui.internal.PartStack.setSelection(PartStack.java:1198)
+	at org.eclipse.ui.internal.PartStack.updateContainerVisibleTab(PartStack.java:1648)
+	at org.eclipse.ui.internal.PartStack.createControl(PartStack.java:659)
+	at org.eclipse.ui.internal.PartStack.createControl(PartStack.java:570)
+	at org.eclipse.ui.internal.PartSashContainer.createControl(PartSashContainer.java:568)
+	at org.eclipse.ui.internal.PerspectiveHelper.activate(PerspectiveHelper.java:272)
+	at org.eclipse.ui.internal.Perspective.onActivate(Perspective.java:981)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3713)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1115)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1099)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3814)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3812)
+	at org.eclipse.ui.internal.PerspectiveBarContributionItem.select(PerspectiveBarContributionItem.java:124)
+	at org.eclipse.ui.internal.PerspectiveBarContributionItem$1.widgetSelected(PerspectiveBarContributionItem.java:93)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:240)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4165)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3754)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider.<init>(TabbedPropertySheetTitleProvider.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance0(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:184)
+	... 71 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2012-01-03 23:56:49.904
+!MESSAGE Plug-in "org.eclipse.ui.navigator.resources" was unable to instantiate class "org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider.<init>(TabbedPropertySheetTitleProvider.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at java.lang.Class.newInstance0(Unknown Source)
+	at java.lang.Class.newInstance(Unknown Source)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:184)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistry.<init>(TabbedPropertyRegistry.java:129)
+	at org.eclipse.ui.internal.views.properties.tabbed.view.TabbedPropertyRegistryFactory.createRegistry(TabbedPropertyRegistryFactory.java:74)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.initContributor(TabbedPropertySheetPage.java:406)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.<init>(TabbedPropertySheetPage.java:295)
+	at org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage.<init>(TabbedPropertySheetPage.java:274)
+	at org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetAdapterFactory.getAdapter(TabbedPropertySheetAdapterFactory.java:37)
+	at org.eclipse.core.internal.adapter.AdapterFactoryProxy.getAdapter(AdapterFactoryProxy.java:80)
+	at org.eclipse.core.internal.runtime.AdapterManager.getAdapter(AdapterManager.java:295)
+	at org.eclipse.ui.part.WorkbenchPart.getAdapter(WorkbenchPart.java:151)
+	at org.eclipse.ui.navigator.CommonNavigator.getAdapter(CommonNavigator.java:453)
+	at org.eclipse.ui.internal.views.ViewsPlugin.getAdapter(ViewsPlugin.java:103)
+	at org.eclipse.ui.views.properties.PropertySheet.doCreatePage(PropertySheet.java:207)
+	at org.eclipse.ui.part.PageBookView.createPage(PageBookView.java:408)
+	at org.eclipse.ui.part.PageBookView.partActivated(PageBookView.java:751)
+	at org.eclipse.ui.views.properties.PropertySheet.partActivated(PropertySheet.java:323)
+	at org.eclipse.ui.part.PageBookView.showBootstrapPart(PageBookView.java:920)
+	at org.eclipse.ui.part.PageBookView.createPartControl(PageBookView.java:491)
+	at org.eclipse.ui.views.properties.PropertySheet.createPartControl(PropertySheet.java:157)
+	at org.eclipse.ui.internal.ViewReference.createPartHelper(ViewReference.java:375)
+	at org.eclipse.ui.internal.ViewReference.createPart(ViewReference.java:229)
+	at org.eclipse.ui.internal.WorkbenchPartReference.getPart(WorkbenchPartReference.java:595)
+	at org.eclipse.ui.internal.PartPane.setVisible(PartPane.java:313)
+	at org.eclipse.ui.internal.ViewPane.setVisible(ViewPane.java:534)
+	at org.eclipse.ui.internal.presentations.PresentablePart.setVisible(PresentablePart.java:180)
+	at org.eclipse.ui.internal.presentations.util.PresentablePartFolder.select(PresentablePartFolder.java:270)
+	at org.eclipse.ui.internal.presentations.util.LeftToRightTabOrder.select(LeftToRightTabOrder.java:65)
+	at org.eclipse.ui.internal.presentations.util.TabbedStackPresentation.selectPart(TabbedStackPresentation.java:473)
+	at org.eclipse.ui.internal.PartStack.refreshPresentationSelection(PartStack.java:1245)
+	at org.eclipse.ui.internal.PartStack.setSelection(PartStack.java:1198)
+	at org.eclipse.ui.internal.PartStack.updateContainerVisibleTab(PartStack.java:1648)
+	at org.eclipse.ui.internal.PartStack.createControl(PartStack.java:659)
+	at org.eclipse.ui.internal.PartStack.createControl(PartStack.java:570)
+	at org.eclipse.ui.internal.PartSashContainer.createControl(PartSashContainer.java:568)
+	at org.eclipse.ui.internal.PerspectiveHelper.activate(PerspectiveHelper.java:272)
+	at org.eclipse.ui.internal.Perspective.onActivate(Perspective.java:981)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3713)
+	at org.eclipse.ui.internal.WorkbenchPage.busySetPerspective(WorkbenchPage.java:1115)
+	at org.eclipse.ui.internal.WorkbenchPage.access$16(WorkbenchPage.java:1099)
+	at org.eclipse.ui.internal.WorkbenchPage$19.run(WorkbenchPage.java:3814)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchPage.setPerspective(WorkbenchPage.java:3812)
+	at org.eclipse.ui.internal.PerspectiveBarContributionItem.select(PerspectiveBarContributionItem.java:124)
+	at org.eclipse.ui.internal.PerspectiveBarContributionItem$1.widgetSelected(PerspectiveBarContributionItem.java:93)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:240)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4165)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3754)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2696)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2660)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2494)
+	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:674)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:667)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:123)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:344)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)

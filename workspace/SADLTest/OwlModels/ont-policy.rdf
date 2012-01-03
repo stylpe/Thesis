@@ -2,39 +2,39 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns="http://jena.hpl.hp.com/schemas/2003/03/ont-manager#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <OntologySpec>
-    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >owl</prefix>
-    <publicURI rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
-  </OntologySpec>
-  <OntologySpec>
-    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >CPN</prefix>
-    <createdBy>SADL</createdBy>
-    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <altURL rdf:resource="file:/D:/Documents/Master/Thesis/workspace/SADLTest/OwlModels/cpn.owl"/>
-    <publicURI rdf:resource="http://hib.no/SADLTest/cpn"/>
-  </OntologySpec>
-  <OntologySpec>
-    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >dc</prefix>
-    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <publicURI rdf:resource="http://purl.org/dc/elements/1.1/"/>
-    <altURL rdf:resource="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl"/>
-  </OntologySpec>
   <DocumentManagerPolicy>
-    <processImports rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-    >true</processImports>
     <cacheModels rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
     >true</cacheModels>
+    <processImports rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</processImports>
   </DocumentManagerPolicy>
   <OntologySpec>
-    <publicURI rdf:resource="http://research.ge.com/Acuity/defaults.owl"/>
+    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >def</prefix>
+    <createdBy>SADL</createdBy>
+    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
     <altURL rdf:resource="file:/D:/Documents/Master/Thesis/workspace/SADLTest/OwlModels/defaults.owl"/>
+    <publicURI rdf:resource="http://research.ge.com/Acuity/defaults.owl"/>
+  </OntologySpec>
+  <OntologySpec>
+    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <publicURI rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >owl</prefix>
+  </OntologySpec>
+  <OntologySpec>
+    <altURL rdf:resource="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl"/>
+    <publicURI rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >dc</prefix>
+  </OntologySpec>
+  <OntologySpec>
+    <publicURI rdf:resource="http://hib.no/SADLTest/cpn"/>
+    <altURL rdf:resource="file:/D:/Documents/Master/Thesis/workspace/SADLTest/OwlModels/cpn.owl"/>
     <language rdf:resource="http://www.w3.org/2002/07/owl"/>
     <createdBy>SADL</createdBy>
     <prefix rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >def</prefix>
+    >CPN</prefix>
   </OntologySpec>
 </rdf:RDF>

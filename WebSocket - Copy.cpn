@@ -148,29 +148,17 @@
         <id>Interface declarations</id>
         <color id="ID1414429371">
           <id>OPERATION</id>
-          <union>
-            <unionfield>
-              <id>CONNECT</id>
-            </unionfield>
-            <unionfield>
-              <id>TEXT</id>
-            </unionfield>
-            <unionfield>
-              <id>BINARY</id>
-            </unionfield>
-            <unionfield>
-              <id>PING</id>
-            </unionfield>
-            <unionfield>
-              <id>PONG</id>
-            </unionfield>
-            <unionfield>
-              <id>CLOSE</id>
-            </unionfield>
-          </union>
-          <layout>colset OPERATION = union
-CONNECT + TEXT + BINARY + 
-PING + PONG + CLOSE;</layout>
+          <enum>
+            <id>CONNECT</id>
+            <id>TEXT</id>
+            <id>BINARY</id>
+            <id>PING</id>
+            <id>PONG</id>
+            <id>CLOSE</id>
+          </enum>
+          <layout>colset OPERATION = with
+CONNECT | TEXT | BINARY | 
+PING | PONG | CLOSE;</layout>
         </color>
         <color id="ID1415723367">
           <id>CONN_RESULT</id>
@@ -837,13 +825,13 @@ end</layout>
 | 0x9 =&gt; PING
 | 0xA =&gt; PONG;</layout>
       </ml>
-      <ml id="ID1421364557">fun opSym2Hex sym = case sym of
+      <ml id="ID1421364557">fun opSym2Hex(sym) = case sym of
   TEXT =&gt; opText
 | BINARY =&gt; opBinary
 | CLOSE=&gt; opConnectionClose
 | PING =&gt; opPing
 | PONG =&gt; opPong;
-        <layout>fun opSym2Hex sym = case sym of
+        <layout>fun opSym2Hex(sym) = case sym of
   TEXT =&gt; opText
 | BINARY =&gt; opBinary
 | CLOSE=&gt; opConnectionClose
@@ -2710,17 +2698,11 @@ WsFrame:WSFRAME;</layout>
                   x="10.000000">
         <guideline_elm idref="ID1412677198"/>
         <guideline_elm idref="ID1412664980"/>
-        <guideline_elm idref="ID1412669233"/>
-        <guideline_elm idref="ID1412841551"/>
       </vguideline>
       <vguideline id="ID1427850680"
                   x="182.000000">
         <guideline_elm idref="ID1412674370"/>
         <guideline_elm idref="ID1412664067"/>
-        <guideline_elm idref="ID1412837405"/>
-        <guideline_elm idref="ID1412839466"/>
-        <guideline_elm idref="ID1412669581"/>
-        <guideline_elm idref="ID1412842589"/>
       </vguideline>
       <vguideline id="ID1427851728"
                   x="364.000000">
@@ -3846,8 +3828,7 @@ failed</text>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.0.4">if OPERATION
-.of_CLOSE(#Op msg) 
+                version="3.0.4">if (#Op msg) = CLOSE
 then empty else 1`u</text>
         </annot>
       </arc>
@@ -4393,7 +4374,6 @@ Message=s}]</text>
       <hguideline id="ID1418411790"
                   y="200.000000">
         <guideline_elm idref="ID1414384025"/>
-        <guideline_elm idref="ID1418381635"/>
         <guideline_elm idref="ID1414339285"/>
       </hguideline>
       <vguideline id="ID1418722378"
@@ -4403,9 +4383,6 @@ Message=s}]</text>
       <vguideline id="ID1418724808"
                   x="-276.000000">
         <guideline_elm idref="ID1412725123"/>
-        <guideline_elm idref="ID1418381635"/>
-        <guideline_elm idref="ID1418356329"/>
-        <guideline_elm idref="ID1428386742"/>
       </vguideline>
       <vguideline id="ID1418764749"
                   x="-484.000000">
@@ -16951,7 +16928,7 @@ Connection</text>
         <placeend idref="ID1422877052"/>
         <annot id="ID1427362604">
           <posattr x="956.000000"
-                   y="289.000000"/>
+                   y="282.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -16961,8 +16938,7 @@ Connection</text>
           <textattr colour="Black"
                     bold="false"/>
           <text tool="CPN Tools"
-                version="3.0.4">if OPERATION.
-of_CLOSE(#Op msg) 
+                version="3.0.4">if (#Op msg) = CLOSE
 then empty else 1`u</text>
         </annot>
       </arc>
@@ -17458,14 +17434,14 @@ then empty else 1`u</text>
     </options>
     <binders>
       <cpnbinder id="ID1428670648"
-                 x="325"
-                 y="73"
-                 width="1462"
-                 height="1048">
+                 x="428"
+                 y="61"
+                 width="1214"
+                 height="748">
         <sheets>
           <cpnsheet id="ID1428670641"
-                    panx="-356.000000"
-                    pany="46.000000"
+                    panx="-446.000000"
+                    pany="144.000000"
                     zoom="1.000000"
                     instance="ID1412649592">
             <zorder>
@@ -17473,8 +17449,8 @@ then empty else 1`u</text>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1428671261"
-                    panx="261.000000"
-                    pany="-110.000000"
+                    panx="411.000000"
+                    pany="-134.000000"
                     zoom="1.000000"
                     instance="ID2149">
             <zorder>
@@ -17482,8 +17458,8 @@ then empty else 1`u</text>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1428675886"
-                    panx="-136.000000"
-                    pany="-339.000000"
+                    panx="-180.000000"
+                    pany="-304.000000"
                     zoom="1.000000"
                     instance="ID1412745785">
             <zorder>
@@ -17527,8 +17503,8 @@ then empty else 1`u</text>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1428795869"
-                    panx="-52.000000"
-                    pany="-179.000000"
+                    panx="-34.000000"
+                    pany="-114.000000"
                     zoom="1.000000"
                     instance="ID1417908354">
             <zorder>
@@ -17542,8 +17518,8 @@ then empty else 1`u</text>
                     zoom="1.000000"
                     instance="ID1426379663">
             <zorder>
-              <position value="0"/>
               <position value="1"/>
+              <position value="0"/>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1428813436"
@@ -17556,8 +17532,8 @@ then empty else 1`u</text>
             </zorder>
           </cpnsheet>
           <cpnsheet id="ID1428832623"
-                    panx="-631.000000"
-                    pany="-208.000000"
+                    panx="-594.000000"
+                    pany="-248.000000"
                     zoom="1.000000"
                     instance="ID1413822059">
             <zorder>
@@ -17573,20 +17549,51 @@ then empty else 1`u</text>
               <position value="0"/>
             </zorder>
           </cpnsheet>
+          <cpnsheet id="ID1428868452"
+                    panx="-448.000000"
+                    pany="221.000000"
+                    zoom="1.000000"
+                    instance="ID1426928754">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1428871354"
+                    panx="-174.000000"
+                    pany="97.000000"
+                    zoom="1.000000"
+                    instance="ID1426379663">
+            <zorder>
+              <position value="1"/>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
+          <cpnsheet id="ID1428873238"
+                    panx="-774.000000"
+                    pany="292.000000"
+                    zoom="1.000000"
+                    instance="ID1413824571">
+            <zorder>
+              <position value="0"/>
+            </zorder>
+          </cpnsheet>
         </sheets>
         <zorder>
-          <position value="8"/>
-          <position value="0"/>
           <position value="9"/>
-          <position value="7"/>
-          <position value="10"/>
           <position value="11"/>
-          <position value="2"/>
           <position value="4"/>
-          <position value="1"/>
           <position value="3"/>
           <position value="6"/>
           <position value="5"/>
+          <position value="2"/>
+          <position value="7"/>
+          <position value="8"/>
+          <position value="0"/>
+          <position value="12"/>
+          <position value="13"/>
+          <position value="1"/>
+          <position value="14"/>
+          <position value="10"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -17682,36 +17689,36 @@ then empty else 1`u</text>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
+        <IndexNode expanded="true">
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
+        </IndexNode>
         <IndexNode expanded="false">
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
+          <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
         <IndexNode expanded="true">
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="true"/>
-        </IndexNode>
-        <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -17721,29 +17728,29 @@ then empty else 1`u</text>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false">
+          <IndexNode expanded="true">
             <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-            <IndexNode expanded="true"/>
-          </IndexNode>
-          <IndexNode expanded="false">
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="true"/>
             <IndexNode expanded="false"/>
+          </IndexNode>
+          <IndexNode expanded="true">
             <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="true"/>
+            <IndexNode expanded="false"/>
+            <IndexNode expanded="false"/>
           </IndexNode>
         </IndexNode>
         <IndexNode expanded="false"/>
-        <IndexNode expanded="false"/>
+        <IndexNode expanded="true"/>
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
           <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
-          <IndexNode expanded="false"/>
+          <IndexNode expanded="true"/>
+          <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
         </IndexNode>
@@ -17755,7 +17762,7 @@ then empty else 1`u</text>
         </IndexNode>
       </IndexNode>
       <IndexNode expanded="false"/>
-      <IndexNode expanded="true">
+      <IndexNode expanded="false">
         <IndexNode expanded="true"/>
         <IndexNode expanded="true">
           <IndexNode expanded="true"/>

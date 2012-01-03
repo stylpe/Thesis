@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map>
-	<bundle bundleID="527" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk.pntypes.hlpng.pntd" provider="%providerName">
-		<library name="."/>
-	</bundle>
+	<bundle bundleID="529" class="importer.Activator" localization="OSGI-INF/l10n/bundle" name="Importer" project="Importer"/>
 	<bundle bundleID="528" localization="plugin" name="%pluginName" project="org.cpntools.accesscpn.model" provider="%providerName">
 		<library name="."/>
 	</bundle>
-	<bundle bundleID="529" class="importer.Activator" localization="OSGI-INF/l10n/bundle" name="Importer" project="Importer"/>
+	<bundle bundleID="527" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk.pntypes.hlpng.pntd" provider="%providerName">
+		<library name="."/>
+	</bundle>
 	<bundle bundleID="530" localization="plugin" name="%pluginName" project="org.pnml.tools.epnk.pntypes" provider="%providerName">
 		<library name="."/>
 	</bundle>

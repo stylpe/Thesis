@@ -13,12 +13,13 @@ Node is a class described by name with a single value of type string.
 Place is a type of Node,
 	described by initialMarking with a single value of type string,
 	described by colorType with a single value of type string.
-
+//Switch
 Socket is a type of Place 
 	described by port with a single value of type Port,
 	described by direction with a single value of type SocketDirection.
 	SocketDirection is a class, must be one of {In, Out, InOut}.
 Port is a type of Place described by socket with values of type Socket. 
+//Rule PortSocketRelatinoship
 
 Transition is a type of Node,
 	described by guard with a single value of type string,

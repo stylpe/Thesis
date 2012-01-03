@@ -3576,7 +3576,7 @@ grestore
 gsave
 956.000000 268.000000 translate
 gsave
--67.000000 31.000000 translate
+-69.000000 17.000000 translate
 gsave
 0.000000 0.000000 translate
 /Verdana findfont 12.000000 scalefont setfont
@@ -3584,10 +3584,8 @@ gsave
 0.500000 setlinewidth
 [] 0 setdash
 newpath 0.0 0.000000 moveto
-(if OPERATION.) show
+(if \(#Op msg\) = CLOSE) show
 newpath 0.0 -14.000000 moveto
-(of_CLOSE\(#Op msg\) ) show
-newpath 0.0 -28.000000 moveto
 (then empty else 1`u) show
 grestore
 grestore
