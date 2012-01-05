@@ -1,8 +1,6 @@
-\chapter{Background}
+\chapter{Background}\com{Bør kanskje gjenvurdere om det skal hete
+``Background''}
 \label{chap:background}
-
-TODO:
-
 
 \section{The WebSocket Protocol}
 The primary case study for this thesis is the WebSocket protocol 
@@ -50,11 +48,10 @@ Simulation, verification and analysis. More recently also software design.
 
 The structure of CPN models will be explained gradually through the case study 
 
-\section{CPN Tools}
+\subsection{CPN Tools}
 
 Graphical tool used to design CPN models. 
 
-Reference, with url. Screenshot?
 \begin{comment}
 
 \subsection{CPN ML}
@@ -335,7 +332,8 @@ In this section the model that has been built is described in full detail.
 		If and when the Active Connection place has a \lstinline:UNIT: token, the
 		Client Application can start sending and receiving messages. A sample of
 		messages has been predefined at the Messages to be sent place, but this would
-		probably be dynamic in a real application.
+		probably be dynamic in a real application. \com{Kanskje dette kunne vært mer
+		abstrakt? Argument for hvorfor modellert på denne måten.}
 		
 		Finally, if the Client Application receives a \lstinline:MESSAGE: where the
 		\lstinline:OPERATOR: is \lstinline:CLOSE:, nothing is put back into the Active
@@ -346,9 +344,10 @@ In this section the model that has been built is described in full detail.
 	\fig{ClientWebSocket.eps}{The Client WebSocket Module}{client_wslib}
 
 	This module consists mostly of substitution transitions. The only processing
-	being done directly on this module is masking of all websocket frames, which is required from the
-	client by the protocol specification. The rest is plumbing between the
-	submodules.
+	being done directly on this module is masking of all websocket frames
+	\com{Hvordan funker mask funksjonen?}, which is required from the client by the
+	protocol specification.
+	The rest is plumbing between the submodules.
 	
 	The new coloursets are for HTTP requests and responses, WebSocket frames, and
 	packets. They have corresponding variables. 
@@ -436,8 +435,9 @@ In this section the model that has been built is described in full detail.
 		
 		The transition here has a guard inscription enclosed in square brackets. It is
 		used for two things:
-		Only accepting messages with the \lstinline:CONNECT: operation, and binding the
-		url variable by parsing the string in the message into a \lstinline:URL:
+		The first line limits the transition to only accepting messages with the
+		\lstinline:CONNECT:	operation, while the second line binds the url variable
+		by parsing the string in the message into a \lstinline:URL:
 		colour by using the \lstinline:parseurl(): function. This function makes use of
 		a utility function \lstinline:split():  which splits a string on the first
 		occurrence of a given character. To do this, it uses a recursive function
@@ -515,7 +515,8 @@ In this section the model that has been built is described in full detail.
 		HTTPREQ colour with headers according to the WebSocket protocol requirements.
 		Not all headers defined by the protocol are used, because it is assumed this
 		application is not browser based, and therefore specifying an origin does not
-		make sense.
+		make sense. \com{Skriv hvorfor det er en rimelig antagelse. (Det er det
+		kanskje ikke)}
 		
 		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2]
 		fun httpReqFromUrl (url:URL) = 
