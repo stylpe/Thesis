@@ -1,34 +1,29 @@
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns="http://com.ge.research.sadl.configuration#">
+  <Category rdf:about="http://com.ge.research.sadl.configuration#Builtin"/>
   <Category rdf:about="http://com.ge.research.sadl.configuration#AdHocQuery">
     <pSeqSizeLimit rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
     >10</pSeqSizeLimit>
   </Category>
-  <Category rdf:about="http://com.ge.research.sadl.configuration#Console">
-    <pShowNamespaces rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</pShowNamespaces>
-  </Category>
   <Category rdf:about="http://com.ge.research.sadl.configuration#Jena">
-    <pRuleMode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >hybrid</pRuleMode>
-    <pModelSpec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >OWL_MEM_RDFS</pModelSpec>
-    <pDerivationLogging rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
-    >false</pDerivationLogging>
     <subcategory>
       <rdf:Bag>
         <rdf:li>
-<!--          <Builtin>
-            <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >myBuiltin</name>
-            <class rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >com.ge.research.sadl.jena.builtin.MyBuiltin</class>
-            <outputs rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-            >1</outputs>
-          </Builtin> -->
+
         </rdf:li>
       </rdf:Bag>
     </subcategory>
+    <pDerivationLogging rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</pDerivationLogging>
+    <pModelSpec rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >OWL_MEM_RDFS</pModelSpec>
+    <pRuleMode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >hybrid</pRuleMode>
   </Category>
-  <Category rdf:about="http://com.ge.research.sadl.configuration#Builtin"/>
+  <Category rdf:about="http://com.ge.research.sadl.configuration#Console">
+    <pShowNamespaces rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</pShowNamespaces>
+  </Category>
+  <Category rdf:about="http://com.ge.research.sadl.configuration#ReasonerSpec"/>
 </rdf:RDF>

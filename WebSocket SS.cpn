@@ -3059,11 +3059,11 @@ WsFrame:WSFRAME;</layout>
                  h="40.000000"/>
         <token x="-98.000000"
                y="24.000000"/>
-        <marking x="37.000000"
-                 y="48.000000"
+        <marking x="3.000000"
+                 y="89.000000"
                  hidden="false">
           <snap snap_id="0"
-                anchor.horizontal="3"
+                anchor.horizontal="1"
                 anchor.vertical="2"/>
         </marking>
         <type id="ID1414339286">
@@ -3080,9 +3080,9 @@ WsFrame:WSFRAME;</layout>
           <text tool="CPN Tools"
                 version="3.2.2">MESSAGES</text>
         </type>
-        <initmark id="ID1431157684">
-          <posattr x="503.000000"
-                   y="-16.000000"/>
+        <initmark id="ID1431167866">
+          <posattr x="528.000000"
+                   y="-43.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -3093,13 +3093,9 @@ WsFrame:WSFRAME;</layout>
                     bold="false"/>
           <text tool="CPN Tools"
                 version="3.2.2">[
+  {Op=TEXT, Message=&quot;Long message CLIENT ONE&quot;},
   {Op=PING, Message=&quot;Hello&quot;},
-  {Op=TEXT, Message=&quot;Short message&quot;},
-  {Op=TEXT, Message=&quot;Very long message. &quot;^
-&quot;Very long message. Very long message. &quot;^
-&quot;Very long message. Very long message. &quot;},
-  {Op=CLOSE, Message=&quot;Goodbye&quot;}
-]</text>
+  {Op=CLOSE, Message=&quot;Goodbye&quot;}]</text>
         </initmark>
       </place>
       <place id="ID1414432417">
@@ -4746,6 +4742,7 @@ cEvents</text>
         <guideline_elm idref="ID1428880359"/>
         <guideline_elm idref="ID1428878722"/>
         <guideline_elm idref="ID1412338304"/>
+        <guideline_elm idref="ID1431168121"/>
       </vguideline>
       <vguideline id="ID1430750805"
                   x="96.000000">
@@ -4760,6 +4757,27 @@ cEvents</text>
                   x="-96.000000">
         <guideline_elm idref="ID1412725704"/>
       </vguideline>
+      <Aux id="ID1431168121">
+        <posattr x="539.000000"
+                 y="173.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>[
+  {Op=PING, Message=&quot;Hello&quot;},
+  {Op=TEXT, Message=&quot;Short message&quot;},
+  {Op=TEXT, Message=&quot;Very long message. &quot;^
+&quot;Very long message. Very long message. &quot;^
+&quot;Very long message. Very long message. &quot;},
+  {Op=CLOSE, Message=&quot;Goodbye&quot;}
+]</text>
+      </Aux>
     </page>
     <page id="ID1412745726">
       <pageattr name="ClientWebSocket"/>
@@ -18311,9 +18329,9 @@ Connection</text>
           <text tool="CPN Tools"
                 version="3.2.2">MESSAGES</text>
         </type>
-        <initmark id="ID1431157859">
-          <posattr x="713.000000"
-                   y="402.000000"/>
+        <initmark id="ID1431166931">
+          <posattr x="711.000000"
+                   y="388.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -18324,9 +18342,7 @@ Connection</text>
                     bold="false"/>
           <text tool="CPN Tools"
                 version="3.2.2">[
-  {Op=PONG, Message=&quot;Heartbeat 1&quot;},
-  {Op=PONG, Message=&quot;Heartbeat 2&quot;},
-  {Op=PONG, Message=&quot;Heartbeat 3&quot;}
+  {Op=PONG, Message=&quot;Heartbeat 1&quot;}
 ]</text>
         </initmark>
       </place>
@@ -19174,6 +19190,24 @@ sEvents</text>
         <guideline_elm idref="ID1416910052"/>
         <guideline_elm idref="ID1416905272"/>
       </vguideline>
+      <Aux id="ID1431167166">
+        <posattr x="675.000000"
+                 y="621.000000"/>
+        <fillattr colour="White"
+                  pattern=""
+                  filled="false"/>
+        <lineattr colour="Black"
+                  thick="1"
+                  type="Solid"/>
+        <textattr colour="Black"
+                  bold="false"/>
+        <label/>
+        <text>[
+  {Op=PONG, Message=&quot;Heartbeat 1&quot;},
+  {Op=PONG, Message=&quot;Heartbeat 2&quot;},
+  {Op=PONG, Message=&quot;Heartbeat 3&quot;}
+]</text>
+      </Aux>
     </page>
     <instances>
       <instance id="ID1412649592"
@@ -19438,115 +19472,34 @@ sEvents</text>
       </option>
     </options>
     <binders>
-      <cpnbinder id="ID1428875058"
-                 x="462"
-                 y="66"
-                 width="1351"
-                 height="1038">
+      <cpnbinder id="ID1431170039"
+                 x="271"
+                 y="83"
+                 width="960"
+                 height="583">
         <sheets>
-          <cpnsheet id="ID1428875051"
-                    panx="-372.000000"
-                    pany="183.000000"
-                    zoom="1.000000"
-                    instance="ID1412649592">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1428875077"
-                    panx="-626.000000"
-                    pany="-44.000000"
+          <cpnsheet id="ID1431170032"
+                    panx="-498.000000"
+                    pany="46.000000"
                     zoom="1.000000"
                     instance="ID2149">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1428875533"
-                    panx="-43.000000"
-                    pany="30.000000"
-                    zoom="1.000000"
-                    instance="ID1412745785">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1428875731"
-                    panx="-68.000000"
-                    pany="63.000000"
-                    zoom="1.000000"
-                    instance="ID1417738461">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1428910598"
-                    panx="-103.000000"
-                    pany="-231.000000"
-                    zoom="1.000000"
-                    instance="ID1417907312">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1428916197"
-                    panx="-129.000000"
-                    pany="182.000000"
-                    zoom="1.000000"
-                    instance="ID1426379663">
-            <zorder>
-              <position value="1"/>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1428920383"
-                    panx="-401.000000"
-                    pany="248.000000"
-                    zoom="1.000000"
-                    instance="ID1413822059">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1429160043"
-                    panx="-941.000000"
-                    pany="334.000000"
+          <cpnsheet id="ID1431170051"
+                    panx="-845.000000"
+                    pany="364.000000"
                     zoom="1.000000"
                     instance="ID1413824571">
             <zorder>
               <position value="0"/>
             </zorder>
           </cpnsheet>
-          <cpnsheet id="ID1430029226"
-                    panx="-321.000000"
-                    pany="200.000000"
-                    zoom="1.000000"
-                    instance="ID1426928754">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
-          <cpnsheet id="ID1430075941"
-                    panx="-39.000000"
-                    pany="-149.000000"
-                    zoom="1.000000"
-                    instance="ID1417813654">
-            <zorder>
-              <position value="0"/>
-            </zorder>
-          </cpnsheet>
         </sheets>
         <zorder>
-          <position value="3"/>
-          <position value="9"/>
-          <position value="5"/>
-          <position value="0"/>
-          <position value="8"/>
-          <position value="6"/>
-          <position value="2"/>
-          <position value="4"/>
           <position value="1"/>
-          <position value="7"/>
+          <position value="0"/>
         </zorder>
       </cpnbinder>
     </binders>
@@ -19612,7 +19565,7 @@ sEvents</text>
       <IndexNode expanded="false">
         <IndexNode expanded="false"/>
       </IndexNode>
-      <IndexNode expanded="true">
+      <IndexNode expanded="false">
         <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
@@ -19644,7 +19597,7 @@ sEvents</text>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
         </IndexNode>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="false"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="false"/>
@@ -19680,7 +19633,7 @@ sEvents</text>
             <IndexNode expanded="true"/>
           </IndexNode>
         </IndexNode>
-        <IndexNode expanded="true">
+        <IndexNode expanded="false">
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>
           <IndexNode expanded="true"/>

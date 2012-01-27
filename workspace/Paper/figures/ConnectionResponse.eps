@@ -3416,7 +3416,7 @@ fill grestore
 grestore
 grestore
 gsave
-613.000000 -224.000000 translate
+592.000000 -224.000000 translate
 gsave
 -78.000000 101.000000 translate
 gsave
@@ -3622,19 +3622,19 @@ newpath 0.0 -70.000000 moveto
 newpath 0.0 -84.000000 moveto
 (  Headers=[) show
 newpath 0.0 -98.000000 moveto
-(    \("Upgrade", "websocket"\),) show
+(    {Key="Upgrade", Value="websocket"},) show
 newpath 0.0 -112.000000 moveto
-(    \("Connection", "Upgrade"\),) show
+(    {Key="Connection", Value="Upgrade"},) show
 newpath 0.0 -126.000000 moveto
-(    \("Sec-WebSocket-Accept", ) show
+(    {Key="Sec-WebSocket-Accept", ) show
 newpath 0.0 -140.000000 moveto
-(      generateAccept \(getHeader\() show
+(      Value=generateAccept \(getHeader\() show
 newpath 0.0 -154.000000 moveto
 (        "Sec-WebSocket-Key", \(#Headers httpreq\)) show
 newpath 0.0 -168.000000 moveto
 (      \)\)) show
 newpath 0.0 -182.000000 moveto
-(    \)) show
+(    }) show
 newpath 0.0 -196.000000 moveto
 (  ]) show
 newpath 0.0 -210.000000 moveto
