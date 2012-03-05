@@ -1,9 +1,0 @@
-\chapter*{Danish Summary}
-\addcontentsline{toc}{chapter}{Danish Summary}
-\selectlanguage{danish}
-
-Ved at konstruere en abstrakt beskrivelse af et system i form af en model får man en dybere indsigt i systemet. Modellen kan bruges til at undersøge vigtige egenskaber, enten vha. simulering eller analyse af tilstandsrummet. En typisk tilgang er at bruge modellen som inspiration i en manuel implementering af systemet. Problemet med denne tilgang er at der kan introduceres fejl i implementeringen som ikke findes i modellen. Ved at have en automatisk generering af kode ud fra modellen kan man spare ressourcer, og undgå de fejl der måtte opstå i den manuelle implementering. 
-
-Farvede Petri Net (Coloured Petri Nets på engelsk -- forkortet CPNs) er et grafisk modellerings sprog til at konstruere modeller for især systemer med samtidighed. I dette speciale præsenterer vi en tilgang til automatisk kodegenerering af CPN modeller. Vi foreslår en metode hvor mønstre og strukturerer genkendes i modellen, og definere en underklasse af CPN hvor disse strukturer kan genkendes. Vi kalder denne klasse Procesopdelte Farvede Petri Net (Process Partitioned CPN på engelsk -- forkortet ProPCPN), og har implementeret et værktøj der genererer Erlang kode ud fra en ProPCPN model. Det generede kode valideres ved at sammenligne kørsler af koden med simuleringer i modellen. Vi viser, at udtrykskraften i ProPCPN er stor ved at modellere protokollen Dynamic MANET On-demand (DYMO). DYMO er en stor og avanceret netværks protokol til rutehåndtering i ad-hoc netværk udviklet af Internet Engineering Task Force (IETF). Vi genererer kode ud fra DYMO modellen, og validerer korrektheden af den generede kode. 
-
-\selectlanguage{UKenglish}
