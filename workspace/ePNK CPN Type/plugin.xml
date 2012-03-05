@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.cpntools.pragma.epnk.pnktypes.cpndefinition"
+         name="CPN"
+         point="org.pnml.tools.epnk.pntd">
+      <type
+            class="org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl"
+            description="Coloured Petri Net from CPN Tools">
+      </type>
+   </extension>
+
+</plugin>

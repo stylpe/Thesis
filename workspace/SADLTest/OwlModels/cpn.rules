@@ -2,7 +2,7 @@
 #  Created from SADL model 'http://hib.no/SADLTest/cpn'
 
 
-[PortSocketRelatinoship: (?s rdf:type http://hib.no/SADLTest/cpn#Socket), (?s http://hib.no/SADLTest/cpn#port ?p) -> (?p http://hib.no/SADLTest/cpn#socket ?s)]
-[SocketPortRelatinoship: (?p rdf:type http://hib.no/SADLTest/cpn#Port), (?p http://hib.no/SADLTest/cpn#socket ?s) -> (?s http://hib.no/SADLTest/cpn#port ?p)]
+[SocketPortRelatinoship: (?s rdf:type http://hib.no/SADLTest/cpn#Socket), (?s http://hib.no/SADLTest/cpn#port ?p) -> (?p http://hib.no/SADLTest/cpn#socket ?s)]
+[PortSocketRelatinoship: (?p rdf:type http://hib.no/SADLTest/cpn#Port), (?p http://hib.no/SADLTest/cpn#socket ?s) -> (?s http://hib.no/SADLTest/cpn#port ?p)]
 [ArcPlaceToTrans: (?x rdf:type http://hib.no/SADLTest/cpn#Arc), (?x http://hib.no/SADLTest/cpn#source ?v0), (?v1 rdf:type http://hib.no/SADLTest/cpn#Place), equal(?v0, ?v1), (?v2 rdf:type http://hib.no/SADLTest/cpn#Transition) -> (?x http://hib.no/SADLTest/cpn#dest ?v2)]
 [ArcTransToPlace: (?x rdf:type http://hib.no/SADLTest/cpn#Arc), (?x http://hib.no/SADLTest/cpn#source ?v0), (?v1 rdf:type http://hib.no/SADLTest/cpn#Transition), equal(?v0, ?v1), (?v2 rdf:type http://hib.no/SADLTest/cpn#Place) -> (?x http://hib.no/SADLTest/cpn#dest ?v2)]

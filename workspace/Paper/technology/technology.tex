@@ -1,47 +1,167 @@
-\chapter{Technology and foundation}
+\chapter{Technology and foundations}
 \label{chap:technology}
 
-OUTLINE:
-Decision to use existing platform or create new one
-	Options based on experience: Java, c++/Qt, c\#, Ruby (no native GUI toolkit)
-	Creating a tree editor is simple in most software platforms
-	Many implementations exist in different languages and toolkits
-	Java is a popular language
-	Already have Access/CPN to parse .cpn in Java
-	
-\section{Access/CPN}
-Java-based tool to parse .cpn files saved by CPN Tools.
+One of the first decisions that had to be made for this thesis was whether to
+base the work on an existing platform or to create a new one from
+scratch. In this chapter we will describe the reasoning behind our choices, and
+give an overview of the technologies that have been used.
 
-	
-\section{ePNK}
-About ePNK
-	Eclipse plugin
-Why ePNK?
-	PNML ISO standard file format
-	Actively developed
-	Designed to be generic and easily extendable (model types)
-	Both tree and graphical editor
-Disadvantages
-	Not mature/stable
-Model is very similar to Access/CPN
+\section{(decision)}\com{Finne på tittel}
+	A simple but easy way of manipulating a CPN model is by representing it as a
+	tree. Simple tree editors are a feature of most GUI software platforms. Even
+	so, we realised early that writing everything from scratch would probably take
+	much longer than adapting an existing platform.
 
+	There are of course many complete implementations of Petri Net tools in
+	different languages and toolkits, but few of them are open source, or written with
+	extensibility in mind. If we were to base our work on an existing platform, it
+	would have to be open and extendable. 
+	
+	To narrow our search, we limited our options to solutions in
+	languages we had experience with: Java, c++/Qt and Ruby. Java is a popular
+	language, and we already have Access/CPN, a part of the CPN Tools project,
+	which can parse .cpn files into Java objects. 
+	
+	By searching the web, we discovered the ePNK framework, an extendable framework
+	for working with Petri Nets in a graphical manner, and lets you specify your
+	own Petri Net type. It is built on the Eclipse Modeling Framework (EMF) (which
+	Access/CPN is also built on).
+	
+	We also needed a way to represent pragmatics. It was suggested to try an
+	ontology-based approach, and we decided on SADL, another Eclipse plugin that
+	lets us easily define and work with ontologies.
+	
+	\fig{AppOverviewDiagram.pdf}{Application Overview Diagram}{app_overview}
+	
+	\figref{app_overview} shows the different elements that make up the application.
+	The elements with bold frames are the ones newly created for this thesis, while
+	the rest below are the existing solutions used and built upon. These will be
+	described in the following sections, from the bottom up.
 
 \section{Eclipse IDE}
-Polyglot development environment
-Plugin framework gives great extendability and customisability.
-List of plugins used in thesis as examples? 
+Eclipse IDE is an open source, cross-platform, polyglot development environment.
+Its plugin framework makes it greatly extendable and customisable, and especially makes it
+easy for developers to quickly create anything from small custom macros, to
+advanced editors, to whole applications. The Eclipse IDE is open source, and
+part of the Eclipse Project, a community for incubating and developing open
+source projects.
 
-	\subsection{Eclipse Foundation}
-	Founded by industry leaders such as IBM
-	Drives open source development
+\fig{EclipsePlatformDiagram.pdf}{The Eclipse RCP}{eclipse_rcp}
 
+The Eclipse IDE is built on the Eclipse Rich Client Platform (RCP),
+\figref{eclipse_rcp}. At the bottom of this we have the Platform Runtime, based
+on the OSGi framework, which provides the plugin architecture. The other
+plugins shown in the diagram together form a basic generic IDE.
+
+The principal Eclipse distribution is the Eclipse Java IDE, which is one of the
+most popular tools for developing all kinds of Java applications, from small
+desktop applications, to mobile apps for Android, to web applications, to
+enterprise-scale solutions. 
+
+Plugins are the building blocks of Eclipse, and there exists a wide range of
+plugins that add tools, functionality and services. For example, this thesis
+was written in \LaTeX{} using the Texlipse plugin, and managed with the Git
+version control system through the EGit plugin. 
+
+Publishing a custom plugin is simple. By packaging it and serving it on a
+regular web server, anyone can add the web server url to the update manager in
+Eclipse, and it will let you download and install it directly, as well as
+enabling update notifications.
+
+It is possible to package Eclipse with sets of
+plugins to form custom editions of Eclipse that are tailored for specific
+environments and programming languages. Aptana Studio is one example, aimed at
+Ruby on Rails and PHP development.
 
 
 \section{Eclipse Modeling Framework}
-Part of the Eclipse Platform
-Tools in the form of Eclipse IDE Plugins
+EMF is a framework for Model Driven Development (MDD) in Java. It is an Eclipse
+plugin that is part of the Eclipse Platform, and open source. By providing
+modeling and code generation tools, it lets developers create model
+specifications that can be converted to Java classes, along with a
+set of adapter classes that enable viewing and command-based editing of the
+model, and a basic editor. \com{prøve å utvide, men vanskelig å finne noe mer
+fornuftig å skrive}
 
-	\subsection{GMF}
-	Builds on EMF to provide graphical viewing and editing of models
+	\subsection{Graphical Modeling Framework}
+	GMF builds on EMF to provide graphical viewing and editing of models. It uses
+	metamodels created with EMF to generate implementations of views and editors
+	that can create and edit the respective models. 
 
-\section{How everything comes together}
+\section{ePNK: Petri Net framework}
+ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
+platform for creating new tools for specialised Petri Net types, which is
+exactly what we need for our annotated CPN. It uses EMF and GMF to work with the
+Petri Net models and provide generic editors for custom Petri Net variants.
+
+There are several reasons why ePNK is a good choice:
+\begin{itemize}
+	\item It saves models using the ISO/IEC 15909 \com{referanse?} standard file
+	format PNML,
+	\item It is currently actively developed,
+	\item It is designed to be generic and easily extendable by creating new model
+	types, and
+	\item It includes both a tree editor and a graphical editor, provided through
+	GMF.
+\end{itemize}
+
+ePNK includes definitions for the core PNML model type, as well as two
+subtypes of Petri Nets. The first is P/T-Nets, or Place/Transition Nets, which
+expand on the core model with a few key items: initial markings for places,
+inscriptions on arcs, and constraining arcs to only go between a place and a
+transition (this is not enforced in PNML, as there are Petri Net variants that
+allow this). 
+
+The other is High level Petri nets (HLPNG). This type adds several more labels,
+all of which are Structured Labels. These are parsed and validated using a
+syntax that is inspired from (but not the same as) CPNML from CPN Tools. It is
+possible to write invalid data in these labels and still save the document, as
+they will only be marked as invalid
+
+Neither of these two conform exactly to the Coloured Petri Nets created by CPN
+Tools. HLPNG comes close, but is missing a few things like ports and sockets
+(RefPlaces can emulate this), and substitutin transitions. Also, the
+structured labels are not compatible with CPNML syntax from CPN Tools, and for
+our prototype, these structured labels are not necessary with regard to
+annotations. It is possible that this might be useful in a future version,
+where for example pragmatics are available depending on things like the
+colorset of a place or the variables on an arc, but this would take too much
+time to implement. \com{Bedre formulering av siste setning?}
+
+Our decision was to develop our own Petri net type, which matches CPN Tools as
+close as possible.
+
+\section{Access/CPN: Java interface for CPN Tools}
+CPN Tools has a sister project called Access/CPN. This is an
+EMF-based tool to parse .cpn files and represent them as an
+EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
+easy to parse, but having an existing solution for this is preferrable.
+
+The model definition used by Access/CPN is very similar to that of ePNK.
+\com{Diskutere mer i implementation?}
+
+TODO: Vurdere å utvide med egen algoritme som konverterer direkte til ePNK?
+
+\section{SADL: Ontologies}
+Ontologies are a way to present information and meta-information so that it can
+be understood by computers. Essentially, this is done by defining classes that
+have properties, relations and constraints, and then association
+information with these classes.
+
+There is a lot of ongoing research on this subject, especially to create a
+semantic web, that is extending web pages to provide meta-information about the
+content they contain and enabling software to understand it and reason about it. 
+
+SADL is an Eclipse plugin that defines an english-like syntax for defining
+ontologies, and comes with a text editor that features syntax highlighting,
+parsing and validation. This is useful as we can possibly reuse the editor in
+our plugin for defining model-specific pragmatics.
+
+It also has tools to parse and reason with these ontologies, which we will use
+to filter and validate which pragmatics are available for different model
+entities.
+
+\section{Summary}
+After picking these technologies, since all the componets have Eclipse in
+common, it was an easy decision to develop our project as an Eclipse plugin.
+This also let us centralise all our development in Eclipse.

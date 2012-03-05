@@ -1,0 +1,25 @@
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\newcommand{\com}[1]{
+        \mbox{}
+       \marginpar{\hrule\footnotesize\raggedright\hspace{0pt}#1\vspace{2mm}}}
+
+\newcommand{\fig}[4][0.5]{
+	\begin{figure}
+	\centering
+	\includegraphics[scale=#1]{figures/#2}
+	\caption{#3}
+	\label{fig:#4}
+	\end{figure}
+}
+\newcommand{\figrot}[4][0.5]{
+	\begin{figure}
+	\centering
+	\includegraphics[scale=#1,angle=90]{figures/#2}
+	\caption{#3}
+	\label{fig:#4}
+	\end{figure}
+}
+\newcommand{\figref}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\lstref}[1]{Listing~\ref{lst:#1}}

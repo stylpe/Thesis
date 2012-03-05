@@ -1,0 +1,540 @@
+CPN Tools state space report for:
+/cygdrive/D/Documents/Master/Thesis/WebSocket SS.cpn
+Report generated: Thu Feb  9 02:29:40 2012
+
+
+ Statistics
+------------------------------------------------------------------------
+
+  State Space
+     Nodes:  165748
+     Arcs:   707380
+     Secs:   18000
+     Status: Partial
+
+  Scc Graph
+     Nodes:  165748
+     Arcs:   707380
+     Secs:   252
+
+
+ Boundedness Properties
+------------------------------------------------------------------------
+
+  Best Integer Bounds
+                             Upper      Lower
+     ClientApplication'Active_Connection 1
+                             1          0
+     ClientApplication'Conn_Result 1
+                             1          0
+     ClientApplication'Connection_failed 1
+                             0          0
+     ClientApplication'Messages_received 1
+                             1          1
+     ClientApplication'Messages_to_be_sent 1
+                             1          1
+     ClientApplication'Target_URL 1
+                             1          0
+     ClientApplication'Target_server 1
+                             1          0
+     ClientWebSocket'Client_Connection_Request 1
+                             1          0
+     ClientWebSocket'Client_Connection_Response 1
+                             1          0
+     ClientWebSocket'Client_Incoming_Message 1
+                             1          1
+     ClientWebSocket'Client_Outgoing_Message 1
+                             1          1
+     ClientWebSocket'Connection_status 1
+                             1          0
+     ClientWebSocket'To_send 1
+                             1          1
+     ClientWebSocket'Waiting_for_HTTP_response 1
+                             1          0
+     Defrag'Buffer 1         1          0
+     Defrag'Buffer 2         0          0
+     FragmentAndQueue'Control 1
+                             1          1
+     FragmentAndQueue'Control 2
+                             1          1
+     FragmentAndQueue'Data 1 1          1
+     FragmentAndQueue'Data 2 1          1
+     NewConnection'HTTP_Request 1
+                             1          0
+     Overview'Client_Call 1  1          1
+     Overview'Client_Event 1 1          1
+     Overview'Client_Receive 1
+                             1          1
+     Overview'Client_Send 1  1          1
+     Overview'Server_Call 1  1          1
+     Overview'Server_Event 1 1          1
+     Overview'Server_Receieve 1
+                             1          1
+     Overview'Server_Send 1  1          1
+     ServerApplication'Active_Connection 1
+                             1          0
+     ServerApplication'Received 1
+                             1          1
+     ServerApplication'To_send 1
+                             1          1
+     ServerWebSocket'Connection_Reply 1
+                             1          0
+     ServerWebSocket'Connection_Request 1
+                             1          0
+     ServerWebSocket'Connection_Status 1
+                             1          0
+     ServerWebSocket'Pending_Connection 1
+                             1          0
+     ServerWebSocket'Server_Incoming_Message 1
+                             1          1
+     ServerWebSocket'Server_Outgoing_Message 1
+                             1          1
+     ServerWebSocket'Valid_WS_Frame 1
+                             1          1
+     UnwrapAndReceive'Closing_Connection 1
+                             1          0
+     UnwrapAndReceive'Closing_Connection 2
+                             0          0
+     UnwrapAndReceive'Received_WS_Frame 1
+                             1          1
+     UnwrapAndReceive'Received_WS_Frame 2
+                             1          1
+     WrapAndSend'Next 1      1          1
+     WrapAndSend'Next 2      1          1
+
+  Best Upper Multi-set Bounds
+     ClientApplication'Active_Connection 1
+                         1`()
+     ClientApplication'Conn_Result 1
+                         1`success
+     ClientApplication'Connection_failed 1
+                         empty
+     ClientApplication'Messages_received 1
+                         1`[]++
+1`[{Op=PONG,Message="Heartbeat 1"}]++
+1`[{Op=PONG,Message="Heartbeat 1"},{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=PONG,Message="Heartbeat 1"}]
+     ClientApplication'Messages_to_be_sent 1
+                         1`[]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"},{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
+     ClientApplication'Target_URL 1
+                         1`{Protocol="ws",Host="websocket.com",Port=80,Path="/chat"}
+     ClientApplication'Target_server 1
+                         1`"websocket.com/chat"
+     ClientWebSocket'Client_Connection_Request 1
+                         1`{Protocol="ws",Host="websocket.com",Port=80,Path="/chat"}
+     ClientWebSocket'Client_Connection_Response 1
+                         1`true
+     ClientWebSocket'Client_Incoming_Message 1
+                         1`[]++
+1`[{Op=PONG,Message="Heartbeat 1"}]++
+1`[{Op=PONG,Message="Heartbeat 1"},{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=PONG,Message="Heartbeat 1"}]
+     ClientWebSocket'Client_Outgoing_Message 1
+                         1`[]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"}]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"},{Op=PING,Message="Hello"}]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"},{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
+     ClientWebSocket'Connection_status 1
+                         1`CONN_OPEN++
+1`CONN_CLOSING++
+1`CONN_CLOSED
+     ClientWebSocket'To_send 1
+                         1`[]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]
+     ClientWebSocket'Waiting_for_HTTP_response 1
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+     Defrag'Buffer 1     1`{Op=TEXT,Message="Long message CLIENT "}
+     Defrag'Buffer 2     empty
+     FragmentAndQueue'Control 1
+                         1`[]++
+1`[{Op=PONG,Message="Heartbeat 1"}]++
+1`[{Op=PONG,Message="Heartbeat 1"},{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=PONG,Message="Heartbeat 1"}]
+     FragmentAndQueue'Control 2
+                         1`[]++
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
+     FragmentAndQueue'Data 1
+                         1`[]
+     FragmentAndQueue'Data 2
+                         1`[]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]
+     NewConnection'HTTP_Request 1
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+     Overview'Client_Call 1
+                         1`[]++
+1`[Connect({Protocol="ws",Host="websocket.com",Port=80,Path="/chat"})]++
+1`[CliSendMsg({Op=TEXT,Message="Long message CLIENT ONE"})]++
+1`[CliSendMsg({Op=TEXT,Message="Long message CLIENT ONE"}),CliSendMsg({Op=PING,Message="Hello"})]++
+1`[CliSendMsg({Op=TEXT,Message="Long message CLIENT ONE"}),CliSendMsg({Op=PING,Message="Hello"}),CliSendMsg({Op=CLOSE,Message="Goodbye"})]++
+1`[CliSendMsg({Op=PING,Message="Hello"})]++
+1`[CliSendMsg({Op=PING,Message="Hello"}),CliSendMsg({Op=CLOSE,Message="Goodbye"})]++
+1`[CliSendMsg({Op=CLOSE,Message="Goodbye"})]
+     Overview'Client_Event 1
+                         1`[]++
+1`[CliGetMsg({Op=PONG,Message="Heartbeat 1"})]++
+1`[CliGetMsg({Op=PONG,Message="Heartbeat 1"}),CliGetMsg({Op=PONG,Message="Hello"})]++
+1`[CliGetMsg({Op=PONG,Message="Heartbeat 1"}),ConnResult(success)]++
+1`[CliGetMsg({Op=PONG,Message="Hello"})]++
+1`[CliGetMsg({Op=PONG,Message="Hello"}),CliGetMsg({Op=PONG,Message="Heartbeat 1"})]++
+1`[ConnResult(success)]++
+1`[ConnResult(success),CliGetMsg({Op=PONG,Message="Heartbeat 1"})]
+     Overview'Client_Receive 1
+                         1`[]++
+1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]++
+1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]
+     Overview'Client_Send 1
+                         1`[]++
+1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]
+     Overview'Server_Call 1
+                         1`[]++
+1`[Msg'({Op=PONG,Message="Heartbeat 1"})]++
+1`[ConnReply(accept)]++
+1`[ConnReply(accept),Msg'({Op=PONG,Message="Heartbeat 1"})]
+     Overview'Server_Event 1
+                         1`[]++
+1`[SerGetMsg({Op=TEXT,Message="Long message CLIENT ONE"})]++
+1`[SerGetMsg({Op=TEXT,Message="Long message CLIENT ONE"}),SerGetMsg({Op=PING,Message="Hello"})]++
+1`[SerGetMsg({Op=PING,Message="Hello"})]++
+1`[SerGetMsg({Op=PING,Message="Hello"}),SerGetMsg({Op=TEXT,Message="Long message CLIENT ONE"})]++
+1`[ConnRequest(())]
+     Overview'Server_Receieve 1
+                         1`[]++
+1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=20,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=set,Payload_length=3,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Goodbye"})]
+     Overview'Server_Send 1
+                         1`[]++
+1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]++
+1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=0,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="1000"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]
+     ServerApplication'Active_Connection 1
+                         1`()
+     ServerApplication'Received 1
+                         1`[]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"}]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"},{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Long message CLIENT ONE"}]
+     ServerApplication'To_send 1
+                         1`[]++
+1`[{Op=PONG,Message="Heartbeat 1"}]
+     ServerWebSocket'Connection_Reply 1
+                         1`accept
+     ServerWebSocket'Connection_Request 1
+                         1`()
+     ServerWebSocket'Connection_Status 1
+                         1`CONN_OPEN++
+1`CONN_CLOSED
+     ServerWebSocket'Pending_Connection 1
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+     ServerWebSocket'Server_Incoming_Message 1
+                         1`[]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"}]++
+1`[{Op=TEXT,Message="Long message CLIENT ONE"},{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Long message CLIENT ONE"}]
+     ServerWebSocket'Server_Outgoing_Message 1
+                         1`[]++
+1`[{Op=PONG,Message="Heartbeat 1"}]++
+1`[{Op=PONG,Message="Heartbeat 1"},{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=PONG,Message="Heartbeat 1"}]
+     ServerWebSocket'Valid_WS_Frame 1
+                         1`[]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]
+     UnwrapAndReceive'Closing_Connection 1
+                         1`()
+     UnwrapAndReceive'Closing_Connection 2
+                         empty
+     UnwrapAndReceive'Received_WS_Frame 1
+                         1`[]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]
+     UnwrapAndReceive'Received_WS_Frame 2
+                         1`[]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]
+     WrapAndSend'Next 1  1`[]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=11,Masking_key=Nomask,Payload="Heartbeat 1"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]
+     WrapAndSend'Next 2  1`[]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=clear,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=20,Masking_key=Nomask,Payload="Long message CLIENT "},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=0,Masked=clear,Payload_length=3,Masking_key=Nomask,Payload="ONE"}]
+
+  Best Lower Multi-set Bounds
+     ClientApplication'Active_Connection 1
+                         empty
+     ClientApplication'Conn_Result 1
+                         empty
+     ClientApplication'Connection_failed 1
+                         empty
+     ClientApplication'Messages_received 1
+                         empty
+     ClientApplication'Messages_to_be_sent 1
+                         empty
+     ClientApplication'Target_URL 1
+                         empty
+     ClientApplication'Target_server 1
+                         empty
+     ClientWebSocket'Client_Connection_Request 1
+                         empty
+     ClientWebSocket'Client_Connection_Response 1
+                         empty
+     ClientWebSocket'Client_Incoming_Message 1
+                         empty
+     ClientWebSocket'Client_Outgoing_Message 1
+                         empty
+     ClientWebSocket'Connection_status 1
+                         empty
+     ClientWebSocket'To_send 1
+                         empty
+     ClientWebSocket'Waiting_for_HTTP_response 1
+                         empty
+     Defrag'Buffer 1     empty
+     Defrag'Buffer 2     empty
+     FragmentAndQueue'Control 1
+                         empty
+     FragmentAndQueue'Control 2
+                         empty
+     FragmentAndQueue'Data 1
+                         1`[]
+     FragmentAndQueue'Data 2
+                         empty
+     NewConnection'HTTP_Request 1
+                         empty
+     Overview'Client_Call 1
+                         empty
+     Overview'Client_Event 1
+                         empty
+     Overview'Client_Receive 1
+                         empty
+     Overview'Client_Send 1
+                         empty
+     Overview'Server_Call 1
+                         empty
+     Overview'Server_Event 1
+                         empty
+     Overview'Server_Receieve 1
+                         empty
+     Overview'Server_Send 1
+                         empty
+     ServerApplication'Active_Connection 1
+                         empty
+     ServerApplication'Received 1
+                         empty
+     ServerApplication'To_send 1
+                         empty
+     ServerWebSocket'Connection_Reply 1
+                         empty
+     ServerWebSocket'Connection_Request 1
+                         empty
+     ServerWebSocket'Connection_Status 1
+                         empty
+     ServerWebSocket'Pending_Connection 1
+                         empty
+     ServerWebSocket'Server_Incoming_Message 1
+                         empty
+     ServerWebSocket'Server_Outgoing_Message 1
+                         empty
+     ServerWebSocket'Valid_WS_Frame 1
+                         empty
+     UnwrapAndReceive'Closing_Connection 1
+                         empty
+     UnwrapAndReceive'Closing_Connection 2
+                         empty
+     UnwrapAndReceive'Received_WS_Frame 1
+                         empty
+     UnwrapAndReceive'Received_WS_Frame 2
+                         empty
+     WrapAndSend'Next 1  empty
+     WrapAndSend'Next 2  empty
+
+
+ Home Properties
+------------------------------------------------------------------------
+
+  Home Markings
+     None
+
+
+ Liveness Properties
+------------------------------------------------------------------------
+
+  Dead Markings
+     6931 [165748,165747,165746,165745,165744,...]
+
+  Dead Transition Instances
+     ClientApplication'Fail 1
+     ConnectionResponse'Send_Reject 1
+     Defrag'First 2
+     Defrag'Last 2
+     Defrag'Mid 1
+     Defrag'Mid 2
+     FragmentAndQueue'Queue_data 1
+     UnwrapAndReceive'Close 2
+     UnwrapAndReceive'Send_close_frame 2
+     UnwrapAndReceive'Waiting_for_Close 1
+
+  Live Transition Instances
+     None
+
+
+ Fairness Properties
+------------------------------------------------------------------------
+     No infinite occurrence sequences.
