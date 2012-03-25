@@ -136,17 +136,6 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="http://hib.no/SADLTest/cpn#Node"/>
   </owl:Class>
-  <owl:Class>
-    <owl:unionOf>
-      <rdf:Description rdf:nodeID="A0">
-        <rdf:rest rdf:parseType="Collection">
-          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#Node"/>
-          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#SubstiutionTransition"/>
-        </rdf:rest>
-        <rdf:first rdf:resource="http://hib.no/SADLTest/cpn#PetriNet"/>
-      </rdf:Description>
-    </owl:unionOf>
-  </owl:Class>
   <owl:Class rdf:ID="ColoredPetriNet">
     <rdfs:subClassOf rdf:resource="http://hib.no/SADLTest/cpn#HighLevelPetriNet"/>
   </owl:Class>
@@ -182,6 +171,17 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="http://hib.no/SADLTest/cpn#Transition"/>
+  </owl:Class>
+  <owl:Class>
+    <owl:unionOf>
+      <rdf:Description rdf:nodeID="A0">
+        <rdf:rest rdf:parseType="Collection">
+          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#Node"/>
+          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#SubstiutionTransition"/>
+        </rdf:rest>
+        <rdf:first rdf:resource="http://hib.no/SADLTest/cpn#PetriNet"/>
+      </rdf:Description>
+    </owl:unionOf>
   </owl:Class>
   <owl:Class rdf:ID="Page"/>
   <owl:ObjectProperty rdf:about="http://hib.no/SADLTest/cpn#dest">

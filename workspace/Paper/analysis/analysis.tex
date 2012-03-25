@@ -1,7 +1,7 @@
 \chapter{Analysis and Design}
 \label{chap:analysis}
 
-\section{Requirements} Til kap 3
+\section{Requirements} 
 Load models created in CPN Tools
 	Achieved with Access/CPN
 	.cpn files are XML formatted
@@ -26,22 +26,14 @@ Kao-chow
 
 
 \section{The CPN model type for ePNK}
-ePNK comes with two Petri Net types, Place/Transition-Systems (P/T-
-Systems) and High Level Petri Net Graph (HLPNG). Closest match is HLPNG.
-Not completely compatible with CPN Tools model: Substitution transitions, page
-instances (ideally also declarations, although not supported in the same way in
-ePNK, and not strictly necessary for annotation purposes)
-Model structure is acyclic by definition.
-In any case, need a new model to support annotations. 
-Name? ACPN Annotated CPN, PCPN Pragmatic CPN, APCPN PACPN
 
-Her kommer det mye mer etter hvert som det blir implementert.
 
 \section{Importing from CPN Tools}
 (Burde vært under Implementation?)
 Access/CPN uses many of the same class names as ePNK, making code difficult to
 read due to the need to write fully qualified classpaths.
 Does not parse graphics data.
+Large dependency for small feature.
 Consider rewriting importer to directly create ePNK objects
 
 \section{Creating annotations}
