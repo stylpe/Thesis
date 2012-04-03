@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ePNK Annotated CPN Type/src"
+    modelPluginID="ePNK_Annotated_CPN_Type" modelName="PragmaCPNDefinition" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../ePNK%20CPN%20Type/model/CPNDefinition.genmodel#//cpndefinition platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel">
+  <foreignModel>PragmaCPNDefinition.ecore</foreignModel>
+  <genPackages prefix="Pragmacpndefinition" basePackage="org.cpntools.pragma.epnk.pnktypes"
+      disposableProviderFactory="true" ecorePackage="PragmaCPNDefinition.ecore#/">
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//PragmaCPN">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//PragmaCPN/LoadedPragmaSets"/>
+    </genClasses>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Place"/>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Pragma">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//Pragma/Annotation"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

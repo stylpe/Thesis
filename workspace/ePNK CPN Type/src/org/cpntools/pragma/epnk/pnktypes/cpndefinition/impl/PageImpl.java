@@ -23,25 +23,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * An implementation of the model object '<em><b>Page</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl#getAnnotation <em>Annotation</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
  */
 public class PageImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PageImpl implements Page {
-	/**
-	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnnotation()
-	 * @generated
-	 * @ordered
-	 */
-	protected Pragma annotation;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,121 +45,6 @@ public class PageImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PageImpl im
 	@Override
 	protected EClass eStaticClass() {
 		return CpndefinitionPackage.Literals.PAGE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Pragma getAnnotation() {
-		return annotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAnnotation(Pragma newAnnotation, NotificationChain msgs) {
-		Pragma oldAnnotation = annotation;
-		annotation = newAnnotation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PAGE__ANNOTATION, oldAnnotation, newAnnotation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAnnotation(Pragma newAnnotation) {
-		if (newAnnotation != annotation) {
-			NotificationChain msgs = null;
-			if (annotation != null)
-				msgs = ((InternalEObject)annotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PAGE__ANNOTATION, null, msgs);
-			if (newAnnotation != null)
-				msgs = ((InternalEObject)newAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PAGE__ANNOTATION, null, msgs);
-			msgs = basicSetAnnotation(newAnnotation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PAGE__ANNOTATION, newAnnotation, newAnnotation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CpndefinitionPackage.PAGE__ANNOTATION:
-				return basicSetAnnotation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CpndefinitionPackage.PAGE__ANNOTATION:
-				return getAnnotation();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CpndefinitionPackage.PAGE__ANNOTATION:
-				setAnnotation((Pragma)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CpndefinitionPackage.PAGE__ANNOTATION:
-				setAnnotation((Pragma)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CpndefinitionPackage.PAGE__ANNOTATION:
-				return annotation != null;
-		}
-		return super.eIsSet(featureID);
 	}
 
 } //PageImpl

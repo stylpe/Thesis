@@ -99,29 +99,6 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PragmaItemProvider pragmaItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPragmaAdapter() {
-		if (pragmaItemProvider == null) {
-			pragmaItemProvider = new PragmaItemProvider(this);
-		}
-
-		return pragmaItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,7 +290,6 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	 */
 	public void dispose() {
 		if (cpnItemProvider != null) cpnItemProvider.dispose();
-		if (pragmaItemProvider != null) pragmaItemProvider.dispose();
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();

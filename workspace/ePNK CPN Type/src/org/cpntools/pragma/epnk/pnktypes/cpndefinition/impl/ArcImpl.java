@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl#getInscription <em>Inscription</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,15 +33,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl implements Arc {
 	/**
-	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
+	 * The default value of the '{@link #getInscription() <em>Inscription</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAnnotation()
+	 * @see #getInscription()
 	 * @generated
 	 * @ordered
 	 */
-	protected Pragma annotation;
-
+	protected static final String INSCRIPTION_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getInscription() <em>Inscription</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInscription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String inscription = INSCRIPTION_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,8 +74,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pragma getAnnotation() {
-		return annotation;
+	public String getInscription() {
+		return inscription;
 	}
 
 	/**
@@ -75,47 +83,11 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAnnotation(Pragma newAnnotation, NotificationChain msgs) {
-		Pragma oldAnnotation = annotation;
-		annotation = newAnnotation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__ANNOTATION, oldAnnotation, newAnnotation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAnnotation(Pragma newAnnotation) {
-		if (newAnnotation != annotation) {
-			NotificationChain msgs = null;
-			if (annotation != null)
-				msgs = ((InternalEObject)annotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__ANNOTATION, null, msgs);
-			if (newAnnotation != null)
-				msgs = ((InternalEObject)newAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__ANNOTATION, null, msgs);
-			msgs = basicSetAnnotation(newAnnotation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__ANNOTATION, newAnnotation, newAnnotation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CpndefinitionPackage.ARC__ANNOTATION:
-				return basicSetAnnotation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setInscription(String newInscription) {
+		String oldInscription = inscription;
+		inscription = newInscription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__INSCRIPTION, oldInscription, inscription));
 	}
 
 	/**
@@ -126,8 +98,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__ANNOTATION:
-				return getAnnotation();
+			case CpndefinitionPackage.ARC__INSCRIPTION:
+				return getInscription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -140,8 +112,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__ANNOTATION:
-				setAnnotation((Pragma)newValue);
+			case CpndefinitionPackage.ARC__INSCRIPTION:
+				setInscription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -155,8 +127,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__ANNOTATION:
-				setAnnotation((Pragma)null);
+			case CpndefinitionPackage.ARC__INSCRIPTION:
+				setInscription(INSCRIPTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -170,10 +142,26 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__ANNOTATION:
-				return annotation != null;
+			case CpndefinitionPackage.ARC__INSCRIPTION:
+				return INSCRIPTION_EDEFAULT == null ? inscription != null : !INSCRIPTION_EDEFAULT.equals(inscription);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (Inscription: ");
+		result.append(inscription);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ArcImpl

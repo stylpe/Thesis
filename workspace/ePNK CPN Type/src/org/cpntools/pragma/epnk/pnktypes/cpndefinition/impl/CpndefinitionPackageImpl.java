@@ -46,13 +46,6 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass pragmaEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass placeEClass = null;
 
 	/**
@@ -75,13 +68,6 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * @generated
 	 */
 	private EClass pageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum pragmaSourceEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -161,42 +147,6 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCPN_LoadedPragmaSets() {
-		return (EAttribute)cpnEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPragma() {
-		return pragmaEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPragma_Text() {
-		return (EAttribute)pragmaEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPragma_Source() {
-		return (EAttribute)pragmaEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPlace() {
 		return placeEClass;
 	}
@@ -206,8 +156,17 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPlace_Annotation() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPlace_InitialMarking() {
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPlace_Colorset() {
+		return (EAttribute)placeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -224,8 +183,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getArc_Annotation() {
-		return (EReference)arcEClass.getEStructuralFeatures().get(0);
+	public EAttribute getArc_Inscription() {
+		return (EAttribute)arcEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -242,8 +201,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_Annotation() {
-		return (EReference)transitionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTransition_Guard() {
+		return (EAttribute)transitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -253,24 +212,6 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 */
 	public EClass getPage() {
 		return pageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPage_Annotation() {
-		return (EReference)pageEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getPragmaSource() {
-		return pragmaSourceEEnum;
 	}
 
 	/**
@@ -302,26 +243,18 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 
 		// Create classes and their features
 		cpnEClass = createEClass(CPN);
-		createEAttribute(cpnEClass, CPN__LOADED_PRAGMA_SETS);
-
-		pragmaEClass = createEClass(PRAGMA);
-		createEAttribute(pragmaEClass, PRAGMA__TEXT);
-		createEAttribute(pragmaEClass, PRAGMA__SOURCE);
 
 		placeEClass = createEClass(PLACE);
-		createEReference(placeEClass, PLACE__ANNOTATION);
+		createEAttribute(placeEClass, PLACE__INITIAL_MARKING);
+		createEAttribute(placeEClass, PLACE__COLORSET);
 
 		arcEClass = createEClass(ARC);
-		createEReference(arcEClass, ARC__ANNOTATION);
+		createEAttribute(arcEClass, ARC__INSCRIPTION);
 
 		transitionEClass = createEClass(TRANSITION);
-		createEReference(transitionEClass, TRANSITION__ANNOTATION);
+		createEAttribute(transitionEClass, TRANSITION__GUARD);
 
 		pageEClass = createEClass(PAGE);
-		createEReference(pageEClass, PAGE__ANNOTATION);
-
-		// Create enums
-		pragmaSourceEEnum = createEEnum(PRAGMA_SOURCE);
 	}
 
 	/**
@@ -356,7 +289,6 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 
 		// Add supertypes to classes
 		cpnEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNetType());
-		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		placeEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPlace());
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		transitionEClass.getESuperTypes().add(thePnmlcoremodelPackage.getTransition());
@@ -364,28 +296,18 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(cpnEClass, org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN.class, "CPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCPN_LoadedPragmaSets(), ecorePackage.getEString(), "LoadedPragmaSets", null, 0, -1, org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(pragmaEClass, Pragma.class, "Pragma", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPragma_Text(), ecorePackage.getEString(), "text", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPragma_Source(), this.getPragmaSource(), "source", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlace_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlace_InitialMarking(), ecorePackage.getEString(), "InitialMarking", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlace_Colorset(), ecorePackage.getEString(), "Colorset", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getArc_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getArc_Inscription(), ecorePackage.getEString(), "Inscription", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransition_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransition_Guard(), ecorePackage.getEString(), "Guard", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageEClass, Page.class, "Page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPage_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(pragmaSourceEEnum, PragmaSource.class, "PragmaSource");
-		addEEnumLiteral(pragmaSourceEEnum, PragmaSource.EENUM_LITERAL0);
-		addEEnumLiteral(pragmaSourceEEnum, PragmaSource.EENUM_LITERAL1);
 
 		// Create resource
 		createResource(eNS_URI);

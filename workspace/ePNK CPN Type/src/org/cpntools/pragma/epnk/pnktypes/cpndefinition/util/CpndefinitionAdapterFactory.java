@@ -83,10 +83,6 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createCPNAdapter();
 			}
 			@Override
-			public Adapter casePragma(Pragma object) {
-				return createPragmaAdapter();
-			}
-			@Override
 			public Adapter casePlace(Place object) {
 				return createPlaceAdapter();
 			}
@@ -105,10 +101,6 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
 				return createPetriNetTypeAdapter();
-			}
-			@Override
-			public Adapter caseLabel(Label object) {
-				return createLabelAdapter();
 			}
 			@Override
 			public Adapter caseID(ID object) {
@@ -181,20 +173,6 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma <em>Pragma</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma
-	 * @generated
-	 */
-	public Adapter createPragmaAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place <em>Place</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -261,20 +239,6 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPetriNetTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Label <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.pnml.tools.epnk.pnmlcoremodel.Label
-	 * @generated
-	 */
-	public Adapter createLabelAdapter() {
 		return null;
 	}
 

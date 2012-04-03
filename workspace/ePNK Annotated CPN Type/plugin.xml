@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition"
+         name="Annotated CPN"
+         point="org.pnml.tools.epnk.pntd">
+      <type
+            class="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaCPNImpl"
+            description="Annotated Coloured Petri Net">
+      </type>
+   </extension>
+
+</plugin>

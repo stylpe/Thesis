@@ -65,7 +65,6 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case CpndefinitionPackage.CPN: return createCPN();
-			case CpndefinitionPackage.PRAGMA: return createPragma();
 			case CpndefinitionPackage.PLACE: return createPlace();
 			case CpndefinitionPackage.ARC: return createArc();
 			case CpndefinitionPackage.TRANSITION: return createTransition();
@@ -80,49 +79,9 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case CpndefinitionPackage.PRAGMA_SOURCE:
-				return createPragmaSourceFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case CpndefinitionPackage.PRAGMA_SOURCE:
-				return convertPragmaSourceToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public CPN createCPN() {
 		CPNImpl cpn = new CPNImpl();
 		return cpn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Pragma createPragma() {
-		PragmaImpl pragma = new PragmaImpl();
-		return pragma;
 	}
 
 	/**
@@ -163,26 +122,6 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	public Page createPage() {
 		PageImpl page = new PageImpl();
 		return page;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PragmaSource createPragmaSourceFromString(EDataType eDataType, String initialValue) {
-		PragmaSource result = PragmaSource.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertPragmaSourceToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

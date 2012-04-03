@@ -35,15 +35,6 @@ public interface CpndefinitionFactory extends EFactory {
 	CPN createCPN();
 
 	/**
-	 * Returns a new object of class '<em>Pragma</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pragma</em>'.
-	 * @generated
-	 */
-	Pragma createPragma();
-
-	/**
 	 * Returns a new object of class '<em>Place</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

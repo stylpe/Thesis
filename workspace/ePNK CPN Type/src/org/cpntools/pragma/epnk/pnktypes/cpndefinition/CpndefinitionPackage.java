@@ -73,86 +73,13 @@ public interface CpndefinitionPackage extends EPackage {
 	int CPN = 0;
 
 	/**
-	 * The feature id for the '<em><b>Loaded Pragma Sets</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CPN__LOADED_PRAGMA_SETS = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>CPN</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CPN_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl <em>Pragma</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPragma()
-	 * @generated
-	 */
-	int PRAGMA = 1;
-
-	/**
-	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA__TOOLSPECIFIC = PnmlcoremodelPackage.LABEL__TOOLSPECIFIC;
-
-	/**
-	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA__GRAPHICS = PnmlcoremodelPackage.LABEL__GRAPHICS;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA__UNKNOWN = PnmlcoremodelPackage.LABEL__UNKNOWN;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA__TEXT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA__SOURCE = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Pragma</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 2;
+	int CPN_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl <em>Place</em>}' class.
@@ -162,7 +89,7 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPlace()
 	 * @generated
 	 */
-	int PLACE = 2;
+	int PLACE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -228,13 +155,22 @@ public interface CpndefinitionPackage extends EPackage {
 	int PLACE__IN = PnmlcoremodelPackage.PLACE__IN;
 
 	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * The feature id for the '<em><b>Initial Marking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__ANNOTATION = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 0;
+	int PLACE__INITIAL_MARKING = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Colorset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE__COLORSET = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Place</em>' class.
@@ -243,7 +179,7 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_FEATURE_COUNT = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 1;
+	int PLACE_FEATURE_COUNT = PnmlcoremodelPackage.PLACE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl <em>Arc</em>}' class.
@@ -253,7 +189,7 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getArc()
 	 * @generated
 	 */
-	int ARC = 3;
+	int ARC = 2;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -319,13 +255,13 @@ public interface CpndefinitionPackage extends EPackage {
 	int ARC__TARGET = PnmlcoremodelPackage.ARC__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * The feature id for the '<em><b>Inscription</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARC__ANNOTATION = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
+	int ARC__INSCRIPTION = PnmlcoremodelPackage.ARC_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Arc</em>' class.
@@ -344,7 +280,7 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 4;
+	int TRANSITION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -410,13 +346,13 @@ public interface CpndefinitionPackage extends EPackage {
 	int TRANSITION__IN = PnmlcoremodelPackage.TRANSITION__IN;
 
 	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * The feature id for the '<em><b>Guard</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__ANNOTATION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
+	int TRANSITION__GUARD = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
@@ -435,7 +371,7 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPage()
 	 * @generated
 	 */
-	int PAGE = 5;
+	int PAGE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -528,32 +464,13 @@ public interface CpndefinitionPackage extends EPackage {
 	int PAGE__LABELPROXY = PnmlcoremodelPackage.PAGE__LABELPROXY;
 
 	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE__ANNOTATION = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Page</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_FEATURE_COUNT = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPragmaSource()
-	 * @generated
-	 */
-	int PRAGMA_SOURCE = 6;
+	int PAGE_FEATURE_COUNT = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN <em>CPN</em>}'.
@@ -566,49 +483,6 @@ public interface CpndefinitionPackage extends EPackage {
 	EClass getCPN();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Loaded Pragma Sets</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN#getLoadedPragmaSets()
-	 * @see #getCPN()
-	 * @generated
-	 */
-	EAttribute getCPN_LoadedPragmaSets();
-
-	/**
-	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma <em>Pragma</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pragma</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma
-	 * @generated
-	 */
-	EClass getPragma();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma#getText()
-	 * @see #getPragma()
-	 * @generated
-	 */
-	EAttribute getPragma_Text();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Source</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma#getSource()
-	 * @see #getPragma()
-	 * @generated
-	 */
-	EAttribute getPragma_Source();
-
-	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place <em>Place</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -619,15 +493,26 @@ public interface CpndefinitionPackage extends EPackage {
 	EClass getPlace();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getAnnotation <em>Annotation</em>}'.
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getAnnotation()
+	 * @return the meta object for the attribute '<em>Initial Marking</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking()
 	 * @see #getPlace()
 	 * @generated
 	 */
-	EReference getPlace_Annotation();
+	EAttribute getPlace_InitialMarking();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset <em>Colorset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Colorset</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EAttribute getPlace_Colorset();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc <em>Arc</em>}'.
@@ -640,15 +525,15 @@ public interface CpndefinitionPackage extends EPackage {
 	EClass getArc();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getAnnotation <em>Annotation</em>}'.
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getAnnotation()
+	 * @return the meta object for the attribute '<em>Inscription</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription()
 	 * @see #getArc()
 	 * @generated
 	 */
-	EReference getArc_Annotation();
+	EAttribute getArc_Inscription();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition <em>Transition</em>}'.
@@ -661,15 +546,15 @@ public interface CpndefinitionPackage extends EPackage {
 	EClass getTransition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getAnnotation <em>Annotation</em>}'.
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getAnnotation()
+	 * @return the meta object for the attribute '<em>Guard</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard()
 	 * @see #getTransition()
 	 * @generated
 	 */
-	EReference getTransition_Annotation();
+	EAttribute getTransition_Guard();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page <em>Page</em>}'.
@@ -680,27 +565,6 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPage();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page#getAnnotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page#getAnnotation()
-	 * @see #getPage()
-	 * @generated
-	 */
-	EReference getPage_Annotation();
-
-	/**
-	 * Returns the meta object for enum '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Pragma Source</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource
-	 * @generated
-	 */
-	EEnum getPragmaSource();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -735,40 +599,6 @@ public interface CpndefinitionPackage extends EPackage {
 		EClass CPN = eINSTANCE.getCPN();
 
 		/**
-		 * The meta object literal for the '<em><b>Loaded Pragma Sets</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CPN__LOADED_PRAGMA_SETS = eINSTANCE.getCPN_LoadedPragmaSets();
-
-		/**
-		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl <em>Pragma</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPragma()
-		 * @generated
-		 */
-		EClass PRAGMA = eINSTANCE.getPragma();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PRAGMA__TEXT = eINSTANCE.getPragma_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PRAGMA__SOURCE = eINSTANCE.getPragma_Source();
-
-		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl <em>Place</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -779,12 +609,20 @@ public interface CpndefinitionPackage extends EPackage {
 		EClass PLACE = eINSTANCE.getPlace();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Initial Marking</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLACE__ANNOTATION = eINSTANCE.getPlace_Annotation();
+		EAttribute PLACE__INITIAL_MARKING = eINSTANCE.getPlace_InitialMarking();
+
+		/**
+		 * The meta object literal for the '<em><b>Colorset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PLACE__COLORSET = eINSTANCE.getPlace_Colorset();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl <em>Arc</em>}' class.
@@ -797,12 +635,12 @@ public interface CpndefinitionPackage extends EPackage {
 		EClass ARC = eINSTANCE.getArc();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Inscription</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ARC__ANNOTATION = eINSTANCE.getArc_Annotation();
+		EAttribute ARC__INSCRIPTION = eINSTANCE.getArc_Inscription();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.TransitionImpl <em>Transition</em>}' class.
@@ -815,12 +653,12 @@ public interface CpndefinitionPackage extends EPackage {
 		EClass TRANSITION = eINSTANCE.getTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Guard</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__ANNOTATION = eINSTANCE.getTransition_Annotation();
+		EAttribute TRANSITION__GUARD = eINSTANCE.getTransition_Guard();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl <em>Page</em>}' class.
@@ -831,24 +669,6 @@ public interface CpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PAGE = eINSTANCE.getPage();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PAGE__ANNOTATION = eINSTANCE.getPage_Annotation();
-
-		/**
-		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPragmaSource()
-		 * @generated
-		 */
-		EEnum PRAGMA_SOURCE = eINSTANCE.getPragmaSource();
 
 	}
 

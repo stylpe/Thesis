@@ -15,7 +15,8 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset <em>Colorset</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +26,55 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	/**
-	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Initial Marking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Annotation</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Initial Marking</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotation</em>' containment reference.
-	 * @see #setAnnotation(Pragma)
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_Annotation()
-	 * @model containment="true"
+	 * @return the value of the '<em>Initial Marking</em>' attribute.
+	 * @see #setInitialMarking(String)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_InitialMarking()
+	 * @model
 	 * @generated
 	 */
-	Pragma getAnnotation();
+	String getInitialMarking();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getAnnotation <em>Annotation</em>}' containment reference.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotation</em>' containment reference.
-	 * @see #getAnnotation()
+	 * @param value the new value of the '<em>Initial Marking</em>' attribute.
+	 * @see #getInitialMarking()
 	 * @generated
 	 */
-	void setAnnotation(Pragma value);
+	void setInitialMarking(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Colorset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Colorset</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Colorset</em>' attribute.
+	 * @see #setColorset(String)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_Colorset()
+	 * @model
+	 * @generated
+	 */
+	String getColorset();
+
+	/**
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset <em>Colorset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Colorset</em>' attribute.
+	 * @see #getColorset()
+	 * @generated
+	 */
+	void setColorset(String value);
 
 } // Place

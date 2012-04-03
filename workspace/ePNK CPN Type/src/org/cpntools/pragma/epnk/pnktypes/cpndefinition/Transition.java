@@ -15,7 +15,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +25,29 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition {
 	/**
-	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Guard</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Annotation</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Guard</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotation</em>' containment reference.
-	 * @see #setAnnotation(Pragma)
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getTransition_Annotation()
-	 * @model containment="true"
+	 * @return the value of the '<em>Guard</em>' attribute.
+	 * @see #setGuard(String)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getTransition_Guard()
+	 * @model
 	 * @generated
 	 */
-	Pragma getAnnotation();
+	String getGuard();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getAnnotation <em>Annotation</em>}' containment reference.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotation</em>' containment reference.
-	 * @see #getAnnotation()
+	 * @param value the new value of the '<em>Guard</em>' attribute.
+	 * @see #getGuard()
 	 * @generated
 	 */
-	void setAnnotation(Pragma value);
+	void setGuard(String value);
 
 } // Transition
