@@ -12,6 +12,7 @@ import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 

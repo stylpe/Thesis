@@ -7,7 +7,7 @@
          name="CPN"
          point="org.pnml.tools.epnk.pntd">
       <type
-            class="org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl"
+            class="org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl"
             description="Coloured Petri Net from CPN Tools">
       </type>
    </extension>

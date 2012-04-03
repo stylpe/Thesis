@@ -7,29 +7,32 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import java.util.Collection;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType;
+
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>CPN Type</b></em>'.
+ * An implementation of the model object '<em><b>CPN</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
+public class CPNImpl extends PetriNetTypeImpl implements CPN {
 	/**
 	 * The cached value of the '{@link #getLoadedPragmaSets() <em>Loaded Pragma Sets</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -45,7 +48,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public CPNTypeImpl() {
+	public CPNImpl() {
 		super();
 	}
 
@@ -56,7 +59,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CpndefinitionPackage.Literals.CPN_TYPE;
+		return CpndefinitionPackage.Literals.CPN;
 	}
 
 	/**
@@ -66,7 +69,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	 */
 	public EList<String> getLoadedPragmaSets() {
 		if (loadedPragmaSets == null) {
-			loadedPragmaSets = new EDataTypeUniqueEList<String>(String.class, this, CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS);
+			loadedPragmaSets = new EDataTypeUniqueEList<String>(String.class, this, CpndefinitionPackage.CPN__LOADED_PRAGMA_SETS);
 		}
 		return loadedPragmaSets;
 	}
@@ -79,7 +82,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS:
+			case CpndefinitionPackage.CPN__LOADED_PRAGMA_SETS:
 				return getLoadedPragmaSets();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -94,7 +97,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS:
+			case CpndefinitionPackage.CPN__LOADED_PRAGMA_SETS:
 				getLoadedPragmaSets().clear();
 				getLoadedPragmaSets().addAll((Collection<? extends String>)newValue);
 				return;
@@ -110,7 +113,7 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS:
+			case CpndefinitionPackage.CPN__LOADED_PRAGMA_SETS:
 				getLoadedPragmaSets().clear();
 				return;
 		}
@@ -125,17 +128,17 @@ public class CPNTypeImpl extends PetriNetTypeImpl implements CPNType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS:
+			case CpndefinitionPackage.CPN__LOADED_PRAGMA_SETS:
 				return loadedPragmaSets != null && !loadedPragmaSets.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
+	
 	@Override
 	// @generated NOT
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "WAT";
 	}
-
-} //CPNTypeImpl
+} //CPNImpl

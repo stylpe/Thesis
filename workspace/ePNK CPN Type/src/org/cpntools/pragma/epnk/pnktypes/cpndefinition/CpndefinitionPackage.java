@@ -63,14 +63,14 @@ public interface CpndefinitionPackage extends EPackage {
 	CpndefinitionPackage eINSTANCE = org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl <em>CPN Type</em>}' class.
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl <em>CPN</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getCPNType()
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getCPN()
 	 * @generated
 	 */
-	int CPN_TYPE = 0;
+	int CPN = 0;
 
 	/**
 	 * The feature id for the '<em><b>Loaded Pragma Sets</b></em>' attribute list.
@@ -79,16 +79,16 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CPN_TYPE__LOADED_PRAGMA_SETS = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 0;
+	int CPN__LOADED_PRAGMA_SETS = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>CPN Type</em>' class.
+	 * The number of structural features of the '<em>CPN</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CPN_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 1;
+	int CPN_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_TYPE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl <em>Pragma</em>}' class.
@@ -428,6 +428,124 @@ public interface CpndefinitionPackage extends EPackage {
 	int TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl <em>Page</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPage()
+	 * @generated
+	 */
+	int PAGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__ID = PnmlcoremodelPackage.PAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__NAME = PnmlcoremodelPackage.PAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__TOOLSPECIFIC = PnmlcoremodelPackage.PAGE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__GRAPHICS = PnmlcoremodelPackage.PAGE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__UNKNOWN = PnmlcoremodelPackage.PAGE__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__OUT = PnmlcoremodelPackage.PAGE__OUT;
+
+	/**
+	 * The feature id for the '<em><b>In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__IN = PnmlcoremodelPackage.PAGE__IN;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__OBJECT = PnmlcoremodelPackage.PAGE__OBJECT;
+
+	/**
+	 * The feature id for the '<em><b>Page Label Proxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PAGE_LABEL_PROXY = PnmlcoremodelPackage.PAGE__PAGE_LABEL_PROXY;
+
+	/**
+	 * The feature id for the '<em><b>Labelproxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__LABELPROXY = PnmlcoremodelPackage.PAGE__LABELPROXY;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__ANNOTATION = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Page</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_FEATURE_COUNT = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -435,28 +553,28 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPragmaSource()
 	 * @generated
 	 */
-	int PRAGMA_SOURCE = 5;
+	int PRAGMA_SOURCE = 6;
 
 	/**
-	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType <em>CPN Type</em>}'.
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN <em>CPN</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>CPN Type</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType
+	 * @return the meta object for class '<em>CPN</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN
 	 * @generated
 	 */
-	EClass getCPNType();
+	EClass getCPN();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Loaded Pragma Sets</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType#getLoadedPragmaSets()
-	 * @see #getCPNType()
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN#getLoadedPragmaSets()
+	 * @see #getCPN()
 	 * @generated
 	 */
-	EAttribute getCPNType_LoadedPragmaSets();
+	EAttribute getCPN_LoadedPragmaSets();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma <em>Pragma</em>}'.
@@ -554,6 +672,27 @@ public interface CpndefinitionPackage extends EPackage {
 	EReference getTransition_Annotation();
 
 	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Page</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page
+	 * @generated
+	 */
+	EClass getPage();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page#getAnnotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Annotation</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page#getAnnotation()
+	 * @see #getPage()
+	 * @generated
+	 */
+	EReference getPage_Annotation();
+
+	/**
 	 * Returns the meta object for enum '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -586,14 +725,14 @@ public interface CpndefinitionPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl <em>CPN Type</em>}' class.
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl <em>CPN</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNTypeImpl
-		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getCPNType()
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getCPN()
 		 * @generated
 		 */
-		EClass CPN_TYPE = eINSTANCE.getCPNType();
+		EClass CPN = eINSTANCE.getCPN();
 
 		/**
 		 * The meta object literal for the '<em><b>Loaded Pragma Sets</b></em>' attribute list feature.
@@ -601,7 +740,7 @@ public interface CpndefinitionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CPN_TYPE__LOADED_PRAGMA_SETS = eINSTANCE.getCPNType_LoadedPragmaSets();
+		EAttribute CPN__LOADED_PRAGMA_SETS = eINSTANCE.getCPN_LoadedPragmaSets();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PragmaImpl <em>Pragma</em>}' class.
@@ -682,6 +821,24 @@ public interface CpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION__ANNOTATION = eINSTANCE.getTransition_Annotation();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl <em>Page</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getPage()
+		 * @generated
+		 */
+		EClass PAGE = eINSTANCE.getPage();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAGE__ANNOTATION = eINSTANCE.getPage_Annotation();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource <em>Pragma Source</em>}' enum.

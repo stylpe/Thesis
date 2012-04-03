@@ -26,13 +26,13 @@ public interface CpndefinitionFactory extends EFactory {
 	CpndefinitionFactory eINSTANCE = org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>CPN Type</em>'.
+	 * Returns a new object of class '<em>CPN</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>CPN Type</em>'.
+	 * @return a new object of class '<em>CPN</em>'.
 	 * @generated
 	 */
-	CPNType createCPNType();
+	CPN createCPN();
 
 	/**
 	 * Returns a new object of class '<em>Pragma</em>'.
@@ -69,6 +69,15 @@ public interface CpndefinitionFactory extends EFactory {
 	 * @generated
 	 */
 	Transition createTransition();
+
+	/**
+	 * Returns a new object of class '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Page</em>'.
+	 * @generated
+	 */
+	Page createPage();
 
 	/**
 	 * Returns the package supported by this factory.

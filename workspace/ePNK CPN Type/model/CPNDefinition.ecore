@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cpndefinition"
     nsURI="http://cpndefinition/1.0" nsPrefix="cpndefinition">
-  <eClassifiers xsi:type="ecore:EClass" name="CPNType" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNetType">
+  <eClassifiers xsi:type="ecore:EClass" name="CPN" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNetType">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="LoadedPragmaSets" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -27,5 +27,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="PragmaSource">
     <eLiterals name="EEnumLiteral0"/>
     <eLiterals name="EEnumLiteral1" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" eType="#//Pragma"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

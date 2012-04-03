@@ -76,26 +76,26 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType} instances.
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CPNTypeItemProvider cpnTypeItemProvider;
+	protected CPNItemProvider cpnItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType}.
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createCPNTypeAdapter() {
-		if (cpnTypeItemProvider == null) {
-			cpnTypeItemProvider = new CPNTypeItemProvider(this);
+	public Adapter createCPNAdapter() {
+		if (cpnItemProvider == null) {
+			cpnItemProvider = new CPNItemProvider(this);
 		}
 
-		return cpnTypeItemProvider;
+		return cpnItemProvider;
 	}
 
 	/**
@@ -188,6 +188,29 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 		}
 
 		return transitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PageItemProvider pageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPageAdapter() {
+		if (pageItemProvider == null) {
+			pageItemProvider = new PageItemProvider(this);
+		}
+
+		return pageItemProvider;
 	}
 
 	/**
@@ -289,11 +312,12 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	 * @generated
 	 */
 	public void dispose() {
-		if (cpnTypeItemProvider != null) cpnTypeItemProvider.dispose();
+		if (cpnItemProvider != null) cpnItemProvider.dispose();
 		if (pragmaItemProvider != null) pragmaItemProvider.dispose();
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
+		if (pageItemProvider != null) pageItemProvider.dispose();
 	}
 
 }

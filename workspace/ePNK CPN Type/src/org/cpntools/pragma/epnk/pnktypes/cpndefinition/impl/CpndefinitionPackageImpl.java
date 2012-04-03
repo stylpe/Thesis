@@ -11,7 +11,9 @@ import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.EClass0;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
@@ -37,7 +39,7 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass cpnTypeEClass = null;
+	private EClass cpnEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,6 +68,13 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * @generated
 	 */
 	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,8 +152,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCPNType() {
-		return cpnTypeEClass;
+	public EClass getCPN() {
+		return cpnEClass;
 	}
 
 	/**
@@ -152,8 +161,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCPNType_LoadedPragmaSets() {
-		return (EAttribute)cpnTypeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getCPN_LoadedPragmaSets() {
+		return (EAttribute)cpnEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -242,6 +251,24 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPage() {
+		return pageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPage_Annotation() {
+		return (EReference)pageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getPragmaSource() {
 		return pragmaSourceEEnum;
 	}
@@ -274,8 +301,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 		isCreated = true;
 
 		// Create classes and their features
-		cpnTypeEClass = createEClass(CPN_TYPE);
-		createEAttribute(cpnTypeEClass, CPN_TYPE__LOADED_PRAGMA_SETS);
+		cpnEClass = createEClass(CPN);
+		createEAttribute(cpnEClass, CPN__LOADED_PRAGMA_SETS);
 
 		pragmaEClass = createEClass(PRAGMA);
 		createEAttribute(pragmaEClass, PRAGMA__TEXT);
@@ -289,6 +316,9 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 
 		transitionEClass = createEClass(TRANSITION);
 		createEReference(transitionEClass, TRANSITION__ANNOTATION);
+
+		pageEClass = createEClass(PAGE);
+		createEReference(pageEClass, PAGE__ANNOTATION);
 
 		// Create enums
 		pragmaSourceEEnum = createEEnum(PRAGMA_SOURCE);
@@ -325,15 +355,16 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		cpnTypeEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNetType());
+		cpnEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNetType());
 		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		placeEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPlace());
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		transitionEClass.getESuperTypes().add(thePnmlcoremodelPackage.getTransition());
+		pageEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPage());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(cpnTypeEClass, CPNType.class, "CPNType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCPNType_LoadedPragmaSets(), ecorePackage.getEString(), "LoadedPragmaSets", null, 0, -1, CPNType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cpnEClass, org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN.class, "CPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCPN_LoadedPragmaSets(), ecorePackage.getEString(), "LoadedPragmaSets", null, 0, -1, org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pragmaEClass, Pragma.class, "Pragma", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPragma_Text(), ecorePackage.getEString(), "text", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -347,6 +378,9 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransition_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pageEClass, Page.class, "Page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPage_Annotation(), this.getPragma(), null, "Annotation", null, 0, 1, Page.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(pragmaSourceEEnum, PragmaSource.class, "PragmaSource");

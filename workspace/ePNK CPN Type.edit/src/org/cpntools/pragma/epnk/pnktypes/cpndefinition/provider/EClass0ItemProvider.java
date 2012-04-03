@@ -10,33 +10,27 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.pnml.tools.epnk.pnmlcoremodel.provider.PetriNetTypeItemProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType} object.
+ * This is the item provider adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.EClass0} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CPNTypeItemProvider
-	extends PetriNetTypeItemProvider
+public class EClass0ItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -49,7 +43,7 @@ public class CPNTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CPNTypeItemProvider(AdapterFactory adapterFactory) {
+	public EClass0ItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,42 +58,19 @@ public class CPNTypeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLoadedPragmaSetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Loaded Pragma Sets feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLoadedPragmaSetsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CPNType_LoadedPragmaSets_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CPNType_LoadedPragmaSets_feature", "_UI_CPNType_type"),
-				 CpndefinitionPackage.Literals.CPN_TYPE__LOADED_PRAGMA_SETS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns CPNType.gif.
+	 * This returns EClass0.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CPNType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EClass0"));
 	}
 
 	/**
@@ -110,7 +81,7 @@ public class CPNTypeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_CPNType_type");
+		return getString("_UI_EClass0_type");
 	}
 
 	/**
@@ -123,12 +94,6 @@ public class CPNTypeItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(CPNType.class)) {
-			case CpndefinitionPackage.CPN_TYPE__LOADED_PRAGMA_SETS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

@@ -79,10 +79,10 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case CpndefinitionPackage.CPN_TYPE: {
-				CPNType cpnType = (CPNType)theEObject;
-				T result = caseCPNType(cpnType);
-				if (result == null) result = casePetriNetType(cpnType);
+			case CpndefinitionPackage.CPN: {
+				CPN cpn = (CPN)theEObject;
+				T result = caseCPN(cpn);
+				if (result == null) result = casePetriNetType(cpn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -124,22 +124,32 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CpndefinitionPackage.PAGE: {
+				Page page = (Page)theEObject;
+				T result = casePage(page);
+				if (result == null) result = casePnmlcoremodel_Page(page);
+				if (result == null) result = caseNode(page);
+				if (result == null) result = caseObject(page);
+				if (result == null) result = caseID(page);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>CPN Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>CPN</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>CPN Type</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>CPN</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCPNType(CPNType object) {
+	public T caseCPN(CPN object) {
 		return null;
 	}
 
@@ -200,6 +210,21 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTransition(Transition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePage(Page object) {
 		return null;
 	}
 
@@ -350,6 +375,21 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePnmlcoremodel_Transition(org.pnml.tools.epnk.pnmlcoremodel.Transition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
 		return null;
 	}
 

@@ -3,10 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: EPNK_CPN_Type
 Bundle-SymbolicName: ePNK_CPN_Type; singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: epnk_cpn_type.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.pnml.tools.epnk;bundle-version="0.9.2"
+ org.pnml.tools.epnk;bundle-version="0.9.3"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.cpntools.pragma.epnk.pnktypes.cpndefinition,

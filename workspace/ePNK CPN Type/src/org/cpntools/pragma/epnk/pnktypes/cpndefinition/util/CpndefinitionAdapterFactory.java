@@ -79,8 +79,8 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	protected CpndefinitionSwitch<Adapter> modelSwitch =
 		new CpndefinitionSwitch<Adapter>() {
 			@Override
-			public Adapter caseCPNType(CPNType object) {
-				return createCPNTypeAdapter();
+			public Adapter caseCPN(CPN object) {
+				return createCPNAdapter();
 			}
 			@Override
 			public Adapter casePragma(Pragma object) {
@@ -97,6 +97,10 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTransition(Transition object) {
 				return createTransitionAdapter();
+			}
+			@Override
+			public Adapter casePage(Page object) {
+				return createPageAdapter();
 			}
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
@@ -139,6 +143,10 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createPnmlcoremodel_TransitionAdapter();
 			}
 			@Override
+			public Adapter casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
+				return createPnmlcoremodel_PageAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -159,16 +167,16 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType <em>CPN Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN <em>CPN</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN
 	 * @generated
 	 */
-	public Adapter createCPNTypeAdapter() {
+	public Adapter createCPNAdapter() {
 		return null;
 	}
 
@@ -225,6 +233,20 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page
+	 * @generated
+	 */
+	public Adapter createPageAdapter() {
 		return null;
 	}
 
@@ -365,6 +387,20 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPnmlcoremodel_TransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Page
+	 * @generated
+	 */
+	public Adapter createPnmlcoremodel_PageAdapter() {
 		return null;
 	}
 

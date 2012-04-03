@@ -64,11 +64,12 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CpndefinitionPackage.CPN_TYPE: return createCPNType();
+			case CpndefinitionPackage.CPN: return createCPN();
 			case CpndefinitionPackage.PRAGMA: return createPragma();
 			case CpndefinitionPackage.PLACE: return createPlace();
 			case CpndefinitionPackage.ARC: return createArc();
 			case CpndefinitionPackage.TRANSITION: return createTransition();
+			case CpndefinitionPackage.PAGE: return createPage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -109,9 +110,9 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CPNType createCPNType() {
-		CPNTypeImpl cpnType = new CPNTypeImpl();
-		return cpnType;
+	public CPN createCPN() {
+		CPNImpl cpn = new CPNImpl();
+		return cpn;
 	}
 
 	/**
@@ -152,6 +153,16 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	public Transition createTransition() {
 		TransitionImpl transition = new TransitionImpl();
 		return transition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Page createPage() {
+		PageImpl page = new PageImpl();
+		return page;
 	}
 
 	/**
