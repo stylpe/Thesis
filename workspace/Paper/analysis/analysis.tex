@@ -2,42 +2,117 @@
 \label{chap:analysis}
 
 \section{Requirements} 
-Load models created in CPN Tools
-	Achieved with Access/CPN
-	.cpn files are XML formatted
+Before we describe the plugin itself, the requirements need to be detailed.
+There are four main parts to this:
 
-Annotate model with pragmatics
-	Validation
+\begin{itemize}
+	\item Loading models created in CPN Tools.
 
-Load sets of pragmatics to add to model
+	\item Annotate model with pragmatics. 
+		
+	\item Load sets/classes of pragmatics to add to model
+	
+	\item Create model specific pragmatics on the fly
 
-Create model specific pragmatics on the fly
+\end{itemize}
 
 \section{Test cases}
 
 (NYI, trenger eksempler)
+
 Simple protocol
+
 Kao-chow
 
 
 \section{Defining Pragmatics}
+TODO: Detaljert info om pragmatikker og hva de er
 
+A Pragmatic is an annotation on a model element that describes how it should be
+translated into code.
 
+Pragmatics come in three types: General, domain-specific and model-specific.
 
+In the context of network protocols, general pragmatics include concepts
+like channels, principals, and operations like opening or closing a connection,
+and sending or receiving data. 
+
+Domain-specific pragmatics are things that apply to all (or many) protocols
+within a domain. An example is security protocols, where domain specific
+operations are encryption and decryption, nonce generation, etc.
+
+Model-specific pragmatics apply only to the model in which they are defined. The
+WebSocket Protocol has a few examples, like masking and unmasking of frames, and
+verification of received frames.
+
+\section{THe CPN Ontology with Pragmatics}
+(Obsolete ettersom Kent er på vei bort fra SADL, skal skrives om til Manchester
+syntax)
 
 \section{The CPN model type for ePNK}
 
+TODO: Two-tiered model possibility? CPN -> Annotated CPN
+
+\fig{CPNDefinition.pdf}{Model type diagram}{model_diagram}
+Every Petri Net model created in ePNK is initially only
+defined by the PNML Core Model type, but can add a PetriNetType object to extend
+it with the features of another model type. Only one such object can exist for a
+Petri Net. Once such an object is added, ePNK will dynamically load the related
+plugin(s), and the menus for adding new objects to the net will include any new
+classes that the Petri Net Type defines.
+
+A custom Petri Net Type is made by creating an Eclipse Plugin project.
+The plugin manifest then needs to be edited to define this plugin as an
+extension to the org.pnml.tools.epnk.pntd extension point of ePNK.
+
+Next, an EMF model should be created. This model should inherit
+the PNML Core Model from ePNK, or any other model that already does this (like
+P/T-Net and HLPNG does). The first thing this new Model Type should define is a
+subclass of PetriNetType with the name of the new Model Type. This is done in
+the top left corner of our diagram. This class is what will appear in the menu
+to add a Petri Net Type to a new model in ePNK. 
+
+In order to change the functionality of existing classes such as Place, Arc and
+Page, we need to create subclasses of them. EMF does not support merging of
+models, so we can not define new properties or relations directly on the
+referenced classes of the Core Model. Instead, ePNK will check the new Petri Net
+Type model for subclasses with the same name, and load these dynamically instead
+of the base classes. This can be seen in our diagram, where Place, Arc,
+Transition and Page are all subclassed from the classes referenced from the Core
+Model. These subclasses then have references to the Pragma class. As we can see
+in \figref{add_child_pragma_menu}, Pragma objects are now available as
+children to Places.
+
+\fig[0.6]{ePNK_AddChildMenu.png}{Adding Pragma as child to
+Place}{add_child_pragma_menu}
+
+The Pragma class inherits from Label, which lets it be represented visually as a
+text label in the graph editor of ePNK.
+
 
 \section{Importing from CPN Tools}
-(Burde vært under Implementation?)
-Access/CPN uses many of the same class names as ePNK, making code difficult to
-read due to the need to write fully qualified classpaths.
-Does not parse graphics data.
-Large dependency for small feature.
-Consider rewriting importer to directly create ePNK objects
+CPN Tools saves models in .cpn files as plain XML. Access/CPN is a set of tools
+that can parse these files and represent the model with EMF classes. It has many
+tools to analyse the CPN models, but only the model importer is interesting to
+us.
+
+The EMF model for CPN models that Access/CPN defines uses many of the same class
+names as ePNK, making code difficult to write and read due to the need to use
+fully qualified classpaths to avoid name collisions. Because of this, and the
+fact that it was missing a few features like importing graphics, we early on
+considered creating a new parser based on the code in Access/CPN. But it has
+continually improved during development of our plugin, and is now also capable
+of parsing graphics data. By using this plugin instead of rewriting it, we can
+also benefit from further updates more easily.
+
+TODO: Sjekke med repo-admin om problem med SVN, får ikke sjekket ut siste
+revisjon
+
+The conversion is very straightforward, the .cpn file is loaded with Access/CPN,
+and the resulting model is then converted to the ePNK CPN type.
 
 \section{Creating annotations}
-Labels on nodes (and arcs?) and inscriptions and everything. 
+Labels on nodes, arcs and inscriptions. 
 Choose from list. Possibly write freehand with content assist. Validation, with
 problem markers (Eclipse feature).
 
