@@ -14,14 +14,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
-import org.cpntools.accesscpn.model.Arc;
 import org.cpntools.accesscpn.model.Instance;
 import org.cpntools.accesscpn.model.RefPlace;
 import org.cpntools.accesscpn.model.graphics.NodeGraphics;
 import org.cpntools.accesscpn.model.importer.DOMParser;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -49,17 +52,23 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.pnml.tools.epnk.graphics.datatypes.CSSColor;
+import org.pnml.tools.epnk.graphics.datatypes.IllegalFormatException;
+import org.pnml.tools.epnk.pnmlcoremodel.AnnotationGraphics;
 import org.pnml.tools.epnk.pnmlcoremodel.Coordinate;
+import org.pnml.tools.epnk.pnmlcoremodel.Fill;
+import org.pnml.tools.epnk.pnmlcoremodel.Line;
+import org.pnml.tools.epnk.pnmlcoremodel.LineShape;
 import org.pnml.tools.epnk.pnmlcoremodel.Name;
 import org.pnml.tools.epnk.pnmlcoremodel.Object;
 import org.pnml.tools.epnk.pnmlcoremodel.Page;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetDoc;
 import org.pnml.tools.epnk.pnmlcoremodel.Place;
+import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelFactory;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
-import org.pnml.tools.epnk.pntypes.hlpng.pntd.hlpngdefinition.HLPNG;
-import org.pnml.tools.epnk.pntypes.hlpng.pntd.hlpngdefinition.HlpngdefinitionFactory;
+import org.pnml.tools.epnk.toolspecific.diagraminfo.DiagraminfoFactory;
 
 public class ImportWizard extends Wizard implements IImportWizard {
 	
@@ -115,7 +124,8 @@ public class ImportWizard extends Wizard implements IImportWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			Throwable realException = e.getTargetException();
-			MessageDialog.openError(getShell(), "Error", realException.getMessage());
+			realException.printStackTrace();
+			MessageDialog.openError(getShell(), "Error", realException.toString());
 			return false;
 		}
 		return true;
@@ -210,35 +220,47 @@ public class ImportWizard extends Wizard implements IImportWizard {
 	
 	// private vars for convenience
 	private PnmlcoremodelFactory core = PnmlcoremodelFactory.eINSTANCE;
-	private HlpngdefinitionFactory hlpngFac = HlpngdefinitionFactory.eINSTANCE;
-	private HLPNG hlpng;
+	private CpndefinitionFactory cpnFac = CpndefinitionFactory.eINSTANCE;
+	private CPN cpn;
+	private Map<org.pnml.tools.epnk.pnmlcoremodel.RefPlace, String> refPlaces;
+	private Map<String, org.pnml.tools.epnk.pnmlcoremodel.Node> idToNodeMap;
 	
 	/**
 	 * Create the PNML document (contents).
 	 * 
-	 * @author eki
+	 * @author Mikal
 	 */
-	public PetriNetDoc convertPetriNetDoc(org.cpntools.accesscpn.model.PetriNet cpn) {
+	public PetriNetDoc convertPetriNetDoc(org.cpntools.accesscpn.model.PetriNet cpnnet) {
 		
 		// Prepare document
 		PetriNetDoc doc = core.createPetriNetDoc();
-		PetriNet pnml = core.createPetriNet();
-		pnml.setId(cpn.getId());
-		doc.getNet().add(pnml);
+		PetriNet pnmlnet = core.createPetriNet();
+		pnmlnet.setId(cpnnet.getId());
+		doc.getNet().add(pnmlnet);
 		
-		hlpng = hlpngFac.createHLPNG();
-		pnml.setType(hlpng);
+		cpn = cpnFac.createCPN();
+		pnmlnet.setType(cpn);
 		Name nameLabel = core.createName();
-		nameLabel.setText(cpn.getName().asString());
-		pnml.setName(nameLabel);
+		nameLabel.setText(cpnnet.getName().asString());
+		pnmlnet.setName(nameLabel);
 		
 		// Convert pages
-		List<org.cpntools.accesscpn.model.Page> cpnPages = cpn.getPage();
-		EList<org.pnml.tools.epnk.pnmlcoremodel.Page> pnmlPages = pnml.getPage();
+		List<org.cpntools.accesscpn.model.Page> cpnPages = cpnnet.getPage();
+		EList<org.pnml.tools.epnk.pnmlcoremodel.Page> pnmlPages = pnmlnet.getPage();
+		
+		refPlaces = new HashMap<org.pnml.tools.epnk.pnmlcoremodel.RefPlace, String>();
+		idToNodeMap = new HashMap<String, org.pnml.tools.epnk.pnmlcoremodel.Node>();
 		
 		for(org.cpntools.accesscpn.model.Page cpnPage : cpnPages) {
 			Page newPage = convertPage(cpnPage);
 			pnmlPages.add(newPage);
+			//newPage.getToolspecific().add(DiagraminfoFactory.eINSTANCE.createDiagramInfo());
+		}
+		
+		for(Entry<org.pnml.tools.epnk.pnmlcoremodel.RefPlace, String> pair : refPlaces.entrySet()) {
+			System.out.println("Connecting RefPlace");
+			System.out.println(pair.getValue());
+			pair.getKey().setRef((PlaceNode) idToNodeMap.get(pair.getValue()));
 		}
 		
 		return doc;
@@ -249,45 +271,63 @@ public class ImportWizard extends Wizard implements IImportWizard {
 	 * @param cpnPage
 	 */
 	private org.pnml.tools.epnk.pnmlcoremodel.Page convertPage(org.cpntools.accesscpn.model.Page cpnPage) {
-		Page pnmlPage = hlpng.createPage();
+		
+		Page pnmlPage = cpn.createPage();
 		convertObjectParams(cpnPage, pnmlPage);
+		idToNodeMap.put(pnmlPage.getId(), pnmlPage);
 		
 		EList<org.pnml.tools.epnk.pnmlcoremodel.Object> pageList = pnmlPage.getObject();
-		//List<org.cpntools.accesscpn.model.Object> objects = cpnPage.getObject();
-		Map<String, org.pnml.tools.epnk.pnmlcoremodel.Node> idToNodeMap 
-			= new HashMap<String, org.pnml.tools.epnk.pnmlcoremodel.Node>();
+		
 		for(org.cpntools.accesscpn.model.Place cpnPlace : cpnPage.place()) {
-			Place pnmlPlace = hlpng.createPlace();
+			Place pnmlPlace = cpn.createPlace();
 			copyNodeParams(cpnPlace, pnmlPlace);
 			pageList.add(pnmlPlace);
 			idToNodeMap.put(pnmlPlace.getId(), pnmlPlace);
 		}
 		for(RefPlace cpnPort : cpnPage.portPlace()) {
-			Place pnmlPlace = hlpng.createPlace();
+			org.pnml.tools.epnk.pnmlcoremodel.RefPlace pnmlPlace = cpn.createRefPlace();
 			copyNodeParams(cpnPort, pnmlPlace);
 			pageList.add(pnmlPlace);
 			idToNodeMap.put(pnmlPlace.getId(), pnmlPlace);
+			
+			org.cpntools.accesscpn.model.Place ref = cpnPort.getRef();
+			if(ref != null)	refPlaces.put(pnmlPlace, ref.getId());
+			else ;
 		}
 		for(org.cpntools.accesscpn.model.Transition cpnTrans : cpnPage.transition()) {
-			Transition pnmlTrans = hlpng.createTransition();
+			Transition pnmlTrans = cpn.createTransition();
 			copyNodeParams(cpnTrans, pnmlTrans);
 			pageList.add(pnmlTrans);
 			idToNodeMap.put(pnmlTrans.getId(), pnmlTrans);
 		}
 		for(Instance cpnInst : cpnPage.instance()) {
-			Transition pnmlTrans = hlpng.createTransition();
+			Transition pnmlTrans = cpn.createTransition();
 			copyNodeParams(cpnInst, pnmlTrans);
 			pageList.add(pnmlTrans);
 			idToNodeMap.put(pnmlTrans.getId(), pnmlTrans);
 		}
 		
 		for(org.cpntools.accesscpn.model.Arc cpnArc : cpnPage.getArc()) {
-			org.pnml.tools.epnk.pnmlcoremodel.Arc pnmlArc = hlpng.createArc();
+			org.pnml.tools.epnk.pnmlcoremodel.Arc pnmlArc = cpn.createArc();
 			pnmlArc.setId(cpnArc.getId());
 			String id = cpnArc.getSource().getId();
 			pnmlArc.setSource(idToNodeMap.get(id));
 			id = cpnArc.getTarget().getId();
 			pnmlArc.setTarget(idToNodeMap.get(id));
+			
+			org.cpntools.accesscpn.model.graphics.ArcGraphics oldGfx = cpnArc.getArcGraphics();
+			org.pnml.tools.epnk.pnmlcoremodel.ArcGraphics gfx = core.createArcGraphics();
+			//gfx.setLine();
+			List<org.cpntools.accesscpn.model.graphics.Coordinate> oldPos = oldGfx.getPosition();
+			EList<org.pnml.tools.epnk.pnmlcoremodel.Coordinate> pos = gfx.getPosition();
+			for(org.cpntools.accesscpn.model.graphics.Coordinate oldC : oldPos) {
+				Coordinate c = core.createCoordinate();
+				c.setX((float) oldC.getX());
+				c.setY((float) -oldC.getY()); // Flip Y-coord
+				pos.add(c);
+			}
+			pnmlArc.setGraphics(gfx);
+			
 			pageList.add(pnmlArc);
 		}
 		
@@ -295,7 +335,10 @@ public class ImportWizard extends Wizard implements IImportWizard {
 	}
 	private void copyNodeParams(org.cpntools.accesscpn.model.Object cpnObject, org.pnml.tools.epnk.pnmlcoremodel.Object pnmlObject) {
 		convertObjectParams(cpnObject, pnmlObject);
-		if(cpnObject.getGraphics() == null) return; // Turns out Access/CPN doesn't read graphics info
+		if(cpnObject.getGraphics() == null) {
+			System.out.println("Null graphics");
+			return; // Access/CPN didn't use to read graphics info
+		}
 		if(!(cpnObject.getGraphics() instanceof org.cpntools.accesscpn.model.graphics.NodeGraphics)) 
 			throw new ClassCastException("Not a Node.");
 		org.cpntools.accesscpn.model.graphics.NodeGraphics cpnGraphics = (NodeGraphics) cpnObject.getGraphics();
@@ -305,16 +348,53 @@ public class ImportWizard extends Wizard implements IImportWizard {
 		org.cpntools.accesscpn.model.graphics.Coordinate oldPosition = cpnGraphics.getPosition();
 		Coordinate position = core.createCoordinate();
 		position.setX((float) oldPosition.getX());
-		position.setY((float) oldPosition.getY());
+		position.setY((float) -oldPosition.getY()); // Flip Y-coord
 		pnmlGraphics.setPosition(position);
 		
 		org.cpntools.accesscpn.model.graphics.Coordinate oldSize = cpnGraphics.getDimension();
-		Coordinate size = core.createCoordinate();
-		size.setX((float) oldSize.getX());
-		size.setY((float) oldPosition.getY());
-		pnmlGraphics.setDimension(size);
+		Coordinate dimension = core.createCoordinate();
+		dimension.setX((float) oldSize.getX());
+		dimension.setY((float) oldSize.getY());
+		pnmlGraphics.setDimension(dimension);
+/*
+		org.cpntools.accesscpn.model.graphics.Fill oldFill = cpnGraphics.getFill();
+		Fill fill  = core.createFill();
+		try {
+			fill.setColor(new CSSColor(oldFill.getColor()));
+			pnmlGraphics.setFill(fill);
+		} catch (IllegalFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		org.cpntools.accesscpn.model.graphics.Line oldLine = cpnGraphics.getLine();
+		Line line = core.createLine();
+		try {
+			line.setColor(new CSSColor(oldLine.getColor()));
+			line.setShape(LineShape.get(oldLine.getShape().getValue()));
+			//line.setStyle(oldLine.getStyle());
+			line.setWidth((float) oldLine.getWidth());
+			pnmlGraphics.setLine(line);
+		} catch (IllegalFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*/
 		
 		pnmlObject.setGraphics(pnmlGraphics);
+
+		Name nameLabel = pnmlObject.getName();
+		if(nameLabel != null) {
+			AnnotationGraphics nameGfx = core.createAnnotationGraphics();
+			float height = 9; //nameGfx.getFont().getSize().getSize(); <-- gives null
+			float width = height * nameLabel.getText().length() * 0.5f;
+			Coordinate nameGfxCoord = core.createCoordinate();
+			// Center name label approx.
+			nameGfxCoord.setX(-width*0.7f);
+			nameGfxCoord.setY(-height*0.7f);
+			nameGfx.setOffset(nameGfxCoord);
+			nameLabel.setGraphics(nameGfx);
+		}
 		
 	}
 	
@@ -322,7 +402,7 @@ public class ImportWizard extends Wizard implements IImportWizard {
 	private <ObjectOrPage extends org.cpntools.accesscpn.model.HasId & org.cpntools.accesscpn.model.HasName> 
 	void convertObjectParams(ObjectOrPage cpnObject, org.pnml.tools.epnk.pnmlcoremodel.Object pnmlObject) {
 		pnmlObject.setId(cpnObject.getId());
-		Name nameLabel = PnmlcoremodelFactory.eINSTANCE.createName();
+		Name nameLabel = core.createName();
 		nameLabel.setText(cpnObject.getName().asString());
 		pnmlObject.setName(nameLabel);
 	}

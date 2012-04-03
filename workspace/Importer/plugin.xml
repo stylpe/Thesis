@@ -9,7 +9,7 @@
             id="importer.importWizards.sampleCategory">
       </category>
       <wizard
-            name="Import CPNTools File"
+            name="Import CPN Tools File"
             icon="icons/sample.gif"
             category="importer.importWizards.sampleCategory"
             class="importer.importWizards.ImportWizard"
