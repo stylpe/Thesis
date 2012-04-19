@@ -55,8 +55,10 @@ import org.eclipse.ui.ide.IDE;
 import org.pnml.tools.epnk.graphics.datatypes.CSSColor;
 import org.pnml.tools.epnk.graphics.datatypes.IllegalFormatException;
 import org.pnml.tools.epnk.pnmlcoremodel.AnnotationGraphics;
+import org.pnml.tools.epnk.pnmlcoremodel.ArcGraphics;
 import org.pnml.tools.epnk.pnmlcoremodel.Coordinate;
 import org.pnml.tools.epnk.pnmlcoremodel.Fill;
+import org.pnml.tools.epnk.pnmlcoremodel.Graphics;
 import org.pnml.tools.epnk.pnmlcoremodel.Line;
 import org.pnml.tools.epnk.pnmlcoremodel.LineShape;
 import org.pnml.tools.epnk.pnmlcoremodel.Name;
@@ -224,6 +226,8 @@ public class ImportWizard extends Wizard implements IImportWizard {
 	private CPN cpn;
 	private Map<org.pnml.tools.epnk.pnmlcoremodel.RefPlace, String> refPlaces;
 	private Map<String, org.pnml.tools.epnk.pnmlcoremodel.Node> idToNodeMap;
+	private float minY;
+	private float minX;
 	
 	/**
 	 * Create the PNML document (contents).
@@ -307,6 +311,7 @@ public class ImportWizard extends Wizard implements IImportWizard {
 			idToNodeMap.put(pnmlTrans.getId(), pnmlTrans);
 		}
 		
+		
 		for(org.cpntools.accesscpn.model.Arc cpnArc : cpnPage.getArc()) {
 			org.pnml.tools.epnk.pnmlcoremodel.Arc pnmlArc = cpn.createArc();
 			pnmlArc.setId(cpnArc.getId());
@@ -321,14 +326,42 @@ public class ImportWizard extends Wizard implements IImportWizard {
 			List<org.cpntools.accesscpn.model.graphics.Coordinate> oldPos = oldGfx.getPosition();
 			EList<org.pnml.tools.epnk.pnmlcoremodel.Coordinate> pos = gfx.getPosition();
 			for(org.cpntools.accesscpn.model.graphics.Coordinate oldC : oldPos) {
+				float x = (float) oldC.getX();
+				float y = (float) -oldC.getY(); // Flip Y-coord
 				Coordinate c = core.createCoordinate();
-				c.setX((float) oldC.getX());
-				c.setY((float) -oldC.getY()); // Flip Y-coord
+				c.setX(x);
+				c.setY(y);
 				pos.add(c);
+				// Save lowest pos coordinates 
+				if(minX>x) minX=x;
+				if(minY>y) minY=y;
 			}
 			pnmlArc.setGraphics(gfx);
 			
 			pageList.add(pnmlArc);
+		}
+		
+		// Adjust min position to create a margin
+		float margin = 50.0f;
+		minX -= margin;
+		minY -= margin;
+		
+		// Normalise to positive coordinates to ensure entire model is in view when first opened
+		for(Object o : pageList) {
+			Graphics g = o.getGraphics();
+			if(g == null) continue;
+			if(g instanceof org.pnml.tools.epnk.pnmlcoremodel.NodeGraphics) {
+				org.pnml.tools.epnk.pnmlcoremodel.NodeGraphics ng = (org.pnml.tools.epnk.pnmlcoremodel.NodeGraphics) g;
+				Coordinate c = ng.getPosition();
+				c.setX(c.getX()-minX);
+				c.setY(c.getY()-minY);
+			} else if(g instanceof org.pnml.tools.epnk.pnmlcoremodel.ArcGraphics) {
+				org.pnml.tools.epnk.pnmlcoremodel.ArcGraphics ag = (ArcGraphics) g;
+				for(Coordinate c : ag.getPosition()) {
+					c.setX(c.getX()-minX);
+					c.setY(c.getY()-minY);
+				}
+			}
 		}
 		
 		return pnmlPage;
@@ -347,9 +380,15 @@ public class ImportWizard extends Wizard implements IImportWizard {
 		
 		org.cpntools.accesscpn.model.graphics.Coordinate oldPosition = cpnGraphics.getPosition();
 		Coordinate position = core.createCoordinate();
-		position.setX((float) oldPosition.getX());
-		position.setY((float) -oldPosition.getY()); // Flip Y-coord
+		float x = (float) oldPosition.getX();
+		float y = (float) -oldPosition.getY(); // Flip Y-coord
+		position.setX(x);
+		position.setY(y);
 		pnmlGraphics.setPosition(position);
+		// Save lowest pos coordinates 
+		if(minX>x) minX=x;
+		if(minY>y) minY=y;
+		
 		
 		org.cpntools.accesscpn.model.graphics.Coordinate oldSize = cpnGraphics.getDimension();
 		Coordinate dimension = core.createCoordinate();
