@@ -22,10 +22,19 @@
       <owl:Class rdf:ID="Transition"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="Port">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Place"/>
-    </rdfs:subClassOf>
+  <owl:Class rdf:ID="Port"/>
+  <owl:Class>
+    <owl:unionOf>
+      <rdf:Description rdf:nodeID="A0">
+        <rdf:rest rdf:parseType="Collection">
+          <owl:Class rdf:ID="Node"/>
+          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#SubstiutionTransition"/>
+        </rdf:rest>
+        <rdf:first>
+          <owl:Class rdf:ID="PetriNet"/>
+        </rdf:first>
+      </rdf:Description>
+    </owl:unionOf>
   </owl:Class>
   <owl:Class rdf:ID="SocketDirection">
     <owl:equivalentClass>
@@ -58,13 +67,11 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Class rdf:about="http://hib.no/SADLTest/cpn#Place"/>
+      <owl:Class rdf:ID="Place"/>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="HighLevelPetriNet">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="PetriNet"/>
-    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://hib.no/SADLTest/cpn#PetriNet"/>
   </owl:Class>
   <owl:Class rdf:ID="Arc">
     <rdfs:subClassOf>
@@ -95,7 +102,7 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="Node">
+  <owl:Class rdf:about="http://hib.no/SADLTest/cpn#Node">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
@@ -171,17 +178,6 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="http://hib.no/SADLTest/cpn#Transition"/>
-  </owl:Class>
-  <owl:Class>
-    <owl:unionOf>
-      <rdf:Description rdf:nodeID="A0">
-        <rdf:rest rdf:parseType="Collection">
-          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#Node"/>
-          <owl:Class rdf:about="http://hib.no/SADLTest/cpn#SubstiutionTransition"/>
-        </rdf:rest>
-        <rdf:first rdf:resource="http://hib.no/SADLTest/cpn#PetriNet"/>
-      </rdf:Description>
-    </owl:unionOf>
   </owl:Class>
   <owl:Class rdf:ID="Page"/>
   <owl:ObjectProperty rdf:about="http://hib.no/SADLTest/cpn#dest">
