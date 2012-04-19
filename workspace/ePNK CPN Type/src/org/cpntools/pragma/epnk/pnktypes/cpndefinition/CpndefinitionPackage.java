@@ -8,10 +8,8 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.emf.ecore.EReference;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**

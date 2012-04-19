@@ -7,7 +7,6 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.*;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,7 +15,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
-import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;

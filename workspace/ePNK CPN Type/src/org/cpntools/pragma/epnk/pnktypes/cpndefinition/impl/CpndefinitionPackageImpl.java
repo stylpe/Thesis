@@ -7,22 +7,16 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNType;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.EClass0;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Pragma;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.PragmaSource;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;

@@ -8,8 +8,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Place">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" eType="#//Pragma"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" upperBound="-1"
+        eType="#//Pragma" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pragma" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

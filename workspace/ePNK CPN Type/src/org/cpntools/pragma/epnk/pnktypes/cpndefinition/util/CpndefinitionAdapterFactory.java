@@ -16,7 +16,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
-import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;

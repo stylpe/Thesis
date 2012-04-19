@@ -6,8 +6,6 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 
 /**
