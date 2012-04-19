@@ -1,8 +1,6 @@
-\chapter{Background}
+\chapter{Background}\com{Bør kanskje gjenvurdere om det skal hete
+``Background''}
 \label{chap:background}
-
-TODO:
-
 
 \section{The WebSocket Protocol}
 The primary case study for this thesis is the WebSocket protocol 
@@ -15,12 +13,13 @@ remote host that has opted-in to communications from that code.
 \fig[0.4]{WebSocketSequenceDiagram.pdf}{Sequence Diagram of the WebSocket
 protocol}{wssequence}
 
-\figref{wssequence} shows the basic sequence of the WebSocket protocol. A client
-sends a specially formatted HTTP request to a server, which replies with a HTTP
-response. The client and server can then freely send WebSocket message frames, until
-either endpoint sends a control frame with the opcode 0x8 for close and
-optionally data about the reason for closing. The other endpoint then replies
-with the same opcode and data, and the connection is considered closed.
+\figref{wssequence} shows the basic sequence of the WebSocket protocol. To
+establish a connection, a client sends a specially formatted HTTP request to a
+server, which replies with a HTTP response. Once the connection is
+established, the client and server can then freely send WebSocket message
+frames, until either endpoint sends a control frame with the opcode 0x8 for
+close and optionally data about the reason for closing. The other endpoint then
+replies with the same opcode and data, and the connection is considered closed.
 
 From the RFC document:
 
@@ -43,77 +42,48 @@ From the RFC document:
 \end{quote}
 
 \section{Coloured Petri Nets}
-TODO: color / colour inkonsistens
 
-Common usage: Process and protocol modeling, concurrent programming. Operations:
-Simulation, verification and analysis. More recently also software design.
+Coloured Petri Nets (CPN) are a type of directed graph used to model processes,
+especially processes with an asynchronous and/or concurrent nature. Common
+examples are modelling networks, processes and protocols, as well as
+concurrent programming design.
 
+The strength of CPN lies i the operations that can be performed with it:
+Simulation, verification and analysis. 
 
-A Petri Net model is constructed and simulated by the following rules: A net
-consist of Places, Transitions and Arcs. An Arc goes between a Place and a
-Transition, either in a specified direction or both ways. A Place can contain
-Tokens. The State of the model is defined by the current number of Tokens in
-each place. A Transition can consume Tokens from Places if there is an Arc from
-the Place to the Transition, and produce new tokens in Places where there is an
-Arc from the Transition to the Place. This changes the State of the system.
+More recently, research has been conducted to examine the feasibility of using
+CPN for software design with automatic code generation.
 
-A Colored Petri Net builds on this by exchanging Tokens for Colors.
-A Color can mean a single value like the integer 3, the string ``Hello'' or
-simple units which resemble Tokens from regular Petri Nets. A Color Set is a
-set of such Colors, for example all integers, the integers from 1 to 100, all
-lowercase letters, or all strings of length 5. These are examples of simple
-Color Sets, as they each consist of basic data types. Compound Color Sets are
-made by combining the simple ones in different ways to create data structures, for
-example an int together with a string might describe a postal code and city.
-This will be described in more detail in the next section.
+The structure of CPN models will be explained gradually through the case study
+in this chapter.
 
-Each place allows Colors from a specific Color Set. 
-All these expressions will be explained in detail in the following sections.
-
-\section{CPN Tools}
+\subsection{CPN Tools}
 
 Graphical tool used to design CPN models. 
 
-Reference, with url. Screenshot?
+\begin{comment}
 
 \subsection{CPN ML}
 	
-	CPN Tools uses the CPN ML language to specify declarations and net inscriptions.
-	This language is an extension of the functional programming language Standard
-	ML, developed at Edinburgh University.
 
-\subsection{Declarations}
-	
-	All colorsets, variables, symbolic constants and functions have to be declared
-	before they are used in the model. In CPN Tools these declarations can be
-	grouped together, but they are still parsed sequentially, so if one declaration
-	depends on another, it has to be declared after its dependency.
-	
-	\subsubsection{Declaring Color Sets}
-	
-		Color sets are defined with the following syntax:
-		
-		\lstinline:colset name = <type-specific>;:
-		
-		Names are always capitalised in this thesis, but any CPN ML identifier is
-		valid. 
+
 		
 		The simple types available are unit, boolean, integer, string, enumerated
-		and index. A unit can have one value: \lstinline:():. Enumerated color sets
-		can have specified values, while index color sets define an indexed range of
+		and index. A unit can have one value: |()|. Enumerated colour sets
+		can have specified values, while index colour sets define an indexed range of
 		values. 
 		
 		The compound types are:
 		\begin{description}
-		\item[Product] A combination of color sets separated by \lstinline:*:. The
+		\item[Product] A combination of colour sets separated by |*|. The
 		postal code and city example from earlier would be
-		\lstinline:product INT*STRING:, and a color would be (5055,''Bergen'');
-		\item[List] A list of items that belong to the same color set.
+		|product INT*STRING|, and a token would be (5055,''Bergen'');
+		\item[List] A list of items that belong to the same colour set.
 		\item[Record] Similar to a product, but each element is named. The postal code
 		and city example would give \lstinline-record Code:INT*City:STRING- and a
-		color would be \lstinline:{Code=5055,City="Bergen"}:
-		\item[Union] This is used if a place should be able to contain colors from
-		different color sets, or if such colors should be handled in the same way at a
+		token would be |{Code=5055,City="Bergen"}|
+		\item[Union] This is used if a place should be able to contain tokens from
+		different colour sets, or if such tokens should be handled in the same way at a
 		point in the model. They can also contain simple identifiers, like an
 		enumeration. An example is shown in Listing \ref{lst:overview_colset}.
 		\end{description}
@@ -121,10 +91,10 @@ Reference, with url. Screenshot?
 		For full syntax definition, please refer to the CPN Tools
 		documentation. (ref?)
 
-\subsection{Inscriptions}
-
+\end{comment}
 \section{The WebSocket CPN Model}
 
+The websocket protocol is the primary case study of this thesis. 
 In this section the model that has been built is described in full detail.
 
 \subsection{Overview}
@@ -132,34 +102,85 @@ In this section the model that has been built is described in full detail.
 	\fig{Overview.eps}{Overview of CPN model of the WebSocket protocol}{overview}
 	
 	\figref{overview} shows the top-level Overview module of the WebSocket
-	CPN model.
-	
-	The model has been laid out to resemble part of the OSI model \cite{osi7}, where
-	Client Application and Server Application each correspond to the top two
-	layers Application and Presentation, Client WebSocket and Server WebSocket
+	CPN model. 
+	The model has been laid out to resemble part of the OSI model \cite{osi7},
+	where Client Application and Server Application each correspond to the top two
+	layers Application and Presentation, Client WebSocket and Server WebSocket 
 	correspond to the Session layer, and Connection corresponds to the lower layers
-	Transport, Network, Data Link and Physical.
+	Transport, Network, Data Link and Physical. 
 	
-	Circles represent places. They can contain tokens of a specified colour, and
-	have markings to define initial tokens.
+	\subsubsection{Model basics}
+	\com{Funker dårlig å starte med Overview modulen for å forklare hvordan CPN
+	fungerer, mangler eksempler på transitions og arcs} 
+	A Petri Net model consist of pages, or modules, that contain Places,
+	Transitions and Arcs.
 	
-	Double-bordered rectangles represent substitution transitions which have
-	corresponding sub-modules. These are separate modules that have input and
-	output places that connect to the places on their parent module. This is done to
-	keep the model structured and readable, and also allows reuse of modules in
-	different parts of the model by instancing them, which will be described
-	toward the end of the chapter. The details of each submodule is described in
-	the following subsections.
+	Places are represented by circles. They can contain tokens from a specified
+	colour set, and have markings to define initial token(s).  As an example, in
+	the lower right of \figref{overview} we have the Server Send place. This place
+	can have |PACKETLIST| colour tokens (or just tokens), and has an initial
+	marking of an empty list |[]|. It currently has one token shown in the green box,
+	|1`[]|, which means one of an empty list. The number in the smaller circle
+	shows the total number of tokens in this place.
 	
-	The places in the Overview have the following color sets:
+	A token can be a single value like the integer 3, the string ``Hello''
+	or simple units which resemble tokens from regular Petri Nets. A colour set is
+	a set of such tokens, for example all integers, the integers from 1 to
+	100, all lowercase letters, or all strings of length 5. These are examples of simple
+	colour sets, as they each consist of basic data types. Compound colour sets are
+	made by combining the simple ones in different ways to create data structures, for
+	example an integer together with a string might describe a postal code and
+	city. This will be described in more detail in the next section.
 	
-	\begin{lstlisting}[label=lst:overview_colset,caption=Overview color
+	Transitions are represented by rectangles.
+	
+	Double-bordered rectangles represent sub-modules and are called substitution
+	transitions. These sub-modules have input and output places
+	that connect to the places on their parent module. This enables us to keep
+	the model structured and readable, and also allows reuse of modules in
+	different parts of the model by instancing them, which will be described toward
+	the end of the chapter. The details of each submodule is described in the
+	following subsections.
+	
+	Arcs are directed arrows going between a place and a transition (including
+	substitution transitions), and will be explained in the next
+	submodule. 
+	
+	The State of the model is defined by the current tokens in
+	each place. A Transition can consume tokens from places if there is an arc from
+	the place to the transition, and produce new tokens in places where there is an
+	arc from the transition to the place. This changes the state of the system.
+	
+	
+	\subsubsection{Declarations}
+	
+	CPN Tools uses the CPN ML language to specify declarations and net inscriptions.
+	This language is an extension of the functional programming language Standard
+	ML, developed at Edinburgh University.
+	
+	All coloursets, variables, symbolic constants and functions have to be declared
+	before they are used in the model. In CPN Tools these declarations can be
+	grouped together, but they are still parsed sequentially, so if one declaration
+	depends on another, it has to be declared after its dependency.
+
+	Colour sets are defined with the following syntax:
+	
+	|colset name = <type-specific>;|
+	
+	Names are always capitalised in this thesis, but any CPN ML identifier is
+	valid.
+	
+	The places in the Overview use the following colour set definitions:
+	
+	\begin{lstlisting}[label=lst:overview_colset,caption=Overview colour
 	sets,gobble=1]
-	colset OPERATION = union CONNECT + TEXT + BINARY + PING + PONG + CLOSE;
-	
+	colset OPERATION = with CONNECT | TEXT | BINARY | PING | PONG | CLOSE;
+		
 	colset MESSAGE = record Op: OPERATION *	Message: STRING;
 	
 	colset MESSAGES = list MESSAGE;
+	
+	colset CONN_RESULT = bool with (fail, success);
 	
 	colset EVENT = union Msg:MESSAGE + ConnRequest + ConnResult:CONN_RESULT;
 	
@@ -176,22 +197,46 @@ In this section the model that has been built is described in full detail.
 	colset PACKETLIST = list PACKET;
 	\end{lstlisting}
 	
-	A \lstinline:MESSAGE: consists of an \lstinline:OPERATION: and the
-	\lstinline:STRING: message body. We can also have a list of
-	\lstinline:MESSAGES: to keep them ordered. Lists will be explained in
-	detail later.
+	The |OPERATION| colour set is an enumeration that represents the
+	different types of messages that can be passed between the application and the
+	protocol layer. All of these correspond with opcodes
+	used in WebSocket frames, except |CONNECT| which is used for
+	initiating a connection.
 	
-	The client application sends \lstinline:MESSAGES: to the WebSocket layer and
-	receives \lstinline:EVENTS: back, which can be either a \lstinline:MESSAGE: or a
-	\lstinline:ConnReply:. The server application also receives \lstinline:EVENTS:,
-	but can send either a \lstinline:MESSAGE: or a \lstinline:CONN_REPLY:, which is
-	used for connection attempts. The \lstinline:CONN_REPLY: colorset is simply a
-	boolean value with different names for true and false, for improving readability
-	and semantics.
+	A |MESSAGE| is a record that consists of an	|OPERATION| and the |STRING|
+	message body. Both data- and control-frames can have messages, although
+	control-frame messages might not be shown to the user. Tokens from record
+	colour sets can have their component tokens referenced by name, in this case
+	|Op| and |Message|. We can also have a list of |MESSAGES| to keep them ordered.
+	Lists will be explained in detail later where they are used and manipulated
+	in the model.
+	
+	The WebSocket layer also needs a way to notify the application about connection
+	results, which is done with the |EVENT| colour set. This is a union
+	colour set which can be either a |MESSAGE|, a |ConnRequest|
+	identifier (with no other colour set associated), or a |CONN_RESULT|. A
+	union colour set is used if a place should be able to contain tokens from
+	different colour sets, or if such tokens should be handled in the same way at
+	a point in the model. They can also contain simple identifiers (like
+	|ConnRequest|). And like |MESSAGES| we can have a list of
+	|EVENTS.|
+	
+	The client application sends |MESSAGES| to the WebSocket layer and
+	receives |EVENTS| back. The server application also receives
+	|EVENTS|, but can send either a |MESSAGE| or a
+	|CONN_REPLY|, which is used for connection attempts. The
+	|CONN_REPLY| colourset is simply a boolean value with different
+	names for true and false, for improving readability and semantics. A union of
+	these two types must exist, |MSG_OR_CONN_REPLY|, so the same place
+	can be reused.
+	
+	TODO: Noe om hvorfor vi bruker kun en plass for dette
 	
 	Both the client and server WebSocket layers send and receive
-	\lstinline:PACKET:s. These are abstract and not fully modeled
-	actual network packets, as this is not relevant to how WebSocket works.
+	|PACKET| tokens, a union of three types of data. |PACKET|s
+	are abstract and not fully modeled actual network packets, as this is not
+	relevant to how WebSocket works. Ther list version |PACKETLIST| These
+	colour sets are described in the section for the Connection module.
 
 \subsection{Client Application}
 
@@ -212,7 +257,7 @@ In this section the model that has been built is described in full detail.
 	\subsubsection{Variables}
 	
 		The arcs here have inscriptions on them containing variables. Variables are
-		declared globally and can only be bound to colors of the colorset they are
+		declared globally and can only be bound to tokens of the colourset they are
 		defined for. 
 		
 		When a transition fires, it will bind the tokens it is consuming to the
@@ -221,9 +266,9 @@ In this section the model that has been built is described in full detail.
 		and/or in conditional statemens. The expression that will produce the desired
 		result is inscribed on the output arc. 
 		
-		A set of variables has been declared for the simple colorsets as follows:
+		A set of variables has been declared for the simple coloursets as follows:
 		
-		\begin{lstlisting}[label=lst:standard_vars,caption=Simple Colorset Variables]
+		\begin{lstlisting}[label=lst:standard_vars,caption=Simple Colourset Variables]
 		var u, u1, u2, u3: UNIT;
 		var b, b1, b2, b3: BOOL;
 		var i, j, k: INT;
@@ -231,14 +276,14 @@ In this section the model that has been built is described in full detail.
 		var ss, ss1, ss2: STRINGLIST;
 		\end{lstlisting}
 		
-		Several variables for the same colorsets have been created for convenience in
-		the cases where colors of the same type is consumed from different places. If the same variable was
+		Several variables for the same coloursets have been created for convenience in
+		the cases where tokens of the same type is consumed from different places. If the same variable was
 		used on each arc from two different places, both places would need a token
 		with the same value. 
 		
 		Variable declarations will be listed as they are encountered in the model.
 		As a general guideline, most variables are named with the first letter of its
-		colorset for non-lists, and the same letter plus the letter s for lists. On
+		colourset for non-lists, and the same letter plus the letter s for lists. On
 		this submodule we have the following variables:
 		
 		\begin{lstlisting}[label=lst:client_app_vars,caption=Client Application
@@ -252,32 +297,32 @@ In this section the model that has been built is described in full detail.
 	
 		A lot of the places in this model rely on tokens being consumed in the same
 		order they are produced, and to enforce this, queues are used, facilitated
-		by list color sets. To describe a list in SML, we use square
-		brackets \lstinline:[ ]:. By themselves they represent an empty list. To describe a populated list, we
+		by list colour sets. To describe a list in SML, we use square
+		brackets |[ ]|. By themselves they represent an empty list. To describe a populated list, we
 		write each token inside the brackets separated by commas. An example of this
 		is seen in \figref{client_app} on the initial marking for the
-		\lstinline:Messages to be sent: place.
+		|Messages to be sent| place.
 		
 		To process such a list, we use the \lstinline-::- operator like this:
 		\lstinline-head::tail-, where head is the first element in the list, and tail
 		is all the following elements. To concatenate two lists, we use the
-		\lstinline:^^: operator. 
+		|^^| operator. 
 		
-		To emulate the queue behaviour we need, we use a list of a color instead of
-		using the actual color we want in that place. When we want to take an
+		To emulate the queue behaviour we need, we use a list of a colourset instead
+		of using the actual colourset we want in that place. When we want to take an
 		element from the front of the queue, we use the \lstinline-::- operator to
 		bind the head and tail of the list to variables, and put only the tail back to
 		the source place. When we want to append an element to a queue, we concatenate
-		the queue using the \lstinline:^^: operator with a new list containing only
+		the queue using the |^^| operator with a new list containing only
 		the new element. To improve readability of the model, these queue operations
 		have one arc slightly dimmed, to emphasise the flow direction of data.
 		
 		An example of this is seen in \figref{client_app} on the arc
-		from the \lstinline:Send data: transition to the 
-		\lstinline:Messages to be sent: place. On the left side, the list in the
+		from the |Send data| transition to the 
+		|Messages to be sent| place. On the left side, the list in the
 		Messages to be sent place is bound to the two variables msg and msgs, and only
 		msgs is put back. On the right side, we take the list in Send Client Messages
-		and bind it to the variable \lstinline:msgs2:, and send back a concatenation
+		and bind it to the variable |msgs2|, and send back a concatenation
 		of this list and a new list containing msg, which was bound earlier in the incoming arc
 		from Messages to be sent. The total effect is that we take the first element
 		from Messages to be sent, and add it to the end of the list in Send Client
@@ -287,23 +332,24 @@ In this section the model that has been built is described in full detail.
 	
 		The Request connection transition at the top is highlighted by a green border,
 		which means that it is enabled and ready to fire. If we were to fire this transition,
-		it would consume the \lstinline:STRING: token, named s, produce a
-		\lstinline:MESSAGE: token containing s, and add it to the queue in the Send
+		it would consume the |STRING| token, named s, produce a
+		|MESSAGE| token containing s, and add it to the queue in the Send
 		Client Message place.
 		
-		Next, the Client Application waits for a \lstinline:CONN_RESULT: token, and if
-		this is equal to \lstinline:success:, we add a \lstinline:UNIT: token to the
+		Next, the Client Application waits for a |CONN_RESULT| token, and if
+		this is equal to |success|, we add a |UNIT| token to the
 		Active Connection place. If any other messages are received before this, they
 		will wait at the Receive Client Event place, since the Receive Data transition
-		will not fire unless the Active Connection place has a \lstinline:UNIT: token.
+		will not fire unless the Active Connection place has a |UNIT| token.
 		
-		If and when the Active Connection place has a \lstinline:UNIT: token, the
+		If and when the Active Connection place has a |UNIT| token, the
 		Client Application can start sending and receiving messages. A sample of
 		messages has been predefined at the Messages to be sent place, but this would
-		probably be dynamic in a real application.
+		probably be dynamic in a real application. \com{Kanskje dette kunne vært mer
+		abstrakt? Argument for hvorfor modellert på denne måten.}
 		
-		Finally, if the Client Application receives a \lstinline:MESSAGE: where the
-		\lstinline:OPERATOR: is \lstinline:CLOSE:, nothing is put back into the Active
+		Finally, if the Client Application receives a |MESSAGE| where the
+		|OPERATOR| is |CLOSE|, nothing is put back into the Active
 		Connection place, and the connection is effectively closed. 
 
 \subsection{The Client WebSocket Module}
@@ -311,14 +357,15 @@ In this section the model that has been built is described in full detail.
 	\fig{ClientWebSocket.eps}{The Client WebSocket Module}{client_wslib}
 
 	This module consists mostly of substitution transitions. The only processing
-	being done directly on this module is masking of all websocket frames, which is required from the
-	client by the protocol specification. The rest is plumbing between the
-	submodules.
+	being done directly on this module is masking of all websocket frames
+	\com{Hvordan funker mask funksjonen?}, which is required from the client by the
+	protocol specification.
+	The rest is plumbing between the submodules.
 	
-	The new colorsets are for HTTP requests and responses, WebSocket frames, and
+	The new coloursets are for HTTP requests and responses, WebSocket frames, and
 	packets. They have corresponding variables. 
 	
-	\begin{lstlisting}[label=lst:client_lib_colset,caption=Library color
+	\begin{lstlisting}[label=lst:client_lib_colset,caption=Library colour
 	sets,gobble=1]
 	colset HTTP_VERB = union GET + POST + PUT + DELETE + HEAD;
 	
@@ -394,18 +441,20 @@ In this section the model that has been built is described in full detail.
 		
 		\fig{NewConnection.eps}{New Connection submodule}{new_connection}
 		
-		This module is fairly straightforward. We take the first \lstinline:MESSAGE:
+		This module is fairly straightforward. We take the first |MESSAGE|
 		in the list and create an HTTP request, which is then queued to be sent by the
 		client, as well as keeping a copy of the request for validation purposes when
 		the response arrives.
 		
-		The transition here has a guard inscription. It is used for two things: Only
-		accepting messages with the \lstinline:CONNECT: operation, and binding the
-		url variable by parsing the string in the message into a \lstinline:URL:
-		color by using the \lstinline:parseurl(): function. This function makes use of
-		a utility function \lstinline:split():  which splits a string on the first
+		The transition here has a guard inscription enclosed in square brackets. It is
+		used for two things:
+		The first line limits the transition to only accepting messages with the
+		|CONNECT|	operation, while the second line binds the url variable
+		by parsing the string in the message into a |URL|
+		token by using the |parseurl()| function. This function makes use of
+		a utility function |split()|  which splits a string on the first
 		occurrence of a given character. To do this, it uses a recursive function
-		\lstinline:split2(): to iterate over the characters. The functions have to be
+		|split2()| to iterate over the characters. The functions have to be
 		declared in reverse order to satisfy dependency.
 		
 		
@@ -476,10 +525,11 @@ In this section the model that has been built is described in full detail.
 		\end{lstlisting}
 		
 		The function httpReqFromUrl takes a URL argument and uses it to produce a
-		HTTPREQ color with headers according to the WebSocket protocol requirements.
+		HTTPREQ token with headers according to the WebSocket protocol requirements.
 		Not all headers defined by the protocol are used, because it is assumed this
 		application is not browser based, and therefore specifying an origin does not
-		make sense.
+		make sense. \com{Skriv hvorfor det er en rimelig antagelse. (Det er det
+		kanskje ikke)}
 		
 		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2]
 		fun httpReqFromUrl (url:URL) = 
@@ -505,8 +555,8 @@ In this section the model that has been built is described in full detail.
 		
 		\fig{ProcessResponse.eps}{Process Response submodule}{process_response}
 		
-		On this module, the transition fires when a HTTPRES color is received from the
-		server (and the HTTPREQ color from earlier is still waiting in its place). The
+		On this module, the transition fires when a HTTPRES token is received from the
+		server (and the HTTPREQ token from earlier is still waiting in its place). The
 		boolean variable b is bound to the result from the isResponseValid function,
 		which checks if the server's reply is valid and conforms to the WebSocket
 		protocol specification.
@@ -529,8 +579,8 @@ In this section the model that has been built is described in full detail.
 		end
 		\end{lstlisting}
 		
-		It sends the result directly to the Client App, and puts a token with color
-		\lstinline:CONN_OPEN: in the Active Connection place if b is true.
+		It sends the result directly to the Client App, and puts a |CONN_OPEN| token
+		in the Active Connection place if b is true.
 		
 	\subsubsection{Wrap and send}
 		
@@ -539,7 +589,7 @@ In this section the model that has been built is described in full detail.
 		This module takes new messages, wraps and optionally fragments them in the
 		Fragment and queue submodule (explained below), and sends them if there is
 		an open connection. If a Close frame is being sent,the
-		connection state will be changed to \lstinline:CONN_CLOSING:, which prevents
+		connection state will be changed to |CONN_CLOSING|, which prevents
 		further sending.
 		
 		\paragraph{Fragment and queue}
@@ -558,7 +608,7 @@ In this section the model that has been built is described in full detail.
 			
 			Control frames should never be fragmented, but data frames could be. This is
 			taken care of by the fragment function, which also converts the message into
-			a WSFRAME color. The control frames are converted in the same way by the
+			a WSFRAME token. The control frames are converted in the same way by the
 			wrapmsg function. Both of these functions rely on the wrap function, and
 			therefore have to be declared after it.
 			
@@ -601,14 +651,16 @@ In this section the model that has been built is described in full detail.
 			  end;
 			\end{lstlisting}
 			
-			The WSFRAME colors are then queued randomly one by one from the data queue or
+			The WSFRAME tokens are then queued randomly one by one from the data queue or
 			the control frame queue. This allows control frames to be injected between
 			the parts of a fragmented data frame, as required by the WebSocket protocol
-			specification. If desired, control frames could be prioritised, by adding a
+			specification. Control frames are prioritised, by the prescence of a
 			two-way arc from the Control place to the Queue data transition, inscribed
-			with \lstinline:[]:, which would prevent it from being enabled if the list
-			in the Control place was not empty. However, this is not required by the
-			WebSocket protocol specification.
+			with |[]|, which prevents it from being enabled if the list
+			in the Control place is not empty. This priorisation is allowed but not
+			required by the WebSocket protocol specification, but is included here to
+			emphasise that control frames can be sent even between two fragmented data
+			frames.
 		
 	\subsubsection{Unwrap and receive}
 		
@@ -619,7 +671,7 @@ In this section the model that has been built is described in full detail.
 		bottom can take three paths. 
 		
 		The first is to the left, and happens if the
-		connection is in the \lstinline:CONN_OPEN: state (checked on the arc) and the
+		connection is in the |CONN_OPEN| state (checked on the arc) and the
 		frame is not a close frame (checked in the guard of the Receive transition). The WebSocket
 		frame is put in the Received WS Frame place, and if it is a Ping frame, a Pong
 		frame is immediately queued for sending with identical message body. 
@@ -631,20 +683,20 @@ In this section the model that has been built is described in full detail.
 		in the Defrag submodule (explained below).
 		
 		The second path a frame can take is to the right, and happens if the
-		connection is in the \lstinline:CONN_OPEN: state (checked on the arc) and the
+		connection is in the |CONN_OPEN| state (checked on the arc) and the
 		frame is a close frame (checked in the guard of the Receive transition). A
 		close frame is created and set to be sent, and the
-		connection state is changed to \lstinline:CONN_CLOSED:, since we have both
+		connection state is changed to |CONN_CLOSED|, since we have both
 		received and sent a close frame. Note that the packetlist from Client Send is
 		not appended to but instead discarded, because we can not expect the other
 		end to process any more frames other than a close frame since it has already
 		sent a close frame of its own.
 		
 		The third path is upwards and happens if the connection state is
-		\lstinline:CONN_CLOSING:, which means a close frame has been sent and we are
+		|CONN_CLOSING|, which means a close frame has been sent and we are
 		waiting for a reply. Any payload is ignored, and the connection state stays
 		the same until a close frame is received, in which case the connection state
-		is set to \lstinline:CONN_CLOSED:. 
+		is set to |CONN_CLOSED|. 
 		
 		\paragraph{Defragmenting fragmented frames}
 			
@@ -654,12 +706,12 @@ In this section the model that has been built is described in full detail.
 			specific order, and correspond to each of the transitions on this module. 
 			
 			If the Fin bit is clear and the opcode is not continuation, this is the first
-			frame in the series. A mew \lstinline:MESSAGE: is created with the opcode and
+			frame in the series. A mew |MESSAGE| is created with the opcode and
 			payload from the WebSocket frame and put in the Buffer place.
 			
 			If the Fin bit is clear and the opcode is continuation, this frame belongs in
 			the middle of the sequence. The payload is appended to the
-			\lstinline:MESSAGE: in the Buffer place using the \lstinline:append():
+			|MESSAGE| in the Buffer place using the |append()|
 			function.
 			
 			\begin{lstlisting}[label=lst:append,caption=append,gobble=3]
@@ -682,14 +734,15 @@ In this section the model that has been built is described in full detail.
 	\fig{Connection.eps}{The Connection module}{connection}
 	
 	\figref{connection} shows the connection; a very simple model. The packets that
-	come from the Client Send place go to the Server Receive module, and from the
+	come from the Client Send place go to the Server Receive place, and from the
 	Server Send place to the Client Receive place. The transportation of data
-	between the client and the server is assumed to be taken care of by TCP, as
-	the WebSocket protocol specifies, and is not necessary to model in detail to
-	show how WebSocket works.
+	between the client and the server as well as establishing and ensuring a
+	stable connection is assumed to be taken care of by TCP, as the WebSocket
+	protocol specifies, and is not necessary to model in detail to show how WebSocket works. 
 	
-	The packets are also not converted to pure bits or bytes. This decision was
-	made to keep inspection easier during simulation. 
+	The packets are also not converted to pure bits or bytes. This abstraction was
+	made since the inner workings of the TCP layer is not relevant to the WebSocket
+	Protocol.
 
 \subsection{The Server WebSocket Layer}
 	
@@ -701,12 +754,12 @@ In this section the model that has been built is described in full detail.
 	incoming connections and replying to them based on what the Server Application
 	decides.
 	
-	The Server Application can send two types of colorsets: \lstinline:MESSAGE: and
-	\lstinline:CONN_REPLY:. A special colorset has been made to accomodate this,
-	\lstinline:MSG_OR_CONN_REPLY:. 
+	The Server Application can send two types of coloursets: |MESSAGE| and
+	|CONN_REPLY|. A special colourset has been made to accomodate this,
+	|MSG_OR_CONN_REPLY|. 
 	
-	The submodules that belong to the \lstinline:Wrap and Send: and the
-	\lstinline:Unwrap and Receive: substitution transitions are the same as the ones for the Client Library. To
+	The submodules that belong to the |Wrap and Send| and the
+	|Unwrap and Receive| substitution transitions are the same as the ones for the Client Library. To
 	be more precise, the Client Library and Server Library both have instances of
 	the same submodule, so that editing the submodule model affects both parent
 	modules while simulating them lets them have different states.
@@ -726,8 +779,8 @@ In this section the model that has been built is described in full detail.
 		\fig{ConnectionResponse.eps}{Send Connection Response}{connection_res}
 		
 		When the Server Application has decided what to do with an incoming
-		connection, it will send a \lstinline:CONN_REPLY: to the library. If the
-		answer is \lstinline:accept:, we create a \lstinline:CONN_OPEN: token in the
+		connection, it will send a |CONN_REPLY| to the library. If the
+		answer is |accept|, we create a |CONN_OPEN| token in the
 		Active Connection place and send a HTTP response back to the client, properly
 		formatted according to the rules of the WebSocket Protocol. This involves
 		generating a Sec-WebSocket-Accept header, which is done with the
@@ -755,8 +808,8 @@ In this section the model that has been built is described in full detail.
 	\fig{ServerApplication.eps}{The Server Application Module}{server_app}
 	
 	The Server Application has three tasks: Accept or reject incoming connections,
-	and send and retrieve data. The colorset \lstinline:MSGS_OR_CONN_REPLY: that
+	and send and retrieve data. The colourset |MSGS_OR_CONN_REPLY| that
 	was defined in \lstref{overview_colset} is seen here. It has three
 	queued messages, which illustrate the capability of PONG frames to be used as
-	a heartbeat. A real world application would have more logic here, but the
-	interface to the library would be the same.
+	a heartbeat (without PING being involved). A real world application would have
+	more logic here, but the interface to the library would be the same.

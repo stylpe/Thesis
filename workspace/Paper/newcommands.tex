@@ -2,8 +2,10 @@
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
 \newcommand{\com}[1]{
-        \mbox{}
-       \marginpar{\hrule\footnotesize\raggedright\hspace{0pt}#1\vspace{2mm}}}
+	\mbox{}
+	\marginpar{\hrule\footnotesize\raggedright\hspace{0pt}#1\vspace{2mm}}
+	\PackageWarning{Comments}{Comment (#1)}
+}
 
 \newcommand{\fig}[4][0.5]{
 	\begin{figure}
@@ -19,6 +21,23 @@
 	\includegraphics[scale=#1,angle=90]{figures/#2}
 	\caption{#3}
 	\label{fig:#4}
+	\end{figure}
+}
+\newcommand{\figDbl}[7][0.5]{
+	\begin{figure}
+	\centering
+	\subfloat[#3]
+    {
+		\includegraphics[scale=#1]{figures/#2}
+        \label{fig:#7_a}
+    }
+	\subfloat[#5]
+    {
+		\includegraphics[scale=#1]{figures/#4}
+        \label{fig:#7_b}
+    }
+	\caption{#6}
+	\label{fig:#7}
 	\end{figure}
 }
 \newcommand{\figref}[1]{Fig.~\ref{fig:#1}}

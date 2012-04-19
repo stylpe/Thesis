@@ -20,11 +20,13 @@ domain for the prototype
 
 \section{Thesis Aim}
 
-\com{Dette bør på sikt formuleres som en hupotese, det skal være et formulert
-spørsmål som undersøkes.}
+What is a good way of annotating Coloured Petri Nets with code generation
+pragmatics?
 
-This thesis seeks to create a framework for annotating CPNs. The framework
-should be capable of supporting several classes of pragmatics, 
+This thesis seeks to answer this question by creating a prototype application
+and using it to annotate a test model.
+
+The framework should be capable of supporting several classes of pragmatics, 
 categorised into General, Domain Specific, and Model Specific Pragmatics.
 
 It should be possible to import CPN models created in CPN Tools. Annotations are
@@ -40,11 +42,14 @@ The thesis is described below:
 
 \begin{description}
 \item[Chapter~\ref{chap:background}:~\nameref{chap:background}] Introduction to
-CPN, showing how to use it by using the WebSocket protocol as an example.
+CPN, showing how to use it by modeling the WebSocket protocol as an example.
 Overview of related research. Describe CPN Tools.
+\item[Chapter~\ref{chap:statespace}:~\nameref{chap:statespace}] An explanation
+and application of state space analysis using the WebSocket Protocol as the
+subject.
 \item [Chapter~\ref{chap:technology}:~\nameref{chap:technology}] Explanation of
-the Eclipse Platform and its modules, which make up the foundation of our
-prototype
+all technologies used to build then prototype, including the Eclipse Platform
+and its modules, which make up the foundation of the prototype.
 \item [Chapter~\ref{chap:analysis}:~\nameref{chap:analysis}] Discussion and
 detailing of requirements for the editor. Overview and explanation of test cases.
 \item [Chapter~\ref{chap:implementation}:~\nameref{chap:implementation}]
@@ -54,7 +59,7 @@ which requirements have been met. Results from test cases and feedback from
 users.
 \item [Chapter~\ref{chap:conclusion}:~\nameref{chap:conclusion}] Summary,
 personal experience, limitations and suggested focus of future work.
-\end{description}
+\end{description} 
 
 \section{Required Knowledge}
 

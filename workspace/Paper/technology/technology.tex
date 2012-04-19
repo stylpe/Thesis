@@ -7,10 +7,10 @@ scratch. In this chapter we will describe the reasoning behind the
 design choices we made, and give an overview of the technologies that have been
 used.
 
-TODO: Krav
 
 \section{Representing CPN Models}
-	A (??? utydelig) design decision is how to represent the CPN models. A simple
+	
+	A central design decision is how to represent the CPN models. A simple
 	but easy way of manipulating a CPN model is by representing it as a tree, with pages as
 	nodes, and places, transitions and arcs as child nodes with properties
 	describing how they connect in the actual CPN model.
@@ -59,39 +59,46 @@ The Eclipse IDE is built on the Eclipse Rich Client Platform (RCP) shown in
 \figref{eclipse_rcp}. At the bottom of this we have the Platform Runtime, based
 on the OSGi framework, which provides the plugin architecture.
 
-\com{TODO}
-The Workspace 
 
-THe Workbench 
+
+The Standard Widget Toolkit (SWT) gives efficient and portable access to the
+user-interface facilities of the operating systems on which it is implemented.
+JFace is a User Interface framework built on SWT. The Workbench uses these two
+frameworks to provide a scalable multi-window environment. 
+
+The Workspace defines API for creating and managing resources (projects, files,
+and folders) that are produced by tools and kept in the file system.
 
 The Team plugin is a foundation for collaboration and versioning systems. It
-unifies many operations that are common between version control systems\ldots
+unifies many operations that are common between version control systems.
 
-The Help plugin 
+The Help plugin is a web-app-based help system that supports dynamic content.
+
+There are other utilities as well, like search tools, build configuration, and
+the update manager which keeps plugins up to date as well as handles
+installation of new plugins.
 
 Together these plugins form a basic generic IDE. Other plugins build on this to
 specialise the environment for a programming language and/or type of
 application.
-
-The principal Eclipse distribution is the Eclipse Java IDE, which is one of the
-most popular tools for developing Java applications, from small
-desktop applications, to mobile apps for Android, to web applications, to
-enterprise-scale solutions. 
 
 Plugins are the building blocks of Eclipse, and there exists a wide range of
 plugins that add tools, functionality and services. For example, this thesis
 was written in \LaTeX{} using the Texlipse plugin, and managed with the Git
 version control system through the EGit plugin. 
 
+It is possible to package Eclipse with sets of plugins to form custom
+distributions of Eclipse that are tailored for specific environments and
+programming languages. The principal Eclipse distribution is the Eclipse Java
+IDE, which is one of the most popular tools for developing Java applications, from small
+desktop applications, to mobile apps for Android, to web applications, to
+enterprise-scale solutions. Another examples is Aptana Studio, aimed at Ruby on
+Rails and PHP development. 
+
 Publishing a custom plugin is simple. By packaging it and serving it on a
 regular web server, anyone can add the web server URL to the update manager in
 Eclipse, and it will let you download and install it directly, as well as
 enabling update notifications.
-
-It is possible to package Eclipse with sets of
-plugins to form custom editions of Eclipse that are tailored for specific
-environments and programming languages. Aptana Studio is one example, aimed at
-Ruby on Rails and PHP development.
 
 
 \section{Eclipse Modeling Framework (EMF)}
@@ -100,10 +107,10 @@ plugin that is part of the Eclipse Platform, and is open source. The principle
 of MDD is to define model structure by creating a metamodel to specify which
 entities can be created and how they relate to each other. By providing modeling
 and code generation tools, EMF allows developers to create model specifications
-(metamodels) that can be converted to Java classes, along with a set of adapter
-classes that enable viewing and command-based editing of the model, and a basic
-editor. These capabilities make EMF ideal for obtaining a simple editor that can
-be used to manipulate CPN models. 
+(metamodels) that can be used to generate code for Java classes, along with
+a set of adapter classes that enable viewing and command-based editing of the
+model, and a basic editor. These capabilities make EMF ideal for obtaining a
+simple editor that can be used to manipulate CPN models. 
 
 \com{EKSEMPEL}
 
@@ -112,17 +119,19 @@ be used to manipulate CPN models.
 	metamodels created with EMF to generate implementations of views and editors
 	that can create and edit the respective models. This can be used to create an
 	editor that looks and works similarly to CPN Tools, and also lets you annotate
-	it with pragmatics.
+	it with pragmatics. \com{Uklart, bør skrives på ny, med eksempel}
 
 \section{ePNK: Petri Net framework}
+\label{sec:epnk}
 ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
 platform for creating new tools for specialised Petri Net types, which is
 exactly what we need for our annotated Petri Net type. It uses EMF and GMF to
 work with the Petri Net models and provide generic editors for custom Petri Net variants.
 
-There are several reasons why ePNK is a good choice:
+There are several reasons why ePNK is a good choice as a foundation for the
+prototype:
 \begin{itemize}
-	\item It saves models using the ISO/IEC 15909 \com{referanse?} standard file
+	\item It saves models using the ISO/IEC 15909 \cite{ISO-15909-2} standard file
 	format Petri Net Markup Language (PNML),
 	\item It is currently actively developed,
 	\item It is designed to be generic and easily extendable by creating new model
@@ -156,7 +165,7 @@ pragmatics are available depending on things like the colorset of a place or the
 variables on an arc, but initially this is considered to be out of the scope of
 this thesis.
 
-Our decision was therefore to develop our own Petri net type that matches the
+Our decision was therefore to develop our own Petri Net type that matches the
 type supported by CPN Tools.
 
 \section{Access/CPN: Java interface for CPN Tools}
@@ -165,12 +174,11 @@ EMF-based tool to parse .cpn files and represent them as an
 EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
 easy to parse, but having an existing solution for this is preferrable.
 
-The model definition used by Access/CPN is very similar to that of ePNK.
-\com{Diskutere mer i implementation?}
-
-
+The model definition used by Access/CPN is very similar to that of ePNK. This
+will be discussed more in the next chapter.
 
 \section{Semantic Application Design Language (SADL): Ontologies}
+
 Ontologies are a way to present information and meta-information so that it can
 be understood by computers. Essentially, this is done by defining classes that
 have properties, relations and constraints, and then present
@@ -179,18 +187,11 @@ information with these classes.
 There is a lot of ongoing research on this subject, especially to create a
 semantic web, that is extending web pages to provide meta-information about the
 content they contain and enabling software to understand it and reason about it.
-The Web Ontology Language (OWL) \com{Ref, sjekk om det er ISO} is the standard
-for representing ontologies.
+The OWL Web Ontology Language \cite{owl2-overview} is the World Wide Web Consortium (W3C)
+recommended standard for representing ontologies.
 
-SADL is an Eclipse plugin that defines an english-like syntax for defining
-ontologies, and comes with a text editor that features syntax highlighting,
-parsing and validation. This is useful as we can possibly reuse the editor in
-our plugin for defining model-specific pragmatics. SADL ontologies can be
-compiled to OWL format.
-
-It also has tools to parse and reason with these ontologies, which we will use
-to filter and validate which pragmatics are available for different model
-entities. 
+(Delvis obsolete ettersom Kent er på vei bort fra SADL, skal skrives om til
+Manchester syntax)
 
 TODO: Lite eksempel på ontology.
 

@@ -1,13 +1,17 @@
 \documentclass[twoside, 11pt, openright]{report}
 
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
 
 \usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{listings}
 \usepackage{calc}
+\usepackage{subfig}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+
+\usepackage{hyperref}
 
 \lstdefinelanguage{CPNML}
 {
@@ -18,6 +22,7 @@
 	morecomment=[s]{(*}{*)},
 	morestring=[b]",
 	basicstyle=\ttfamily,
+	commentstyle=\color{gray}, % gray comments
 	breaklines=true,
 	frame=lines
 }
@@ -28,7 +33,7 @@
 \begin{document}
 \lstset{language=CPNML,tabsize=1,basicstyle=\ttfamily\footnotesize}
 
-%\begin{comment}
+\begin{comment}
 
 \pagestyle{empty}
 \pagenumbering{roman}
@@ -45,9 +50,9 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-%\end{comment}
-%\input{introduction/introduction}
-%\input{background/bg2}
+\end{comment}
+\input{introduction/introduction}
+\input{background/background}
 \input{statespace/statespace}
 \input{technology/technology}
 \input{analysis/analysis}
