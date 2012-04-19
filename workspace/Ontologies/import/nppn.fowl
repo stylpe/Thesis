@@ -1,0 +1,67 @@
+ Prefix(:=<http://org.k1s/orn/nppn/>)
+ Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
+ Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+ Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+ Prefix(cpn:=<http://hib.no/SADLTest/cpn>)
+
+ Ontology(<http://org.k1s/orn/nppn/>
+  Import( <http://t.k1s.org/OntologyReastrictedNets/basic.owl> )
+  Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
+
+   
+
+  SubClassOf( :Principal basic:Pragmatic )
+  SubClassOf( :Principal ObjectAllValuesFrom( :belongsTo cpn:Page ) )
+  
+
+  SubClassOf( :Channel basic:Pragmatic )
+  SubClassOf( :Channel ObjectAllValuesFrom( :belongsTo cpn:Place )  )
+  
+  SubClassOf( :Id basic:Pragmatic )
+  SubClassOf( :Id ObjectAllValuesFrom( :belongsTo cpn:Place ) ) 
+
+  SubClassOf( :External basic:Pragmatic )
+  SubClassOf( :External ObjectAllValuesFrom( :belongsTo :TransitionConnectedToId ) ) 
+
+
+  SubClassOf( :Send basic:Pragmatic )
+  SubClassOf( :Send ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  
+  
+  SubClassOf( :Recieve basic:Pragmatic )
+  SubClassOf( :Recieve ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  
+  SubClassOf( :OpenChannel basic:Pragmatic )
+  SubClassOf( :OpenChannel ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  
+  SubClassOf( :CloseChannel basic:Pragmatic )
+  SubClassOf( :CloseChannel ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+
+
+
+  DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page basic:Pragmatic)
+  DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page :Id :External )
+  
+
+  SubClassOf( :IdPlace ObjectAllValuesFrom( :hasPragmatic :Id))
+
+  SubClassOf( :IdPlace ObjectIntersectionOf(
+      cpn:Place
+          ObjectAllValuesFrom( :hasPragmatic :Id)
+          ObjectExactCardinality( 1 :hasPragmatic )
+    )
+  )
+  
+  SubClassOf( :ArcFromId ObjectIntersectionOf(
+                cpn:Arc
+                ObjectAllValuesFrom( cpn:source :IdPlace) 
+                ObjectExactCardinality( 1 cpn:source :IdPlace)
+        )
+  )
+
+  SubClassOf( :TransitionConnectedToId ObjectIntersectionOf(
+                cpn:Transition
+                ObjectAllValuesFrom( :in :ArcFromId) 
+     )
+  )
+)

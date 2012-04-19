@@ -1,0 +1,56 @@
+Prefix(:=<http://org.k1s/orn/logo/>)
+ Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
+ Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+ Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+ Prefix(cpn:=<http://hib.no/SADLTest/cpn>)
+ 
+ Ontology(<http://org.k1s/orn/logo/>
+   Import( <http://t.k1s.org/OntologyReastrictedNets/basic.owl> )
+   Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
+   
+	Declaration( Class( :fd ) )
+
+	Declaration( Class( :bk ) )
+	
+	Declaration( Class( :rt ) )
+	
+	Declaration( Class( :lt ) )
+	
+	Declaration( Class( :pu ) )
+	
+	Declaration( Class( :pd ) )
+	
+	Declaration( Class( :repeat ) )
+	
+	Declaration( ObjectProperty( :belongsTo ) )
+	
+	
+	
+	
+	SubClassOf( :fd basic:Pragmatic )
+	SubClassOf( :fd ObjectAllValuesFrom( :belongsTo cpn:Transition ) ) 
+	
+	SubClassOf( :bk basic:Pragmatic )
+	SubClassOf( :bk ObjectAllValuesFrom( :belongsTo cpn:Transition ) ) 
+	
+	SubClassOf( :rt basic:Pragmatic )
+	SubClassOf( :rt ObjectAllValuesFrom( :belongsTo cpn:Place ) ) 
+	
+	SubClassOf( :lt basic:Pragmatic )
+	SubClassOf( :lt ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	
+	SubClassOf( :pu basic:Pragmatic )
+	SubClassOf( :pu ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	
+	SubClassOf( :pd basic:Pragmatic )
+	SubClassOf( :pd ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	
+	SubClassOf( :repeat basic:Pragmatic )
+	SubClassOf( :repeat ObjectAllValuesFrom( :belongsTo cpn:Page ) )
+	
+	
+	DisjointClasses( cpn:Place cpn:Transition cpn:Page)
+	   
+	DisjointClasses( :fd :bk :rt :lt :pu :pd :repeat)
+)	
+
