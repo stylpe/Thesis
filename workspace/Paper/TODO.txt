@@ -1,0 +1,16 @@
+Importer
+- Read inscriptions
+- Use PragmaCPN type
+- Generate Diagram Information Extension
+
+CPN Type
+- Confirm inscription attributes OK
+- Visualise inscriptions
+- Constraints
+
+PragmaCPN Type
+- Select Pragma ontologies from plugin
+- And from project
+- Load ontologies
+- Annotate
+	- Content assist
