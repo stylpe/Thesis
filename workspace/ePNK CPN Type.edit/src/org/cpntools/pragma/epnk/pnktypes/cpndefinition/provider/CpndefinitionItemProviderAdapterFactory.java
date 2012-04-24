@@ -10,11 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.util.CpndefinitionAdapterFactory;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -191,6 +189,29 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArcInscriptionItemProvider arcInscriptionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArcInscriptionAdapter() {
+		if (arcInscriptionItemProvider == null) {
+			arcInscriptionItemProvider = new ArcInscriptionItemProvider(this);
+		}
+
+		return arcInscriptionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -294,6 +315,7 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (pageItemProvider != null) pageItemProvider.dispose();
+		if (arcInscriptionItemProvider != null) arcInscriptionItemProvider.dispose();
 	}
 
 }

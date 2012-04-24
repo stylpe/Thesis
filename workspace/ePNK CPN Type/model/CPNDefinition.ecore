@@ -9,10 +9,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Colorset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Arc">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Inscription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inscription" lowerBound="1"
+        eType="#//ArcInscription" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Transition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Guard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Page"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcInscription" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -124,6 +124,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__COLORSET, oldColorset, colorset));
 	}
 
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

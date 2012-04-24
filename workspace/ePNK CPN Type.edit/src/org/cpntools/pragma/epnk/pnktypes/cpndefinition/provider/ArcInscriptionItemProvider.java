@@ -10,27 +10,30 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.pnml.tools.epnk.pnmlcoremodel.provider.LabelItemProvider;
 
 /**
- * This is the item provider adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page} object.
+ * This is the item provider adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PageItemProvider
-	extends org.pnml.tools.epnk.pnmlcoremodel.provider.PageItemProvider
+public class ArcInscriptionItemProvider
+	extends LabelItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -43,7 +46,7 @@ public class PageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PageItemProvider(AdapterFactory adapterFactory) {
+	public ArcInscriptionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -58,19 +61,42 @@ public class PageItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addTextPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns Page.gif.
+	 * This adds a property descriptor for the Text feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTextPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ArcInscription_text_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ArcInscription_text_feature", "_UI_ArcInscription_type"),
+				 CpndefinitionPackage.Literals.ARC_INSCRIPTION__TEXT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns ArcInscription.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Page"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ArcInscription"));
 	}
 
 	/**
@@ -81,10 +107,10 @@ public class PageItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Page)object).getId();
+		String label = ((ArcInscription)object).getText();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Page_type") :
-			getString("_UI_Page_type") + " " + label;
+			getString("_UI_ArcInscription_type") :
+			getString("_UI_ArcInscription_type") + " " + label;
 	}
 
 	/**
@@ -97,6 +123,12 @@ public class PageItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(ArcInscription.class)) {
+			case CpndefinitionPackage.ARC_INSCRIPTION__TEXT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -110,26 +142,6 @@ public class PageItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PnmlcoremodelPackage.Literals.PAGE__OBJECT,
-				 CpndefinitionFactory.eINSTANCE.createPlace()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PnmlcoremodelPackage.Literals.PAGE__OBJECT,
-				 CpndefinitionFactory.eINSTANCE.createArc()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PnmlcoremodelPackage.Literals.PAGE__OBJECT,
-				 CpndefinitionFactory.eINSTANCE.createTransition()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PnmlcoremodelPackage.Literals.PAGE__OBJECT,
-				 CpndefinitionFactory.eINSTANCE.createPage()));
 	}
 
 	/**

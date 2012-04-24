@@ -9,7 +9,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
+import org.eclipse.emf.ecore.EReference;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**
@@ -253,7 +253,7 @@ public interface CpndefinitionPackage extends EPackage {
 	int ARC__TARGET = PnmlcoremodelPackage.ARC__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Inscription</b></em>' attribute.
+	 * The feature id for the '<em><b>Inscription</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -471,6 +471,61 @@ public interface CpndefinitionPackage extends EPackage {
 	int PAGE_FEATURE_COUNT = PnmlcoremodelPackage.PAGE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcInscriptionImpl <em>Arc Inscription</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcInscriptionImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getArcInscription()
+	 * @generated
+	 */
+	int ARC_INSCRIPTION = 5;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_INSCRIPTION__TOOLSPECIFIC = PnmlcoremodelPackage.LABEL__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_INSCRIPTION__GRAPHICS = PnmlcoremodelPackage.LABEL__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_INSCRIPTION__UNKNOWN = PnmlcoremodelPackage.LABEL__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_INSCRIPTION__TEXT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Arc Inscription</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_INSCRIPTION_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN <em>CPN</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -523,15 +578,15 @@ public interface CpndefinitionPackage extends EPackage {
 	EClass getArc();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inscription</em>'.
+	 * @return the meta object for the containment reference '<em>Inscription</em>'.
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription()
 	 * @see #getArc()
 	 * @generated
 	 */
-	EAttribute getArc_Inscription();
+	EReference getArc_Inscription();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition <em>Transition</em>}'.
@@ -563,6 +618,27 @@ public interface CpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPage();
+
+	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription <em>Arc Inscription</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arc Inscription</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription
+	 * @generated
+	 */
+	EClass getArcInscription();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription#getText()
+	 * @see #getArcInscription()
+	 * @generated
+	 */
+	EAttribute getArcInscription_Text();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -633,12 +709,12 @@ public interface CpndefinitionPackage extends EPackage {
 		EClass ARC = eINSTANCE.getArc();
 
 		/**
-		 * The meta object literal for the '<em><b>Inscription</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Inscription</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ARC__INSCRIPTION = eINSTANCE.getArc_Inscription();
+		EReference ARC__INSCRIPTION = eINSTANCE.getArc_Inscription();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.TransitionImpl <em>Transition</em>}' class.
@@ -667,6 +743,24 @@ public interface CpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PAGE = eINSTANCE.getPage();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcInscriptionImpl <em>Arc Inscription</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcInscriptionImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CpndefinitionPackageImpl#getArcInscription()
+		 * @generated
+		 */
+		EClass ARC_INSCRIPTION = eINSTANCE.getArcInscription();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARC_INSCRIPTION__TEXT = eINSTANCE.getArcInscription_Text();
 
 	}
 

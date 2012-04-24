@@ -7,18 +7,17 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
-
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**
@@ -62,6 +61,13 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * @generated
 	 */
 	private EClass pageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass arcInscriptionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -177,8 +183,8 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getArc_Inscription() {
-		return (EAttribute)arcEClass.getEStructuralFeatures().get(0);
+	public EReference getArc_Inscription() {
+		return (EReference)arcEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -206,6 +212,24 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 	 */
 	public EClass getPage() {
 		return pageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getArcInscription() {
+		return arcInscriptionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getArcInscription_Text() {
+		return (EAttribute)arcInscriptionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -243,12 +267,15 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 		createEAttribute(placeEClass, PLACE__COLORSET);
 
 		arcEClass = createEClass(ARC);
-		createEAttribute(arcEClass, ARC__INSCRIPTION);
+		createEReference(arcEClass, ARC__INSCRIPTION);
 
 		transitionEClass = createEClass(TRANSITION);
 		createEAttribute(transitionEClass, TRANSITION__GUARD);
 
 		pageEClass = createEClass(PAGE);
+
+		arcInscriptionEClass = createEClass(ARC_INSCRIPTION);
+		createEAttribute(arcInscriptionEClass, ARC_INSCRIPTION__TEXT);
 	}
 
 	/**
@@ -287,6 +314,7 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 		arcEClass.getESuperTypes().add(thePnmlcoremodelPackage.getArc());
 		transitionEClass.getESuperTypes().add(thePnmlcoremodelPackage.getTransition());
 		pageEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPage());
+		arcInscriptionEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(cpnEClass, org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN.class, "CPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -296,12 +324,15 @@ public class CpndefinitionPackageImpl extends EPackageImpl implements Cpndefinit
 		initEAttribute(getPlace_Colorset(), ecorePackage.getEString(), "Colorset", null, 0, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getArc_Inscription(), ecorePackage.getEString(), "Inscription", null, 0, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArc_Inscription(), this.getArcInscription(), null, "inscription", null, 1, 1, Arc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTransition_Guard(), ecorePackage.getEString(), "Guard", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageEClass, Page.class, "Page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(arcInscriptionEClass, ArcInscription.class, "ArcInscription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArcInscription_Text(), ecorePackage.getEString(), "text", null, 0, 1, ArcInscription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

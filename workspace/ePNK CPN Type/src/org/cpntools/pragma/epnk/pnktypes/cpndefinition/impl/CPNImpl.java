@@ -8,9 +8,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.pnml.tools.epnk.pnmlcoremodel.impl.PetriNetTypeImpl;
 
 /**

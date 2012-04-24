@@ -6,15 +6,18 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.util;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.*;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
-
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
+import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
@@ -125,6 +128,13 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CpndefinitionPackage.ARC_INSCRIPTION: {
+				ArcInscription arcInscription = (ArcInscription)theEObject;
+				T result = caseArcInscription(arcInscription);
+				if (result == null) result = caseLabel(arcInscription);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -201,6 +211,21 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePage(Page object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Arc Inscription</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Arc Inscription</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseArcInscription(ArcInscription object) {
 		return null;
 	}
 
@@ -351,6 +376,21 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLabel(Label object) {
 		return null;
 	}
 

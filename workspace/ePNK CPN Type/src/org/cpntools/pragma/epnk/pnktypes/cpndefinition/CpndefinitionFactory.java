@@ -71,6 +71,15 @@ public interface CpndefinitionFactory extends EFactory {
 	Page createPage();
 
 	/**
+	 * Returns a new object of class '<em>Arc Inscription</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arc Inscription</em>'.
+	 * @generated
+	 */
+	ArcInscription createArcInscription();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

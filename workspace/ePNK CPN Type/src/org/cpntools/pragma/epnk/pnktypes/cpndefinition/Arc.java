@@ -25,29 +25,29 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Arc extends org.pnml.tools.epnk.pnmlcoremodel.Arc {
 	/**
-	 * Returns the value of the '<em><b>Inscription</b></em>' attribute.
+	 * Returns the value of the '<em><b>Inscription</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Inscription</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inscription</em>' attribute.
-	 * @see #setInscription(String)
+	 * @return the value of the '<em>Inscription</em>' containment reference.
+	 * @see #setInscription(ArcInscription)
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getArc_Inscription()
-	 * @model
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getInscription();
+	ArcInscription getInscription();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}' attribute.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inscription</em>' attribute.
+	 * @param value the new value of the '<em>Inscription</em>' containment reference.
 	 * @see #getInscription()
 	 * @generated
 	 */
-	void setInscription(String value);
+	void setInscription(ArcInscription value);
 
 } // Arc

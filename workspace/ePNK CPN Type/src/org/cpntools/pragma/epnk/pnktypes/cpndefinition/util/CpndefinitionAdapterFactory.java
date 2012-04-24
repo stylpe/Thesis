@@ -6,16 +6,19 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.util;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.*;
-
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
+import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
@@ -98,6 +101,10 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createPageAdapter();
 			}
 			@Override
+			public Adapter caseArcInscription(ArcInscription object) {
+				return createArcInscriptionAdapter();
+			}
+			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
 				return createPetriNetTypeAdapter();
 			}
@@ -136,6 +143,10 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
 				return createPnmlcoremodel_PageAdapter();
+			}
+			@Override
+			public Adapter caseLabel(Label object) {
+				return createLabelAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -224,6 +235,20 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription <em>Arc Inscription</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription
+	 * @generated
+	 */
+	public Adapter createArcInscriptionAdapter() {
 		return null;
 	}
 
@@ -364,6 +389,20 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPnmlcoremodel_PageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Label <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Label
+	 * @generated
+	 */
+	public Adapter createLabelAdapter() {
 		return null;
 	}
 

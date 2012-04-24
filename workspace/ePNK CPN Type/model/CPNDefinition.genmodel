@@ -7,26 +7,20 @@
   <foreignModel>CPNDefinition.ecore</foreignModel>
   <genPackages prefix="Cpndefinition" basePackage="org.cpntools.pragma.epnk.pnktypes"
       disposableProviderFactory="true" ecorePackage="CPNDefinition.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CPNDefinition.ecore#//PragmaSource">
-      <genEnumLiterals ecoreEnumLiteral="CPNDefinition.ecore#//PragmaSource/EEnumLiteral0"/>
-      <genEnumLiterals ecoreEnumLiteral="CPNDefinition.ecore#//PragmaSource/EEnumLiteral1"/>
-    </genEnums>
-    <genClasses ecoreClass="CPNDefinition.ecore#//CPNType">
-      <genFeatures createChild="false" propertyCategory="" propertyDescription=""
-          ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//CPNType/LoadedPragmaSets"/>
-    </genClasses>
-    <genClasses ecoreClass="CPNDefinition.ecore#//Pragma">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//Pragma/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//Pragma/source"/>
-    </genClasses>
-    <genClasses ecoreClass="CPNDefinition.ecore#//Place">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CPNDefinition.ecore#//Place/Annotation"/>
+    <genClasses ecoreClass="CPNDefinition.ecore#//CPN"/>
+    <genClasses ecoreClass="CPNDefinition.ecore#//Place" labelFeature="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel/ID/id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//Place/InitialMarking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//Place/Colorset"/>
     </genClasses>
     <genClasses ecoreClass="CPNDefinition.ecore#//Arc">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CPNDefinition.ecore#//Arc/Annotation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CPNDefinition.ecore#//Arc/inscription"/>
     </genClasses>
     <genClasses ecoreClass="CPNDefinition.ecore#//Transition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CPNDefinition.ecore#//Transition/Annotation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//Transition/Guard"/>
+    </genClasses>
+    <genClasses ecoreClass="CPNDefinition.ecore#//Page"/>
+    <genClasses ecoreClass="CPNDefinition.ecore#//ArcInscription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CPNDefinition.ecore#//ArcInscription/text"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

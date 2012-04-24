@@ -6,16 +6,18 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.*;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
-
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -67,6 +69,7 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 			case CpndefinitionPackage.ARC: return createArc();
 			case CpndefinitionPackage.TRANSITION: return createTransition();
 			case CpndefinitionPackage.PAGE: return createPage();
+			case CpndefinitionPackage.ARC_INSCRIPTION: return createArcInscription();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -120,6 +123,16 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	public Page createPage() {
 		PageImpl page = new PageImpl();
 		return page;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ArcInscription createArcInscription() {
+		ArcInscriptionImpl arcInscription = new ArcInscriptionImpl();
+		return arcInscription;
 	}
 
 	/**
