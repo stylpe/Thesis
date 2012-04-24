@@ -56,7 +56,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_cxjS4H2DEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/resource/ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Place"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cxjS4X2DEeGE3ZFVHcTXVQ" x="265" y="200"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cxjS4X2DEeGE3ZFVHcTXVQ" x="40" y="220"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_fSgMsH2DEeGE3ZFVHcTXVQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_fSiB4H2DEeGE3ZFVHcTXVQ" type="4001"/>
@@ -72,7 +72,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_fSgMsX2DEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="PragmaCPNDefinition.ecore#//Place"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fSgMsn2DEeGE3ZFVHcTXVQ" x="270" y="310"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fSgMsn2DEeGE3ZFVHcTXVQ" x="70" y="330"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_hOc8AH2DEeGE3ZFVHcTXVQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_hOeKIH2DEeGE3ZFVHcTXVQ" type="4001"/>
@@ -92,7 +92,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_hOc8AX2DEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="PragmaCPNDefinition.ecore#//Pragma"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hOc8An2DEeGE3ZFVHcTXVQ" x="80" y="310"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hOc8An2DEeGE3ZFVHcTXVQ" x="275" y="410"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_jv6MIH2DEeGE3ZFVHcTXVQ" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jwGZYH2DEeGE3ZFVHcTXVQ" source="Shortcut">
@@ -111,7 +111,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_jv6MIX2DEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jv6MIn2DEeGE3ZFVHcTXVQ" x="65" y="200"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jv6MIn2DEeGE3ZFVHcTXVQ" x="260" y="225"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_F2jzYINNEeGSoK-Eaznv9w" type="Note" fontColor="255" fontName="Segoe UI" fontHeight="16" description="DRAFT" fillColor="10265827" transparency="0" lineColor="0" lineWidth="1">
     <children xmi:type="notation:BasicDecorationNode" xmi:id="_F2jzYYNNEeGSoK-Eaznv9w" type="DiagramName">
@@ -143,7 +143,7 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_lrK-8X2DEeGE3ZFVHcTXVQ" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_lrK-8n2DEeGE3ZFVHcTXVQ" fontName="Segoe UI"/>
     <element xsi:nil="true"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lrK-832DEeGE3ZFVHcTXVQ" points="[-7, -20, -8, 81]$[-7, -72, -8, 29]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lrK-832DEeGE3ZFVHcTXVQ" points="[4, -24, 4, 156]$[4, -151, 4, 29]"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_eB794H2dEeGE3ZFVHcTXVQ" type="3002" source="_fSgMsH2DEeGE3ZFVHcTXVQ" target="_hOc8AH2DEeGE3ZFVHcTXVQ">
     <children xmi:type="notation:Node" xmi:id="_eB9MAH2dEeGE3ZFVHcTXVQ" type="4011">
@@ -155,7 +155,6 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_eB794X2dEeGE3ZFVHcTXVQ" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_eB794n2dEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="PragmaCPNDefinition.ecore#//Place/Annotation"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eB79432dEeGE3ZFVHcTXVQ" points="[-24, 3, 136, -13]$[-112, 11, 48, -5]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eCCEgH2dEeGE3ZFVHcTXVQ" id="(0.24509803921568626,0.6511627906976745)"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eB79432dEeGE3ZFVHcTXVQ" points="[0, 21, -206, -63]$[0, 84, -206, 0]$[155, 84, -51, 0]"/>
   </edges>
 </notation:Diagram>

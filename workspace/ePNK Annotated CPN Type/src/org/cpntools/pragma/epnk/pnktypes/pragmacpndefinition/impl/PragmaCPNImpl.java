@@ -9,14 +9,10 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 import java.util.Collection;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl;
-
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**

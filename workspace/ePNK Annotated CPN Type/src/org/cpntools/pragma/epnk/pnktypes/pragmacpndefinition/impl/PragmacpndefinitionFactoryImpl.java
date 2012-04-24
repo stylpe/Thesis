@@ -6,14 +6,15 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
-
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionFactory;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**

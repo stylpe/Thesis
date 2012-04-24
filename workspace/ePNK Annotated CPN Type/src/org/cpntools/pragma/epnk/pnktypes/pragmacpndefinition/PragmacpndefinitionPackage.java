@@ -7,12 +7,10 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**

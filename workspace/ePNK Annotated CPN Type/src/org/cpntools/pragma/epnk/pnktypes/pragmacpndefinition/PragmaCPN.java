@@ -7,7 +7,6 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
-
 import org.eclipse.emf.common.util.EList;
 
 /**

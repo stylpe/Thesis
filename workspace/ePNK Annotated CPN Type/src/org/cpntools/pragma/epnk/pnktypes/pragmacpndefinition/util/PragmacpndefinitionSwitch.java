@@ -7,14 +7,13 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
-
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
-
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
 import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;

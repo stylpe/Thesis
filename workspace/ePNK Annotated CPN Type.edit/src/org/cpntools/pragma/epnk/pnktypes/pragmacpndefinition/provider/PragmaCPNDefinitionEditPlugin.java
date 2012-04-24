@@ -7,11 +7,8 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.provider;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider.CPNDefinitionEditPlugin;
-
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.pnml.tools.epnk.pnmlcoremodel.provider.PNMLCoreModelEditPlugin;
 
 /**

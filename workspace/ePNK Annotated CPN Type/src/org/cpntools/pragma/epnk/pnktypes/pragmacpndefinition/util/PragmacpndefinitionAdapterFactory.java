@@ -7,16 +7,14 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
-
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
-
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.pnml.tools.epnk.pnmlcoremodel.ID;
 import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
