@@ -7,6 +7,8 @@ CPN Type
 - Confirm inscription attributes OK
 - Visualise inscriptions
 - Constraints
+- Declarations? 
+- Ports and sockets?
 
 PragmaCPN Type
 - Select Pragma ontologies from plugin
