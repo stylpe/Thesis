@@ -11,5 +11,41 @@
             description="Coloured Petri Net from CPN Tools">
       </type>
    </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="org.pnml.tools.epnk.validation"
+            name="CPN Validation">
+      </category>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package
+               namespaceUri="http://org.pnml.tools/epnk/pnmlcoremodel">
+         </package>
+         <constraints
+               categories="org.pnml.tools.epnk.validation">
+            <constraint
+                  class="org.cpntools.pragma.epnk.pnktypes.cpndefinition.validation.ArcSourceAndTargetLimitation"
+                  id="org.cpntools.pragma.epnk.pnktypes.cpndefinition.validation.ArcSourceAndTargetLimitation"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="Arc source and target limitation"
+                  severity="ERROR"
+                  statusCode="301">
+               <target
+                     class="Arc:http://org.cpntools/pragma/epnk/pnktypes/cpndefinition">
+               </target>
+               <description>
+                  An Arc must go between a Place and either a Transition or a Page.
+               </description>
+               <message>
+                  The source and target of arc {0} are not compatible.
+               </message>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
 
 </plugin>

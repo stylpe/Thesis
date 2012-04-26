@@ -43,7 +43,6 @@ public class CPNImpl extends PetriNetTypeImpl implements CPN {
 	@Override
 	// @generated NOT
 	public String toString() {
-		// TODO Return sensible value
-		return "WAT";
+		return "Colored Petri Net";
 	}
 } //CPNImpl
