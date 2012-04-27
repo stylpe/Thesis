@@ -13,6 +13,7 @@ import java.util.List;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider.CPNItemProvider;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.ontology.OntologyLoader;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -48,6 +49,12 @@ public class PragmaCPNItemProvider
 	 */
 	public PragmaCPNItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+
+		try {
+			OntologyLoader.load();
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	/**

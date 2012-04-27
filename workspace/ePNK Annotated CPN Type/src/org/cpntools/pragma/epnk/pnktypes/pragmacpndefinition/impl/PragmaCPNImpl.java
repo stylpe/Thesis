@@ -49,11 +49,6 @@ public class PragmaCPNImpl extends CPNImpl implements PragmaCPN {
 	 */
 	public PragmaCPNImpl() {
 		super();
-		try {
-			OntologyLoader.load();
-		} catch(Exception e) {
-			System.out.println(e);
-		}
 	}
 
 	/**

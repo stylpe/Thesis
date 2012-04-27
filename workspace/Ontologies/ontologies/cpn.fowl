@@ -1,6 +1,7 @@
 Prefix(:=<http://hib.no/ontologypetrinets/cpn/>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
  
 Ontology(<http://hib.no/ontologypetrinets/cpn/>
  
@@ -45,6 +46,9 @@ EquivalentClasses(:SocketDirection ObjectOneOf(:Out :InOut :In))
 Declaration(Class(:SubstiutionTransition))
 SubClassOf(:SubstiutionTransition :Transition)
 SubClassOf(:SubstiutionTransition ObjectMaxCardinality(1 :page))
+
+DisjointClasses(:Page :Place :Transition :Arc)
+DisjointClasses(:NormalTransition :SubstiutionTransition)
 
 Declaration(ObjectProperty(:arcs))
 ObjectPropertyDomain(:arcs :Page)

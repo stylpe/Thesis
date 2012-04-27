@@ -21,5 +21,28 @@
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions"
+            objectClass="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN">
+         <menu
+               id="org.pnml.tools.epnk.actions.standardmenu"
+               label="ePNK"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.AddOntologyAction"
+               enablesFor="1"
+               id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.AddOntologyAction"
+               label="Add Ontology"
+               menubarPath="org.pnml.tools.epnk.actions.standardmenu/group1">
+         </action>
+      </objectContribution>
+   </extension>
 
 </plugin>
