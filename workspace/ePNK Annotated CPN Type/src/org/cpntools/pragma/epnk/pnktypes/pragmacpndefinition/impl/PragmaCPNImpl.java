@@ -11,9 +11,12 @@ import java.util.Collection;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.ontology.OntologyLoader;
+import org.cpntools.pragma.ontology.BundleOntologyEnumerator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -46,6 +49,11 @@ public class PragmaCPNImpl extends CPNImpl implements PragmaCPN {
 	 */
 	public PragmaCPNImpl() {
 		super();
+		try {
+			OntologyLoader.load();
+		} catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	/**

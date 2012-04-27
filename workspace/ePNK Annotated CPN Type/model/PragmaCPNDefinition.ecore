@@ -4,6 +4,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pragmacpndefinition"
     nsURI="http://pragmacpndefinition/1.0" nsPrefix="pragmacpndefinition">
   <eClassifiers xsi:type="ecore:EClass" name="PragmaCPN" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//CPN">
+    <eAnnotations source="EAnnotation0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="LoadedPragmaSets" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

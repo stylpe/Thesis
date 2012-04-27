@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Require-Bundle: ePNK_CPN_Type;bundle-version="1.0.0",
- org.pnml.tools.epnk;bundle-version="0.9.3"
+ org.pnml.tools.epnk;bundle-version="0.9.3",
+ Ontologies;bundle-version="1.0.0"
 Export-Package: org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition,
  org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util

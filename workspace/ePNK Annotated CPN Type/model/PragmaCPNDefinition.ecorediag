@@ -123,7 +123,7 @@
     <styles xmi:type="notation:TextStyle" xmi:id="_F2jzY4NNEeGSoK-Eaznv9w"/>
     <styles xmi:type="notation:LineTypeStyle" xmi:id="_F2jzZINNEeGSoK-Eaznv9w"/>
     <element xsi:nil="true"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F2jzZYNNEeGSoK-Eaznv9w" x="240" y="40" width="156" height="111"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F2jzZYNNEeGSoK-Eaznv9w" x="635" y="80" width="156" height="111"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_wVHrEX2BEeGmEM6wZB1ijQ"/>
   <element xmi:type="ecore:EPackage" href="PragmaCPNDefinition.ecore#/"/>

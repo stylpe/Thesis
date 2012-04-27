@@ -2,11 +2,11 @@
  Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
  Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
  Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
- Prefix(cpn:=<http://hib.no/SADLTest/cpn>)
+ Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
 
  Ontology(<http://org.k1s/orn/nppn/>
   Import( <http://t.k1s.org/OntologyReastrictedNets/basic.owl> )
-  Import( <http://t.k1s.org/OntologyReastrictedNets/cpn.owl> )
+  Import( <http://hib.no/ontologypetrinets/cpn/> )
 
    
 
