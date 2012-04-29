@@ -6,13 +6,17 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
+import java.util.Collection;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -30,14 +34,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl implements Place {
 	/**
-	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
+	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAnnotation()
 	 * @generated
 	 * @ordered
 	 */
-	protected Pragma annotation;
+	protected EList<Pragma> annotation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,42 +67,11 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Pragma getAnnotation() {
+	public EList<Pragma> getAnnotation() {
+		if (annotation == null) {
+			annotation = new EObjectContainmentEList<Pragma>(Pragma.class, this, PragmacpndefinitionPackage.PLACE__ANNOTATION);
+		}
 		return annotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAnnotation(Pragma newAnnotation, NotificationChain msgs) {
-		Pragma oldAnnotation = annotation;
-		annotation = newAnnotation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PragmacpndefinitionPackage.PLACE__ANNOTATION, oldAnnotation, newAnnotation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAnnotation(Pragma newAnnotation) {
-		if (newAnnotation != annotation) {
-			NotificationChain msgs = null;
-			if (annotation != null)
-				msgs = ((InternalEObject)annotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PragmacpndefinitionPackage.PLACE__ANNOTATION, null, msgs);
-			if (newAnnotation != null)
-				msgs = ((InternalEObject)newAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PragmacpndefinitionPackage.PLACE__ANNOTATION, null, msgs);
-			msgs = basicSetAnnotation(newAnnotation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PragmacpndefinitionPackage.PLACE__ANNOTATION, newAnnotation, newAnnotation));
 	}
 
 	/**
@@ -110,7 +83,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
-				return basicSetAnnotation(null, msgs);
+				return ((InternalEList<?>)getAnnotation()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -134,11 +107,13 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
-				setAnnotation((Pragma)newValue);
+				getAnnotation().clear();
+				getAnnotation().addAll((Collection<? extends Pragma>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -153,7 +128,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
-				setAnnotation((Pragma)null);
+				getAnnotation().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -168,7 +143,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
-				return annotation != null;
+				return annotation != null && !annotation.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

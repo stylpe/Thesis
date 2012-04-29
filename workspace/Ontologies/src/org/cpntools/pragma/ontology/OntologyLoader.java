@@ -4,7 +4,9 @@ import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
 
 public class OntologyLoader {
-	public static void load() {
+	
+	// Creates an Ontology Manager loaded with default generic pragmatics
+	public static OWLOntologyManager load() {
 
 		// Get hold of an ontology manager
 		OWLOntologyManager manager = prepManager();
@@ -20,8 +22,10 @@ public class OntologyLoader {
 		} catch (OWLOntologyCreationException e) {
 			System.out.println("Could not load ontology: " + e.getMessage());
 		}
-
+		
+		return manager;
 	}
+	
 	private static OWLOntologyManager prepManager() {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 

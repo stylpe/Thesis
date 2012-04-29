@@ -3,15 +3,15 @@
   <children xmi:type="notation:Node" xmi:id="_1NFqIX2CEeGE3ZFVHcTXVQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_1NddkH2CEeGE3ZFVHcTXVQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_1NhH8H2CEeGE3ZFVHcTXVQ" type="5001">
-      <children xmi:type="notation:Node" xmi:id="_UkhAAH2DEeGE3ZFVHcTXVQ" type="2001">
-        <element xmi:type="ecore:EAttribute" href="PragmaCPNDefinition.ecore#//PragmaCPN/LoadedPragmaSets"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_UkhAAX2DEeGE3ZFVHcTXVQ"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_1NhH8X2CEeGE3ZFVHcTXVQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_1NhH8n2CEeGE3ZFVHcTXVQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_1NhH832CEeGE3ZFVHcTXVQ"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_1NiWEH2CEeGE3ZFVHcTXVQ" type="5002">
+      <children xmi:type="notation:Node" xmi:id="_8gxFQZAcEeGzMYhXlOnCww" type="2002">
+        <element xmi:type="ecore:EOperation" href="PragmaCPNDefinition.ecore#//PragmaCPN/includeOntologyFromFile"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_8gxFQpAcEeGzMYhXlOnCww"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_1NiWEX2CEeGE3ZFVHcTXVQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_1NiWEn2CEeGE3ZFVHcTXVQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_1NiWE32CEeGE3ZFVHcTXVQ"/>
@@ -125,6 +125,37 @@
     <element xsi:nil="true"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F2jzZYNNEeGSoK-Eaznv9w" x="635" y="80" width="156" height="111"/>
   </children>
+  <children xmi:type="notation:Node" xmi:id="_HZKyMJAdEeGzMYhXlOnCww" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_HZN1gJAdEeGzMYhXlOnCww" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_HZN1gZAdEeGzMYhXlOnCww" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_HZKyMZAdEeGzMYhXlOnCww" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="PragmaCPNDefinition.ecore#//OntologyFile"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HZKyMpAdEeGzMYhXlOnCww" x="526" y="281"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_JVj6gJAqEeGzMYhXlOnCww" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_JVmWwJAqEeGzMYhXlOnCww" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_JVnk4JAqEeGzMYhXlOnCww" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_co13IJAsEeGzMYhXlOnCww" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PragmaCPNDefinition.ecore#//OntologyDocument/iri"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_co13IZAsEeGzMYhXlOnCww"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_fUIYsJAsEeGzMYhXlOnCww" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PragmaCPNDefinition.ecore#//OntologyDocument/path"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_fUIYsZAsEeGzMYhXlOnCww"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_JVnk4ZAqEeGzMYhXlOnCww"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_JVnk4pAqEeGzMYhXlOnCww"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_JVnk45AqEeGzMYhXlOnCww"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_JVozAJAqEeGzMYhXlOnCww" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_JVozAZAqEeGzMYhXlOnCww"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_JVpaEJAqEeGzMYhXlOnCww"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_JVpaEZAqEeGzMYhXlOnCww"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_JVj6gZAqEeGzMYhXlOnCww" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PragmaCPNDefinition.ecore#//OntologyDocument"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JVj6gpAqEeGzMYhXlOnCww" x="459" y="58"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_wVHrEX2BEeGmEM6wZB1ijQ"/>
   <element xmi:type="ecore:EPackage" href="PragmaCPNDefinition.ecore#/"/>
   <edges xmi:type="notation:Edge" xmi:id="_9q3HsH2CEeGE3ZFVHcTXVQ" type="3003" source="_1NFqIX2CEeGE3ZFVHcTXVQ" target="_9Hps8H2CEeGE3ZFVHcTXVQ">
@@ -156,5 +187,18 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_eB794n2dEeGE3ZFVHcTXVQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="PragmaCPNDefinition.ecore#//Place/Annotation"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eB79432dEeGE3ZFVHcTXVQ" points="[0, 21, -206, -63]$[0, 84, -206, 0]$[155, 84, -51, 0]"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_l7cD4JAsEeGzMYhXlOnCww" type="3002" source="_1NFqIX2CEeGE3ZFVHcTXVQ" target="_JVj6gJAqEeGzMYhXlOnCww">
+    <children xmi:type="notation:Node" xmi:id="_l7d5EJAsEeGzMYhXlOnCww" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_l7d5EZAsEeGzMYhXlOnCww" x="-55" y="-20"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_l7fHMJAsEeGzMYhXlOnCww" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_l7fHMZAsEeGzMYhXlOnCww" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_l7cD4ZAsEeGzMYhXlOnCww" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_l7cD4pAsEeGzMYhXlOnCww" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PragmaCPNDefinition.ecore#//PragmaCPN/LoadedOntologies"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l7cD45AsEeGzMYhXlOnCww" points="[22, -6, -241, 54]$[197, -65, -66, -5]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_l7nDAJAsEeGzMYhXlOnCww" id="(0.9140625,0.5490196078431373)"/>
   </edges>
 </notation:Diagram>

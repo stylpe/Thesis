@@ -7,6 +7,7 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
@@ -88,6 +89,10 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePragma(Pragma object) {
 				return createPragmaAdapter();
+			}
+			@Override
+			public Adapter caseOntologyDocument(OntologyDocument object) {
+				return createOntologyDocumentAdapter();
 			}
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
@@ -184,6 +189,20 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPragmaAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument <em>Ontology Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument
+	 * @generated
+	 */
+	public Adapter createOntologyDocumentAdapter() {
 		return null;
 	}
 

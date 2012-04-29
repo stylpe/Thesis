@@ -7,6 +7,7 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -17,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedOntologies <em>Loaded Ontologies</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,19 +28,27 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface PragmaCPN extends CPN {
 	/**
-	 * Returns the value of the '<em><b>Loaded Pragma Sets</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Loaded Ontologies</b></em>' containment reference list.
+	 * The list contents are of type {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Loaded Pragma Sets</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Loaded Ontologies</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Loaded Pragma Sets</em>' attribute list.
-	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage#getPragmaCPN_LoadedPragmaSets()
-	 * @model
+	 * @return the value of the '<em>Loaded Ontologies</em>' containment reference list.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage#getPragmaCPN_LoadedOntologies()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<String> getLoadedPragmaSets();
+	EList<OntologyDocument> getLoadedOntologies();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model fileDataType="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyFile"
+	 * @generated
+	 */
+	void includeOntologyFromFile(IFile file);
 
 } // PragmaCPN

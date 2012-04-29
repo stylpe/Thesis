@@ -2,12 +2,15 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions;
 
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
@@ -16,6 +19,8 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog;
 import org.eclipse.ui.model.BaseWorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 
 public class AddOntologyAction implements IObjectActionDelegate {
 
@@ -29,15 +34,16 @@ public class AddOntologyAction implements IObjectActionDelegate {
 				shell, new WorkbenchLabelProvider(),
 				new BaseWorkbenchContentProvider());
 		dialog.setTitle("Select an Ontology");
-		dialog.setMessage("Select the ontology document you want to include in the net:");
-		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
+		dialog.setMessage("Select the Ontology document you want to include in the net:");
+		
+		dialog.setInput(getProject(typedef));
 		dialog.open();
 
-		if (dialog.getReturnCode() == dialog.OK) {
+		if (dialog.getReturnCode() == Window.OK) {
 			Object o = dialog.getFirstResult();
 			if (o instanceof IFile) {
 				IFile f = (IFile) o;
-				// TODO: Load the ontology
+				typedef.includeOntologyFromFile(f);
 			} else {
 				IStatus status = new Status(IStatus.ERROR, "PragmaCPN", 0,
 						"Invalid file", null);
@@ -45,6 +51,12 @@ public class AddOntologyAction implements IObjectActionDelegate {
 						"The selected file was not valid.", status);
 			}
 		}
+	}
+	
+	private IProject getProject(EObject obj) {
+		URI uri = obj.eResource().getURI();
+		String fileString = uri.toPlatformString(true);
+		return ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(fileString)).getProject();
 	}
 
 	@Override

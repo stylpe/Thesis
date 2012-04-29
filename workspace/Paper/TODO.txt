@@ -11,8 +11,8 @@ CPN Type
 - Ports and sockets?
 
 PragmaCPN Type
-- Select Pragma ontologies from plugin
-- And from project
+- Select Pragma ontologies from plugin 
+- And from project OK
 - Load ontologies
 - Annotate
 	- Content assist

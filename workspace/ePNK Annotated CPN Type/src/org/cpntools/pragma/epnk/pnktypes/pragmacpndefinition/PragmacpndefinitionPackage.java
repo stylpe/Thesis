@@ -9,6 +9,7 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
@@ -72,13 +73,13 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PRAGMA_CPN = 0;
 
 	/**
-	 * The feature id for the '<em><b>Loaded Pragma Sets</b></em>' attribute list.
+	 * The feature id for the '<em><b>Loaded Ontologies</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRAGMA_CPN__LOADED_PRAGMA_SETS = CpndefinitionPackage.CPN_FEATURE_COUNT + 0;
+	int PRAGMA_CPN__LOADED_ONTOLOGIES = CpndefinitionPackage.CPN_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Pragma CPN</em>' class.
@@ -181,7 +182,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PLACE__COLORSET = CpndefinitionPackage.PLACE__COLORSET;
 
 	/**
-	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -255,6 +256,54 @@ public interface PragmacpndefinitionPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl <em>Ontology Document</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyDocument()
+	 * @generated
+	 */
+	int ONTOLOGY_DOCUMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Iri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_DOCUMENT__IRI = 0;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_DOCUMENT__PATH = 1;
+
+	/**
+	 * The number of structural features of the '<em>Ontology Document</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_DOCUMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '<em>Ontology File</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.core.resources.IFile
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
+	 * @generated
+	 */
+	int ONTOLOGY_FILE = 4;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN <em>Pragma CPN</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,15 +314,15 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EClass getPragmaCPN();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedPragmaSets <em>Loaded Pragma Sets</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedOntologies <em>Loaded Ontologies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Loaded Pragma Sets</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedPragmaSets()
+	 * @return the meta object for the containment reference list '<em>Loaded Ontologies</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedOntologies()
 	 * @see #getPragmaCPN()
 	 * @generated
 	 */
-	EAttribute getPragmaCPN_LoadedPragmaSets();
+	EReference getPragmaCPN_LoadedOntologies();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place <em>Place</em>}'.
@@ -286,10 +335,10 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EClass getPlace();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place#getAnnotation <em>Annotation</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place#getAnnotation <em>Annotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Annotation</em>'.
+	 * @return the meta object for the containment reference list '<em>Annotation</em>'.
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place#getAnnotation()
 	 * @see #getPlace()
 	 * @generated
@@ -316,6 +365,49 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPragma_Text();
+
+	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument <em>Ontology Document</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ontology Document</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument
+	 * @generated
+	 */
+	EClass getOntologyDocument();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getIri <em>Iri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Iri</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getIri()
+	 * @see #getOntologyDocument()
+	 * @generated
+	 */
+	EAttribute getOntologyDocument_Iri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getPath()
+	 * @see #getOntologyDocument()
+	 * @generated
+	 */
+	EAttribute getOntologyDocument_Path();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.core.resources.IFile <em>Ontology File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Ontology File</em>'.
+	 * @see org.eclipse.core.resources.IFile
+	 * @model instanceClass="org.eclipse.core.resources.IFile" serializeable="false"
+	 * @generated
+	 */
+	EDataType getOntologyFile();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -350,12 +442,12 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		EClass PRAGMA_CPN = eINSTANCE.getPragmaCPN();
 
 		/**
-		 * The meta object literal for the '<em><b>Loaded Pragma Sets</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Loaded Ontologies</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PRAGMA_CPN__LOADED_PRAGMA_SETS = eINSTANCE.getPragmaCPN_LoadedPragmaSets();
+		EReference PRAGMA_CPN__LOADED_ONTOLOGIES = eINSTANCE.getPragmaCPN_LoadedOntologies();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PlaceImpl <em>Place</em>}' class.
@@ -368,7 +460,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		EClass PLACE = eINSTANCE.getPlace();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -392,6 +484,42 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRAGMA__TEXT = eINSTANCE.getPragma_Text();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl <em>Ontology Document</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyDocument()
+		 * @generated
+		 */
+		EClass ONTOLOGY_DOCUMENT = eINSTANCE.getOntologyDocument();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONTOLOGY_DOCUMENT__IRI = eINSTANCE.getOntologyDocument_Iri();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ONTOLOGY_DOCUMENT__PATH = eINSTANCE.getOntologyDocument_Path();
+
+		/**
+		 * The meta object literal for the '<em>Ontology File</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.core.resources.IFile
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
+		 * @generated
+		 */
+		EDataType ONTOLOGY_FILE = eINSTANCE.getOntologyFile();
 
 	}
 

@@ -143,6 +143,29 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OntologyDocumentItemProvider ontologyDocumentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOntologyDocumentAdapter() {
+		if (ontologyDocumentItemProvider == null) {
+			ontologyDocumentItemProvider = new OntologyDocumentItemProvider(this);
+		}
+
+		return ontologyDocumentItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -244,6 +267,7 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 		if (pragmaCPNItemProvider != null) pragmaCPNItemProvider.dispose();
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (pragmaItemProvider != null) pragmaItemProvider.dispose();
+		if (ontologyDocumentItemProvider != null) ontologyDocumentItemProvider.dispose();
 	}
 
 }
