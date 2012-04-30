@@ -121,7 +121,7 @@ simple editor that can be used to manipulate CPN models.
 	editor that looks and works similarly to CPN Tools, and also lets you annotate
 	it with pragmatics. \com{Uklart, bør skrives på ny, med eksempel}
 
-\section{ePNK: Petri Net framework}
+\section{ePNK: Petri Net modeling framework}
 \label{sec:epnk}
 ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
 platform for creating new tools for specialised Petri Net types, which is
@@ -140,24 +140,49 @@ prototype:
 	GMF.
 \end{itemize}
 
-ePNK includes definitions for the core PNML model type, as well as two
-subtypes of Petri Nets. The first is P/T-Nets (Place/Transition Nets), which
-expand on the core model with a few key items: initial markings for placesas
+\subsection{ePNK Model Type Definitions}
+
+To simplify this section, we will first define some terminology:
+ \begin{description}
+ \item[Plugin] - An Eclipse Plugin 
+ \item[Type] - An ePNK Model Type Definition \com{ Finne på bedre navn så det
+ ikke er så lett å blande disse}
+ \item[Type Model] - The EMF model defining a Type. In MDD terms: The metamodel.
+ \item[Model] - A model created by a user
+ \end{description}
+ 
+A standard Petri Net model created in ePNK is initially only defined by the PNML
+Core Model Type. This Type is intended to be as generic as possible, and
+only defines the basic classes that most Petri Net variants contain, like Pages,
+Places, Transitions and Arcs. The only constraint defined is that an arc
+must go between two nodes on the same page.
+
+The user can specialise a model to extend it with features of a mode advanced
+Petri Net type. This is done by adding a Type as a child of the Petri Net
+Document node in the model, available in the right-click menu. Only one
+Type can exist in a Petri Net.
+
+Once a Type is added, ePNK will use class reflection to dynamically load
+any associated plugin(s), and the menus for adding new objects to the model will
+include any new classes and functionality that the Type defines.
+
+In addition to the PNML Core Model Type, ePNK includes definitions for
+two subtypes of Petri Nets. The first is P/T-Nets (Place/Transition Nets), which
+expand on the core model with a few key items: initial markings for places as
 integers, inscriptions on arcs, and constraining arcs to only go between a place
-and a transition (this is not enforced in PNML, as there are Petri Net variants that
-allow this). 
+and a transition.
 
 The second type included with ePNK is High level Petri Nets (HLPNG). This type
 adds Structured Labels which are used to represent model declarations, initial
 markings, arc expressions and transition guards.
 These are parsed and validated using a syntax that is inspired from (but not the
-same as) CPN ML from CPN Tools. It is possible to write invalid data in these
-labels and still save the document, as they will only be marked as invalid by
-the editor to inform the user.
+same as or compatible with) CPN ML from CPN Tools. It is possible to write
+invalid data in these labels and still save the document, as they will only be
+marked as invalid by the editor to inform the user.
 
 Neither of these two types conform exactly to the Coloured Petri Nets created by
 CPN Tools. HLPNG comes close, but is missing a few things like ports and sockets
-(RefPlaces can emulate this), and substitutin transitions. Also, the
+(RefPlaces can emulate this), and substitution transitions. Also, the
 structured labels are not compatible with CPN ML syntax from CPN Tools, and for
 our prototype, these structured labels are not necessary with regard to
 annotations. They might be useful in a future version, where for example
@@ -177,7 +202,7 @@ easy to parse, but having an existing solution for this is preferrable.
 The model definition used by Access/CPN is very similar to that of ePNK. This
 will be discussed more in the next chapter.
 
-\section{Semantic Application Design Language (SADL): Ontologies}
+\section{Ontologies: OWL 2 and OWL API}\label{sec:ontologies}
 
 Ontologies are a way to present information and meta-information so that it can
 be understood by computers. Essentially, this is done by defining classes that
@@ -187,13 +212,21 @@ information with these classes.
 There is a lot of ongoing research on this subject, especially to create a
 semantic web, that is extending web pages to provide meta-information about the
 content they contain and enabling software to understand it and reason about it.
-The OWL Web Ontology Language \cite{owl2-overview} is the World Wide Web Consortium (W3C)
-recommended standard for representing ontologies.
+The OWL 2 Web Ontology Language \cite{owl2-overview} is the World Wide Web
+Consortium (W3C) recommended standard for representing ontologies. The primary
+exchange syntax for OWL 2 is RDF/XML \cite{rdf-xml}. There also exist
+other syntaxes, like Manchester syntax which improves readability,and
+Functional syntax which emphasises formal structure.
 
-(Delvis obsolete ettersom Kent er på vei bort fra SADL, skal skrives om til
-Manchester syntax)
+The power of ontologies lies in the potential to reason about the facts they
+present, and infer implicit facts. 
 
 TODO: Lite eksempel på ontology.
+
+The code generation pragmatics are defined as OWL 2 ontologies, primarily using
+Functional syntax. To parse and reason with these ontologies, we use OWL API
+\cite{owlapi}, the reference Java implementation, which is capable of reading
+ontologies in any of the OWL 2 syntaxes.
 
 \section{Summary}
 After picking these technologies, since all the componets have Eclipse in
