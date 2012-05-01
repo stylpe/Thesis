@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/org.semanticweb.HermiT.jar" sourcepath="D:/Downloads/HermiT.zip"/>
 	<classpathentry exported="true" kind="lib" path="lib/owlapi-bin.jar" sourcepath="lib/owlapi-src.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/D:/Documents/Master/Thesis/workspace/Ontologies/lib/javadoc/"/>

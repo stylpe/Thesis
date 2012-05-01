@@ -8,11 +8,13 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -22,6 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,7 +66,28 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass pragmaticsOntologyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass petriNetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType ontologyFileEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType ontologyManagerEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -143,15 +167,6 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPragmaCPN_LoadedOntologies() {
-		return (EReference)pragmaCPNEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPlace() {
 		return placeEClass;
 	}
@@ -215,8 +230,80 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOntologyDocument_Ontology() {
+		return (EReference)ontologyDocumentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPragmaticsOntology() {
+		return pragmaticsOntologyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPragmaticsOntology_Documents() {
+		return (EReference)pragmaticsOntologyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPragmaticsOntology_Net() {
+		return (EReference)pragmaticsOntologyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPragmaticsOntology_Manager() {
+		return (EAttribute)pragmaticsOntologyEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPetriNet() {
+		return petriNetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPetriNet_Ontology() {
+		return (EReference)petriNetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getOntologyFile() {
 		return ontologyFileEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getOntologyManager() {
+		return ontologyManagerEDataType;
 	}
 
 	/**
@@ -248,7 +335,6 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 
 		// Create classes and their features
 		pragmaCPNEClass = createEClass(PRAGMA_CPN);
-		createEReference(pragmaCPNEClass, PRAGMA_CPN__LOADED_ONTOLOGIES);
 
 		placeEClass = createEClass(PLACE);
 		createEReference(placeEClass, PLACE__ANNOTATION);
@@ -259,9 +345,19 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		ontologyDocumentEClass = createEClass(ONTOLOGY_DOCUMENT);
 		createEAttribute(ontologyDocumentEClass, ONTOLOGY_DOCUMENT__IRI);
 		createEAttribute(ontologyDocumentEClass, ONTOLOGY_DOCUMENT__PATH);
+		createEReference(ontologyDocumentEClass, ONTOLOGY_DOCUMENT__ONTOLOGY);
+
+		pragmaticsOntologyEClass = createEClass(PRAGMATICS_ONTOLOGY);
+		createEReference(pragmaticsOntologyEClass, PRAGMATICS_ONTOLOGY__DOCUMENTS);
+		createEReference(pragmaticsOntologyEClass, PRAGMATICS_ONTOLOGY__NET);
+		createEAttribute(pragmaticsOntologyEClass, PRAGMATICS_ONTOLOGY__MANAGER);
+
+		petriNetEClass = createEClass(PETRI_NET);
+		createEReference(petriNetEClass, PETRI_NET__ONTOLOGY);
 
 		// Create data types
 		ontologyFileEDataType = createEDataType(ONTOLOGY_FILE);
+		ontologyManagerEDataType = createEDataType(ONTOLOGY_MANAGER);
 	}
 
 	/**
@@ -299,13 +395,11 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		pragmaCPNEClass.getESuperTypes().add(theCpndefinitionPackage.getCPN());
 		placeEClass.getESuperTypes().add(theCpndefinitionPackage.getPlace());
 		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
+		pragmaticsOntologyEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
+		petriNetEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNet());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pragmaCPNEClass, PragmaCPN.class, "PragmaCPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPragmaCPN_LoadedOntologies(), this.getOntologyDocument(), null, "LoadedOntologies", null, 0, -1, PragmaCPN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		EOperation op = addEOperation(pragmaCPNEClass, null, "includeOntologyFromFile", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getOntologyFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPlace_Annotation(), this.getPragma(), null, "Annotation", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -316,9 +410,25 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		initEClass(ontologyDocumentEClass, OntologyDocument.class, "OntologyDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOntologyDocument_Iri(), ecorePackage.getEString(), "iri", null, 0, 1, OntologyDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOntologyDocument_Path(), ecorePackage.getEString(), "path", null, 0, 1, OntologyDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOntologyDocument_Ontology(), this.getPragmaticsOntology(), this.getPragmaticsOntology_Documents(), "ontology", null, 0, 1, OntologyDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pragmaticsOntologyEClass, PragmaticsOntology.class, "PragmaticsOntology", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPragmaticsOntology_Documents(), this.getOntologyDocument(), this.getOntologyDocument_Ontology(), "documents", null, 0, -1, PragmaticsOntology.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPragmaticsOntology_Net(), this.getPetriNet(), this.getPetriNet_Ontology(), "net", null, 0, 1, PragmaticsOntology.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPragmaticsOntology_Manager(), this.getOntologyManager(), "manager", "", 0, 1, PragmaticsOntology.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = addEOperation(pragmaticsOntologyEClass, null, "addOntologyFromFile", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getOntologyFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(pragmaticsOntologyEClass, null, "getValidPragmatics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, thePnmlcoremodelPackage.getObject(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(petriNetEClass, PetriNet.class, "PetriNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPetriNet_Ontology(), this.getPragmaticsOntology(), this.getPragmaticsOntology_Net(), "ontology", null, 0, 1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(ontologyFileEDataType, IFile.class, "OntologyFile", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(ontologyManagerEDataType, OWLOntologyManager.class, "OntologyManager", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

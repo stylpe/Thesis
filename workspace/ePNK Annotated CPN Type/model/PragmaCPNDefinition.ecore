@@ -5,11 +5,6 @@
     nsURI="http://pragmacpndefinition/1.0" nsPrefix="pragmacpndefinition">
   <eClassifiers xsi:type="ecore:EClass" name="PragmaCPN" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//CPN">
     <eAnnotations source="EAnnotation0"/>
-    <eOperations name="includeOntologyFromFile">
-      <eParameters name="file" eType="#//OntologyFile"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="LoadedOntologies" upperBound="-1"
-        eType="#//OntologyDocument" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Place">
     <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" upperBound="-1"
@@ -23,5 +18,27 @@
   <eClassifiers xsi:type="ecore:EClass" name="OntologyDocument">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ontology" eType="#//PragmaticsOntology"
+        eOpposite="#//PragmaticsOntology/documents"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PragmaticsOntology" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
+    <eOperations name="addOntologyFromFile">
+      <eParameters name="file" eType="#//OntologyFile"/>
+    </eOperations>
+    <eOperations name="getValidPragmatics">
+      <eParameters name="object" eType="ecore:EClass platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Object"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documents" upperBound="-1"
+        eType="#//OntologyDocument" containment="true" eOpposite="#//OntologyDocument/ontology"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" eType="#//PetriNet"
+        eOpposite="#//PetriNet/ontology"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="manager" eType="#//OntologyManager"
+        changeable="false" transient="true" defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//PetriNet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ontology" eType="#//PragmaticsOntology"
+        containment="true" eOpposite="#//PragmaticsOntology/net"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="OntologyManager" instanceClassName="org.semanticweb.owlapi.model.OWLOntologyManager"
+      serializable="false"/>
 </ecore:EPackage>

@@ -30,9 +30,9 @@ public class PluginIRIMapper implements OWLOntologyIRIMapper {
 		config.setSilentMissingImportsHandling(true);
 		
 		iriMap = new HashMap<IRI, IRI>();
-		//File file = PluginOntologyEnumerator.getOntologyFile("cpn.fowl");
 		try {
 			Enumeration<URL> files = BundleOntologyEnumerator.getAvailableOntologies();
+			System.out.println("Has files: " + files.hasMoreElements());
 			while(files.hasMoreElements()){
 				URL file = files.nextElement();
 				OWLOntologyDocumentSource documentSource = new StreamDocumentSource(file.openStream());
@@ -59,8 +59,8 @@ public class PluginIRIMapper implements OWLOntologyIRIMapper {
 	
 	@Override
 	public IRI getDocumentIRI(IRI ontologyIRI) {
-		// TODO Auto-generated method stub
 		return iriMap.get(ontologyIRI);
+		
 	}
 
 

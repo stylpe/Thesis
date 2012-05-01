@@ -5,6 +5,7 @@ Bundle-SymbolicName: Ontologies
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.cpntools.pragma.ontology;uses:="org.osgi.framework,org.semanticweb.owlapi.model",
+ org.semanticweb.HermiT,
  org.semanticweb.owlapi,
  org.semanticweb.owlapi.apibinding,
  org.semanticweb.owlapi.debugging,
@@ -23,7 +24,8 @@ Export-Package: org.cpntools.pragma.ontology;uses:="org.osgi.framework,org.seman
  org.semanticweb.owlapi.util,
  org.semanticweb.owlapi.vocab
 Bundle-ClassPath: lib/owlapi-bin.jar,
- .
+ .,
+ lib/org.semanticweb.HermiT.jar
 Bundle-Activator: org.cpntools.pragma.ontology.Activator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework

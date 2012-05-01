@@ -8,13 +8,14 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
-
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl#getIri <em>Iri</em>}</li>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl#getOntology <em>Ontology</em>}</li>
  * </ul>
  * </p>
  *
@@ -137,6 +139,91 @@ public class OntologyDocumentImpl extends EObjectImpl implements OntologyDocumen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PragmaticsOntology getOntology() {
+		if (eContainerFeatureID() != PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY) return null;
+		return (PragmaticsOntology)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOntology(PragmaticsOntology newOntology, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newOntology, PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOntology(PragmaticsOntology newOntology) {
+		if (newOntology != eInternalContainer() || (eContainerFeatureID() != PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY && newOntology != null)) {
+			if (EcoreUtil.isAncestor(this, newOntology))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newOntology != null)
+				msgs = ((InternalEObject)newOntology).eInverseAdd(this, PragmacpndefinitionPackage.PRAGMATICS_ONTOLOGY__DOCUMENTS, PragmaticsOntology.class, msgs);
+			msgs = basicSetOntology(newOntology, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY, newOntology, newOntology));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetOntology((PragmaticsOntology)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				return basicSetOntology(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				return eInternalContainer().eInverseRemove(this, PragmacpndefinitionPackage.PRAGMATICS_ONTOLOGY__DOCUMENTS, PragmaticsOntology.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -144,6 +231,8 @@ public class OntologyDocumentImpl extends EObjectImpl implements OntologyDocumen
 				return getIri();
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__PATH:
 				return getPath();
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				return getOntology();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +250,9 @@ public class OntologyDocumentImpl extends EObjectImpl implements OntologyDocumen
 				return;
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__PATH:
 				setPath((String)newValue);
+				return;
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				setOntology((PragmaticsOntology)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +272,9 @@ public class OntologyDocumentImpl extends EObjectImpl implements OntologyDocumen
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__PATH:
 				setPath(PATH_EDEFAULT);
 				return;
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				setOntology((PragmaticsOntology)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +291,8 @@ public class OntologyDocumentImpl extends EObjectImpl implements OntologyDocumen
 				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT__ONTOLOGY:
+				return getOntology() != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -7,11 +7,13 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -95,6 +97,14 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createOntologyDocumentAdapter();
 			}
 			@Override
+			public Adapter casePragmaticsOntology(PragmaticsOntology object) {
+				return createPragmaticsOntologyAdapter();
+			}
+			@Override
+			public Adapter casePetriNet(PetriNet object) {
+				return createPetriNetAdapter();
+			}
+			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
 				return createPetriNetTypeAdapter();
 			}
@@ -129,6 +139,10 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseLabel(Label object) {
 				return createLabelAdapter();
+			}
+			@Override
+			public Adapter casePnmlcoremodel_PetriNet(org.pnml.tools.epnk.pnmlcoremodel.PetriNet object) {
+				return createPnmlcoremodel_PetriNetAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -203,6 +217,34 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOntologyDocumentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology <em>Pragmatics Ontology</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology
+	 * @generated
+	 */
+	public Adapter createPragmaticsOntologyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet <em>Petri Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet
+	 * @generated
+	 */
+	public Adapter createPetriNetAdapter() {
 		return null;
 	}
 
@@ -329,6 +371,20 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.PetriNet <em>Petri Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.PetriNet
+	 * @generated
+	 */
+	public Adapter createPnmlcoremodel_PetriNetAdapter() {
 		return null;
 	}
 

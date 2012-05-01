@@ -6,7 +6,7 @@ import org.semanticweb.owlapi.model.*;
 public class OntologyLoader {
 	
 	// Creates an Ontology Manager loaded with default generic pragmatics
-	public static OWLOntologyManager load() {
+	public static OWLOntologyManager loadDefault() {
 
 		// Get hold of an ontology manager
 		OWLOntologyManager manager = prepManager();
@@ -28,7 +28,6 @@ public class OntologyLoader {
 	
 	private static OWLOntologyManager prepManager() {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-
 		manager.addIRIMapper(PluginIRIMapper.getInstance());
 		return manager;
 	}

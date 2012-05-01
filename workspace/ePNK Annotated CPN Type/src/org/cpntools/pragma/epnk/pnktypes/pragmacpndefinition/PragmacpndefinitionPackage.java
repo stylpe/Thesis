@@ -73,22 +73,13 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PRAGMA_CPN = 0;
 
 	/**
-	 * The feature id for the '<em><b>Loaded Ontologies</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRAGMA_CPN__LOADED_ONTOLOGIES = CpndefinitionPackage.CPN_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Pragma CPN</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRAGMA_CPN_FEATURE_COUNT = CpndefinitionPackage.CPN_FEATURE_COUNT + 1;
+	int PRAGMA_CPN_FEATURE_COUNT = CpndefinitionPackage.CPN_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PlaceImpl <em>Place</em>}' class.
@@ -284,13 +275,177 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int ONTOLOGY_DOCUMENT__PATH = 1;
 
 	/**
+	 * The feature id for the '<em><b>Ontology</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_DOCUMENT__ONTOLOGY = 2;
+
+	/**
 	 * The number of structural features of the '<em>Ontology Document</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONTOLOGY_DOCUMENT_FEATURE_COUNT = 2;
+	int ONTOLOGY_DOCUMENT_FEATURE_COUNT = 3;
+
+	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaticsOntologyImpl <em>Pragmatics Ontology</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaticsOntologyImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPragmaticsOntology()
+	 * @generated
+	 */
+	int PRAGMATICS_ONTOLOGY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__TOOLSPECIFIC = PnmlcoremodelPackage.LABEL__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__GRAPHICS = PnmlcoremodelPackage.LABEL__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__UNKNOWN = PnmlcoremodelPackage.LABEL__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Documents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__DOCUMENTS = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Net</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__NET = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Manager</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY__MANAGER = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Pragmatics Ontology</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMATICS_ONTOLOGY_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PetriNetImpl <em>Petri Net</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PetriNetImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPetriNet()
+	 * @generated
+	 */
+	int PETRI_NET = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__ID = PnmlcoremodelPackage.PETRI_NET__ID;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__TYPE = PnmlcoremodelPackage.PETRI_NET__TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__NAME = PnmlcoremodelPackage.PETRI_NET__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Page</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__PAGE = PnmlcoremodelPackage.PETRI_NET__PAGE;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__TOOLSPECIFIC = PnmlcoremodelPackage.PETRI_NET__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__UNKNOWN = PnmlcoremodelPackage.PETRI_NET__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Ontology</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET__ONTOLOGY = PnmlcoremodelPackage.PETRI_NET_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Petri Net</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PETRI_NET_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '<em>Ontology File</em>' data type.
@@ -300,7 +455,18 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
 	 * @generated
 	 */
-	int ONTOLOGY_FILE = 4;
+	int ONTOLOGY_FILE = 6;
+
+
+	/**
+	 * The meta object id for the '<em>Ontology Manager</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.semanticweb.owlapi.model.OWLOntologyManager
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyManager()
+	 * @generated
+	 */
+	int ONTOLOGY_MANAGER = 7;
 
 
 	/**
@@ -312,17 +478,6 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPragmaCPN();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedOntologies <em>Loaded Ontologies</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Loaded Ontologies</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN#getLoadedOntologies()
-	 * @see #getPragmaCPN()
-	 * @generated
-	 */
-	EReference getPragmaCPN_LoadedOntologies();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place <em>Place</em>}'.
@@ -399,6 +554,81 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EAttribute getOntologyDocument_Path();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getOntology <em>Ontology</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Ontology</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument#getOntology()
+	 * @see #getOntologyDocument()
+	 * @generated
+	 */
+	EReference getOntologyDocument_Ontology();
+
+	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology <em>Pragmatics Ontology</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pragmatics Ontology</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology
+	 * @generated
+	 */
+	EClass getPragmaticsOntology();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getDocuments <em>Documents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Documents</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getDocuments()
+	 * @see #getPragmaticsOntology()
+	 * @generated
+	 */
+	EReference getPragmaticsOntology_Documents();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getNet <em>Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Net</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getNet()
+	 * @see #getPragmaticsOntology()
+	 * @generated
+	 */
+	EReference getPragmaticsOntology_Net();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getManager <em>Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Manager</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology#getManager()
+	 * @see #getPragmaticsOntology()
+	 * @generated
+	 */
+	EAttribute getPragmaticsOntology_Manager();
+
+	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet <em>Petri Net</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Petri Net</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet
+	 * @generated
+	 */
+	EClass getPetriNet();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet#getOntology <em>Ontology</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ontology</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet#getOntology()
+	 * @see #getPetriNet()
+	 * @generated
+	 */
+	EReference getPetriNet_Ontology();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.core.resources.IFile <em>Ontology File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -408,6 +638,17 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getOntologyFile();
+
+	/**
+	 * Returns the meta object for data type '{@link org.semanticweb.owlapi.model.OWLOntologyManager <em>Ontology Manager</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Ontology Manager</em>'.
+	 * @see org.semanticweb.owlapi.model.OWLOntologyManager
+	 * @model instanceClass="org.semanticweb.owlapi.model.OWLOntologyManager" serializeable="false"
+	 * @generated
+	 */
+	EDataType getOntologyManager();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -440,14 +681,6 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PRAGMA_CPN = eINSTANCE.getPragmaCPN();
-
-		/**
-		 * The meta object literal for the '<em><b>Loaded Ontologies</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRAGMA_CPN__LOADED_ONTOLOGIES = eINSTANCE.getPragmaCPN_LoadedOntologies();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PlaceImpl <em>Place</em>}' class.
@@ -512,6 +745,66 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		EAttribute ONTOLOGY_DOCUMENT__PATH = eINSTANCE.getOntologyDocument_Path();
 
 		/**
+		 * The meta object literal for the '<em><b>Ontology</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ONTOLOGY_DOCUMENT__ONTOLOGY = eINSTANCE.getOntologyDocument_Ontology();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaticsOntologyImpl <em>Pragmatics Ontology</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaticsOntologyImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPragmaticsOntology()
+		 * @generated
+		 */
+		EClass PRAGMATICS_ONTOLOGY = eINSTANCE.getPragmaticsOntology();
+
+		/**
+		 * The meta object literal for the '<em><b>Documents</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRAGMATICS_ONTOLOGY__DOCUMENTS = eINSTANCE.getPragmaticsOntology_Documents();
+
+		/**
+		 * The meta object literal for the '<em><b>Net</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRAGMATICS_ONTOLOGY__NET = eINSTANCE.getPragmaticsOntology_Net();
+
+		/**
+		 * The meta object literal for the '<em><b>Manager</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRAGMATICS_ONTOLOGY__MANAGER = eINSTANCE.getPragmaticsOntology_Manager();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PetriNetImpl <em>Petri Net</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PetriNetImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPetriNet()
+		 * @generated
+		 */
+		EClass PETRI_NET = eINSTANCE.getPetriNet();
+
+		/**
+		 * The meta object literal for the '<em><b>Ontology</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PETRI_NET__ONTOLOGY = eINSTANCE.getPetriNet_Ontology();
+
+		/**
 		 * The meta object literal for the '<em>Ontology File</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -520,6 +813,16 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ONTOLOGY_FILE = eINSTANCE.getOntologyFile();
+
+		/**
+		 * The meta object literal for the '<em>Ontology Manager</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.semanticweb.owlapi.model.OWLOntologyManager
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyManager()
+		 * @generated
+		 */
+		EDataType ONTOLOGY_MANAGER = eINSTANCE.getOntologyManager();
 
 	}
 

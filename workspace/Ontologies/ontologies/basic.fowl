@@ -1,9 +1,9 @@
-Prefix(:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
+Prefix(:=<http://k1s.org/OntologyReastrictedNets/basic/>)
  Prefix(basic:=<http://t.k1s.org/OntologyReastrictedNets/basic/>)
  Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
  Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
  
- Ontology(<http://t.k1s.org/OntologyReastrictedNets/basic/>
+ Ontology(<http://k1s.org/OntologyReastrictedNets/basic/>
  
  Declaration(Class(:Pragmatic))
  Declaration(Class(:Property))

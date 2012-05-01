@@ -7,11 +7,13 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
@@ -111,6 +113,21 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PragmacpndefinitionPackage.PRAGMATICS_ONTOLOGY: {
+				PragmaticsOntology pragmaticsOntology = (PragmaticsOntology)theEObject;
+				T result = casePragmaticsOntology(pragmaticsOntology);
+				if (result == null) result = caseLabel(pragmaticsOntology);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PragmacpndefinitionPackage.PETRI_NET: {
+				PetriNet petriNet = (PetriNet)theEObject;
+				T result = casePetriNet(petriNet);
+				if (result == null) result = casePnmlcoremodel_PetriNet(petriNet);
+				if (result == null) result = caseID(petriNet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -172,6 +189,36 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOntologyDocument(OntologyDocument object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pragmatics Ontology</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pragmatics Ontology</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePragmaticsOntology(PragmaticsOntology object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Petri Net</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Petri Net</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePetriNet(PetriNet object) {
 		return null;
 	}
 
@@ -307,6 +354,21 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLabel(Label object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Petri Net</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Petri Net</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePnmlcoremodel_PetriNet(org.pnml.tools.epnk.pnmlcoremodel.PetriNet object) {
 		return null;
 	}
 

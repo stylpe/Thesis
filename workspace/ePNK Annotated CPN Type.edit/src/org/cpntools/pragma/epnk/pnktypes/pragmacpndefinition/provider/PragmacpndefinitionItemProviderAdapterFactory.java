@@ -166,6 +166,52 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PragmaticsOntologyItemProvider pragmaticsOntologyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPragmaticsOntologyAdapter() {
+		if (pragmaticsOntologyItemProvider == null) {
+			pragmaticsOntologyItemProvider = new PragmaticsOntologyItemProvider(this);
+		}
+
+		return pragmaticsOntologyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PetriNetItemProvider petriNetItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPetriNetAdapter() {
+		if (petriNetItemProvider == null) {
+			petriNetItemProvider = new PetriNetItemProvider(this);
+		}
+
+		return petriNetItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,6 +314,8 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 		if (placeItemProvider != null) placeItemProvider.dispose();
 		if (pragmaItemProvider != null) pragmaItemProvider.dispose();
 		if (ontologyDocumentItemProvider != null) ontologyDocumentItemProvider.dispose();
+		if (pragmaticsOntologyItemProvider != null) pragmaticsOntologyItemProvider.dispose();
+		if (petriNetItemProvider != null) petriNetItemProvider.dispose();
 	}
 
 }

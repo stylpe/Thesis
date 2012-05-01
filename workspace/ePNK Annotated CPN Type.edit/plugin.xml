@@ -25,11 +25,11 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions"
-            objectClass="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN">
+            id="ePNK Annotated CPN Type.edit.objectContribution1"
+            objectClass="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology">
          <menu
-               id="org.pnml.tools.epnk.actions.standardmenu"
-               label="ePNK"
+               id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu"
+               label="Pragmatics"
                path="additions">
             <separator
                   name="group1">
@@ -40,7 +40,26 @@
                enablesFor="1"
                id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.AddOntologyAction"
                label="Add Ontology"
-               menubarPath="org.pnml.tools.epnk.actions.standardmenu/group1">
+               menubarPath="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu/group1">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="ePNK Annotated CPN Type.edit.objectContribution2"
+            objectClass="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place">
+         <menu
+               id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu"
+               label="Pragmatics"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.AnnotateAction"
+               id="ePNK Annotated CPN Type.edit.action1"
+               label="Annotate"
+               menubarPath="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu/group1">
          </action>
       </objectContribution>
    </extension>

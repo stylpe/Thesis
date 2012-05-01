@@ -6,12 +6,14 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -67,6 +69,8 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 			case PragmacpndefinitionPackage.PLACE: return createPlace();
 			case PragmacpndefinitionPackage.PRAGMA: return createPragma();
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT: return createOntologyDocument();
+			case PragmacpndefinitionPackage.PRAGMATICS_ONTOLOGY: return createPragmaticsOntology();
+			case PragmacpndefinitionPackage.PETRI_NET: return createPetriNet();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +140,26 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 	public OntologyDocument createOntologyDocument() {
 		OntologyDocumentImpl ontologyDocument = new OntologyDocumentImpl();
 		return ontologyDocument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PragmaticsOntology createPragmaticsOntology() {
+		PragmaticsOntologyImpl pragmaticsOntology = new PragmaticsOntologyImpl();
+		return pragmaticsOntology;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PetriNet createPetriNet() {
+		PetriNetImpl petriNet = new PetriNetImpl();
+		return petriNet;
 	}
 
 	/**

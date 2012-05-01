@@ -62,6 +62,24 @@ public interface PragmacpndefinitionFactory extends EFactory {
 	OntologyDocument createOntologyDocument();
 
 	/**
+	 * Returns a new object of class '<em>Pragmatics Ontology</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pragmatics Ontology</em>'.
+	 * @generated
+	 */
+	PragmaticsOntology createPragmaticsOntology();
+
+	/**
+	 * Returns a new object of class '<em>Petri Net</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Petri Net</em>'.
+	 * @generated
+	 */
+	PetriNet createPetriNet();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
