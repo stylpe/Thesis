@@ -106,6 +106,6 @@ public interface PragmaticsOntology extends Label {
 	 * @model
 	 * @generated
 	 */
-	void getValidPragmatics(org.pnml.tools.epnk.pnmlcoremodel.Object object);
+	void getValidPragmatics(OntologyMember object);
 
 } // PragmaticsOntology

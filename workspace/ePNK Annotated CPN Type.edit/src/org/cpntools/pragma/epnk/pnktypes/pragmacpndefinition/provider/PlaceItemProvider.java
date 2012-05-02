@@ -76,7 +76,7 @@ public class PlaceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PragmacpndefinitionPackage.Literals.PLACE__ANNOTATION);
+			childrenFeatures.add(PragmacpndefinitionPackage.Literals.ONTOLOGY_MEMBER__ANNOTATION);
 		}
 		return childrenFeatures;
 	}
@@ -151,7 +151,7 @@ public class PlaceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(PragmacpndefinitionPackage.Literals.PLACE__ANNOTATION,
+				(PragmacpndefinitionPackage.Literals.ONTOLOGY_MEMBER__ANNOTATION,
 				 PragmacpndefinitionFactory.eINSTANCE.createPragma()));
 	}
 

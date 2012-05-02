@@ -6,10 +6,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PragmaCPN" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//CPN">
     <eAnnotations source="EAnnotation0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Place">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" upperBound="-1"
-        eType="#//Pragma" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Place #//OntologyMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="Pragma" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Label">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -26,7 +23,7 @@
       <eParameters name="file" eType="#//OntologyFile"/>
     </eOperations>
     <eOperations name="getValidPragmatics">
-      <eParameters name="object" eType="ecore:EClass platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Object"/>
+      <eParameters name="object" eType="#//OntologyMember"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="documents" upperBound="-1"
         eType="#//OntologyDocument" containment="true" eOpposite="#//OntologyDocument/ontology"/>
@@ -41,4 +38,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="OntologyManager" instanceClassName="org.semanticweb.owlapi.model.OWLOntologyManager"
       serializable="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OntologyMember" abstract="true" interface="true">
+    <eOperations name="getOWLClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Annotation" upperBound="-1"
+        eType="#//Pragma" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

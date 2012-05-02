@@ -7,6 +7,7 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.util;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.*;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
@@ -92,6 +93,7 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 				Place place = (Place)theEObject;
 				T result = casePlace(place);
 				if (result == null) result = caseCpndefinition_Place(place);
+				if (result == null) result = caseOntologyMember(place);
 				if (result == null) result = casePnmlcoremodel_Place(place);
 				if (result == null) result = casePlaceNode(place);
 				if (result == null) result = caseNode(place);
@@ -125,6 +127,12 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 				T result = casePetriNet(petriNet);
 				if (result == null) result = casePnmlcoremodel_PetriNet(petriNet);
 				if (result == null) result = caseID(petriNet);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PragmacpndefinitionPackage.ONTOLOGY_MEMBER: {
+				OntologyMember ontologyMember = (OntologyMember)theEObject;
+				T result = caseOntologyMember(ontologyMember);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -219,6 +227,21 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePetriNet(PetriNet object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ontology Member</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ontology Member</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOntologyMember(OntologyMember object) {
 		return null;
 	}
 

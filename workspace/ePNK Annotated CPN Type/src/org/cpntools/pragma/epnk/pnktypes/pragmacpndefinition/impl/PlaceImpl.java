@@ -8,6 +8,7 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import java.util.Collection;
 
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
@@ -71,6 +72,17 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 			annotation = new EObjectContainmentEList<Pragma>(Pragma.class, this, PragmacpndefinitionPackage.PLACE__ANNOTATION);
 		}
 		return annotation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void getOWLClass() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -145,6 +157,38 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 				return annotation != null && !annotation.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == OntologyMember.class) {
+			switch (derivedFeatureID) {
+				case PragmacpndefinitionPackage.PLACE__ANNOTATION: return PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == OntologyMember.class) {
+			switch (baseFeatureID) {
+				case PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION: return PragmacpndefinitionPackage.PLACE__ANNOTATION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //PlaceImpl

@@ -9,6 +9,11 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.provider;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider.CPNDefinitionEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.menus.AbstractContributionFactory;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.menus.IMenuService;
+import org.eclipse.ui.services.IServiceLocator;
 import org.pnml.tools.epnk.pnmlcoremodel.provider.PNMLCoreModelEditPlugin;
 
 /**
@@ -46,6 +51,21 @@ public final class PragmaCPNDefinitionEditPlugin extends EMFPlugin {
 		     CPNDefinitionEditPlugin.INSTANCE,
 		     PNMLCoreModelEditPlugin.INSTANCE,
 		   });
+//
+//		IMenuService menuService = (IMenuService) PlatformUI.getWorkbench()
+//	            .getService(IMenuService.class);
+//		AbstractContributionFactory viewMenuAddition = new AbstractContributionFactory(
+//	            "menu:org.eclipse.ui.views.ProblemView?after=additions", null) {
+//
+//					@Override
+//					public void createContributionItems(
+//							IServiceLocator serviceLocator,
+//							IContributionRoot additions) {
+//						// TODO Auto-generated method stub
+//						
+//					}
+//			
+//		}
 	}
 
 	/**

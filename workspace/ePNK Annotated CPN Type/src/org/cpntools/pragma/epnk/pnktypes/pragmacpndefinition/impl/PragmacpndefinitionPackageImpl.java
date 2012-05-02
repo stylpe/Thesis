@@ -8,6 +8,7 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
@@ -74,6 +75,13 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * @generated
 	 */
 	private EClass petriNetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ontologyMemberEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,15 +177,6 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 */
 	public EClass getPlace() {
 		return placeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPlace_Annotation() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -293,6 +292,24 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOntologyMember() {
+		return ontologyMemberEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOntologyMember_Annotation() {
+		return (EReference)ontologyMemberEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getOntologyFile() {
 		return ontologyFileEDataType;
 	}
@@ -337,7 +354,6 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		pragmaCPNEClass = createEClass(PRAGMA_CPN);
 
 		placeEClass = createEClass(PLACE);
-		createEReference(placeEClass, PLACE__ANNOTATION);
 
 		pragmaEClass = createEClass(PRAGMA);
 		createEAttribute(pragmaEClass, PRAGMA__TEXT);
@@ -354,6 +370,9 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 
 		petriNetEClass = createEClass(PETRI_NET);
 		createEReference(petriNetEClass, PETRI_NET__ONTOLOGY);
+
+		ontologyMemberEClass = createEClass(ONTOLOGY_MEMBER);
+		createEReference(ontologyMemberEClass, ONTOLOGY_MEMBER__ANNOTATION);
 
 		// Create data types
 		ontologyFileEDataType = createEDataType(ONTOLOGY_FILE);
@@ -394,6 +413,7 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		// Add supertypes to classes
 		pragmaCPNEClass.getESuperTypes().add(theCpndefinitionPackage.getCPN());
 		placeEClass.getESuperTypes().add(theCpndefinitionPackage.getPlace());
+		placeEClass.getESuperTypes().add(this.getOntologyMember());
 		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		pragmaticsOntologyEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		petriNetEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNet());
@@ -402,7 +422,6 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		initEClass(pragmaCPNEClass, PragmaCPN.class, "PragmaCPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlace_Annotation(), this.getPragma(), null, "Annotation", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pragmaEClass, Pragma.class, "Pragma", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPragma_Text(), ecorePackage.getEString(), "text", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -421,10 +440,15 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		addEParameter(op, this.getOntologyFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(pragmaticsOntologyEClass, null, "getValidPragmatics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, thePnmlcoremodelPackage.getObject(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getOntologyMember(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(petriNetEClass, PetriNet.class, "PetriNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPetriNet_Ontology(), this.getPragmaticsOntology(), this.getPragmaticsOntology_Net(), "ontology", null, 0, 1, PetriNet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ontologyMemberEClass, OntologyMember.class, "OntologyMember", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOntologyMember_Annotation(), this.getPragma(), null, "Annotation", null, 0, -1, OntologyMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		addEOperation(ontologyMemberEClass, null, "getOWLClass", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(ontologyFileEDataType, IFile.class, "OntologyFile", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

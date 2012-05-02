@@ -7,9 +7,8 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import java.util.Collection;
-import java.util.Set;
-
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
@@ -38,13 +37,9 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.OWLSubClassOfAxiom;
-import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.util.OWLOntologyMerger;
 import org.semanticweb.HermiT.Reasoner;
 
@@ -205,6 +200,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		}
 	}
 
+
 	public OWLOntology loadOntology(IFile file) throws OWLOntologyCreationException, CoreException {
 		System.out.println("LOADING " + file);
 		return getManager().loadOntologyFromOntologyDocument(file.getContents());
@@ -215,7 +211,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void getValidPragmatics(org.pnml.tools.epnk.pnmlcoremodel.Object object) {
+	public void getValidPragmatics(OntologyMember member) {
 		OWLOntology ontology = getMergedOntology();
 		if(ontology == null) return;
 		OWLDataFactory dataFactory = getManager().getOWLDataFactory();

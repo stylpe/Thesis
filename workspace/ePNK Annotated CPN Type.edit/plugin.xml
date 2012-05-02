@@ -43,25 +43,32 @@
                menubarPath="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu/group1">
          </action>
       </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="ePNK Annotated CPN Type.edit.objectContribution2"
-            objectClass="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place">
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.pnml.tools.epnk.pnmlcoremodel.presentation.PnmlcoremodelEditorPNML?before=additions">
          <menu
-               id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu"
-               label="Pragmatics"
-               path="additions">
-            <separator
-                  name="group1">
-            </separator>
+               label="Annotate with">
+            <dynamic
+                  class="contributionitem.ContributionItem6"
+                  id="ePNK Annotated CPN Type.edit.dynamic6">
+            </dynamic>
+            <visibleWhen>
+               <and>
+                  <count
+                        value="1">
+                  </count>
+                  <iterate
+                        ifEmpty="true">
+                     <instanceof
+                           value="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember">
+                     </instanceof>
+                  </iterate>
+               </and>
+            </visibleWhen>
          </menu>
-         <action
-               class="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.AnnotateAction"
-               id="ePNK Annotated CPN Type.edit.action1"
-               label="Annotate"
-               menubarPath="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions.standardmenu/group1">
-         </action>
-      </objectContribution>
+      </menuContribution>
    </extension>
 
 </plugin>

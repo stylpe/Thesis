@@ -448,6 +448,34 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PETRI_NET_FEATURE_COUNT = PnmlcoremodelPackage.PETRI_NET_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember <em>Ontology Member</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyMember()
+	 * @generated
+	 */
+	int ONTOLOGY_MEMBER = 6;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_MEMBER__ANNOTATION = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ontology Member</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_MEMBER_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '<em>Ontology File</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -455,7 +483,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
 	 * @generated
 	 */
-	int ONTOLOGY_FILE = 6;
+	int ONTOLOGY_FILE = 7;
 
 
 	/**
@@ -466,7 +494,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyManager()
 	 * @generated
 	 */
-	int ONTOLOGY_MANAGER = 7;
+	int ONTOLOGY_MANAGER = 8;
 
 
 	/**
@@ -488,17 +516,6 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPlace();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place#getAnnotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Annotation</em>'.
-	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place#getAnnotation()
-	 * @see #getPlace()
-	 * @generated
-	 */
-	EReference getPlace_Annotation();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma <em>Pragma</em>}'.
@@ -629,6 +646,27 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EReference getPetriNet_Ontology();
 
 	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember <em>Ontology Member</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ontology Member</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember
+	 * @generated
+	 */
+	EClass getOntologyMember();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember#getAnnotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotation</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember#getAnnotation()
+	 * @see #getOntologyMember()
+	 * @generated
+	 */
+	EReference getOntologyMember_Annotation();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.core.resources.IFile <em>Ontology File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -691,14 +729,6 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PLACE = eINSTANCE.getPlace();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACE__ANNOTATION = eINSTANCE.getPlace_Annotation();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaImpl <em>Pragma</em>}' class.
@@ -803,6 +833,24 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PETRI_NET__ONTOLOGY = eINSTANCE.getPetriNet_Ontology();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember <em>Ontology Member</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyMember()
+		 * @generated
+		 */
+		EClass ONTOLOGY_MEMBER = eINSTANCE.getOntologyMember();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ONTOLOGY_MEMBER__ANNOTATION = eINSTANCE.getOntologyMember_Annotation();
 
 		/**
 		 * The meta object literal for the '<em>Ontology File</em>' data type.

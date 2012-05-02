@@ -1,7 +1,7 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions;
 
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -13,16 +13,16 @@ import org.eclipse.ui.IWorkbenchPart;
 public class AnnotateAction implements IObjectActionDelegate {
 
 
-	private Place place;
+	private OntologyMember member;
 	private Shell shell;
 
 	@Override
 	public void run(IAction action) {
-		PetriNet petriNet = getPetriNet(place);
-		petriNet.getOntology().getValidPragmatics(place);
+		PetriNet petriNet = getPetriNet(member);
+		petriNet.getOntology().getValidPragmatics(member);
 	}
 
-	private PetriNet getPetriNet(Place place) {
+	private PetriNet getPetriNet(OntologyMember place) {
 		EObject ob = place;
 		while((ob != null) && !(ob instanceof PetriNet)){
 			ob = ob.eContainer();
@@ -32,20 +32,21 @@ public class AnnotateAction implements IObjectActionDelegate {
 
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
-		place = null;
+		member = null;
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (structuredSelection.size() == 1
-					&& structuredSelection.getFirstElement() instanceof Place) {
-				place = (Place) structuredSelection.getFirstElement();
+					&& structuredSelection.getFirstElement() instanceof OntologyMember) {
+				member = (OntologyMember) structuredSelection.getFirstElement();
 			}
 		}
-		action.setEnabled(place != null);
+		action.setEnabled(member != null);
 	}
 
 	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getWorkbenchWindow().getShell();
+		//action.getMenuCreator().getMenu(targetPart.)
 	}
 
 }
