@@ -1,4 +1,4 @@
-package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions;
+package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.menu;
 
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
 import org.eclipse.core.resources.IFile;

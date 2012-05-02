@@ -6,7 +6,9 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
+import java.util.Set;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
@@ -16,6 +18,7 @@ import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaCPN;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmaticsOntology;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +28,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 /**
@@ -88,6 +92,20 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass transitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass arcEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType ontologyFileEDataType = null;
 
 	/**
@@ -96,6 +114,20 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * @generated
 	 */
 	private EDataType ontologyManagerEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType owlClassSetEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType owlClassEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -310,6 +342,24 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTransition() {
+		return transitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getArc() {
+		return arcEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getOntologyFile() {
 		return ontologyFileEDataType;
 	}
@@ -321,6 +371,24 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 */
 	public EDataType getOntologyManager() {
 		return ontologyManagerEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getOWLClassSet() {
+		return owlClassSetEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getOWLClass() {
+		return owlClassEDataType;
 	}
 
 	/**
@@ -374,9 +442,15 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		ontologyMemberEClass = createEClass(ONTOLOGY_MEMBER);
 		createEReference(ontologyMemberEClass, ONTOLOGY_MEMBER__ANNOTATION);
 
+		transitionEClass = createEClass(TRANSITION);
+
+		arcEClass = createEClass(ARC);
+
 		// Create data types
 		ontologyFileEDataType = createEDataType(ONTOLOGY_FILE);
 		ontologyManagerEDataType = createEDataType(ONTOLOGY_MANAGER);
+		owlClassSetEDataType = createEDataType(OWL_CLASS_SET);
+		owlClassEDataType = createEDataType(OWL_CLASS);
 	}
 
 	/**
@@ -417,6 +491,10 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		pragmaticsOntologyEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		petriNetEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNet());
+		transitionEClass.getESuperTypes().add(theCpndefinitionPackage.getTransition());
+		transitionEClass.getESuperTypes().add(this.getOntologyMember());
+		arcEClass.getESuperTypes().add(theCpndefinitionPackage.getArc());
+		arcEClass.getESuperTypes().add(this.getOntologyMember());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pragmaCPNEClass, PragmaCPN.class, "PragmaCPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -439,7 +517,7 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		EOperation op = addEOperation(pragmaticsOntologyEClass, null, "addOntologyFromFile", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getOntologyFile(), "file", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(pragmaticsOntologyEClass, null, "getValidPragmatics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(pragmaticsOntologyEClass, this.getOWLClassSet(), "getValidPragmatics", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getOntologyMember(), "object", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(petriNetEClass, PetriNet.class, "PetriNet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -448,11 +526,17 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		initEClass(ontologyMemberEClass, OntologyMember.class, "OntologyMember", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOntologyMember_Annotation(), this.getPragma(), null, "Annotation", null, 0, -1, OntologyMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(ontologyMemberEClass, null, "getOWLClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(ontologyMemberEClass, this.getOWLClass(), "getOWLClass", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(ontologyFileEDataType, IFile.class, "OntologyFile", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(ontologyManagerEDataType, OWLOntologyManager.class, "OntologyManager", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(owlClassSetEDataType, Set.class, "OWLClassSet", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Set<org.semanticweb.owlapi.model.OWLClass>");
+		initEDataType(owlClassEDataType, OWLClass.class, "OWLClass", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

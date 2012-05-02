@@ -24,6 +24,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.Label;
 import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNetType;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
+import org.pnml.tools.epnk.pnmlcoremodel.TransitionNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -110,6 +111,14 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createOntologyMemberAdapter();
 			}
 			@Override
+			public Adapter caseTransition(Transition object) {
+				return createTransitionAdapter();
+			}
+			@Override
+			public Adapter caseArc(Arc object) {
+				return createArcAdapter();
+			}
+			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
 				return createPetriNetTypeAdapter();
 			}
@@ -148,6 +157,26 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePnmlcoremodel_PetriNet(org.pnml.tools.epnk.pnmlcoremodel.PetriNet object) {
 				return createPnmlcoremodel_PetriNetAdapter();
+			}
+			@Override
+			public Adapter caseTransitionNode(TransitionNode object) {
+				return createTransitionNodeAdapter();
+			}
+			@Override
+			public Adapter casePnmlcoremodel_Transition(org.pnml.tools.epnk.pnmlcoremodel.Transition object) {
+				return createPnmlcoremodel_TransitionAdapter();
+			}
+			@Override
+			public Adapter caseCpndefinition_Transition(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition object) {
+				return createCpndefinition_TransitionAdapter();
+			}
+			@Override
+			public Adapter casePnmlcoremodel_Arc(org.pnml.tools.epnk.pnmlcoremodel.Arc object) {
+				return createPnmlcoremodel_ArcAdapter();
+			}
+			@Override
+			public Adapter caseCpndefinition_Arc(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc object) {
+				return createCpndefinition_ArcAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -264,6 +293,34 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOntologyMemberAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition
+	 * @generated
+	 */
+	public Adapter createTransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc
+	 * @generated
+	 */
+	public Adapter createArcAdapter() {
 		return null;
 	}
 
@@ -404,6 +461,76 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPnmlcoremodel_PetriNetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.TransitionNode <em>Transition Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.TransitionNode
+	 * @generated
+	 */
+	public Adapter createTransitionNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Transition
+	 * @generated
+	 */
+	public Adapter createPnmlcoremodel_TransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition
+	 * @generated
+	 */
+	public Adapter createCpndefinition_TransitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Arc
+	 * @generated
+	 */
+	public Adapter createPnmlcoremodel_ArcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc
+	 * @generated
+	 */
+	public Adapter createCpndefinition_ArcAdapter() {
 		return null;
 	}
 

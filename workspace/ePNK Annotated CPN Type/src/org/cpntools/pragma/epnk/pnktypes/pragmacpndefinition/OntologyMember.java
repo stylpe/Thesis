@@ -9,6 +9,7 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.semanticweb.owlapi.model.OWLClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,9 +47,9 @@ public interface OntologyMember extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
+	 * @model kind="operation" dataType="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OWLClass"
 	 * @generated
 	 */
-	void getOWLClass();
+	OWLClass getOWLClass();
 
 } // OntologyMember

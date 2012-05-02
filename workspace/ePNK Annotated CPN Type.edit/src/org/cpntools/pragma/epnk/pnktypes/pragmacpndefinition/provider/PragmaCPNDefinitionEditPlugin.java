@@ -51,21 +51,6 @@ public final class PragmaCPNDefinitionEditPlugin extends EMFPlugin {
 		     CPNDefinitionEditPlugin.INSTANCE,
 		     PNMLCoreModelEditPlugin.INSTANCE,
 		   });
-//
-//		IMenuService menuService = (IMenuService) PlatformUI.getWorkbench()
-//	            .getService(IMenuService.class);
-//		AbstractContributionFactory viewMenuAddition = new AbstractContributionFactory(
-//	            "menu:org.eclipse.ui.views.ProblemView?after=additions", null) {
-//
-//					@Override
-//					public void createContributionItems(
-//							IServiceLocator serviceLocator,
-//							IContributionRoot additions) {
-//						// TODO Auto-generated method stub
-//						
-//					}
-//			
-//		}
 	}
 
 	/**

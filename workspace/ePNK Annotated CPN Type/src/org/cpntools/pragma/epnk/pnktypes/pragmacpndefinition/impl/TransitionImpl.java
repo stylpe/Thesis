@@ -9,31 +9,36 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 import java.util.Collection;
 
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
-import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.semanticweb.owlapi.model.OWLClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Place</b></em>'.
+ * An implementation of the model object '<em><b>Transition</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PlaceImpl#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl#getAnnotation <em>Annotation</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl implements Place {
+public class TransitionImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.TransitionImpl implements Transition {
 	/**
 	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -49,7 +54,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PlaceImpl() {
+	protected TransitionImpl() {
 		super();
 	}
 
@@ -60,7 +65,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PragmacpndefinitionPackage.Literals.PLACE;
+		return PragmacpndefinitionPackage.Literals.TRANSITION;
 	}
 
 	/**
@@ -70,7 +75,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	 */
 	public EList<Pragma> getAnnotation() {
 		if (annotation == null) {
-			annotation = new EObjectContainmentEList<Pragma>(Pragma.class, this, PragmacpndefinitionPackage.PLACE__ANNOTATION);
+			annotation = new EObjectContainmentEList<Pragma>(Pragma.class, this, PragmacpndefinitionPackage.TRANSITION__ANNOTATION);
 		}
 		return annotation;
 	}
@@ -94,7 +99,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
+			case PragmacpndefinitionPackage.TRANSITION__ANNOTATION:
 				return ((InternalEList<?>)getAnnotation()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -108,7 +113,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
+			case PragmacpndefinitionPackage.TRANSITION__ANNOTATION:
 				return getAnnotation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -123,7 +128,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
+			case PragmacpndefinitionPackage.TRANSITION__ANNOTATION:
 				getAnnotation().clear();
 				getAnnotation().addAll((Collection<? extends Pragma>)newValue);
 				return;
@@ -139,7 +144,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
+			case PragmacpndefinitionPackage.TRANSITION__ANNOTATION:
 				getAnnotation().clear();
 				return;
 		}
@@ -154,7 +159,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PLACE__ANNOTATION:
+			case PragmacpndefinitionPackage.TRANSITION__ANNOTATION:
 				return annotation != null && !annotation.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -169,7 +174,7 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == OntologyMember.class) {
 			switch (derivedFeatureID) {
-				case PragmacpndefinitionPackage.PLACE__ANNOTATION: return PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION;
+				case PragmacpndefinitionPackage.TRANSITION__ANNOTATION: return PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION;
 				default: return -1;
 			}
 		}
@@ -185,11 +190,11 @@ public class PlaceImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinition.i
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == OntologyMember.class) {
 			switch (baseFeatureID) {
-				case PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION: return PragmacpndefinitionPackage.PLACE__ANNOTATION;
+				case PragmacpndefinitionPackage.ONTOLOGY_MEMBER__ANNOTATION: return PragmacpndefinitionPackage.TRANSITION__ANNOTATION;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //PlaceImpl
+} //TransitionImpl

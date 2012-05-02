@@ -7,6 +7,8 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
 import java.util.Collection;
+import java.util.Set;
+
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
@@ -33,13 +35,23 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLObjectAllValuesFrom;
+import org.semanticweb.owlapi.model.OWLObjectComplementOf;
+import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyExpression;
+import org.semanticweb.owlapi.model.OWLObjectPropertyRangeAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.reasoner.Node;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
+import org.semanticweb.owlapi.util.NNF;
 import org.semanticweb.owlapi.util.OWLOntologyMerger;
 import org.semanticweb.HermiT.Reasoner;
 
@@ -209,30 +221,70 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return 
 	 * @generated NOT
 	 */
-	public void getValidPragmatics(OntologyMember member) {
+	public Set<OWLClass> getValidPragmatics(OntologyMember member) {
 		OWLOntology ontology = getMergedOntology();
-		if(ontology == null) return;
+		if(ontology == null) return null;
 		OWLDataFactory dataFactory = getManager().getOWLDataFactory();
 		
 		OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
 		OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
 		
-        // Ask the reasoner to do all the necessary work now
-        reasoner.precomputeInferences();
-        // We can determine if the ontology is actually consistent (in this case, it should be).
-        boolean consistent = reasoner.isConsistent();
-        System.out.println("Consistent: " + consistent);
-        
-        OWLClass pragma = dataFactory.getOWLClass(IRI.create("http://k1s.org/OntologyReastrictedNets/basic/Pragmatic"));
-        //pragma = reasoner.getTopClassNode().getRepresentativeElement();
-        //System.out.println(pragma);
-		NodeSet<OWLClass> subClasses = reasoner.getSubClasses(pragma, false);
-		for(OWLClass cl : subClasses.getFlattened()) {
-			System.out.println(cl);
-		}
+//		NodeSet<OWLClass> subClasses = null;
 		
+		boolean notDirect = false;
+		
+		System.out.println("---Pragmatic---");
+        OWLClass pragmaClass = dataFactory.getOWLClass(IRI.create("http://k1s.org/OntologyReastrictedNets/basic/Pragmatic"));
+		print(reasoner.getSubClasses(pragmaClass, notDirect));
+//        System.out.println(pragmaClass);
+//		print(subClasses);
+
+//		System.out.println("---Member---");
+        OWLClass memberClass = dataFactory.getOWLClass(IRI.create("http://hib.no/ontologypetrinets/cpn/"+member.eClass().getName()));
+//		subClasses = reasoner.getSubClasses(memberClass, notDirect);
+//        System.out.println(memberClass);
+//		print(subClasses);
+
+
+//		System.out.println("---Domains---");
+		OWLObjectProperty belongsTo = dataFactory.getOWLObjectProperty(IRI.create("http://org.k1s/orn/nppn/belongsTo"));
+		OWLObjectAllValuesFrom belongsToMember = dataFactory.getOWLObjectAllValuesFrom(belongsTo, memberClass);
+		
+		//OWLObjectPropertyRangeAxiom pRange = dataFactory.getOWLObjectPropertyRangeAxiom(belongsTo, memberClass);
+//		NodeSet<OWLClass> domains = reasoner.getSubClasses(belongsToMember, notDirect);
+		
+		//Node<OWLObjectPropertyExpression> domains = reasoner.getEquivalentObjectProperties(belongsTo);
+//		print(domains);
+//		print(reasoner.getSubObjectProperties(dataFactory.getOWLTopObjectProperty(), notDirect));
+		
+//		System.out.println("---Intersection---");
+//		OWLObjectComplementOf notNothing = dataFactory.getOWLObjectComplementOf( dataFactory.getOWLNothing());
+		OWLObjectIntersectionOf intersection = dataFactory.getOWLObjectIntersectionOf(pragmaClass, belongsToMember);
+		
+		
+        //OWLClassExpression classExp = dataFactory.getOWLS(pragmaClass, compositeMember);
+		NodeSet<OWLClass> subClasses = reasoner.getSubClasses(intersection, true);
+        System.out.println(belongsToMember);
+		print(subClasses);
+		return subClasses.getFlattened();
+	}
+
+
+	private void print(NodeSet<? extends Object> nodes) {
+		print(nodes.getFlattened());
+	}
+
+	private void print(Node<? extends Object> nodes) {
+		print(nodes.getEntitiesMinusBottom());
+	}
+	private void print(Set<? extends Object> set) {
+		System.out.println("-|-");
+		for(Object o : set) {
+			System.out.println(o);
+		}
 	}
 	
 	private OWLOntology getMergedOntology() {

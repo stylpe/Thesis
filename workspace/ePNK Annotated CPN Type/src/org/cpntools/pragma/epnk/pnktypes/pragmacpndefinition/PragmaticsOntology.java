@@ -6,9 +6,11 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
+import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 import org.pnml.tools.epnk.pnmlcoremodel.Label;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 /**
@@ -103,9 +105,9 @@ public interface PragmaticsOntology extends Label {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model dataType="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OWLClassSet"
 	 * @generated
 	 */
-	void getValidPragmatics(OntologyMember object);
+	Set<OWLClass> getValidPragmatics(OntologyMember object);
 
 } // PragmaticsOntology

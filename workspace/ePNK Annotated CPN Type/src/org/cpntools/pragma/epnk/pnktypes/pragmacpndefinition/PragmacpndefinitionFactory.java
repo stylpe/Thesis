@@ -80,6 +80,24 @@ public interface PragmacpndefinitionFactory extends EFactory {
 	PetriNet createPetriNet();
 
 	/**
+	 * Returns a new object of class '<em>Transition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Transition</em>'.
+	 * @generated
+	 */
+	Transition createTransition();
+
+	/**
+	 * Returns a new object of class '<em>Arc</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Arc</em>'.
+	 * @generated
+	 */
+	Arc createArc();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.semanticweb.owlapi.model.OWLClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,6 +73,8 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 			case PragmacpndefinitionPackage.ONTOLOGY_DOCUMENT: return createOntologyDocument();
 			case PragmacpndefinitionPackage.PRAGMATICS_ONTOLOGY: return createPragmaticsOntology();
 			case PragmacpndefinitionPackage.PETRI_NET: return createPetriNet();
+			case PragmacpndefinitionPackage.TRANSITION: return createTransition();
+			case PragmacpndefinitionPackage.ARC: return createArc();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -85,6 +88,8 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case PragmacpndefinitionPackage.OWL_CLASS:
+				return createOWLClassFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +103,8 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case PragmacpndefinitionPackage.OWL_CLASS:
+				return convertOWLClassToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -161,6 +168,44 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 	public PetriNet createPetriNet() {
 		PetriNetImpl petriNet = new PetriNetImpl();
 		return petriNet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Transition createTransition() {
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Arc createArc() {
+		ArcImpl arc = new ArcImpl();
+		return arc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OWLClass createOWLClassFromString(EDataType eDataType, String initialValue) {
+		return (OWLClass)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOWLClassToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

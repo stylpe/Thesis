@@ -476,6 +476,206 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int ONTOLOGY_MEMBER_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getTransition()
+	 * @generated
+	 */
+	int TRANSITION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ID = CpndefinitionPackage.TRANSITION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__NAME = CpndefinitionPackage.TRANSITION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TOOLSPECIFIC = CpndefinitionPackage.TRANSITION__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__GRAPHICS = CpndefinitionPackage.TRANSITION__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__UNKNOWN = CpndefinitionPackage.TRANSITION__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__OUT = CpndefinitionPackage.TRANSITION__OUT;
+
+	/**
+	 * The feature id for the '<em><b>In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__IN = CpndefinitionPackage.TRANSITION__IN;
+
+	/**
+	 * The feature id for the '<em><b>Guard</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__GUARD = CpndefinitionPackage.TRANSITION__GUARD;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__ANNOTATION = CpndefinitionPackage.TRANSITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = CpndefinitionPackage.TRANSITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.ArcImpl <em>Arc</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.ArcImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getArc()
+	 * @generated
+	 */
+	int ARC = 8;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__ID = CpndefinitionPackage.ARC__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__NAME = CpndefinitionPackage.ARC__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__TOOLSPECIFIC = CpndefinitionPackage.ARC__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__GRAPHICS = CpndefinitionPackage.ARC__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__UNKNOWN = CpndefinitionPackage.ARC__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__SOURCE = CpndefinitionPackage.ARC__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__TARGET = CpndefinitionPackage.ARC__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Inscription</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__INSCRIPTION = CpndefinitionPackage.ARC__INSCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC__ANNOTATION = CpndefinitionPackage.ARC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Arc</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARC_FEATURE_COUNT = CpndefinitionPackage.ARC_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Ontology File</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -483,7 +683,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
 	 * @generated
 	 */
-	int ONTOLOGY_FILE = 7;
+	int ONTOLOGY_FILE = 9;
 
 
 	/**
@@ -494,7 +694,29 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyManager()
 	 * @generated
 	 */
-	int ONTOLOGY_MANAGER = 8;
+	int ONTOLOGY_MANAGER = 10;
+
+
+	/**
+	 * The meta object id for the '<em>OWL Class Set</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.util.Set
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClassSet()
+	 * @generated
+	 */
+	int OWL_CLASS_SET = 11;
+
+
+	/**
+	 * The meta object id for the '<em>OWL Class</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.semanticweb.owlapi.model.OWLClass
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClass()
+	 * @generated
+	 */
+	int OWL_CLASS = 12;
 
 
 	/**
@@ -667,6 +889,26 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EReference getOntologyMember_Annotation();
 
 	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition
+	 * @generated
+	 */
+	EClass getTransition();
+
+	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Arc</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc
+	 * @generated
+	 */
+	EClass getArc();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.core.resources.IFile <em>Ontology File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -687,6 +929,28 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getOntologyManager();
+
+	/**
+	 * Returns the meta object for data type '{@link java.util.Set <em>OWL Class Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>OWL Class Set</em>'.
+	 * @see java.util.Set
+	 * @model instanceClass="java.util.Set<org.semanticweb.owlapi.model.OWLClass>" serializeable="false"
+	 * @generated
+	 */
+	EDataType getOWLClassSet();
+
+	/**
+	 * Returns the meta object for data type '{@link org.semanticweb.owlapi.model.OWLClass <em>OWL Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>OWL Class</em>'.
+	 * @see org.semanticweb.owlapi.model.OWLClass
+	 * @model instanceClass="org.semanticweb.owlapi.model.OWLClass"
+	 * @generated
+	 */
+	EDataType getOWLClass();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -853,6 +1117,26 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		EReference ONTOLOGY_MEMBER__ANNOTATION = eINSTANCE.getOntologyMember_Annotation();
 
 		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl <em>Transition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getTransition()
+		 * @generated
+		 */
+		EClass TRANSITION = eINSTANCE.getTransition();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.ArcImpl <em>Arc</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.ArcImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getArc()
+		 * @generated
+		 */
+		EClass ARC = eINSTANCE.getArc();
+
+		/**
 		 * The meta object literal for the '<em>Ontology File</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -871,6 +1155,26 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType ONTOLOGY_MANAGER = eINSTANCE.getOntologyManager();
+
+		/**
+		 * The meta object literal for the '<em>OWL Class Set</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.util.Set
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClassSet()
+		 * @generated
+		 */
+		EDataType OWL_CLASS_SET = eINSTANCE.getOWLClassSet();
+
+		/**
+		 * The meta object literal for the '<em>OWL Class</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.semanticweb.owlapi.model.OWLClass
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClass()
+		 * @generated
+		 */
+		EDataType OWL_CLASS = eINSTANCE.getOWLClass();
 
 	}
 

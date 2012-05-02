@@ -212,6 +212,52 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TransitionItemProvider transitionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Transition}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTransitionAdapter() {
+		if (transitionItemProvider == null) {
+			transitionItemProvider = new TransitionItemProvider(this);
+		}
+
+		return transitionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ArcItemProvider arcItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createArcAdapter() {
+		if (arcItemProvider == null) {
+			arcItemProvider = new ArcItemProvider(this);
+		}
+
+		return arcItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -316,6 +362,8 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 		if (ontologyDocumentItemProvider != null) ontologyDocumentItemProvider.dispose();
 		if (pragmaticsOntologyItemProvider != null) pragmaticsOntologyItemProvider.dispose();
 		if (petriNetItemProvider != null) petriNetItemProvider.dispose();
+		if (transitionItemProvider != null) transitionItemProvider.dispose();
+		if (arcItemProvider != null) arcItemProvider.dispose();
 	}
 
 }

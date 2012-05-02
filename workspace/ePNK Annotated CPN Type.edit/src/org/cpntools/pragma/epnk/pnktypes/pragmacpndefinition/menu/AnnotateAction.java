@@ -1,4 +1,4 @@
-package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.actions;
+package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.menu;
 
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
@@ -22,8 +22,7 @@ public class AnnotateAction implements IObjectActionDelegate {
 		petriNet.getOntology().getValidPragmatics(member);
 	}
 
-	private PetriNet getPetriNet(OntologyMember place) {
-		EObject ob = place;
+	private PetriNet getPetriNet(EObject ob) {
 		while((ob != null) && !(ob instanceof PetriNet)){
 			ob = ob.eContainer();
 		}
