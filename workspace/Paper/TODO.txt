@@ -13,6 +13,6 @@ CPN Type
 PragmaCPN Type
 - Select Pragma ontologies from plugin 
 - And from project OK
-- Load ontologies
-- Annotate
-	- Content assist
+- Load ontologies OK
+- Annotate OK
+	- Content assist OK
