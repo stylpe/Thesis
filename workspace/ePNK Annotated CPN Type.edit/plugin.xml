@@ -59,8 +59,7 @@
                   <count
                         value="1">
                   </count>
-                  <iterate
-                        ifEmpty="false">
+                  <iterate>
                      <instanceof
                            value="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember">
                      </instanceof>
@@ -69,13 +68,6 @@
             </visibleWhen>
          </menu>
       </menuContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            id="ePNK Annotated CPN Type.edit.command1"
-            name="name">
-      </command>
    </extension>
 
 </plugin>

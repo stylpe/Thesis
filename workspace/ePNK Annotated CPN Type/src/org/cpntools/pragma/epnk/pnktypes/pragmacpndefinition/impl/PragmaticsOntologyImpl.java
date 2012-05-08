@@ -236,7 +236,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		
 		boolean notDirect = false;
 		
-		System.out.println("---Pragmatic---");
+//		System.out.println("---Pragmatic---");
         OWLClass pragmaClass = dataFactory.getOWLClass(IRI.create("http://k1s.org/OntologyReastrictedNets/basic/Pragmatic"));
 		print(reasoner.getSubClasses(pragmaClass, notDirect));
 //        System.out.println(pragmaClass);
@@ -267,7 +267,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		
         //OWLClassExpression classExp = dataFactory.getOWLS(pragmaClass, compositeMember);
 		NodeSet<OWLClass> subClasses = reasoner.getSubClasses(intersection, true);
-        System.out.println(belongsToMember);
+//        System.out.println(belongsToMember);
 		print(subClasses);
 		return subClasses.getFlattened();
 	}
@@ -281,10 +281,10 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		print(nodes.getEntitiesMinusBottom());
 	}
 	private void print(Set<? extends Object> set) {
-		System.out.println("-|-");
-		for(Object o : set) {
-			System.out.println(o);
-		}
+//		System.out.println("-|-");
+//		for(Object o : set) {
+//			System.out.println(o);
+//		}
 	}
 	
 	private OWLOntology getMergedOntology() {
