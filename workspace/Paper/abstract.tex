@@ -2,11 +2,33 @@
 %\addcontentsline{toc}{chapter}{Abstract}
 
 \begin{abstract}
-Model Driven Development
+Model Driven Engineering (MDE) is a software development methodology that
+focuses on developing domain models that represent knowledge and activities that
+belong to the application domain. When applied in software development, MDE aims
+to provide automatic generation of source code from the domain models, which
+also functions as a mechanic for keeping design and implementation synchronised.
 
-CPN
+One of the modeling languages that can be used in MDE is Colored Petri Nets
+(CPN). It is a type of high-level Petri Net, whic is useful for for describing,
+analysing and validating systems that consist of communication, synchronisation,
+and resource sharing between concurrently executing components. 
 
-Under development: Annotations for code generation
+A CPN model can accurately model many types of software systems, but cannot
+directly be used to generate a software implementation. Research is being
+conducted to define a framework/method? for annotating CPN models of
+communication protocols to enable source code generation. 
 
-Designing and evaluating framework
+This thesis has resulted in a prototype application for annotating CPN models
+with code generation pragmatics. The prototype is developed as an Eclipse
+plugin. It builds on the ePNK framework, which uses the Eclipse Modeling
+Framework (EMF) to provide an extensible platform for working with CPN models.
+The prototype can import models created by CPN Tools. 
+
+The prototype is evaluated by applying it to a set of protocol CPN models. We
+show that CPN models annotated with code generation pragmatics are a viable
+method for use in MDE of protocol software. We also give a detailed case study
+of modeling the WebSocket protocol, including verification and analysis of the
+CPN model using State Space Generation, and annotation with code generation
+pramatics.
+
 \end{abstract}
