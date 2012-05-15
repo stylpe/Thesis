@@ -1,6 +1,6 @@
 CPN Tools state space report for:
-/cygdrive/D/Documents/Master/Thesis/WebSocket.cpn
-Report generated: Fri Jan 20 00:38:55 2012
+/cygdrive/D/Documents/Master/Thesis/WebSocket SS.cpn
+Report generated: Tue May 15 10:21:59 2012
 
 
  Statistics
@@ -76,14 +76,14 @@ Report generated: Fri Jan 20 00:38:55 2012
      ServerApplication'Received 1
                              1          1
      ServerApplication'To_send 1
-                             0          0
-     ServerWebSocket'Connection_Reply 1
-                             1          0
-     ServerWebSocket'Connection_Request 1
+                             1          1
+     ServerWebSocket'Connection_Request_Decision 1
                              1          0
      ServerWebSocket'Connection_Status 1
                              1          0
      ServerWebSocket'Pending_Connection 1
+                             1          0
+     ServerWebSocket'Request_Token 1
                              1          0
      ServerWebSocket'Server_Incoming_Message 1
                              1          1
@@ -91,9 +91,9 @@ Report generated: Fri Jan 20 00:38:55 2012
                              1          1
      ServerWebSocket'Valid_WS_Frame 1
                              1          1
-     UnwrapAndReceive'Closing_Connection 1
+     UnwrapAndReceive'Close_Frame 1
                              0          0
-     UnwrapAndReceive'Closing_Connection 2
+     UnwrapAndReceive'Close_Frame 2
                              0          0
      UnwrapAndReceive'Received_WS_Frame 1
                              1          1
@@ -133,7 +133,7 @@ Report generated: Fri Jan 20 00:38:55 2012
                          1`[]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]
      ClientWebSocket'Waiting_for_HTTP_response 1
-                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]}
      Defrag'Buffer 1     empty
      Defrag'Buffer 2     empty
      FragmentAndQueue'Control 1
@@ -146,7 +146,7 @@ Report generated: Fri Jan 20 00:38:55 2012
                          1`[]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]
      NewConnection'HTTP_Request 1
-                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]}
      Overview'Client_Call 1
                          1`[]++
 1`[Connect({Protocol="ws",Host="websocket.com",Port=80,Path="/chat"})]++
@@ -159,8 +159,8 @@ Report generated: Fri Jan 20 00:38:55 2012
 1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]
      Overview'Client_Send 1
                          1`[]++
-1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Short message"})]
+1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]
      Overview'Server_Call 1
                          1`[]++
 1`[ConnReply(accept)]
@@ -170,8 +170,8 @@ Report generated: Fri Jan 20 00:38:55 2012
 1`[ConnRequest(())]
      Overview'Server_Receieve 1
                          1`[]++
-1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([Byte(0),Byte(0),Byte(0),Byte(0)]),Payload="Short message"})]
+1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]
      Overview'Server_Send 1
                          1`[]++
 1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]
@@ -181,15 +181,15 @@ Report generated: Fri Jan 20 00:38:55 2012
                          1`[]++
 1`[{Op=TEXT,Message="Short message"}]
      ServerApplication'To_send 1
-                         empty
-     ServerWebSocket'Connection_Reply 1
+                         1`[]
+     ServerWebSocket'Connection_Request_Decision 1
                          1`accept
-     ServerWebSocket'Connection_Request 1
-                         1`()
      ServerWebSocket'Connection_Status 1
                          1`CONN_OPEN
      ServerWebSocket'Pending_Connection 1
-                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"}]}
+                         1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]}
+     ServerWebSocket'Request_Token 1
+                         1`()
      ServerWebSocket'Server_Incoming_Message 1
                          1`[]++
 1`[{Op=TEXT,Message="Short message"}]
@@ -198,9 +198,9 @@ Report generated: Fri Jan 20 00:38:55 2012
      ServerWebSocket'Valid_WS_Frame 1
                          1`[]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]
-     UnwrapAndReceive'Closing_Connection 1
+     UnwrapAndReceive'Close_Frame 1
                          empty
-     UnwrapAndReceive'Closing_Connection 2
+     UnwrapAndReceive'Close_Frame 2
                          empty
      UnwrapAndReceive'Received_WS_Frame 1
                          1`[]++
@@ -273,14 +273,14 @@ Report generated: Fri Jan 20 00:38:55 2012
      ServerApplication'Received 1
                          empty
      ServerApplication'To_send 1
-                         empty
-     ServerWebSocket'Connection_Reply 1
-                         empty
-     ServerWebSocket'Connection_Request 1
+                         1`[]
+     ServerWebSocket'Connection_Request_Decision 1
                          empty
      ServerWebSocket'Connection_Status 1
                          empty
      ServerWebSocket'Pending_Connection 1
+                         empty
+     ServerWebSocket'Request_Token 1
                          empty
      ServerWebSocket'Server_Incoming_Message 1
                          empty
@@ -288,9 +288,9 @@ Report generated: Fri Jan 20 00:38:55 2012
                          1`[]
      ServerWebSocket'Valid_WS_Frame 1
                          empty
-     UnwrapAndReceive'Closing_Connection 1
+     UnwrapAndReceive'Close_Frame 1
                          empty
-     UnwrapAndReceive'Closing_Connection 2
+     UnwrapAndReceive'Close_Frame 2
                          empty
      UnwrapAndReceive'Received_WS_Frame 1
                          empty
@@ -333,9 +333,9 @@ Report generated: Fri Jan 20 00:38:55 2012
      UnwrapAndReceive'Close 1
      UnwrapAndReceive'Close 2
      UnwrapAndReceive'Non 2
+     UnwrapAndReceive'Notify_App 1
+     UnwrapAndReceive'Notify_App 2
      UnwrapAndReceive'Receive 2
-     UnwrapAndReceive'Send_close_frame 1
-     UnwrapAndReceive'Send_close_frame 2
      UnwrapAndReceive'Waiting_for_Close 1
      UnwrapAndReceive'Waiting_for_Close 2
      WrapAndSend'Wrap_and_send 1

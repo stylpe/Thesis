@@ -121,7 +121,8 @@ described in a top-down manner.
 	encountered in each sub-module. The places in the Overview use the following
 	colour set definitions:
 	
-	\begin{lstlisting}[label=lst:overview_colset,caption=Overview colour sets,gobble=1] 
+	\begin{lstlisting}[label=lst:overview_colset,caption=Overview colour
+	sets,gobble=1,float=tbh] 
 	colset OPERATION = with TEXT | BINARY | PING | PONG | CLOSE; 
 	colset MESSAGE = record Op: OPERATION *	Message: STRING;
 	colset MESSAGES = list MESSAGE;
@@ -212,7 +213,7 @@ described in a top-down manner.
 	the simple coloursets as follows:
 	
 	\begin{lstlisting}[label=lst:standard_vars,caption=Simple Colourset
-	Variables,gobble=1] 
+	Variables,gobble=1,float=h] 
 	var u, u1, u2, u3: UNIT;
 	var b, b1, b2, b3: BOOL;
 	var i, j, k: INT;
@@ -244,7 +245,7 @@ described in a top-down manner.
 	Other variable declarations will be listed as they are encountered in the
 	model. As a general guideline, most variables are named with the first letter
 	of its colourset for non-lists, and the same letter plus the letter s for
-	lists. On this submodule we have the following variables:
+	lists. \lstref{client_app_vars} shows the variables used in this submodule.
 	
 	\begin{lstlisting}[label=lst:client_app_vars,caption=Client Application
 	Variables,gobble=1]
@@ -258,11 +259,10 @@ described in a top-down manner.
 	implementation can be seen in \lstref{client_app_parseUrl}. 
 	
 	\begin{lstlisting}[label=lst:client_app_parseUrl,caption=parseUrl and related
-	functions,gobble=1] 
+	functions,gobble=1,float] 
 	fun split2 (s, t, i) =
 	   (* Recursively scan for character t in string s starting as position i, split if match *)
-	   let
-	     val ss = String.extract(s, i, NONE) 
+	   let val ss = String.extract(s, i, NONE) 
 	   in 
 	     if String.isPrefix t ss then
 	       [substring(s, 0, i), 
@@ -276,8 +276,7 @@ described in a top-down manner.
 	   else if String.isSubstring t s then
 	     split2 (s, t, 1)
 	   else [s]
-	 fun parseUrl (s) = 
-	 let
+	 fun parseUrl (s) = let
 	   val proto'rest = split (s, "://")
 	   val proto'rest = 
 	     if length proto'rest = 1 
@@ -305,10 +304,7 @@ described in a top-down manner.
 	     Option.getOpt(port'int'opt, port'default)
 	   end
 	 in
-	   {Protocol=pro, 
-	     Host=hos, 
-	     Port=por, 
-	     Path=pat}
+	   {Protocol=pro, Host=hos, Port=por, Path=pat}
 	 end;
 	\end{lstlisting}
 	
@@ -403,8 +399,8 @@ described in a top-down manner.
 	The new coloursets are for HTTP requests and responses, WebSocket frames, and
 	packets. They have corresponding variables. 
 	
-	\begin{lstlisting}[label=lst:client_lib_colset_http,caption=Library colour
-	sets - HTTP,gobble=1]
+	\begin{lstlisting}[label=lst:client_lib_colset_http,caption=HTTP colour
+	sets,gobble=1,float=h]
 	colset HTTP_VERB = with GET | POST | PUT | DELETE | HEAD;
 	colset REQUEST_LINE = record Verb: HTTP_VERB * Path: STRING * Version: STRING;
 	colset HEADER = record Key: STRING * Value: STRING;
@@ -425,8 +421,8 @@ described in a top-down manner.
 	|HEADERS| list. A real response would usually also have a body, but this is not
 	used in the WebSocket protocol, so there is no need to model it.
 	
-	\begin{lstlisting}[label=lst:client_lib_colset_ws,caption=Library colour
-	sets - WebSocket,gobble=1]
+	\begin{lstlisting}[label=lst:client_lib_colset_ws,caption=WebSocket colour
+	sets,gobble=1,float] 
 	colset BIT= bool with (clear, set);
 	colset BYTE = int with 0x00..0xFF;
 	colset MASK = list BYTE with 4..4;
@@ -466,8 +462,8 @@ described in a top-down manner.
 	payload is masked, |Payload_length| to declare the number of bytes in the
 	payload, an optional |Masking_key|, and the |Payload| itself. 
 	
-	\begin{lstlisting}[label=lst:client_lib_vars,caption=Library
-	variables,gobble=1]
+	\begin{lstlisting}[label=lst:client_lib_vars,caption=WebSocket
+	Module Variables,gobble=1,float=h] 
 	var wsframe: WSFRAME;
 	var wsframes, wsframes2: WSFRAMES;
 	var httpreq: HTTPREQ;
@@ -476,7 +472,8 @@ described in a top-down manner.
 	var ps, ps1, ps2: PACKETLIST;
 	\end{lstlisting}
 	
-	Finally, we also have to declare the variables to be used in arc expressions.
+	Finally, we also have to declare the variables to be used in arc expressions
+	(\lstref{client_lib_vars}).
 	
 	Masking of frames is modeled to only set the masking bit and provide a masking
 	key. An actual implementation would also apply the mask to the payload
@@ -488,12 +485,9 @@ described in a top-down manner.
 	abstractly represent that the payload has been masked. The |mask| function is
 	thus defined:
 	
-	 \begin{lstlisting}[label=lst:client_lib_vars,caption=Library
-	variables,gobble=1]
-	fun randMask() = Mask([
-		BYTE.ran(), BYTE.ran(),
-		BYTE.ran(),	BYTE.ran()
-	]);
+	\begin{lstlisting}[label=lst:mask_fun,caption=Masking functions
+	,gobble=1,float=h]
+	fun randMask() = Mask([BYTE.ran(), BYTE.ran(), BYTE.ran(), BYTE.ran()]);
   
 	fun mask (ws:WSFRAME) = let
 		val ws1 = WSFRAME.set_Masked ws set
@@ -512,19 +506,27 @@ described in a top-down manner.
 		client, as well as keeping a copy of the request for validation purposes when
 		the response arrives.
 		
-		The function httpReqFromUrl takes a URL argument and uses it to produce a
-		HTTPREQ token with headers according to the WebSocket protocol requirements.
+		The function httpReqFromUrl (\lstref{httpReqFromUrl}) takes a URL argument and
+		uses it to produce a HTTPREQ token with headers according to the WebSocket protocol requirements.
 		All the required headers are specified, but optional headers are not, as this
 		is a generic implementation. The nonce is statically defined, partly to keep
-		it simple and partly to more easily see it during simulation. The Base64 and
-		SHA1 functions are similarly basic for the same reasons.
-		
-		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2]
-		fun B64 str = "B64("^str^")";
-		fun SHA1 str = "SHA1("^str^")";
+		it simple and partly to more easily see it during simulation. 
 
+		The two functions B64() and SHA1() are
+		abscract versions of the Base64 encoding algorithm \cite{rfc4648} and the SHA1
+		hasing algorithm \cite{fips.180-2}. We felt it was unneccessary to actually
+		implement these for the purpose of this model, and instead decided to
+		simply wrap the string argument to show that it had been encoded or hashed.
+		
+		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2,float]
 		val origin = "http://www.example.com";
 		val nonce = "nonce";
+		val uuid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+		
+		fun B64 str = "B64("^str^")";
+		fun SHA1 str = "SHA1("^str^")";
+		fun generateAccept str = B64(SHA1(str^uuid));
+		
 		fun httpReqFromUrl (url:URL) = 
           {
             RequestLine={
@@ -549,75 +551,71 @@ described in a top-down manner.
 		
 		\fig{ProcessResponse.eps}{Process Response submodule}{process_response}
 		
-		On this module, the transition fires when a |HTTPRES| token is received from
+		On this module, the transition enables when a |HTTPRES| token arrives from
 		the server (and the |HTTPREQ| token from earlier is still waiting in its
-		place). The boolean variable b is bound to the result from the isResponseValid function,
-		which checks if the server's reply is valid and conforms to the WebSocket
-		protocol specification.
+		place). The transition has a guard inscription where the boolean variable b is
+		bound to the result from the isResponseValid function
+		(\lstref{isResponseValid}), which checks if the server's reply is valid and
+		conforms to the WebSocket protocol specification.
 		
-		\begin{lstlisting}[label=lst:isResponseValid,caption=isResponseValid,gobble=2]
+		\begin{lstlisting}[label=lst:isResponseValid,caption=isResponseValid,gobble=2,float]
 		fun isResponseValid (res:HTTPRES, req:HTTPREQ) = let
 		  val rline = #ResponseLine res
 		  val headers = #Headers res
 		  val accepttoken = generateAccept(
-		    getHeader("Sec-WebSocket-Key",
-		      (#Headers req)))
+		    getHeader("Sec-WebSocket-Key", (#Headers req)))
 		in
 		  #Status rline = 101 andalso
-		  getHeader("Upgrade", headers) 
-		    = "websocket" andalso
-		  getHeader("Connection", headers) 
-		    = "Upgrade" andalso
-		  getHeader("Sec-WebSocket-Accept",headers)
-		    = accepttoken
+		  getHeader("Upgrade", headers) = "websocket" andalso
+		  getHeader("Connection", headers) = "Upgrade" andalso
+		  getHeader("Sec-WebSocket-Accept", headers) = accepttoken
 		end
 		\end{lstlisting}
 		
-		It sends the result directly to the Client App, and puts a |CONN_OPEN| token
-		in the Active Connection place if b is true.
+		Since b is a boolean variable, we can use it directly to
+		notify the Client App through the |connection| place. If b is true, a
+		|CONN_OPEN| token is put in the Active Connection place.
 		
 	\subsubsection{Wrap and send}
 		
 		\fig{WrapAndSend.eps}{Wrap And Send submodule}{wrap_and_send}
 		
-		This module takes new messages, wraps and optionally fragments them in the
-		Fragment and queue submodule (explained below), and sends them if there is
-		an open connection. If a Close frame is being sent,the
-		connection state will be changed to |CONN_CLOSING|, which prevents
-		further sending.
+		This module (\figref{wrap_and_send}) takes new messages, wraps and optionally
+		fragments them in the |Fragment and queue| submodule, and
+		sends them if there is an open connection. If a Close frame is being sent,the
+		connection state will be changed to |CONN_CLOSING|, which will also prevent
+		sending of subsequent frames.
 		
 		\paragraph{Fragment and queue}
 			
 			\fig{FragmentAndQueue.eps}{Fragment And Queue submodule}{fragment_and_queue}
 			
-			The top transition on this has two tasks: Making sure we do not process
-			CONNECT messages, and filtering data and control frames into different
-			places using the isData function. 
+			This module is shown in \figref{fragment_and_queue}. The 
+			|Sort control and data| uses the isData function (\lstref{isData}) to filter
+			the two types of messages.
 			
-			\begin{lstlisting}[label=lst:isData,caption=isData,gobble=3]
+			\begin{lstlisting}[label=lst:isData,caption=isData,gobble=3,float=h]
 			fun isData (msg:MESSAGE) =
 			(#Op msg = TEXT) orelse
 			(#Op msg = BINARY);
 			\end{lstlisting}
 			
-			Control frames should never be fragmented, but data frames could be. This is
-			taken care of by the fragment function, which also converts the message into
-			a WSFRAME token. The control frames are converted in the same way by the
-			wrapmsg function. Both of these functions rely on the wrap function, and
-			therefore have to be declared after it.
+			Control frames should never be fragmented and can thus be directly wrapped
+			with the |wrapmsg| function.
+			Data frames with long payloads should be fragmented. This is taken care of by
+			the |fragment| function, which uses an inner recursion to split the payload. 
+			Both of these functions employ the |wrap| function
+			to produce |WSFRAME| tokens, and therefore have to be declared after it.
+			These three functions are shown in \lstref{fragment}.
 			
 			
 			\begin{lstlisting}[label=lst:fragment,caption=wrap wrapmsg and
-			fragment,gobble=3]
-			fun wrap (opc,payload,fin) = { Fin=fin,
-			  Rsv1=clear,
-			  Rsv2=clear,
-			  Rsv3=clear,
-			  Opcode=opc,
-			  Masked=clear,
+			fragment,gobble=3,float]
+			fun wrap (opc,payload,fin) = { 
+			  Fin=fin, Rsv1=clear, Rsv2=clear, Rsv3=clear,
+			  Opcode=opc, Masked=clear,
 			  Payload_length=(String.size payload),
-			  Masking_key= Nomask,
-			  Payload=payload
+			  Masking_key=Nomask, Payload=payload
 			}
 			
 			fun wrapmsg (msg:MESSAGE,fin) = 
@@ -645,10 +643,10 @@ described in a top-down manner.
 			  end;
 			\end{lstlisting}
 			
-			The WSFRAME tokens are then queued randomly one by one from the data queue or
+			The WSFRAME tokens are then queued one by one from the data queue or
 			the control frame queue. This allows control frames to be injected between
 			the parts of a fragmented data frame, as required by the WebSocket protocol
-			specification. Control frames are prioritised, by the prescence of a
+			specification. Control frames are prioritised, by the presence of a
 			two-way arc from the Control place to the Queue data transition, inscribed
 			with |[]|, which prevents it from being enabled if the list
 			in the Control place is not empty. This priorisation is allowed but not
@@ -661,8 +659,11 @@ described in a top-down manner.
 		\figrot[0.4]{UnwrapAndReceive.eps}{Unwrap And Receive
 		submodule}{unwrap_and_receive}
 		
-		Received WebSocket frames that arrive in the Packet Received place at the
-		bottom can take three paths. 
+		This module, shown in \figref{unwrap_and_receive}, handles reception of
+		frames and extracting their payload into a message.
+		
+		Received WebSocket frames that arrive in the |Packet Received| place at the
+		bottom can take three paths.
 		
 		The first is to the left, and happens if the
 		connection is in the |CONN_OPEN| state (checked on the arc) and the
@@ -670,16 +671,10 @@ described in a top-down manner.
 		frame is put in the Received WS Frame place, and if it is a Ping frame, a Pong
 		frame is immediately queued for sending with identical message body. 
 		
-		The received frame is then checked on two points for fragmentation: If the Fin
-		bit is set and the opcode is not continuation, it is not part of a fragmented
-		message and converted directly to a MESSAGE. If either or both of those
-		conditions are not true, tihs is part of a fragmented message and is processed
-		in the Defrag submodule (explained below).
-		
 		The second path a frame can take is to the right, and happens if the
 		connection is in the |CONN_OPEN| state (checked on the arc) and the
 		frame is a close frame (checked in the guard of the Receive transition). A
-		close frame is created and set to be sent, and the
+		close frame is created and set to be sent as response, and the
 		connection state is changed to |CONN_CLOSED|, since we have both
 		received and sent a close frame. Note that the packetlist from Client Send is
 		not appended to but instead discarded, because we can not expect the other
@@ -692,12 +687,23 @@ described in a top-down manner.
 		the same until a close frame is received, in which case the connection state
 		is set to |CONN_CLOSED|. 
 		
+		Both the second and third paths will queue the received frame to notify the
+		application, but the payload is stripped as it should not be exposed to the
+		user according to the specification.
+		
+		The received frame is now in the |Received WS Frame| place. It is now checked
+		on two points for fragmentation:
+		If the Fin bit is set and the opcode is not continuation, it is not part of a fragmented
+		message and converted directly to a MESSAGE. If either or both of those
+		conditions are not true, this is part of a fragmented message and is processed
+		in the Defrag submodule.
+		
 		\paragraph{Defragmenting fragmented frames}
 			
 			\fig{Defrag.eps}{Defragment}{defragment}
 			
-			Frames that are part of a fragmented message should always arrive in a
-			specific order, and correspond to each of the transitions on this module. 
+			\figref{defragment} shows this module. Frames that are part of a fragmented
+			message can have its order determined by its fin bit and its opcode.
 			
 			If the Fin bit is clear and the opcode is not continuation, this is the first
 			frame in the series. A mew |MESSAGE| is created with the opcode and
@@ -708,7 +714,7 @@ described in a top-down manner.
 			|MESSAGE| in the Buffer place using the |append()|
 			function.
 			
-			\begin{lstlisting}[label=lst:append,caption=append,gobble=3]
+			\begin{lstlisting}[label=lst:append,caption=append,gobble=3,float]
 			fun append (msg:MESSAGE, s) = 
 			  {Op = #Op msg,
 			  Message = (#Message msg)^s}
@@ -718,21 +724,24 @@ described in a top-down manner.
 			of the sequence. We append the payload to the message and put it in the final
 			Completed message place. 
 			
-			Note that the WebSocket protocol does not allow fragmented messages to be
-			interleaved, so it can be assumed that consecutive fragments belong to the
-			same message. Fragment inerleaving can be defined by subprotocols, but this
-			is not relevant to this model.
+			Note that since the WebSocket protocol does not allow fragmented messages to
+			be interleaved, and the TCP protocol guarantees preservation of order,it
+			can be assumed that consecutive fragment frames belong to the same message
+			and are in the correct order.
+			Fragment inerleaving can be defined by subprotocols, but this is not
+			relevant to this model.
 			
 \subsection{Connection}
 
 	\fig{Connection.eps}{The Connection module}{connection}
 	
-	\figref{connection} shows the connection; a very simple model. The packets that
-	come from the Client Send place go to the Server Receive place, and from the
-	Server Send place to the Client Receive place. The transportation of data
-	between the client and the server as well as establishing and ensuring a
-	stable connection is assumed to be taken care of by TCP, as the WebSocket
-	protocol specifies, and is not necessary to model in detail to show how WebSocket works. 
+	\figref{connection} shows the connection layer. The
+	packets that come from the Client Send place go to the Server Receive place, and from the
+	Server Send place to the Client Receive place. It has purposely been modeled
+	abstractly, since the transportation of data between the client and the server
+	as well as establishing and ensuring a stable connection is assumed to be taken
+	care of by TCP, as the WebSocket protocol specifies, and is not necessary to
+	model in detail to show how WebSocket works.
 	
 	The packets are also not converted to pure bits or bytes. This abstraction was
 	made since the inner workings of the TCP layer is not relevant to the WebSocket
@@ -740,34 +749,58 @@ described in a top-down manner.
 
 \subsection{The Server WebSocket Layer}
 	
-	\fig{ServerWebSocket.eps}{The Server WebSocket Layer}{server_wslib}
+	\fig{ServerWebSocket.eps}{The Server WebSocket Module}{server_wslib}
 	
-	The Server WebSocket layer is very similar to the Client version. The main
-	differences are that instead of masking outgoing frames, we are checking
+	The Server WebSocket module (\figref{server_wslib}) is very similar to the Client-side
+	equivalent.
+	The main differences are that instead of masking outgoing frames, we are checking
 	incoming frames for a mask and unmasking them, and that we are checking for
 	incoming connections and replying to them based on what the Server Application
-	decides.
-	
-	The Server Application can send two types of coloursets: |MESSAGE| and
-	|CONN_REPLY|. A special colourset has been made to accomodate this,
-	|MSG_OR_CONN_REPLY|. 
-	
-	The submodules that belong to the |Wrap and Send| and the
-	|Unwrap and Receive| substitution transitions are the same as the ones for the Client Library. To
-	be more precise, the Client Library and Server Library both have instances of
-	the same submodule, so that editing the submodule model affects both parent
-	modules while simulating them lets them have different states.
+	decides. The |unmask| function is shown in \lstref{unmask}.
+	 
+	\begin{lstlisting}[label=lst:unmask,caption=unmask,gobble=1,float]
+	fun unmask (ws:WSFRAME) = let
+	   val ws1 = WSFRAME.set_Masked ws clear
+	   val ws2 = WSFRAME.set_Masking_key ws1 Nomask
+	in 
+	   ws2
+	end;
+	\end{lstlisting}
+		
+	The |Wrap and Send| and the
+	|Unwrap and Receive| submodules are the same as the ones for the
+	Client WebSocket module. To be more precise, the Client WebSocket module and Server
+	WebSocket module both have instances of the same submodules, so that editing
+	a submodule model affects both parent modules, while during simulation they
+	can have different states.
 	
 	\subsubsection{Get Connection Request}
 		
 		\fig{ConnectionRequest.eps}{Get Connection Request}{connection_req}
 		
-		This is a very abstract representation of how connection requests are
-		received. The library simply sends a ConnRequest token to the app. In a real
-		world app, much more info might have been sent, for example IP address and
-		possibly authentication info, but for this model it is enough to show that
-		some info is being sent, while the details are abstracted away. 
+		Shown in \figref{connection_req}, this is a very abstract representation of how
+		connection requests are received. It checks the incoming request using
+		|isRequestValid|, shown in \lstref{isRequestValid}. If it is, a
+		simple |UNIT| token is sent to the app. In a real world app, much more data
+		might have been sent, for example IP address and possibly authentication info
+		from headers, but for this model it is enough to show that some data is being
+		sent, while the details are abstracted away.
 
+		\begin{lstlisting}[label=lst:generateAccept,caption=generateAccept,gobble=2,float]
+		 fun isRequestValid(req:HTTPREQ) = let
+            val rline = #RequestLine req
+            val headers = #Headers req
+          in
+            #Verb rline = GET andalso
+            getHeader("Upgrade", headers) 
+              = "websocket" andalso
+            getHeader("Connection", headers) 
+              = "Upgrade" andalso
+            getHeader("Origin", headers) 
+              = origin 
+          end
+		\end{lstlisting}
+		
 	\subsubsection{Send Connection Response}
 		
 		\fig{ConnectionResponse.eps}{Send Connection Response}{connection_res}
@@ -776,34 +809,19 @@ described in a top-down manner.
 		connection, it will send a |CONN_REPLY| to the library. If the
 		answer is |accept|, we create a |CONN_OPEN| token in the
 		Active Connection place and send a HTTP response back to the client, properly
-		formatted according to the rules of the WebSocket Protocol. This involves
-		generating a Sec-WebSocket-Accept header, which is done with the
-		generateAccept() function:
-		
-		
-		\begin{lstlisting}[label=lst:generateAccept,caption=generateAccept,gobble=2]
-		fun B64 str =
-		  "B64("^str^")";
-		
-		fun SHA1 str =
-		  "SHA1("^str^")";
-
-		fun generateAccept str =
-		  B64(SHA1(str^uuid));
-		\end{lstlisting}
-		
-		The two functions B64() \cite{rfc4648} and SHA1() \cite{fips.180-2} are
-		abscract versions of the Base64 encoding algorithm and the SHA1 hasing algorithm. We felt it was unneccessary
-		to actually implement these for the purpose of this model, and instead decided
-		to simply wrap the string argument to show that it had been encoded or hashed.
+		formatted according to the speccification of the WebSocket Protocol. This
+		involves generating a Sec-WebSocket-Accept header, which is done with the
+		|generateAccept| function whic was already explained in
+		\lstref{httpReqFromUrl}.
 		
 \subsection{Server Application}
 	
-	\fig{ServerApplication.eps}{The Server Application Module}{server_app}
+	\fig[0.4]{ServerApplication.eps}{The Server Application Module}{server_app}
 	
 	The Server Application has three tasks: Accept or reject incoming connections,
-	and send and retrieve data. The colourset |MSGS_OR_CONN_REPLY| that
-	was defined in \lstref{overview_colset} is seen here. It has three
-	queued messages, which illustrate the capability of PONG frames to be used as
-	a heartbeat (without PING being involved). A real world application would have
-	more logic here, but the interface to the library would be the same.
+	and sendind and retrieval of data. The |To send| place has three
+	messages as its initial marking, to illustrate the capability of PONG frames
+	to be used as a heartbeat (without PING being involved). Otherwise, the
+	mechanics of sending and receiving messages is the same as in the Client
+	Application. A real world application would have more logic here, but the
+	interface to the library would be the same.

@@ -1,21 +1,21 @@
 CPN Tools state space report for:
 /cygdrive/D/Documents/Master/Thesis/WebSocket SS.cpn
-Report generated: Tue May 15 13:45:25 2012
+Report generated: Tue May 15 13:51:00 2012
 
 
  Statistics
 ------------------------------------------------------------------------
 
   State Space
-     Nodes:  513
-     Arcs:   1141
-     Secs:   1
+     Nodes:  6129
+     Arcs:   19625
+     Secs:   14
      Status: Full
 
   Scc Graph
-     Nodes:  513
-     Arcs:   1141
-     Secs:   0
+     Nodes:  6129
+     Arcs:   19625
+     Secs:   1
 
 
  Boundedness Properties
@@ -92,9 +92,9 @@ Report generated: Tue May 15 13:45:25 2012
      ServerWebSocket'Valid_WS_Frame 1
                              1          1
      UnwrapAndReceive'Close_Frame 1
-                             0          0
+                             1          0
      UnwrapAndReceive'Close_Frame 2
-                             0          0
+                             1          0
      UnwrapAndReceive'Received_WS_Frame 1
                              1          1
      UnwrapAndReceive'Received_WS_Frame 2
@@ -111,11 +111,14 @@ Report generated: Tue May 15 13:45:25 2012
                          empty
      ClientApplication'Messages_received 1
                          1`[]++
-1`[{Op=PONG,Message="Hello"}]
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=CLOSE,Message=""}]++
+1`[{Op=CLOSE,Message=""}]
      ClientApplication'Messages_to_be_sent 1
                          1`[]++
-1`[{Op=TEXT,Message="Short message"},{Op=PING,Message="Hello"}]++
-1`[{Op=PING,Message="Hello"}]
+1`[{Op=TEXT,Message="Short message"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
      ClientApplication'Target_URL 1
                          1`{Protocol="ws",Host="websocket.com",Port=80,Path="/chat"}
      ClientApplication'Target_server 1
@@ -126,20 +129,30 @@ Report generated: Tue May 15 13:45:25 2012
                          1`true
      ClientWebSocket'Client_Incoming_Message 1
                          1`[]++
-1`[{Op=PONG,Message="Hello"}]
+1`[{Op=PONG,Message="Hello"}]++
+1`[{Op=PONG,Message="Hello"},{Op=CLOSE,Message=""}]++
+1`[{Op=CLOSE,Message=""}]
      ClientWebSocket'Client_Outgoing_Message 1
                          1`[]++
 1`[{Op=TEXT,Message="Short message"}]++
-1`[{Op=TEXT,Message="Short message"},{Op=PING,Message="Hello"}]++
-1`[{Op=PING,Message="Hello"}]
+1`[{Op=TEXT,Message="Short message"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
      ClientWebSocket'Connection_status 1
-                         1`CONN_OPEN
+                         1`CONN_OPEN++
+1`CONN_CLOSING++
+1`CONN_CLOSED
      ClientWebSocket'To_send 1
                          1`[]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]
      ClientWebSocket'Waiting_for_HTTP_response 1
                          1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]}
      Defrag'Buffer 1     empty
@@ -149,7 +162,9 @@ Report generated: Tue May 15 13:45:25 2012
 1`[{Op=PONG,Message="Hello"}]
      FragmentAndQueue'Control 2
                          1`[]++
-1`[{Op=PING,Message="Hello"}]
+1`[{Op=PING,Message="Hello"}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message="Goodbye"}]++
+1`[{Op=CLOSE,Message="Goodbye"}]
      FragmentAndQueue'Data 1
                          1`[]
      FragmentAndQueue'Data 2
@@ -161,58 +176,76 @@ Report generated: Tue May 15 13:45:25 2012
                          1`[]++
 1`[Connect({Protocol="ws",Host="websocket.com",Port=80,Path="/chat"})]++
 1`[CliSendMsg({Op=TEXT,Message="Short message"})]++
-1`[CliSendMsg({Op=TEXT,Message="Short message"}),CliSendMsg({Op=PING,Message="Hello"})]++
-1`[CliSendMsg({Op=PING,Message="Hello"})]
+1`[CliSendMsg({Op=TEXT,Message="Short message"}),CliSendMsg({Op=CLOSE,Message="Goodbye"})]++
+1`[CliSendMsg({Op=PING,Message="Hello"})]++
+1`[CliSendMsg({Op=PING,Message="Hello"}),CliSendMsg({Op=TEXT,Message="Short message"})]++
+1`[CliSendMsg({Op=PING,Message="Hello"}),CliSendMsg({Op=TEXT,Message="Short message"}),CliSendMsg({Op=CLOSE,Message="Goodbye"})]++
+1`[CliSendMsg({Op=CLOSE,Message="Goodbye"})]
      Overview'Client_Event 1
                          1`[]++
 1`[CliGetMsg({Op=PONG,Message="Hello"})]++
+1`[CliGetMsg({Op=PONG,Message="Hello"}),CliGetMsg({Op=CLOSE,Message=""})]++
+1`[CliGetMsg({Op=CLOSE,Message=""})]++
 1`[ConnResult(success)]
      Overview'Client_Receive 1
                          1`[]++
 1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload="Goodbye"})]
      Overview'Client_Send 1
                          1`[]++
 1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]
      Overview'Server_Call 1
                          1`[]++
 1`[ConnReply(accept)]
      Overview'Server_Event 1
                          1`[]++
 1`[SerGetMsg({Op=TEXT,Message="Short message"})]++
-1`[SerGetMsg({Op=TEXT,Message="Short message"}),SerGetMsg({Op=PING,Message="Hello"})]++
+1`[SerGetMsg({Op=TEXT,Message="Short message"}),SerGetMsg({Op=CLOSE,Message=""})]++
 1`[SerGetMsg({Op=PING,Message="Hello"})]++
 1`[SerGetMsg({Op=PING,Message="Hello"}),SerGetMsg({Op=TEXT,Message="Short message"})]++
+1`[SerGetMsg({Op=PING,Message="Hello"}),SerGetMsg({Op=TEXT,Message="Short message"}),SerGetMsg({Op=CLOSE,Message=""})]++
+1`[SerGetMsg({Op=PING,Message="Hello"}),SerGetMsg({Op=CLOSE,Message=""})]++
+1`[SerGetMsg({Op=CLOSE,Message=""})]++
 1`[ConnRequest(())]
      Overview'Server_Receieve 1
                          1`[]++
 1`[HttpReq({RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=set,Payload_length=13,Masking_key=Mask([0,0,0,0]),Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=set,Payload_length=5,Masking_key=Mask([0,0,0,0]),Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=set,Payload_length=7,Masking_key=Mask([0,0,0,0]),Payload="Goodbye"})]
      Overview'Server_Send 1
                          1`[]++
 1`[HttpRes({ResponseLine={Version="HTTP/1.1",Status=101,Message="Switching Protocols"},Headers=[{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Accept",Value="B64(SHA1(B64(nonce)258EAFA5-E914-47DA-95CA-C5AB0DC85B11))"}]})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload="Goodbye"})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]
      ServerApplication'Active_Connection 1
                          1`()
      ServerApplication'Received 1
                          1`[]++
-1`[{Op=TEXT,Message="Short message"}]++
-1`[{Op=TEXT,Message="Short message"},{Op=PING,Message="Hello"}]++
 1`[{Op=PING,Message="Hello"}]++
-1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"}]
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"},{Op=CLOSE,Message=""}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message=""}]
      ServerApplication'To_send 1
                          1`[]
      ServerWebSocket'Connection_Request_Decision 1
                          1`accept
      ServerWebSocket'Connection_Status 1
-                         1`CONN_OPEN
+                         1`CONN_OPEN++
+1`CONN_CLOSED
      ServerWebSocket'Pending_Connection 1
                          1`{RequestLine={Verb=GET,Path="/chat",Version="HTTP/1.1"},Headers=[{Key="Host",Value="websocket.com"},{Key="Upgrade",Value="websocket"},{Key="Connection",Value="Upgrade"},{Key="Sec-WebSocket-Key",Value="B64(nonce)"},{Key="Sec-WebSocket-Version",Value="13"},{Key="Origin",Value="http://www.example.com"}]}
      ServerWebSocket'Request_Token 1
@@ -220,38 +253,54 @@ Report generated: Tue May 15 13:45:25 2012
      ServerWebSocket'Server_Incoming_Message 1
                          1`[]++
 1`[{Op=TEXT,Message="Short message"}]++
-1`[{Op=TEXT,Message="Short message"},{Op=PING,Message="Hello"}]++
+1`[{Op=TEXT,Message="Short message"},{Op=CLOSE,Message=""}]++
 1`[{Op=PING,Message="Hello"}]++
-1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"}]
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"}]++
+1`[{Op=PING,Message="Hello"},{Op=TEXT,Message="Short message"},{Op=CLOSE,Message=""}]++
+1`[{Op=PING,Message="Hello"},{Op=CLOSE,Message=""}]++
+1`[{Op=CLOSE,Message=""}]
      ServerWebSocket'Server_Outgoing_Message 1
                          1`[]++
 1`[{Op=PONG,Message="Hello"}]
      ServerWebSocket'Valid_WS_Frame 1
                          1`[]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
 1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"})]++
-1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]++
+1`[WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}),WsFrame({Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"})]
      UnwrapAndReceive'Close_Frame 1
-                         empty
+                         1`{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}
      UnwrapAndReceive'Close_Frame 2
-                         empty
+                         1`{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload="Goodbye"}
      UnwrapAndReceive'Received_WS_Frame 1
                          1`[]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]++
-1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload=""}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload=""}]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
-1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload=""}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload=""}]
      UnwrapAndReceive'Received_WS_Frame 2
                          1`[]++
-1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload=""}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=0,Masking_key=Nomask,Payload=""}]
      WrapAndSend'Next 1  1`[]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=10,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]
      WrapAndSend'Next 2  1`[]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]++
-1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]++
 1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"}]++
-1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"}]++
+1`[{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=9,Masked=clear,Payload_length=5,Masking_key=Nomask,Payload="Hello"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=8,Masked=clear,Payload_length=7,Masking_key=Nomask,Payload="Goodbye"},{Fin=set,Rsv1=clear,Rsv2=clear,Rsv3=clear,Opcode=1,Masked=clear,Payload_length=13,Masking_key=Nomask,Payload="Short message"}]
 
   Best Lower Multi-set Bounds
      ClientApplication'Active_Connection 1
@@ -353,7 +402,7 @@ Report generated: Tue May 15 13:45:25 2012
 ------------------------------------------------------------------------
 
   Dead Markings
-     [512,513]
+     6 [6129,6112,6029,5960,5632,...]
 
   Dead Transition Instances
      ClientApplication'Fail 1
@@ -367,12 +416,8 @@ Report generated: Tue May 15 13:45:25 2012
      FragmentAndQueue'Queue_data 1
      ServerApplication'Send_heartbeat 1
      ServerWebSocket'Filter_messages 1
-     UnwrapAndReceive'Close 1
      UnwrapAndReceive'Close 2
-     UnwrapAndReceive'Notify_App 1
-     UnwrapAndReceive'Notify_App 2
      UnwrapAndReceive'Waiting_for_Close 1
-     UnwrapAndReceive'Waiting_for_Close 2
 
   Live Transition Instances
      None
