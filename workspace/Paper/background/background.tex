@@ -1,104 +1,93 @@
 \chapter{The WebSocket Protocol CPN Model}
 \label{chap:background}
 
-\section{The WebSocket Protocol}
-The primary case study for this thesis is the WebSocket protocol 
-\cite{draft-ietf-hybi-thewebsocketprotocol}. From the abstract of the document:
-\begin{quote}The WebSocket protocol enables two-way communication between a
-client running untrusted code running in a controlled environment to a
-remote host that has opted-in to communications from that code.
-\end{quote}
+The primary case study developed in this thesis for evaluation of the \thename{}
+framework is the WebSocket protocol \cite{draft-ietf-hybi-thewebsocketprotocol}.
+The WebSocket protocol is designed to provide two-way communication between a client running untrusted
+code running in a controlled environment (e.g. a web browser) to a remote host
+that has opted-in to communications from the untrusted code.
 
+Section \ref{sec:ws} briefly introduces the basic operation and concepts of the
+WebSocket protocol. Section \ref{sec:ws_cpn_model} presents the constructed CPN
+model of the WebSocket protocol and introduces the basic conocepts of the CPN
+modelling language.
+
+\section{The WebSocket Protocol}\label{sec:ws}
 \fig[0.4]{WebSocketSequenceDiagram.pdf}{Sequence Diagram of the WebSocket
 protocol}{wssequence}
 
-\figref{wssequence} shows the basic sequence of the WebSocket protocol. To
-establish a connection, a client sends a specially formatted HTTP request to a
+\figref{wssequence} shows the basic sequence of message exchanges in the
+WebSocket protocol.
+To establish a connection, a client sends a specially formatted HTTP request to a
 server, which replies with a HTTP response. Once the connection is
 established, the client and server can then freely send WebSocket message
 frames, until either endpoint sends a control frame with the opcode 0x8 for
 close and optionally data about the reason for closing. The other endpoint then
-replies with the same opcode and data, and the connection is considered closed.
+replies with the same opcode and reason, and the connection is considered
+closed.
 
-From the RFC document:
+Conceptually, WebSocket constitues a layer on top of TCP that
+does the following:
+\begin{itemize}
+	\item adds a Web "origin"-based security model for browsers
 
-\begin{quote}
-	Conceptually, WebSocket is really just a layer on top of TCP that
-	does the following:
-	\begin{itemize}
-		\item adds a Web "origin"-based security model for browsers
-	
-		\item adds an addressing and protocol naming mechanism to support
-		multiple services on one port and multiple host names on one IP
-		address;
-	
-		\item layers a framing mechanism on top of TCP to get back to the IP
-		packet mechanism that TCP is built on, but without length limits
-	
-		\item includes an additional closing handshake in-band that is designed
-		to work in the presence of proxies and other intermediaries
-	\end{itemize}
-\end{quote}
+	\item adds an addressing and protocol naming mechanism to support
+	multiple services on one port and multiple host names on one IP
+	address;
 
-\section{Coloured Petri Nets}
+	\item layers a framing mechanism on top of TCP to get back to the IP
+	packet mechanism that TCP is built on, but without length limits and with
+	reliability
 
-Coloured Petri Nets (CPN) are a type of directed graph used to model processes,
-especially processes with an asynchronous and/or concurrent nature. Common
-examples are modelling networks, processes and protocols, as well as
-concurrent programming design.
+	\item includes an additional closing handshake in-band that is designed
+	to work in the presence of proxies and other intermediaries
+\end{itemize}
 
-The strength of CPN lies i the operations that can be performed with it:
-Simulation, verification and analysis. 
+Further details on the operation of the WebSocket protocol will be provided in
+the next section when presenting the constructed CPN model.
 
-More recently, research has been conducted to examine the feasibility of using
-CPN for software design with automatic code generation.
+\section{The WebSocket CPN Model} \label{sec:ws_cpn_model}
 
-The structure of CPN models will be explained gradually through the case study
-in this chapter.
-
-\subsection{CPN Tools}
-
-CPN Tools \cite{cpntools} is a popular graphical
-tool for working with CPN models, from construction and simulation, to analysis
-via state space exploration.
-
-	CPN Tools uses the CPN ML language to specify declarations and net inscriptions.
-	This language is an extension of the functional programming language Standard
-	ML \cite{milner1997definition}, developed at Edinburgh University.
-	
-\section{The WebSocket CPN Model}
-
-The websocket protocol is the primary case study of this thesis. 
-In this section the model that has been built is described in full detail. 
-
-A CPN Model is organised into pages, also called modules. Each module can also
-contain sub-modules, which can help keep complex and/or large models clear and
-manageable. The WebSocket model makes full use of this feature, and will be
-described in a top-down manner.
+A CPN model is organised into pages, also called modules. Each module may in
+turn contain sub-modules, which provides a way keep complex and/or large models
+clear and manageable. The WebSocket model makes full use of this
+hierarchy feature, and we describe the WebSocket CPN model in a top-down
+manner in the following subsections.
 
 \subsection{Overview}
 
-	\fig{Overview.eps}{Overview of CPN model of the WebSocket protocol}{overview}
 	
-	\figref{overview} shows the top-level Overview module of the
+	\figref{overview} shows the top-level \nodename{Overview} module of the
 	WebSocket CPN model. It consists of five sub-modules represented by double
-	border rectanges, and several places and arcs that connect them, represented
-	with circles and arrows respectively. The function of arcs will be explained
-	under the next submodule.
+	border rectangles called substitution transitions, and several places
+	and arcs that connect them, represented with circles and arrows respectively.  The
+	function of arcs and arc expressions will be explained when presenting the
+	\nodename{Client Application} module.
+	\fig{Overview.eps}{Overview module of the WebSocket CPN model}{overview}
 	
-	The sub-modules have been laid out to resemble part of the OSI model
-	\cite{osi7}, where Client Application and Server Application each correspond to
-	the top two layers Application and Presentation, Client WebSocket and Server
-	WebSocket correspond to the Session layer, and Connection corresponds to the
-	lower layers Transport, Network, Data Link and Physical.
+	The	text in the middle of each substitution trasition is the name of that node,
+	while the text in the small blue box attached to the bottom is the name of
+	the associated sub-module. These names are often the same, although module
+	names cannot contain spaces.
+
+	The substitution transitions have been laid out to resemble part of the OSI
+	model \cite{osi7}, where \nodename{Client Application} and \nodename{Server
+	Application} each correspond to the top two layers Application and
+	Presentation, \nodename{Client WebSocket} and \nodename{Server WebSocket}
+	correspond to the Session layer, and \nodename{Connection} corresponds to the
+	lower layers Transport, Network, Data Link and Physical layers. They will be
+	referred to as the application layer, the protocol layer and the network layer
+	respectively.
 	
 	Places are used to represent the state of the modelled system, and can contain
 	tokens. Each token can have a data value, termed the token colour. The number
-	of tokens and their colors in a specific place is termed the marking of that
+	of tokens and their colours in a specific place is termed the marking of that
 	place. Similarly, the tokens in all places in the model together form the 
-	marking of the model, and thus represents the state of the system.
-	
-	%\subsubsection{Declarations and Inscriptions}
+	marking of the model, and thus represents the state of the system. The number
+	of tokens currently in a place is represented by the number in the small green
+	circle attached to the place, and the details of the token colours are shown in
+	the small green box next to it. Each place also specifies a colour set
+	and an initial marking.
 	
 	All colour sets, variables, symbolic constants and functions have to be
 	declared globally for the model. Colour sets are defined with the following syntax:
@@ -108,109 +97,123 @@ described in a top-down manner.
 	A colour set is defined as a range or set of data
 	values, and is declared globally for the model using CPN ML. Colour set names
 	are always capitalised in this thesis, but any CPN ML identifier is valid. A
-	simple example is |colset INT = int;|, representing the set of all integers. A
-	token from this colour set could for example have the value '3'. Similar
-	declarations are present for |STRING|, |BOOL| and |UNIT|.
+	simple example is the colour set definition |colset INT = int;| representing
+	the set of all integers.
+	A token from this colour set could for example have the value '3'. Similar
+	standard declarations are present for |STRING|, |BOOL| and |UNIT|.
 	These are examples of simple color sets. 
 	
-	It is also possible to delcare more complex color sets, termed compound color
-	sets, to form data structures of data types. One such compound structure is the
-	list, used to define an ordered collection of tokens from one color set.
-	
+	It is also possible to declare complex color sets, termed compound color
+	sets, to form data structures / data types. One such compound type structure is
+	the list, used to define an ordered collection of tokens from one color set.
 	Colour sets defined in the WebSocket model will be explained as they are
-	encountered in each sub-module. The places in the Overview use the following
-	colour set definitions:
+	encountered in each sub-module. The places in the \nodename{Overview} module use the
+	colour set definitions provided in \lstref{overview_colset}.
 	
 	\begin{lstlisting}[label=lst:overview_colset,caption=Overview colour
-	sets,gobble=1,float=tbh] 
+	sets,gobble=1,tabsize=4,float=tbh] 
 	colset OPERATION = with TEXT | BINARY | PING | PONG | CLOSE; 
 	colset MESSAGE = record Op: OPERATION *	Message: STRING;
 	colset MESSAGES = list MESSAGE;
 	
-	colset URL = record Protocol: STRING * Host: STRING * Port: INT * Path: STRING;
+	colset URL = record Protocol: STRING * Host: STRING * 
+						Port: INT * Path: STRING;
 	colset CLIENT_CALL = union Connect:URL + CliSendMsg:MESSAGE;
 	colset CLIENT_CALLS = list CLIENT_CALL;
 	
 	colset CONN_RESULT = bool with (fail, success);
-	colset CLIENT_EVENT = union CliGetMsg:MESSAGE + ConnResult:CONN_RESULT;
+	colset CLIENT_EVENT = union CliGetMsg:MESSAGE + 
+								ConnResult:CONN_RESULT;
 	colset CLIENT_EVENTS = list CLIENT_EVENT;
 	
 	colset CONN_REPLY = bool with (reject, accept);
-	colset SERVER_CALL = union SerSendMsg:MESSAGE + ConnReply:CONN_REPLY;
+	colset SERVER_CALL = union SerSendMsg:MESSAGE + 
+							   ConnReply:CONN_REPLY;
 	colset SERVER_CALLS = list SERVER_CALL;
 	
-	colset SERVER_EVENT = union SerGetMsg:MESSAGE + ConnRequest:UNIT;
+	colset SERVER_EVENT = union SerGetMsg:MESSAGE + 
+								ConnRequest:UNIT;
 	colset SERVER_EVENTS = list SERVER_EVENT;
 	
-	colset PACKET = union HttpReq:HTTPREQ + HttpRes:HTTPRES + WsFrame:WSFRAME;
+	colset PACKET = union HttpReq:HTTPREQ + HttpRes:HTTPRES + 
+						  WsFrame:WSFRAME;
 	colset PACKETLIST = list PACKET;
 	\end{lstlisting}
 	
 	The |OPERATION| colour set is an enumeration that represents the
-	different types of messages that can be passed between the application and the
-	protocol layer. All of these correspond with opcodes used in WebSocket frames.
+	different types of messages that can be passed between the application layer
+	and the protocol layer. All of these correspond with opcodes used in WebSocket frames.
 	
-	The |MESSAGE| colour set represents the essential message sent from and to the
+	The |MESSAGE| colour set represents the messages sent from and to the
 	application layers. This colour set is defined as a record, which means a tuple
 	of elements that can be referred to by name. |MESSAGE| has two elements: the Op
 	|OPERATION| and the Message |STRING|. In the WebSocket protocol, both data- and
 	control-frames can have messages, although the message part of control-frames
-	does not have to be shown to the user. We can also have a list of |MESSAGES| to
-	keep them ordered. Lists will be explained in detail later where they are used and
-	manipulated in the model.
+	does not have to be shown to the user. We also have a list of |MESSAGES| to
+	keep them ordered. Lists are used to keep tokens ordered; their use will be
+	explained in the following subsection.
 	
-	To be able to connect to a server, its URL needs to be known, and this concept
-	is defined by the |URL| color set. It consists of the Protocol (for
-	example http), the Host (www.example.com), the Port (for example 80) and the
-	Path (for example /home/index.html).
+	For the client to connect to a server in the WebSocket protocol, the URL
+	of the server needs to be known, and this concept is defined by the |URL| color
+	set. It consists of the Protocol (for example http), the Host
+	(www.example.com), the Port (for example 80) and the Path (for example
+	/home/index.html).
 	
 	The Client Application can send tokens to the WebSocket layer as a
-	|CLIENT_CALL|. This is a union color set, meaning a token can be one of the
-	declared identifiers, optionally with an associated colour set. A union colour set is used if a place should be
-	able to contain tokens from different colour sets, or if such tokens should be
-	handled in the same way at a point in the model. |CLIENT_CALL|
-	has two identifiers: |Connect|, used to request a connection to the
-	associated |URL|, and |CliSendMsg|, signifying an outbound message from the
-	client. And similar to |MESSAGES|, |CLIENT_CALLS| is a list of |CLIENT_CALL|.
+	|CLIENT_CALL|. This is a union color set, meaning a token can be obtained
+	using one of the constructors of the union color set with an argument that
+	matches the constructor. A union colour set is typically used if a place should
+	be able to contain tokens from different colour sets, or if such tokens should
+	be handled in the same way at a  point in the model. |CLIENT_CALL| has two
+	constructors: |Connect| (used to request a connection to the associated |URL|),
+	and |CliSendMsg| (signifying an outbound message from the client). Similar
+	to |MESSAGES|, |CLIENT_CALLS| is a list of |CLIENT_CALL|.
 	
 	When a connection attempt is completed, the result is represented from the
-	|CONN_RESULT| color set, which is a simple rebranding of bool values to improve
-	readability.
+	|CONN_RESULT| color set, which is a simple rebranding of boolean values
+	|fail| (false) and |success| (true) in order to improve readability.
 	
 	The WebSocket layer needs a way to notify the client application about 
 	connection results as well as received messages, which is done with the
 	|CLIENT_EVENT| colour set. Like |CLIENT_CALL|, this is a union colour set which
-	in this case can be either a |MESSAGE|, or a |CONN_RESULT|, and we similarly
+	in this case can be either a |MESSAGE| or a |CONN_RESULT|. We similarly
 	have a list version |CLIENT_EVENTS|.
 	
+	
 	The reason we use a single place to transmit both connection information and
-	messages between application and WebSocket layers, is that this makes it easier
-	to extend the model later if tokens from other color sets need to be passed
+	messages between the application and protocol layers, is that this makes it
+	easier to extend the model later if tokens from other color sets need to be passed
 	between the modules. The benefit is that we will not have to create extra places for
 	this, and simply need to add the new color sets to the releveant color set
 	declaration (for example |CLIENT_CALL|).
 	
 	Both the client and server WebSocket layers send and receive
 	|PACKET| tokens, a union of three color sets that will be explained later.
-	|PACKET|s are abstract and not fully modeled actual network packets, as this is
-	not relevant to how WebSocket works. This color set is also used in a list 
-	|PACKETLIST|.
+	|PACKET|s are abstract and do not fully model actual network packets, as this
+	level of detail is not required in order to model the operation of the
+	WebSocket protocol.
+	This color set is also used in a list |PACKETLIST|.
 	
 
 \subsection{Client Application}
 
-	\fig{ClientApplication.eps}{The Client Application}{client_app}
 	
-	This module (\figref{client_app}) is meant to serve as a generic invocation of
-	the WebSocket protocol. It also shows the rest of the essential building blocks
+	This module (\figref{client_app}) is designed to serve as a generic invocation
+	of the WebSocket protocol. It also shows the rest of the essential building blocks
 	of a CPN model.
+	\fig{ClientApplication.eps}{The Client Application Module}{client_app}
 	
-	Transitions, represented with single border rectangles, are elements that
-	represent potential state changes in the model. They are connected to places by
+	Transitions, represented with single bordered rectangles, are elements that
+	capture state changes in the model. They are connected to places by
 	directed arcs. These arcs can be inscribed with expressions containing
-	variables. Variables are declared globally and can only be bound to tokens of
-	the colour set they are defined for. A set of variables has been declared for
-	the simple coloursets as follows:
+	variables. A variable declaration has the form:
+	
+	|var <name> = <color-set>;|
+	
+	Variables are declared globally and can only be bound to values (colours) of
+	the colour set they are defined for. The set of variables declared for the
+	simple coloursets are provided in \lstref{standard_vars}, and some of them can
+	be seen in use on arcs in \figref{client_app}.
 	
 	\begin{lstlisting}[label=lst:standard_vars,caption=Simple Colourset
 	Variables,gobble=1,float=h] 
@@ -221,31 +224,35 @@ described in a top-down manner.
 	var ss, ss1, ss2: STRINGLIST;
 	\end{lstlisting}
 	
-	Several variables for the same coloursets have been created for convenience in
-	the cases where tokens of the same colour set is consumed from different
-	places.	If the same variable was used on each arc from two different places,
-	both places would need a token with the same value before the transition
-	would be enabled.
+	The execution of a CPN model consists of enabled transitions removing tokens
+	connected from its input places and adding tokens to its output places. In
+	order to talk about the enabling of a transition, a binding that assignes
+	values to the variables of the transition must be provided. The variables of a
+	transition are the variables occurring in the arc expressions of arcs
+	connected to the transition. Assigning values to the variables of a transition
+	allow the arc expressions to be evaluated in order to determine the value of
+	tokens to be removed and added. A binding of a transition is enabled when
+	there are tokens available in the input places that match the color sets that
+	the variables has been declared for. 
+
+	As an example, the \nodename{Convert to URL} transition in \figref{client_app} is
+	enabled (signified with a green glowing border), because the incoming arc's
+	expression is simply the variable |s|, which can be bound to the string value
+	``websocket.com/chat'' of the token in the \nodename{Target server} place. The variable
+	s is then used as an argument for the function |parseUrl| (explained further
+	down), which produces an |URL| token that is added to the \nodename{Target URL} place.
 	
-	A transition is said to be enabled when each of its incoming arcs is able to
-	bind the variables in its expression to tokens in its corresponding place. As
-	an example, the |Convert to URL| transition in \figref{client_app} is enabled
-	(signified with a green glowing border), because the incoming arc's expression
-	is simply the variable |s|, which can be bound to the ``websocket.com/chat''
-	token in the |Target server| place.
-		
-	When a transition occurs (or is fired), it will consume said tokens from the
-	respective places. These variables can then be used to produce new tokens,
-	according to the expression(s) inscribed on the output arc(s), which end up in
-	the place(s)those arcs point to. To continue the earlier example, the string
-	bound to s becomes an argument for the function |parseUrl| (explained further
-	down), which produces an |URL| token that then ends up in the |Target URL|
-	place.
+	Several variables have been created for each colourset for convenience in
+	the cases where tokens of the same colour set but with different colours is
+	consumed from separate places. If the same variable was used on each arc from
+	two separate places, both places would need a token with the same colour
+	before the transition would be enabled.
 	
 	Other variable declarations will be listed as they are encountered in the
 	model. As a general guideline, most variables are named with the first letter
 	of its colourset for non-lists, and the same letter plus the letter s for
-	lists. \lstref{client_app_vars} shows the variables used in this submodule.
+	lists. \lstref{client_app_vars} shows the variables used in the
+	\nodename{Client Appliaction} submodule.
 	
 	\begin{lstlisting}[label=lst:client_app_vars,caption=Client Application
 	Variables,gobble=1]
@@ -256,26 +263,13 @@ described in a top-down manner.
 	\end{lstlisting}
 	
 	The function |parseUrl| converts a string into an |URL| token. Its
-	implementation can be seen in \lstref{client_app_parseUrl}. 
+	implementation can be seen in \lstref{client_app_parseUrl}. It makes use of a
+	|split| function, which splits a string on a given substringand returns the
+	result as a list. |parseUrl| will make sure all the parts of the returned |URL|
+	token are given values, and provides default values for any part that is
+	missing from its string argument. 
 	
-	\begin{lstlisting}[label=lst:client_app_parseUrl,caption=parseUrl and related
-	functions,gobble=1,float] 
-	fun split2 (s, t, i) =
-	   (* Recursively scan for character t in string s starting as position i, split if match *)
-	   let val ss = String.extract(s, i, NONE) 
-	   in 
-	     if String.isPrefix t ss then
-	       [substring(s, 0, i), 
-	       String.extract(s, i + String.size t, NONE)]
-	     else split2(s, t, i+1)
-	   end
-	 fun split (s, t) = 
-	   (* Split string s on character c *)
-	   if String.isPrefix t s then
-	     [String.extract(s, String.size t, NONE)]
-	   else if String.isSubstring t s then
-	     split2 (s, t, 1)
-	   else [s]
+	\begin{lstlisting}[label=lst:client_app_parseUrl,caption=The parseUrl function,gobble=1,float] 
 	 fun parseUrl (s) = let
 	   val proto'rest = split (s, "://")
 	   val proto'rest = 
@@ -308,38 +302,39 @@ described in a top-down manner.
 	 end;
 	\end{lstlisting}
 	
-	The places at the bottom, |Client Call| and |Client Event| represent the
-	interface to the WebSocket layer, and are paired with the corresponding places
-	on the Overview, which are also paired with corresponding places in the
-	WebSocket Library. The tokens in these places will be mirrored between the
-	sub-module and the super-module. The term for this is ports and sockets,
-	where the port is in the sub-module and the socket is in the super-module. The
-	ports are labeled with port-type tags (In and Out) to signify the direction
-	that tokens move (although this has no technical significance in CPN Tools).
+	The places at the bottom of \figref{client_app}, \nodename{Client Call} and \nodename{Client Event} 
+	represent the interface to the WebSocket layer, and are paired with the
+	accordingly named places on the \nodename{Overview} module, which are also
+	paired with corresponding places in the \nodename{Client WebSocket} module. The tokens in
+	these places will be mirrored between the sub-module and the super-module. The
+	term for this is ports and sockets, where the port is in the sub-module and
+	the socket is in the super-module. The ports are labeled with port-type tags
+	(In and Out) to signify the direction that tokens move (although this has no
+	technical significance in CPN Tools).
 	
 	
 	\subsubsection{Queues}
 	
-		A lot of the places in this model rely on tokens being consumed in the same
+		A number of the places in this model rely on tokens being consumed in the same
 		order they are produced, in other words, the places should behave like queues.
 		However, CPN Tools does not have a mechanism specifically for this purpose.
-		Instead, to emulate the queue behaviour we need, we use a list of a colourset
+		Instead, to emulate the queue behaviour, we use a list of a colourset
 		instead of using the actual colourset we want in that place, and use
 		operations defined for lists to access the first and last elements of the
 		list.
 		
-		To describe a list in CPN ML, we use square brackets |[ ]|. By themselves
-		they represent an empty list. To describe a populated list, we write each
-		token inside the brackets separated by commas. An example of this is seen in
-		\figref{client_app} on the initial marking for the |Messages to be sent|
-		place.
+		To describe a list in CPN ML, we use square brackets |[ ]|, with the empty
+		list specified as |[]|. To describe a populated list, we write each token
+		inside the brackets separated by commas. An example of this is seen in
+		\figref{client_app} on the initial marking for the \nodename{Messages to be sent}
+		place. This list consists of records representing WebSocket messages.
 		
-		Lists work similarly to other functional programming languages, defined as
-		the head, which is the first element, and the tail, which is the list of all
-		remaining elements. To access these elements, we use the \lstinline-::-
-		operator like this:	\lstinline-head::tail-. Lists are usually processed in a
-		tail-recursive mannner. The |^^| operator is a convenience for concatenating
-		two lists.
+		Lists work similarly to other functional programming languages, with the
+		first element being denoted the head of the list, and the remaining elements
+		being denoted the tail of the list To access these elements, we use the |::|
+		list constructorlike this:
+		|head::tail|. Lists are usually processed in a tail-recursive
+		mannner. The |^^| operator is used for concatenating two lists.
 		
 		To model a queue with a list, when we want to append an
 		element to a queue, we concatenate the queue using the |^^| operator with a
@@ -353,51 +348,63 @@ described in a top-down manner.
 		colored gray, to emphasise the flow direction of information.
 		
 		Examples of this is seen in \figref{client_app} on the arcs connecting
-		|Client Call| and |Client Event| places at the bottom, as well as the
-		|Messages to be sent| and |Messages received| places at the top.
+		\nodename{Client Call} and \nodename{Client Event} places at the bottom, as well as the
+		\nodename{Messages to be sent} and \nodename{Messages received} places at the top.
 
-	\subsubsection{Program Flow}
+	\subsubsection{Control Flow}
 	
-		After the |Convert to URL| transition has occured, the |Request connection|
-		transition should be enabled. If we were to fire this transition, it would
-		consume the |URL| token from |Target URL|, bind the value of that token to the
+		After the \nodename{Convert to URL} transition has occured (see \figref{client_app}),
+		the \nodename{Request connection} transition will be enabled. If we were to fire this
+		transition, it would consume the |URL| token from \nodename{Target URL}, bind the value of that token to the
 		variable |url|, create a |Connect| identifier (from the |CLIENT_CALL| union
-		color set) containing |url|, and add it to the queue in the |Client Call|
+		color set) containing the |url|, and add it to the queue in the \nodename{Client Call}
 		place.
 		
-		Next, the Client Application waits for a |CONN_RESULT| token and place it in
-		the |Conn Result| place. The expressions on the arcs going out from this
-		place use the literal values |success| and |fail| instead of variables. If
-		the token has the value |succes|, the |Success| transition is enabled, and it
-		adds a |UNIT| token to the |Active Connection| place.
+		Next, the Client Application waits for a |ConnResult| token to appear on
+		place \nodename{Client Event} and place it in the \nodename{Conn Result}
+		place. The expressions on the arcs going out from the \nodename{Conn Result}
+		place use the literal values |success| and |fail| instead of variables. If  the token has
+		the value |succes|, the \nodename{Success} transition is enabled, and it
+		adds a |UNIT| token to the \nodename{Active Connection} place. This models
+		that the WebSocket connection has now been established.
 		
-		If and when the |Active Connection place| has a |UNIT| token, the
+		If and when the \nodename{Active Connection} place has a |UNIT| token, the
 		Client Application can start sending and receiving messages. The arc between
-		|Active Connection| and |Send data| is a two-way arc, which works like two
+		\nodename{Active Connection} and \nodename{Send data} is a two-way arc, which works like two
 		arcs going in opposte directions with the same expression. The result is that
 		the transition is only enabled when there is a token available, but the token
 		will not be consumed when the transition occurs. 
 		
-		A sample of messages has been set as the intial value of the |Messages to be sent|
-		place, to simulate an example execution of the program.
+		A sample of messages has been set as the intial marking of the
+		\nodename{Messages to be sent} place, to simulate an example execution of the program.
 		
-		Finally, looking at the arc from |Receive Data| to |Active Connection|, if the
-		Client Application receives a |MESSAGE| where the |OPERATOR| is |CLOSE|,
-		nothing is put back into the Active Connection place, and the connection is
-		effectively closed.
+		Finally, looking at the arc from \nodename{Receive Data} to \nodename{Active Connection}, if the
+		\nodename{Client Application} receives a |MESSAGE| where the |OPERATOR| is
+		|CLOSE|, nothing is put back into the \nodename{Active Connection} place, and
+		the connection is effectively closed.
 
 \subsection{The Client WebSocket Module}
 
 	\fig{ClientWebSocket.eps}{The Client WebSocket Module}{client_wslib}
 
-	This module consists mostly of sub-modules. The only processing
-	being done directly on this module is at the top, where messages and
+	This module (shown in \figref{client_wslib}) consists mostly of sub-modules.
+	The only processing being done directly on this module is at the top, where messages and
 	connection info is separated, and at the bottom, where
 	masking of all websocket frames occurs, which the client is required to do by
-	the protocol specification. The rest is plumbing between the submodules.
+	the protocol specification. The rest is plumbing between the submodules. 
 	
-	The new coloursets are for HTTP requests and responses, WebSocket frames, and
-	packets. They have corresponding variables. 
+	The \nodename{New connection request} submodule handles creation and sending of
+	HTTP requests based on the URL specified by the application. The 
+	\nodename{Process response} submodule processes the expected HTTP reply from
+	the server. The \nodename{Wrap and send} submodule forms WebSocket frames from
+	the messages sent from the client application, and the \nodename{Unwrap and
+	receive} submodule does the reverse with WebSocket frames coming from the
+	server. All of these submodules will be detailed in the coming sections.
+	
+	The new coloursets used in this module are for HTTP requests and responses,
+	WebSocket frames, and packets. They have corresponding variables. The
+	declarations for HTTP requests and responses (\lstref{client_lib_colset_http})
+	are modeled after the  the HTTP 1.1 standard.
 	
 	\begin{lstlisting}[label=lst:client_lib_colset_http,caption=HTTP colour
 	sets,gobble=1,float=h]
@@ -410,16 +417,14 @@ described in a top-down manner.
 	colset RESPONSE_LINE = record Version: STRING * Status: INT * Message: STRING;
 	colset HTTPRES = record ResponseLine: RESPONSE_LINE * Headers: HEADERS;
 	\end{lstlisting}
-	
-	The declarations for HTTP requests and responses
-	(\lstref{client_lib_colset_http}) are modeled after the  the HTTP 1.1
-	standard. An |HTTPREQ|, or HTTP Request, consists of an initial |REQUEST_LINE|
-	(following the standard format of an |HTTP_VERB|, a Path and a Version), and a
-	number of |HEADERS| (key-value tuples).
-	An |HTTPRES|, or HTTP Response, begins with a |RESPONSE_LINE| (consisting of
-	the Version, the response Status, and a status Message), with a subsequent
-	|HEADERS| list. A real response would usually also have a body, but this is not
-	used in the WebSocket protocol, so there is no need to model it.
+	 
+	An |HTTPREQ| (or HTTP Request),	consists of an initial |REQUEST_LINE|
+	(following the standard format of an |HTTP_VERB|, a Path, and a Version), and
+	a number of |HEADERS| (key-value tuples). An |HTTPRES|, or (HTTP Response),
+	begins with a |RESPONSE_LINE| (consisting of the Version, the response
+	Status, and a status Message), with a subsequent |HEADERS| list. A real
+	response would usually also have a body, but this is not used in the
+	WebSocket protocol, hence this has been abstracted away in the CPN model.
 	
 	\begin{lstlisting}[label=lst:client_lib_colset_ws,caption=WebSocket colour
 	sets,gobble=1,float] 
@@ -439,7 +444,6 @@ described in a top-down manner.
 		Fin: BIT * Rsv1: BIT * Rsv2: BIT * Rsv3: BIT * 
 		Opcode: INT * Masked: BIT * Payload_length: INT * 
 		Masking_key: MASKING * Payload: STRING;
-	
 	colset WSFRAMES = list WSFRAME;
 	
 	colset PACKET = union HttpReq:HTTPREQ + HttpRes:HTTPRES + WsFrame:WSFRAME;
@@ -450,17 +454,19 @@ described in a top-down manner.
 	been modeled to approximate the actual memory structure of such frames. To this
 	end, the colour sets |BIT| and |BYTE| have been created, where |BIT| is a
 	relabeling of boolean values, and |BYTE| is an integer range. A |MASK| is a
-	list with exactly 4 |BYTE|s. To model the optionality of masks, |MASKING| is
+	list with exactly 4 |BYTE|s. To model that masks are optional, |MASKING| is
 	either |Nomask| or |Mask| with an associated |MASK|.
 	
-	Next, we declare a number of static values for convenience, which correspond to
-	WebSocket frame operation identifiers, termed opcodes. 
+	Next, we declare a number of symbolic values for convenience, which correspond
+	to WebSocket frame operation identifiers, termed opcodes. 
 	
 	According to its specification, the |WSFRAME|, or WebSocket frame, consists
 	of four control bits (only the first one is in use to mark final frames), an
-	|Opcode| to describe the type of frame, a Masked bit to mark if the frame
+	|Opcode| to describe the type of frame, a| Masked| bit to mark if the frame
 	payload is masked, |Payload_length| to declare the number of bytes in the
-	payload, an optional |Masking_key|, and the |Payload| itself. 
+	payload, an optional |Masking_key|, and the |Payload| itself. Finally, we
+	also have to declare the variables to be used in arc expressions
+	(\lstref{client_lib_vars}).
 	
 	\begin{lstlisting}[label=lst:client_lib_vars,caption=WebSocket
 	Module Variables,gobble=1,float=h] 
@@ -472,18 +478,15 @@ described in a top-down manner.
 	var ps, ps1, ps2: PACKETLIST;
 	\end{lstlisting}
 	
-	Finally, we also have to declare the variables to be used in arc expressions
-	(\lstref{client_lib_vars}).
-	
 	Masking of frames is modeled to only set the masking bit and provide a masking
 	key. An actual implementation would also apply the mask to the payload
-	according to the specification, however this involves applying the
+	according to the protocol specification, however this involves applying the
 	XOR-operation on each octet in the payload with each octet in the masking key.
 	XOR is not defined in CPN ML and would thus have to be modeled manually. Since
 	the effects of masking the payload do not change the overall execution of the
 	protocol, we opted to omit it completely, and let the presence of a masking key
 	abstractly represent that the payload has been masked. The |mask| function is
-	thus defined:
+	shown in \lstref{mask_fun}.
 	
 	\begin{lstlisting}[label=lst:mask_fun,caption=Masking functions
 	,gobble=1,float=h]
@@ -497,35 +500,35 @@ described in a top-down manner.
 	end;
 	\end{lstlisting}
      
-	\subsubsection{New connection}
+	\subsubsection{New Connection Module}
 		
 		\fig{NewConnection.eps}{New Connection submodule}{new_connection}
 		
-		This module is fairly straightforward. We take an available |URL|
-		and create an HTTP request, which is then queued to be sent by the
-		client, as well as keeping a copy of the request for validation purposes when
-		the response arrives.
+		This module is shown in \figref{new_connection}. We take an available |URL| from the
+		\nodename{New Connection} place and create an HTTP request, which is then
+		queued to be sent by the client, as well as keeping a copy of the request for
+		validation purposes when the response arrives.
 		
-		The function httpReqFromUrl (\lstref{httpReqFromUrl}) takes a URL argument and
-		uses it to produce a HTTPREQ token with headers according to the WebSocket protocol requirements.
+		The function |httpReqFromUrl| (\lstref{httpReqFromUrl}) takes a |URL| argument
+		and uses it to produce a |HTTPREQ| token with headers according to the WebSocket
+		protocol requirements.
 		All the required headers are specified, but optional headers are not, as this
 		is a generic implementation. The nonce is statically defined, partly to keep
 		it simple and partly to more easily see it during simulation. 
 
-		The two functions B64() and SHA1() are
-		abscract versions of the Base64 encoding algorithm \cite{rfc4648} and the SHA1
-		hasing algorithm \cite{fips.180-2}. We felt it was unneccessary to actually
-		implement these for the purpose of this model, and instead decided to
-		simply wrap the string argument to show that it had been encoded or hashed.
+		The two functions |B64()| and |SHA1()| are
+		abstract versions of the Base64 encoding algorithm \cite{rfc4648} and the SHA1
+		hasing algorithm \cite{fips.180-2} on which the WebSocket protocol relies. We
+		considered it unneccessary to actually implement these for the purpose of
+		this model, and instead decided to simply wrap the string argument to show
+		that it had been encoded or hashed.
 		
 		\begin{lstlisting}[label=lst:httpReqFromUrl,caption=httpReqFromUrl,gobble=2,float]
 		val origin = "http://www.example.com";
 		val nonce = "nonce";
-		val uuid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 		
 		fun B64 str = "B64("^str^")";
 		fun SHA1 str = "SHA1("^str^")";
-		fun generateAccept str = B64(SHA1(str^uuid));
 		
 		fun httpReqFromUrl (url:URL) = 
           {
@@ -547,18 +550,26 @@ described in a top-down manner.
 		
 		
 		
-	\subsubsection{Process response}
+	\subsubsection{Process Response Module}
 		
 		\fig{ProcessResponse.eps}{Process Response submodule}{process_response}
 		
-		On this module, the transition enables when a |HTTPRES| token arrives from
-		the server (and the |HTTPREQ| token from earlier is still waiting in its
-		place). The transition has a guard inscription where the boolean variable b is
-		bound to the result from the isResponseValid function
-		(\lstref{isResponseValid}), which checks if the server's reply is valid and
-		conforms to the WebSocket protocol specification.
+		On this module, shown in \figref{process_response}, the transition
+		\nodename{Process HTTP Response} is enabled when a |HTTPRES| token arrives
+		from the server (and the |HTTPREQ| token from earlier is still waiting in the
+		place \nodename{Waiting for HTTP Response}). The transition has a guard
+		inscription where the boolean variable |b| is bound to the result from the
+		|isResponseValid| function (\lstref{isResponseValid}), which checks if the
+		server's reply is valid and conforms to the WebSocket protocol specification.
+		This involves generating a hash token that proves the server has interpreted
+		the original request in accordance with the WebSocket specification. The hash
+		is computed using |B64| and |SHA1| on a static universally unique identifier
+		(UUID) and the random nonce hash generated for the |Sec-WebSocket-Key| header.
 		
 		\begin{lstlisting}[label=lst:isResponseValid,caption=isResponseValid,gobble=2,float]
+		val uuid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+		fun generateAccept str = B64(SHA1(str^uuid));
+		
 		fun isResponseValid (res:HTTPRES, req:HTTPREQ) = let
 		  val rline = #ResponseLine res
 		  val headers = #Headers res
@@ -572,27 +583,32 @@ described in a top-down manner.
 		end
 		\end{lstlisting}
 		
-		Since b is a boolean variable, we can use it directly to
-		notify the Client App through the |connection| place. If b is true, a
-		|CONN_OPEN| token is put in the Active Connection place.
+		Since |b| is a boolean variable, we can use it directly to
+		notify the \nodename{Client App} through the \nodename{connection} place
+		whether the response was valid and thus if the connection was successful or not.
+		Additionally, if |b| is |true|, a |CONN_OPEN| token is put in the
+		\nodename{Active Connection} place to signify that the connection is open.
 		
-	\subsubsection{Wrap and send}
+	\subsubsection{Wrap and Send Module}
 		
 		\fig{WrapAndSend.eps}{Wrap And Send submodule}{wrap_and_send}
 		
-		This module (\figref{wrap_and_send}) takes new messages, wraps and optionally
-		fragments them in the |Fragment and queue| submodule, and
-		sends them if there is an open connection. If a Close frame is being sent,the
-		connection state will be changed to |CONN_CLOSING|, which will also prevent
-		sending of subsequent frames.
+		This module (\figref{wrap_and_send}) takes new messages from place
+		\nodename{Queue}, wraps and optionally fragments them in the
+		\nodename{Fragment and queue} submodule, and sends them if there is an open
+		connection as indicated by the token on the \nodename{Connection status}
+		place. If a Close frame is being sent, the connection state will be changed to
+		|CONN_CLOSING|, which will also prevent sending of subsequent frames.
 		
-		\paragraph{Fragment and queue}
+		\paragraph{Fragment and Queue Module}
 			
 			\fig{FragmentAndQueue.eps}{Fragment And Queue submodule}{fragment_and_queue}
 			
 			This module is shown in \figref{fragment_and_queue}. The 
-			|Sort control and data| uses the isData function (\lstref{isData}) to filter
-			the two types of messages.
+			\nodename{Sort control and data} uses the isData function (\lstref{isData}) to filter
+			the two types of messages that can be sent with the WebSocket protocol:
+			Data (meaning actual information the application wants to send, either
+			binary or textual) and Control (ping, pong and close).
 			
 			\begin{lstlisting}[label=lst:isData,caption=isData,gobble=3,float=h]
 			fun isData (msg:MESSAGE) =
@@ -601,16 +617,15 @@ described in a top-down manner.
 			\end{lstlisting}
 			
 			Control frames should never be fragmented and can thus be directly wrapped
-			with the |wrapmsg| function.
+			with the |wrapmsg| function (\lstref{fragment}).
 			Data frames with long payloads should be fragmented. This is taken care of by
 			the |fragment| function, which uses an inner recursion to split the payload. 
-			Both of these functions employ the |wrap| function
+			Both of these functions employ the |wrap| function (\lstref{fragment})
 			to produce |WSFRAME| tokens, and therefore have to be declared after it.
-			These three functions are shown in \lstref{fragment}.
 			
 			
-			\begin{lstlisting}[label=lst:fragment,caption=wrap wrapmsg and
-			fragment,gobble=3,float]
+			
+			\begin{lstlisting}[label=lst:fragment,caption=wrap wrapmsg and fragment,gobble=3,float] 
 			fun wrap (opc,payload,fin) = { 
 			  Fin=fin, Rsv1=clear, Rsv2=clear, Rsv3=clear,
 			  Opcode=opc, Masked=clear,
@@ -624,6 +639,10 @@ described in a top-down manner.
 			    
 			fun fragment (msg:MESSAGE) = let
 			  fun loop (opc, s, acc) = 
+			    (* Recurse over s, adding ws frames to 
+			    accumulator acc and returning it when 
+			    remaining s will fit max fragment size,
+			    and manage opcode and fin bit *)
 			    if (String.size s) > fragSize
 			    then loop(
 			      opContinuation,
@@ -643,18 +662,18 @@ described in a top-down manner.
 			  end;
 			\end{lstlisting}
 			
-			The WSFRAME tokens are then queued one by one from the data queue or
-			the control frame queue. This allows control frames to be injected between
-			the parts of a fragmented data frame, as required by the WebSocket protocol
-			specification. Control frames are prioritised, by the presence of a
-			two-way arc from the Control place to the Queue data transition, inscribed
-			with |[]|, which prevents it from being enabled if the list
-			in the Control place is not empty. This priorisation is allowed but not
-			required by the WebSocket protocol specification, but is included here to
-			emphasise that control frames can be sent even between two fragmented data
-			frames.
+			After \nodename{Sort control and data}, the WSFRAME tokens are queued
+			one by one into the data queue or the control frame queue depending on its
+			type. This allows control frames to be injected between the parts of a
+			fragmented data frame, as required by the WebSocket protocol specification.
+			Control frames are prioritised, by the presence of a two-way arc from the
+			Control place to the Queue data transition, inscribed with |[]|, which
+			prevents it from being enabled if the list in the Control place is not
+			empty. This priorisation is allowed but not required by the WebSocket
+			protocol specification, but is included here to emphasise that control
+			frames can be sent between fragmented data frames.
 		
-	\subsubsection{Unwrap and receive}
+	\subsubsection{Unwrap and Receive Module}
 		
 		\figrot[0.4]{UnwrapAndReceive.eps}{Unwrap And Receive
 		submodule}{unwrap_and_receive}
@@ -662,101 +681,111 @@ described in a top-down manner.
 		This module, shown in \figref{unwrap_and_receive}, handles reception of
 		frames and extracting their payload into a message.
 		
-		Received WebSocket frames that arrive in the |Packet Received| place at the
-		bottom can take three paths.
+		Received WebSocket frames that arrive in the \nodename{Packet Received} place 
+		(bottom) can be processed in three different manners:
 		
-		The first is to the left, and happens if the
-		connection is in the |CONN_OPEN| state (checked on the arc) and the
-		frame is not a close frame (checked in the guard of the Receive transition). The WebSocket
-		frame is put in the Received WS Frame place, and if it is a Ping frame, a Pong
-		frame is immediately queued for sending with identical message body. 
+		\begin{itemize}
+			\item The first one is modeled by the \nodename{Receive} transition, and
+			happens if the connection is in the |CONN_OPEN| state (checked on the arc
+			from place \nodename{Connection Status}) and the frame is not a close frame
+			(checked in the guard of the Receive transition). The WebSocket frame is put
+			in the Received WS Frame place, and if it is a Ping frame, a Pong frame is
+			immediately queued for sending with identical message body. This is modeled
+			by the arc expression on the arc going to \nodename{Send Pong}.
+			
+			\item The second manner a frame can be processed is modeled by the
+			\nodename{Close} transition, and happens if the connection is in the
+			|CONN_OPEN| state (checked on the arc from \nodename{Connection
+			Status}) and the frame is a close frame (checked in the guard of the \nodename{Close} transition). A close frame is
+			created and set to be sent as response, and the connection state is changed
+			to |CONN_CLOSED|, since the client has both received and sent a close
+			frame. Note that the packetlist from \nodename{Client Send} bound to the
+			variable |ps| is not appended to but instead discarded, because we can not
+			expect the other end to process any more frames other than a close frame
+			since it has already sent a close frame of its own.
+			
+			\item The third case happens if the connection state is in
+			|CONN_CLOSING|, which means a close frame has been sent and we are
+			waiting for a reply. This is modeled by the \nodename{Waiting for Close}
+			transition. Any payload is ignored, and the connection state stays the same
+			until a close frame is received, in which case the connection state is set to |CONN_CLOSED|. 
+		\end{itemize}
 		
-		The second path a frame can take is to the right, and happens if the
-		connection is in the |CONN_OPEN| state (checked on the arc) and the
-		frame is a close frame (checked in the guard of the Receive transition). A
-		close frame is created and set to be sent as response, and the
-		connection state is changed to |CONN_CLOSED|, since we have both
-		received and sent a close frame. Note that the packetlist from Client Send is
-		not appended to but instead discarded, because we can not expect the other
-		end to process any more frames other than a close frame since it has already
-		sent a close frame of its own.
+		Both the second and third situation described above will queue the received
+		close frame in the \nodename{Close Frame} place to notify the application, but the payload is
+		stripped through the \nodename{Notify App} transition's outgoing arc
+		expression as it should not be exposed to the user according to the
+		specification.
 		
-		The third path is upwards and happens if the connection state is
-		|CONN_CLOSING|, which means a close frame has been sent and we are
-		waiting for a reply. Any payload is ignored, and the connection state stays
-		the same until a close frame is received, in which case the connection state
-		is set to |CONN_CLOSED|. 
-		
-		Both the second and third paths will queue the received frame to notify the
-		application, but the payload is stripped as it should not be exposed to the
-		user according to the specification.
-		
-		The received frame is now in the |Received WS Frame| place. It is now checked
+		The received frame is now in the \nodename{Received WS Frame} place. It is now checked
 		on two points for fragmentation:
-		If the Fin bit is set and the opcode is not continuation, it is not part of a fragmented
-		message and converted directly to a MESSAGE. If either or both of those
-		conditions are not true, this is part of a fragmented message and is processed
-		in the Defrag submodule.
+		If the |Fin| bit is set and the |Opcode| is not continuation, it is not part of
+		a fragmented message and converted directly to a |MESSAGE| and placed as a
+		token on place \nodename{Received}.
+		If either or both of those conditions are not true, this is part of a fragmented message and is processed
+		in the \nodename{Defrag} submodule associated with the Fragmented
+		substitution transition.
 		
-		\paragraph{Defragmenting fragmented frames}
+		\paragraph{Defragmenting fragmented frames.}
 			
-			\fig{Defrag.eps}{Defragment}{defragment}
-			
-			\figref{defragment} shows this module. Frames that are part of a fragmented
+			\figref{defrag} shows this module. Frames that are part of a fragmented
 			message can have its order determined by its fin bit and its opcode.
 			
-			If the Fin bit is clear and the opcode is not continuation, this is the first
-			frame in the series. A mew |MESSAGE| is created with the opcode and
-			payload from the WebSocket frame and put in the Buffer place.
+			\fig{Defrag.eps}{Defrag Module}{defrag}
+			If the |Fin| bit is not set and the |Opcode| is not continuation, this is the
+			first frame in the series. A new |MESSAGE| is created in the
+			\nodename{Buffer} place with the opcode and payload from the WebSocket frame.
 			
-			If the Fin bit is clear and the opcode is continuation, this frame belongs in
-			the middle of the sequence. The payload is appended to the
-			|MESSAGE| in the Buffer place using the |append()|
-			function.
+			If the |Fin| bit is not set and the |Opcode| is continuation, this frame
+			belongs in the middle of the sequence. The payload is appended to the
+			|MESSAGE| in the \nodename{Buffer} place using the |append()|
+			function (\lstref{append}).
 			
-			\begin{lstlisting}[label=lst:append,caption=append,gobble=3,float]
+			\begin{lstlisting}[label=lst:append,caption=append,gobble=3,float=h]
 			fun append (msg:MESSAGE, s) = 
 			  {Op = #Op msg,
 			  Message = (#Message msg)^s}
 			\end{lstlisting}
 			
-			If the Fin bit is set and the opcode is continuation, this is the last frame
-			of the sequence. We append the payload to the message and put it in the final
-			Completed message place. 
+			If the |Fin| bit is set and the |Opcode| is continuation, this is the last
+			frame of the sequence. We append the payload to the message and put it in the final
+			\nodename{Complete message} place. 
 			
 			Note that since the WebSocket protocol does not allow fragmented messages to
 			be interleaved, and the TCP protocol guarantees preservation of order,it
 			can be assumed that consecutive fragment frames belong to the same message
 			and are in the correct order.
-			Fragment inerleaving can be defined by subprotocols, but this is not
+			Fragment interleaving can be defined by subprotocols, but this is not
 			relevant to this model.
 			
-\subsection{Connection}
+\subsection{Connection Module}
 
 	\fig{Connection.eps}{The Connection module}{connection}
 	
-	\figref{connection} shows the connection layer. The
-	packets that come from the Client Send place go to the Server Receive place, and from the
-	Server Send place to the Client Receive place. It has purposely been modeled
-	abstractly, since the transportation of data between the client and the server
-	as well as establishing and ensuring a stable connection is assumed to be taken
-	care of by TCP, as the WebSocket protocol specifies, and is not necessary to
-	model in detail to show how WebSocket works.
+	\figref{connection} shows the connection layer as modeled by the
+	\nodename{Connection} module. The packets that come from the \nodename{Client
+	Send} place go to the \nodename{Server Receive} place, and from the
+	\nodename{Server Send} place to the \nodename{Client Receive} place. It has
+	purposely been modeled abstractly, since the transportation of data between the
+	client and the server as well as establishing and ensuring a stable
+	connection is assumed to be taken care of by TCP as the WebSocket protocol
+	specifies, hence is not necessary to model TCP in detail to capture the
+	operation of the WebSocket protocol.
 	
 	The packets are also not converted to pure bits or bytes. This abstraction was
 	made since the inner workings of the TCP layer is not relevant to the WebSocket
 	Protocol.
 
-\subsection{The Server WebSocket Layer}
+\subsection{The Server WebSocket Module}
 	
 	\fig{ServerWebSocket.eps}{The Server WebSocket Module}{server_wslib}
 	
-	The Server WebSocket module (\figref{server_wslib}) is very similar to the Client-side
-	equivalent.
+	The \nodename{Server WebSocket} module (\figref{server_wslib}) is very similar
+	to the client-side equivalent.
 	The main differences are that instead of masking outgoing frames, we are checking
 	incoming frames for a mask and unmasking them, and that we are checking for
-	incoming connections and replying to them based on what the Server Application
-	decides. The |unmask| function is shown in \lstref{unmask}.
+	incoming connections and replying to them based on what the \nodename{Server
+	Application} decides. The |unmask| function is shown in \lstref{unmask}.
 	 
 	\begin{lstlisting}[label=lst:unmask,caption=unmask,gobble=1,float]
 	fun unmask (ws:WSFRAME) = let
@@ -767,26 +796,27 @@ described in a top-down manner.
 	end;
 	\end{lstlisting}
 		
-	The |Wrap and Send| and the
-	|Unwrap and Receive| submodules are the same as the ones for the
-	Client WebSocket module. To be more precise, the Client WebSocket module and Server
-	WebSocket module both have instances of the same submodules, so that editing
-	a submodule model affects both parent modules, while during simulation they
-	can have different states.
+	The \nodename{Wrap and Send} and the
+	\nodename{Unwrap and Receive} submodules are the same as the ones for the
+	\nodename{Client WebSocket} module. To be more precise, the \nodename{Client
+	WebSocket} module and \nodename{Server WebSocket} module both have instances of
+	the same submodules, so that editing a submodule model affects both parent
+	modules, while during a simulation they can have different states.
 	
-	\subsubsection{Get Connection Request}
+	\subsubsection{Get Connection Request Module}
 		
 		\fig{ConnectionRequest.eps}{Get Connection Request}{connection_req}
 		
-		Shown in \figref{connection_req}, this is a very abstract representation of how
-		connection requests are received. It checks the incoming request using
-		|isRequestValid|, shown in \lstref{isRequestValid}. If it is, a
-		simple |UNIT| token is sent to the app. In a real world app, much more data
-		might have been sent, for example IP address and possibly authentication info
-		from headers, but for this model it is enough to show that some data is being
-		sent, while the details are abstracted away.
+		This module is shown in \figref{connection_req}, and is a very abstract
+		representation of how connection requests are received. It checks the incoming request using
+		|isRequestValid|, shown in \lstref{isRequestValid}. If the incoming request
+		is valid, a simple |UNIT| token is sent to the application via the
+		\nodename{Request Token} place. In an implementation, much more data might
+		have to be provided to the application, for example IP address and possibly
+		authentication information from headers, but for this model it is sufficient
+		to model that some data is being sent, while the details are abstracted away.
 
-		\begin{lstlisting}[label=lst:generateAccept,caption=generateAccept,gobble=2,float]
+		\begin{lstlisting}[label=isRequestValid,caption=isRequestValid,gobble=2,float]
 		 fun isRequestValid(req:HTTPREQ) = let
             val rline = #RequestLine req
             val headers = #Headers req
@@ -801,27 +831,29 @@ described in a top-down manner.
           end
 		\end{lstlisting}
 		
-	\subsubsection{Send Connection Response}
+	\subsubsection{Send Connection Response Module}
 		
 		\fig{ConnectionResponse.eps}{Send Connection Response}{connection_res}
 		
-		When the Server Application has decided what to do with an incoming
-		connection, it will send a |CONN_REPLY| to the library. If the
-		answer is |accept|, we create a |CONN_OPEN| token in the
+		This module is shown in \figref{connection_res}. When the \nodename{Server
+		Application} has decided what to do with an incoming connection, it will send
+		a |CONN_REPLY| to the \nodename{Server Websocket} module.
+		If the answer is |accept|, we create a |CONN_OPEN| token in the
 		Active Connection place and send a HTTP response back to the client, properly
 		formatted according to the speccification of the WebSocket Protocol. This
-		involves generating a Sec-WebSocket-Accept header, which is done with the
-		|generateAccept| function whic was already explained in
-		\lstref{httpReqFromUrl}.
+		involves generating a Sec-WebSocket-Accept header based on the
+		Sec-WebSocket-Key header form the client, and is done to prove this is a
+		WebSocket sever. The header is generated with the |generateAccept| function
+		which was explained in \lstref{isResponseValid}.
 		
 \subsection{Server Application}
 	
 	\fig[0.4]{ServerApplication.eps}{The Server Application Module}{server_app}
 	
 	The Server Application has three tasks: Accept or reject incoming connections,
-	and sendind and retrieval of data. The |To send| place has three
+	and sending and retrieval of data. The \nodename{To send} place has three
 	messages as its initial marking, to illustrate the capability of PONG frames
 	to be used as a heartbeat (without PING being involved). Otherwise, the
 	mechanics of sending and receiving messages is the same as in the Client
 	Application. A real world application would have more logic here, but the
-	interface to the library would be the same.
+	interface to the protocol layer would be the same.

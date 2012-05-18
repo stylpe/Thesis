@@ -2,17 +2,16 @@
 \label{chap:technology}
 
 One of the first decisions that had to be made for this thesis was whether to
-base the work on some existing platform or to create a new one from
+base \thename{} on some existing platform or to create a new one from
 scratch. In this chapter we will describe the reasoning behind the
 design choices we made, and give an overview of the technologies that have been
 used.
-
 
 \section{Representing CPN Models}
 	
 	A central design decision is how to represent the CPN models. A simple
 	but easy way of manipulating a CPN model is by representing it as a tree, with pages as
-	nodes, and places, transitions and arcs as child nodes with properties
+	nodes, and places, transitions and arcs as child nodes of pages with properties
 	describing how they connect in the actual CPN model.
 	Simple tree editors are a feature of most GUI software platforms.
 	Even so, we realised early that writing everything from scratch would take
@@ -20,7 +19,7 @@ used.
 
 	There are of course many complete implementations of Petri Net tools in
 	different languages and toolkits, but few of them are open source, or written
-	with extensibility in mind. If we were to base our work on an existing
+	with extensibility in mind. If we were to base \thename{} on an existing
 	platform, it would have to be open and extendable. 
 	
 	To narrow our search, we limited our options to solutions in
@@ -58,8 +57,6 @@ developing open source projects.
 The Eclipse IDE is built on the Eclipse Rich Client Platform (RCP) shown in
 \figref{eclipse_rcp}. At the bottom of this we have the Platform Runtime, based
 on the OSGi framework, which provides the plugin architecture.
-
-
 
 The Standard Widget Toolkit (SWT) gives efficient and portable access to the
 user-interface facilities of the operating systems on which it is implemented.
@@ -102,25 +99,28 @@ enabling update notifications.
 
 
 \section{Eclipse Modeling Framework (EMF)}
-EMF is a framework for Model Driven Development (MDD) in Java. It is an Eclipse
-plugin that is part of the Eclipse Platform, and is open source. The principle
-of MDD is to define model structure by creating a metamodel to specify which
-entities can be created and how they relate to each other. By providing modeling
-and code generation tools, EMF allows developers to create model specifications
-(metamodels) that can be used to generate code for Java classes, along with
-a set of adapter classes that enable viewing and command-based editing of the
-model, and a basic editor. These capabilities make EMF ideal for obtaining a
-simple editor that can be used to manipulate CPN models. 
+EMF is a framework for Model Driven Architecture (MDA) in Java. It is an Eclipse
+plugin that is part of the Eclipse Platform, and is open source. MDA is an
+industry architecture proposed by the OMG that aims to unify some of the
+industry best practices in software architecture, modeling, metadata management,
+and software transformation technologies that allow a user to develop a
+modeling specification once and target multiple technology implementations by
+using precise transformations/mappings. 
 
-\com{EKSEMPEL}
+EMF is an example of the use of MDA to create UML model representation of a
+tool or application and to use this model to automate (some or all) of the Java
+interface, implementation, as well as any XML serialization for the modeled objects. 
+Other generated artifacts include a set of adapter classes that enable
+viewing and command-based editing of the model, and a basic editor. These
+capabilities make EMF ideal for obtaining a simple editor that can be used to
+manipulate CPN models.
 
 	\subsection{Graphical Modeling Framework (GMF)}
-	GMF builds on EMF to provide graphical viewing and editing of models. It uses
-	metamodels created with EMF to generate implementations of views and editors
-	that can create and edit the respective models. This can be used to create an
-	editor that looks and works similarly to CPN Tools, and also lets you annotate
-	it with pragmatics. \com{Uklart, bør skrives på ny, med eksempel}
-
+	GMF builds on EMF to provide tools to implement more advanced graphical viewing
+	and editing of models. It works by creating model transformations that use the
+	metamodels created with EMF to generate implementations of graphical views and
+	editors that plug in to the Eclipse workbench. 
+	
 \section{ePNK: Petri Net modeling framework}
 \label{sec:epnk}
 ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
@@ -136,8 +136,8 @@ prototype:
 	\item It is currently actively developed,
 	\item It is designed to be generic and easily extendable by creating new model
 	types, and
-	\item It includes both a tree editor and a graphical editor, provided through
-	GMF.
+	\item It includes both a tree editor and a graphical editor for CPN models,
+	provided through GMF.
 \end{itemize}
 
 \subsection{ePNK Model Type Definitions}
@@ -147,7 +147,7 @@ To simplify this section, we will first define some terminology:
  \item[Plugin] - An Eclipse Plugin 
  \item[Type] - An ePNK Model Type Definition \com{ Finne på bedre navn så det
  ikke er så lett å blande disse}
- \item[Type Model] - The EMF model defining a Type. In MDD terms: The metamodel.
+ \item[Type Model] - The EMF model defining a Type. In MDA terms: The metamodel.
  \item[Model] - A model created by a user
  \end{description}
  
@@ -197,7 +197,8 @@ type supported by CPN Tools.
 CPN Tools has a sister project called Access/CPN. This is an
 EMF-based tool to parse .cpn files and represent them as an
 EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
-easy to parse, but having an existing solution for this is preferrable.
+easy to parse. However, having an existing solution for this is preferrable, as
+we can rely on it to keep up to date with new versions of CPN Tools.
 
 The model definition used by Access/CPN is very similar to that of ePNK. This
 will be discussed more in the next chapter.
@@ -218,17 +219,18 @@ exchange syntax for OWL 2 is RDF/XML \cite{rdf-xml}. There also exist
 other syntaxes, like Manchester syntax which improves readability,and
 Functional syntax which emphasises formal structure.
 
-The power of ontologies lies in the potential to reason about the facts they
-present, and infer implicit facts. 
+The power of ontologies lies in the potential to use a reasoner engine to
+explore the domain, draw conclusions, and infer implicit facts.
 
 TODO: Lite eksempel på ontology.
 
 The code generation pragmatics are defined as OWL 2 ontologies, primarily using
 Functional syntax. To parse and reason with these ontologies, we use OWL API
 \cite{owlapi}, the reference Java implementation, which is capable of reading
-ontologies in any of the OWL 2 syntaxes.
+ontologies in any of the OWL 2 syntaxes. We use HermiT as a reasoner engine for
+deducing which pragmatics are appropriate for a selected net element.
 
 \section{Summary}
-After picking these technologies, since all the componets have Eclipse in
-common, it was an easy decision to develop our project as an Eclipse plugin.
+After picking these technologies, since many of the componets have Eclipse in
+common, it was an easy decision to develop \thename{} as an Eclipse plugin.
 This also let us centralise all our development in Eclipse.

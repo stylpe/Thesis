@@ -15,7 +15,7 @@
    id="svg8290"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="ServerApplicationNoMessagesCropped.eps">
+   sodipodi:docname="ServerApplicationNoMessagesCropped.svg">
   <defs
      id="defs8292">
     <linearGradient
@@ -34,10 +34,10 @@
        inkscape:collect="always"
        xlink:href="#linearGradient8912"
        id="linearGradient8918"
-       x1="28.045753"
-       y1="548.04443"
-       x2="20.714283"
-       y2="490.93359"
+       x1="67.666779"
+       y1="594.83551"
+       x2="62.761086"
+       y2="585.25842"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(7.0669547,0,0,7.6937799,1714.0183,-5883.8132)" />
   </defs>
@@ -67,7 +67,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

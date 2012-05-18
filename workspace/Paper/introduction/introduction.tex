@@ -3,11 +3,11 @@
  
 Software engineering is an increasingly complex discipline, with
 new and improved technology emerging at a rapid pace. There is no single answer
-on how to approach all problems, which has lead to the development of several
-software development paradigms. A motivation common to many of them is that
+on how to approach every challenge in modern software engineering, which has
+lead to the development of several software development paradigms. A motivation common to many of them is that
 software developers have always sought increasing levels of abstraction.
-Today's technology is at a level that potentially gives us means for
-automatically generating source code from conceptual domain models of
+Today's software development technology is at a level that potentially gives us
+means for automatically generating source code from conceptual domain models of
 applications, and substantial research is being conducted to create formal
 methods for unleashing this potential.
 
@@ -16,27 +16,28 @@ methods for unleashing this potential.
 
 Models and diagrams have been used in software design for a long time, and have
 been standardised with the introduction of Unified Modeling Language (UML)
-and the methods and tools developed around it (like Unified Process).
-However, models largely play a secondary role, performing as design tools and
-documentation.
+\cite{umlInfra} and the methods and tools developed for and around it (like
+Rational Unified Process \cite{rup}).
+However, models largely play a secondary role, primarily playing the role of
+design tools and documentation.
 
-Model Driven Engineering (MDE) has emerged as a new development methodology,
-putting the models in the center of the software development process. Developers
+Model Driven Engineering (MDE) \cite{kent2002model} has emerged as a new development
+methodology, putting the models in the center of the software development process. Developers
 design models that serve both as documentation and as a basis for
-implementation, and become a layer of abstraction over source code. This
-trend has been touted as a new programming paradigm, the same way
+implementation, and provides a layer of abstraction over source code. This
+trend has been touted as a new programming paradigm, in the same way
 object-oriented programming was when it was conceived.
 
-MDE has two central concepts:
+MDE is based on two central concepts:
 \begin{itemize}
-	\item Domain specific modeling languages (DSML), which are used to formalise application structure, behavior,
-and requirements of specific domains, such as financial services, warehouse
-management, task scheduling, and protocol and communication software. A DSML
-relies on a metamodel to describe concepts of the domain, along with associated
-sematics and constraints.
-	\item  Transformation engines and generators, that process models to produce various
-artifacts, including written documentation, deployment descriptions,
-alternate representations, and source code.\com{Mer}
+	\item Domain specific modeling languages (DSML), which are used to formalise
+	application structure, behavior, and requirements of specific domains, such as
+	financial services, warehouse management, task scheduling, and protocol and
+	communication software. A DSML relies on a metamodel to describe concepts of
+	the domain, along with associated sematics and constraints.
+	\item Transformation engines and generators, that process models to produce
+	various artifacts, including documentation, deployment descriptions,
+	alternative representations, and source code.\com{Mer}
 \end{itemize}
 
 Meta-modeling, creating a DSML. Model for OO (figure). \com{TODO}
@@ -44,33 +45,127 @@ Meta-modeling, creating a DSML. Model for OO (figure). \com{TODO}
 Using models as the core design element comes with several benefits. It allows
 developers to employ different methods of analysis of the models, like verifying
 correctness, completeness, finding race conditions, and analysing scalability.
-Models also act as graphical representations of the system, making them more understandable
-for people that are not programmers. 
+Models may also act as graphical representations of the system, making them more
+understandable for people that are not programmers. This is for instance
+important when soliciting requirements from customers.
 
 One of the central arguments for MDE is automatic source code generation.
 Several advantages come from this: Documentation and implementation are 
 synchronised, boilerplate code and automatic testing is taken care of\ldots
 \com{Mer}
 
-One modeling language that is being used as a DSML is Petri nets. Which kind of
-systems, concurrent.
-Enables verification and analysis, State Spaces. \com{Mer}
+One modeling language that is being used as a DSML is Petri Nets. 
+Petri Nets are a type of directed graph used to model processes,
+especially with an asynchronous and/or concurrent nature. Common
+example domains are communication networks and protocols, as
+well as concurrent programming design.
+Petri Nets are very well suited for MDE, as they have robust methods for
+computer-aided verification and analysis. 
 
-There exist many extensions to the Petri Net formalism, termed high-level Petri
-Nets, that define additional constructs or that change or enhace concepts of
-Petri Nets. One of these extensions is called Coloured Petri Nets (CPN). The term
-Coloured comes from the fact that a token can have a colour from a defined colour
-set, essentially data values from a set of values. A common way of analysing
-Petri Nets is called state space exploration, and is a powerful mothod for
+There exist many extensions to the Petri Net formalism that define additional
+constructs or that change or enhace concepts of Petri Nets. One of these
+extensions is called Coloured Petri Nets (CPN). The term Coloured comes from
+the fact that a token can have a colour from a defined colour set (type),
+essentially data values from a set of values. Combined with the capability to
+model synchronicity, concurrency and communication that Petri Nets give, the
+functional programming language Standard ML \cite{milner1997definition} is used as a foundation
+to define colours and colour sets in a compact manner, and to provide basic data
+types and manipulation implementation.
+
+A common way of analysing
+Petri Nets is called state space exploration, and is a powerful method for
 automatic model verification and determination of several properties. This
 thesis gives a short introduction to CPN and state space exploration.
 
-\section{Related Work}
+%\subsection{CPN Tools}
 
+CPN Tools \cite{cpntools} is a popular graphical
+tool for working with CPN models, from construction and simulation, to analysis
+via state space exploration. CPN Tools uses the CPN ML language to specify
+declarations and net inscriptions.
+This language is an extension of Standard ML, developed at Edinburgh
+University. \com{Mer om CPN Tools}
+	
 A CPN model can accurately model many types of software systems, but cannot
 directly be used to generate a software implementation. Research is being
 conducted to develop approaches for and demonstrate how to use CPN and other
-Petri Net variants to model software and generate source code. 
+Petri Net variants to model software and automatically generate source code.
+
+
+\section{Thesis Aims and Results}
+This thesis focuses on work done by Simonsen \cite{Simonsen2011}, who discusses
+some of the challenges in modelling and automatically generating software. His
+work is focused on the domain of communication protocols, and uses the Kao-Chow
+authentication protocol as an example.
+The ideas introduced in the paper sketch a method for annotating CPNs with a
+set of code generation pragmatics that describe how model elements relate to and
+bind to source code. Simonsen's approach consists of three parts: 
+\begin{itemize}
+	\item Annotate the CPN protocol model with pragmatics which bind the model
+	entities to program concepts,
+	\item Create a platform	model that describes how to implement specific
+	constructs for a particular platform,
+	\item Create a configuration model for capturing implementation details,
+	including the mapping from the protocol model to the platform model.   
+\end{itemize}  
+
+The work of Simonsen \cite{Simonsen2011} is focused on the model transformation
+and code generation aspect. Annotation of the CPN models in \cite{Simonsen2011}
+are done with simple text files. This approach is cumbersome, and there is a
+need for developing specialised tool support for this purpose.
+
+Based on the very initial ideas of \cite{Simonsen2011}, the aim of this thesis
+is to investigate how to support annotation of CPN models with code generation
+pragmatics in a flexible and model-centric manner. By model-centric we mean that
+annotation of CPN models should be closely integrated with editing of CPN model
+elements.
+
+The research method used to answer this question is to create a prototype
+application framework, and evaluate it by annotating a selected set of CPN
+models of communication protocols, including a detailed case study on the
+application of the WebSocket protocol. The resulting application has been named
+\thename{}. This name was chosen to resemble the naming format of other tools that
+are built around CPN Tools, including Access/CPN and Design/CPN.
+
+The requirements for the prototype can be divided into four main items:
+
+\com{Mer detaljer}
+\begin{itemize} 
+	\item Importing models created in CPN Tools. 
+
+	\item Annotate model with pragmatics. 
+		
+	\item Load sets of domain-specific pragmatics to make available for the model.
+	
+	\item Define set of model-specific pragmatics while annotating the model
+
+\end{itemize}
+
+The code generation pragmatics (or just ``pragmatics'') in the approach
+developed in this thesis are categorised into three classes.
+\begin{description}
+	\item[General pragmatics] are used to define protocol entities, communication
+	channels external method calls and API entry points for operations like opening
+	or closing a connection, and sending or receiving data.
+	\item[Domain specific pragmatics] are pragmatics that apply to all (or many)
+	protocols within a particular domain. An example is security protocols, where
+	examples of domain specific pragmatics relate to operations such as
+	encryption, decryption, and nonce generation.
+	\item[Model specific pragmatics] apply only to the specific model instances in
+	which they are defined, and are used to label concepts unique to that model. 
+\end{description}
+
+\thename{} builds on the ePNK framework \cite{kindler2011epnk}, which uses the
+Eclipse Modeling Framework (EMF) to provide an extensible platform for working with CPN models. The
+prototype is desgned as a plugin for the Eclipse platform, and can import models
+created by CPN Tools. It lets the user annotate the models with pragmatics through a tree
+editor. Pragmatics are defined using ontologies, which gives advanced
+capabilites to classify pragmatics and dynamically deduce appropriate
+pragmatics for individual model elements. These ontologies can be dynamically
+loaded into models, which lets the user write their own ontology containing
+model specific pragmatics.
+
+\section{Related Work}
 
 Kristensen and Westergaard \cite{kristensen2010automatic} examine challenges of
 using CPN for automatic code generation, and propose a new Petri Net type called
@@ -89,96 +184,39 @@ Java applications from Coloured Control Flow Nets (CCFN), a specialised type of
 CPN. CCFN forces the modeler to describe the system in an
 imperative manner, making it easier to automatically map to Java code.
 
-This thesis focuses on work done by Simonsen \cite{Simonsen2011}, who discusses
-some of the challenges in modelling and automatically generating software in the
-domain of communication protocols, using the Kao-Chow authentication protocol
-as an example.
-The ideas introduced in the paper outline a method for annotating CPNs with a
-set of code generation pragmatics that describe how model elements relate to and
-bind to source code. 
-
-Simonsen's approach consists of three parts: 
-\begin{itemize}
-	\item Annotate the CPN protocol model with pragmatics which bind the model
-	entities to program concepts,
-	\item Create a platform	model that knows how to implement specific constructs
-	for a particular platform,
-	\item Create a configuration model for deciding implementation details,
-	depending on the protocol model and platform model.   
-\end{itemize}   
-
-This research defines the domain of the work for this thesis.
-
-\section{Thesis Aims and Results}
-The work of Simonsen is focused on the model transformation and code generation
-aspect. Annotation of the CPN models are done with simple text files. This
-approach is cumbersome, and there is a need for developing specialised
-tool support for this purpose.
-
-This thesis seeks to satisfy this need by answering the following
-question: What is an approach for annotating Coloured Petri Nets with code
-generation pragmatics following the idea of?
-
-The method used to answer this question is to create a prototype application
-framework, and evaluate it by annotating an example CPN model of the
-WebSocket Protocol.
-
-The code generation pragmatics (or just ``pragmatics'') are categorised
-into three classes.
-\begin{description}
-	\item[General pragmatics] are used to define protocol entities, communication
-	channels external method calls and API entry points for operations like opening
-	or closing a connection, and sending or receiving data.
-	\item[Domain specific pragmatics] are pragmatics that apply to all (or many)
-	protocols within a particular domain. An example is security protocols, where
-	examples of domain specific pragmatics relate to operations such as
-	encryption, decryption, and nonce generation.
-	\item[Model specific pragmatics] apply only to the specific model instances in
-	which they are defined, and are used to label concepts unique to that model. 
-\end{description}
-
-The prototype builds on the ePNK framework,
-which uses the Eclipse Modeling Framework (EMF) to provide an extensible
-platform for working with CPN models. The prototype is desgned as a plugin for
-Eclipse, and can import models created by CPN Tools. It lets the user annotate
-the models with pragmatics through a tree editor. Pragmatics are defined using
-ontologies, and can be dynamically loaded into models. Evaluation is done by
-applying it to a set of protocol CPN models.
-
 \section{Thesis Organisation}
-
 The thesis is organised as follows:
 
 \begin{description}
-\item[Chapter~\ref{chap:background}:~\nameref{chap:background}] Provides a
-description of the WebSocket protocol, the primary case study used in this thesis. An
-introduction to Coloured Petri Nets and the CPN Tools application used to
-create the models, with a breakdown of the CPN model of the WebSocket protocol
-we produced for the thesis.
-\item[Chapter~\ref{chap:statespace}:~\nameref{chap:statespace}] Gives an
-introduction to State Space Analysis of CPN models, and an example of how to
-apply it using the model of the WebSocket Protocol as an example. This
-establishes the produced model as correct. \com{Utvid litt, formuler bedre}
-\item [Chapter~\ref{chap:technology}:~\nameref{chap:technology}] The produced
-prototype is built on top of a number of software frameworks and technologies.
-This chapter gives an introduction to these as well as the reasons for choosing them.
-The Eclipse Platform and its modules; the Eclipse Modeling Framework; the ePNK
-framework, which makes up the foundation of the prototype, and how it can be
-extended to support new functionality; Access/CPN, the engine used
-to omport models from CPN Tools; and an introduction to ontologies, the format
-used to specify pragmatics classes.
-\item [Chapter~\ref{chap:analysis}:~\nameref{chap:analysis}] Start with
-discussion and detailing of requirements for the editor. 
+\item[Chapter~\ref{chap:background}:~\nameref{chap:background}.] Provides a
+description of the WebSocket protocol, the primary case study used in this
+thesis. The chapter gives an introduction to Coloured Petri Nets (CPNs) and the
+CPN Tools application used to create the models, combined with a detailed
+presentation of the CPN model of the WebSocket protocol produced as part of this
+thesis.
+\item[Chapter~\ref{chap:statespace}:~\nameref{chap:statespace}.] Gives an
+introduction to state space analysis of CPN models, and an example of how to
+apply it using the model of the WebSocket Protocol. This validates that the
+constructed CPN model of the WebSocket protocol is behaviourally correct.
+\item [Chapter~\ref{chap:technology}:~\nameref{chap:technology}.] \thename{} is built
+on top of a number of software frameworks and technologies.
+This chapter gives an introduction to these as well as the reasons for choosing
+them: The Eclipse Platform and its modules; the Eclipse Modeling Framework; the ePNK
+framework (which makes up the foundation of \thename{}); Access/CPN (the engine
+used to import models from CPN Tools). This chapter also provides an
+introduction to ontologies, the format used to specify pragmatics classes.
+\item [Chapter~\ref{chap:analysis}:~\nameref{chap:analysis}.] Gives a
+discussion and detailing of requirements for \thename{}. 
 We give details of the ePNK Petri Net Type Definition for Coloured Petri Nets and
 Annotated Coloured Petri Nets. Describe how the implementation works.
 Eclipse Plugin structure. Extension Points, used to register with ePNK
 and extend context menus. Reasoning with ontologies, using this to decide
-available pragmatics.
-\item [Chapter~\ref{chap:evaluation}:~\nameref{chap:evaluation}] Discuccion on
+available pragmatics. \com{Bedre flyt her}
+\item [Chapter~\ref{chap:evaluation}:~\nameref{chap:evaluation}.] Discuccion on
 which requirements have been met. Overview and explanation of test cases.
 Results from test cases and feedback from users. Evaluation of technology used,
 and opinion on maturity of MDD and the tools available.
-\item [Chapter~\ref{chap:conclusion}:~\nameref{chap:conclusion}] Summary,
+\item [Chapter~\ref{chap:conclusion}:~\nameref{chap:conclusion}.] Summary,
 personal experience, limitations and suggested focus of future work.
 \end{description} 
 
@@ -186,4 +224,5 @@ personal experience, limitations and suggested focus of future work.
 The reader is assumed to be familiar with Java programming, the basics of
 functional programming languages, and the TCP/IP Protocol Suite. Some basic
 knowledge of Petri Nets is also an advantage, but not a strict requirement as we
-briefly introduce the basic constructs of the CPN modeling language.
+briefly introduce the basic constructs of the CPN modeling language as part of
+describing the WebSocket protocol in Chapter~\ref{chap:background}.
