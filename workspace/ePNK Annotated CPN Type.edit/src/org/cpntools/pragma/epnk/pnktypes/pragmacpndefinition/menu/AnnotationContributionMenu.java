@@ -99,7 +99,7 @@ public class AnnotationContributionMenu extends CompoundContributionItem {
 	}
 	
 	private static class AddPragmaAction extends CreateChildAction {
-		public AddPragmaAction(EditingDomain editingDomain,
+		private AddPragmaAction(EditingDomain editingDomain,
 				ISelection selection, Object descriptor) {
 			super(editingDomain, selection, descriptor);
 		}
