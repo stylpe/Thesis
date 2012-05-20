@@ -1,6 +1,18 @@
 \chapter{Analysis and Design}
 \label{chap:analysis}
 
+
+After picking the technologies described in the previous chapter, since many of
+the componets have Eclipse in common, it was an easy decision to develop
+\thename{} as an Eclipse plugin. This also let us centralise all our development
+in Eclipse.
+
+Our analysis of available software solutions and platforms showed that the basic
+p that are required to develop the desired code generation pragmatic framework are available as part of the Eclipse
+eco system. It is therefore natural to develop \thename{} as an Eclipse Plugin
+and base all software develpoment in the context of this thesis on the Eclipse
+Platform.
+
 \section{Defining Pragmatics}
 \com{TODO: Detaljert info om pragmatikker og hva de er}
 
@@ -20,6 +32,8 @@ There exists two ontologies that function as a base for pragmatics: One that
 defines Coloured Petri Nets, and one that defines base classes for pragmatics
 
 \com{TODO: Beskrive ontologiene}
+
+An ontology document can import other ontologies 
 
 \section{The Annotated CPN model type for ePNK}
 While designing the Type model for the Plugin, it was decided to separate it

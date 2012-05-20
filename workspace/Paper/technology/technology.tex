@@ -1,166 +1,154 @@
 \chapter{Technology and Foundations}
 \label{chap:technology}
 
-One of the first decisions that had to be made for this thesis was whether to
-base \thename{} on some existing platform or to create a new one from
-scratch. In this chapter we will describe the reasoning behind the
-design choices we made, and give an overview of the technologies that have been
-used.
+One of the fundamental decisions that had to be made for the wwork conducted
+in this thesis was whether to base \thename{} on an existing platform or to
+create a new platform from scratch. In this chapter we describe the
+reasoning behind the choices made, taking into account the requirements stated
+in Chapter 1, and we give an overview of the technologies that have been
+selected.
 
 \section{Representing CPN Models}
 	
 	A central design decision is how to represent the CPN models. A simple
-	but easy way of manipulating a CPN model is by representing it as a tree, with pages as
-	nodes, and places, transitions and arcs as child nodes of pages with properties
-	describing how they connect in the actual CPN model.
-	Simple tree editors are a feature of most GUI software platforms.
-	Even so, we realised early that writing everything from scratch would take
+	but easy way of manipulating a CPN model is by representing it as a tree, with
+	modules as nodes, and places, transitions and arcs as child nodes of pages with
+	properties describing how they are connected in the CPN model being
+	represented. Simple tree editors are a feature of most GUI toolkits,
+	but we realised early that creating a CPN model editor from scratch would take
 	much longer than adapting an existing platform.
 
-	There are of course many complete implementations of Petri Net tools in
+	There already exist many complete implementations of Petri Net tools in
 	different languages and toolkits, but few of them are open source, or written
 	with extensibility in mind. If we were to base \thename{} on an existing
 	platform, it would have to be open and extendable. 
 	
 	To narrow our search, we limited our options to solutions in
-	languages we had experience with: Java, c++/Qt and Ruby. Java is a popular
-	language, and we already have Access/CPN, a part of the CPN Tools project,
-	which can parse .cpn files and represent the model as Java objects. 
+	languages we had experience with: Java, C++/Qt, and Ruby. Java is a popular
+	language, and a library called Access/CPN \cite{accesscpn} (a part of the CPN
+	Tools project) can parse CPN Tools files, and represent the model using Java
+	objects.
 	
-	The ePNK framework, an extendable framework for working with Petri Nets in a
-	graphical manner, and that makes it possible to specify your own Petri Net
-	type. It is built on the Eclipse Modeling Framework (EMF) (which Access/CPN is
-	also built on).
-	
-	We also needed a way to represent pragmatics. It was suggested to try an
-	ontology-based approach, and we selected Semantic Application Design Language
-	(SADL), another Eclipse plugin that lets us easily define and work with ontologies.
+	The ePNK framework \cite{kindler2011epnk}, an extendable framework for working
+	with Petri Nets in a graphical manner, and that makes it possible to specify
+	your own Petri Net type. It is built on the Eclipse Modeling Framework (EMF)
+	\cite{steinberg2008emf} (which Access/CPN is also built on). 
+
+	A central part of representing the CPM model is also to devise a means for
+	representing the code generation pragmatics that can be attached to CPN model
+	elements. It was suggested to take an ontology-based approach, and we selected
+	the reference Java implementation OWL API \cite{horridge2009owl} to define and work
+	with ontologies, together with the HermiT ontology reasoner
+	\cite{shearer2008hermit}.
 	
 	\fig{AppOverviewDiagram.pdf}{Application Overview Diagram}{app_overview}
 	
-	\figref{app_overview} shows the different elements that make up the application.
-	The elements with bold frames are the ones newly created for this thesis, while
-	the rest below are the existing solutions used and built upon. These will be
-	described in the following sections, from the bottom up.
+	\figref{app_overview} shows the different elements that make up \thename{}.
+	The elements with a thick border are the ones created as part of this thesis,
+	while the rest represent existing solutions used and built upon. These will
+	be described in the following sections. 
 
-\section{Eclipse IDE}
-Eclipse IDE \cite{eclipse} is an open source, cross-platform, polyglot
-development environment.
+\section{The Eclipse Platform}
+The Eclipse Rich Client Platform (RCP) \cite{eclipse} is an open source,
+cross-platform, polyglot integrated development tools platform.
 Its plugin framework makes it highly extendable and customisable, and
-especially makes it easy for developers to quickly create anything from small
-custom macros, to advanced editors, to whole applications. The Eclipse IDE is
-open source, and part of the Eclipse Project, a community for incubating and
-developing open source projects.
+especially makes it easy for developers to quickly create tools and
+solutions ranging from small custom macros, to advanced editors, to complete
+applications. The Eclipse Platform is a part of the Eclipse Project, a community
+for incubating and developing open source projects. 
 
 \fig{EclipsePlatformDiagram.pdf}{The Eclipse RCP}{eclipse_rcp}
 
-The Eclipse IDE is built on the Eclipse Rich Client Platform (RCP) shown in
-\figref{eclipse_rcp}. At the bottom of this we have the Platform Runtime, based
-on the OSGi framework, which provides the plugin architecture.
+The architecture of the Eclipse RCP shown in \figref{eclipse_rcp}. We will
+give a short explanation of each element:
 
-The Standard Widget Toolkit (SWT) gives efficient and portable access to the
-user-interface facilities of the operating systems on which it is implemented.
-JFace is a User Interface framework built on SWT. The Workbench uses these two
-frameworks to provide a scalable multi-window environment. 
+\begin{itemize}
+	\item At the bottom of this we have the Platform Runtime, based on the OSGi
+	framework \cite{alliance2007osgi}, which provides the fundamental plugin
+	architecture.
 
-The Workspace defines API for creating and managing resources (projects, files,
-and folders) that are produced by tools and kept in the file system.
-
-The Team plugin is a foundation for collaboration and versioning systems. It
-unifies many operations that are common between version control systems.
-
-The Help plugin is a web-app-based help system that supports dynamic content.
-
+	\item The Standard Widget Toolkit (SWT) gives efficient and portable access to
+	the user-interface facilities of the underlying operating systems on which it is
+	implemented. JFace is a user interface framework built on SWT. The Workbench
+	is built using these two frameworks to provide a scalable multi-window editing
+	environment.
+	
+	\item The Workspace defines API for creating and managing resources (projects,
+	files, and folders) that are produced by tools and kept in the file system.
+	
+	\item The Team plugin is a foundation for collaboration and versioning systems.
+	It unifies many operations that are common between version control systems.
+	
+	\item The Help plugin is a web-app-based help system that supports dynamic
+	content.
+\end{itemize}
+	
 There are other utilities as well, like search tools, build configuration, and
-the update manager which keeps plugins up to date as well as handles
-installation of new plugins.
+the update manager which keeps plugins up to date and handles installation of
+new plugins. Together these plugins form a basic generic IDE.
 
-Together these plugins form a basic generic IDE. Other plugins build on this to
-specialise the environment for a programming language and/or type of
-application.
-
-Plugins are the building blocks of Eclipse, and there exists a wide range of
-plugins that add tools, functionality and services. For example, this thesis
-was written in \LaTeX{} using the Texlipse plugin, and managed with the Git
-version control system through the EGit plugin. 
+Additional plugins exist that build on this to . Plugins are the building blocks
+of Eclipse, and there exists a wide range of plugins that can specialise the
+environment for a particular programming language and/or type of application,
+and add tools, functionality and services. For example, this thesis was written
+in \LaTeX{} using the Texlipse plugin, and managed with the Git version
+control system through the EGit plugin.
 
 It is possible to package Eclipse with sets of plugins to form custom
 distributions of Eclipse that are tailored for specific environments and
 programming languages. The principal Eclipse distribution is the Eclipse Java
-IDE, which is one of the most popular tools for developing Java applications, from small
-desktop applications, to mobile apps for Android, to web applications, to
-enterprise-scale solutions. Another examples is Aptana Studio, aimed at Ruby on
-Rails and PHP development. 
+IDE, which is one of the most popular tools for developing Java applications,
+from small desktop applications, to mobile apps for Android, to web
+applications, to enterprise-scale solutions. Another examples is Aptana Studio,
+aimed at Ruby on Rails and PHP development. 
 
-Publishing a custom plugin is simple. By packaging it and serving it on a
-regular web server, anyone can add the web server URL to the update manager in
-Eclipse, and it will let you download and install it directly, as well as
-enabling update notifications.
+Publishing a custom plugin is simple. By packaging it using specialised tools
+in Eclipse (that themselves are plugins) and placing it on a regular web
+server, anyone can add the web server URL to the update manager in Eclipse, and
+it will let you download and install it directly, as well as enabling update
+notifications.
 
 
-\section{Eclipse Modeling Framework (EMF)}
-EMF is a framework for Model Driven Architecture (MDA) in Java. It is an Eclipse
-plugin that is part of the Eclipse Platform, and is open source. MDA is an
-industry architecture proposed by the OMG that aims to unify some of the
-industry best practices in software architecture, modeling, metadata management,
-and software transformation technologies that allow a user to develop a
-modeling specification once and target multiple technology implementations by
-using precise transformations/mappings. 
-
-EMF is an example of the use of MDA to create UML model representation of a
-tool or application and to use this model to automate (some or all) of the Java
-interface, implementation, as well as any XML serialization for the modeled objects. 
-Other generated artifacts include a set of adapter classes that enable
-viewing and command-based editing of the model, and a basic editor. These
-capabilities make EMF ideal for obtaining a simple editor that can be used to
-manipulate CPN models.
-
-	\subsection{Graphical Modeling Framework (GMF)}
-	GMF builds on EMF to provide tools to implement more advanced graphical viewing
-	and editing of models. It works by creating model transformations that use the
-	metamodels created with EMF to generate implementations of graphical views and
-	editors that plug in to the Eclipse workbench. 
-	
 \section{ePNK: Petri Net modeling framework}
 \label{sec:epnk}
 ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
 platform for creating new tools for specialised Petri Net types, which is
-exactly what we need for our annotated Petri Net type. It uses EMF and GMF to
-work with the Petri Net models and provide generic editors for custom Petri Net variants.
+exactly what we need for our annotated CPN type. It uses EMF and GMF
+(described later) to work with the Petri Net models and provide generic
+editors for custom Petri Net variants.
 
-There are several reasons why ePNK is a good choice as a foundation for the
-prototype:
+There are several reasons why ePNK is a good choice as a foundation for \thename{}:
 \begin{itemize}
-	\item It saves models using the ISO/IEC 15909 \cite{ISO-15909-2} standard file
-	format Petri Net Markup Language (PNML),
-	\item It is currently actively developed,
+	\item It saves models using the ISO/IEC 15909-2 \cite{ISO-15909-2} standard
+	file format Petri Net Markup Language (PNML),
+	\item It is currently actively developed by researchers in the model-based
+	software engineering research group at the Danish Technology University,
 	\item It is designed to be generic and easily extendable by creating new model
 	types, and
 	\item It includes both a tree editor and a graphical editor for CPN models,
 	provided through GMF.
 \end{itemize}
 
-\subsection{ePNK Model Type Definitions}
-
-To simplify this section, we will first define some terminology:
- \begin{description}
- \item[Plugin] - An Eclipse Plugin 
- \item[Type] - An ePNK Model Type Definition \com{ Finne på bedre navn så det
- ikke er så lett å blande disse}
- \item[Type Model] - The EMF model defining a Type. In MDA terms: The metamodel.
- \item[Model] - A model created by a user
- \end{description}
+Below we provide a description of key concepts in ePNK, and for this purpose we
+will use the following terminology:
+\begin{description}
+	\item[Type] - An ePNK Model Type Definition is an extension to ePNK that
+	declares and implements a particular Petri Net extension.
+	\item[Type Model] - The EMF model defining a Type (as defined above). In MDA
+	terms, it corresponds to the metamodel.
+	\item[Model] - A model created by a user as an instance of a Type Model.
+\end{description}
  
-A standard Petri Net model created in ePNK is initially only defined by the PNML
-Core Model Type. This Type is intended to be as generic as possible, and
-only defines the basic classes that most Petri Net variants contain, like Pages,
-Places, Transitions and Arcs. The only constraint defined is that an arc
-must go between two nodes on the same page.
+A standard Petri Net Model created in ePNK is initially only defined by the PNML
+Core Model Type. Its Type Model is shown in \figref{pnmlcoremodel}. This Type is
+intended to be generic, and only defines the basic classes that most Petri Net variants
+contain, like Pages (modules), Places, Transitions and Arcs. The only constraint
+defined is that an arc must go between two nodes on the same page.
+\fig{PNMLCoreModel.pdf}{PNML Core Model}{pnmlcoremodel}
 
-The user can specialise a model to extend it with features of a mode advanced
-Petri Net type. This is done by adding a Type as a child of the Petri Net
-Document node in the model, available in the right-click menu. Only one
-Type can exist in a Petri Net.
+The user can choose to extend a Model with features and capabilities of a more 
+advanced Petri Net Type. This is done by adding a Type as a child of the Petri Net
+Document node in the Model. Only one Type can exist in a Petri Net.
 
 Once a Type is added, ePNK will use class reflection to dynamically load
 any associated plugin(s), and the menus for adding new objects to the model will
@@ -168,51 +156,80 @@ include any new classes and functionality that the Type defines.
 
 In addition to the PNML Core Model Type, ePNK includes definitions for
 two subtypes of Petri Nets. The first is P/T-Nets (Place/Transition Nets), which
-expand on the core model with a few key items: initial markings for places as
-integers, inscriptions on arcs, and constraining arcs to only go between a place
+expand on the Core Model Type with a few key items: initial markings for places
+as integers, inscriptions on arcs, and constraining arcs to only go between a place
 and a transition.
 
-The second type included with ePNK is High level Petri Nets (HLPNG). This type
-adds Structured Labels which are used to represent model declarations, initial
-markings, arc expressions and transition guards.
-These are parsed and validated using a syntax that is inspired from (but not the
-same as or compatible with) CPN ML from CPN Tools. It is possible to write
-invalid data in these labels and still save the document, as they will only be
-marked as invalid by the editor to inform the user.
+The second type included with ePNK is High level Petri Net Graphs (HLPNG). This
+type adds Structured Labels which are used to represent model declarations, initial
+markings, arc expressions and transition guards. These are parsed and validated
+using a syntax that is inspired from (but not the same as or compatible with)
+CPN ML from CPN Tools. It is possible to write invalid data in these labels
+and still save the document, as they will only be marked as invalid by the
+editor to inform the user.
 
 Neither of these two types conform exactly to the Coloured Petri Nets created by
 CPN Tools. HLPNG comes close, but is missing a few things like ports and sockets
 (RefPlaces can emulate this), and substitution transitions. Also, the
-structured labels are not compatible with CPN ML syntax from CPN Tools, and for
-our prototype, these structured labels are not necessary with regard to
-annotations. They might be useful in a future version, where for example
-pragmatics are available depending on things like the colourset of a place or the
-variables on an arc, but initially this is considered to be out of the scope of
-this thesis.
+structured labels are not compatible with the CPN ML syntax from CPN Tools, and
+for our prototype, these structured labels are not necessary with regard to
+annotations, as there does not exist any pragmatics that depend on this level
+of detail yet. They might be useful in a future version, where for example
+pragmatics are available depending on things like the colourset of a place or
+the variables on an arc, but initially this is considered to be outside the
+scope of this thesis; simple string representation is sufficient.
 
 Our decision was therefore to develop our own Petri Net type that matches the
-type supported by CPN Tools.
+type supported by CPN Tools, and we present this Type as part of the next
+chapter.
 
+\section{Eclipse Modeling Framework}
+EMF is an open source framework for Model Driven Architecture (MDA) in Java. It
+is an Eclipse plugin that is part of the Eclipse Platform. MDA is an
+industry architecture proposed by the OMG that aims to unify some of the
+industry best practices in software architecture, modeling, metadata management,
+and software transformation technologies that allow a user to develop a
+modeling specification once and target multiple technology implementations by
+using precise transformations/mappings. 
+
+EMF is an example of the use of MDA to enable creation of a UML model
+representation of a tool or application and to use this model to automate (some
+or all) of the Java interface, implementation, as well as any XML serialization
+for the modeled objects.
+Other generated artifacts include a set of adapter classes that enable
+viewing and command-based editing of models, and a basic editor. This serves as
+the foundation used to build ePNK, including CPN model editing and PNML
+serialisation.
+
+	\subsection{Graphical Modeling Framework}
+	GMF builds on EMF to provide tools to implement more advanced graphical viewing
+	and editing of models. It works by creation of model transformations that use
+	the metamodels created with EMF to generate implementations of graphical views and
+	editors that plug in to the Eclipse workbench. It is used in ePNK to generate
+	the graphical diagram editor.
+	
 \section{Access/CPN: Java interface for CPN Tools}
 CPN Tools has a sister project called Access/CPN. This is an
-EMF-based tool to parse .cpn files and represent them as an
-EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
+EMF-based tool to parse .cpn files (files created with CPN Tools) and represent
+them as an EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
 easy to parse. However, having an existing solution for this is preferrable, as
 we can rely on it to keep up to date with new versions of CPN Tools.
 
 The model definition used by Access/CPN is very similar to that of ePNK. This
-will be discussed more in the next chapter.
+will be discussed more in detail in the next chapter.
 
 \section{Ontologies: OWL 2 and OWL API}\label{sec:ontologies}
 
-Ontologies are a way to present information and meta-information so that it can
-be understood by computers. Essentially, this is done by defining classes that
-have properties, relations and constraints, and then present
+Ontologies are a way to formally represent and structure information and
+knowledge within a domain as a set of concepts. Essentially, this is done
+by defining classes that have properties, relations and constraints, and then present
 information with these classes.
 
-There is a lot of ongoing research on this subject, especially to create a
-semantic web, that is extending web pages to provide meta-information about the
-content they contain and enabling software to understand it and reason about it.
+There is a lot of ongoing research on this subject, especially in the context of
+the Semantic Web \cite{bernerslee2001semantic}, that is extending web pages to
+provide meta-information about the content they contain and enabling software to
+understand it and reason about it.
+
 The OWL 2 Web Ontology Language \cite{owl2-overview} is the World Wide Web
 Consortium (W3C) recommended standard for representing ontologies. The primary
 exchange syntax for OWL 2 is RDF/XML \cite{rdf-xml}. There also exist
@@ -220,17 +237,13 @@ other syntaxes, like Manchester syntax which improves readability,and
 Functional syntax which emphasises formal structure.
 
 The power of ontologies lies in the potential to use a reasoner engine to
-explore the domain, draw conclusions, and infer implicit facts.
+explore and describe the domain, draw conclusions, and infer implicit facts.
 
 TODO: Lite eksempel på ontology.
 
 The code generation pragmatics are defined as OWL 2 ontologies, primarily using
 Functional syntax. To parse and reason with these ontologies, we use OWL API
 \cite{owlapi}, the reference Java implementation, which is capable of reading
-ontologies in any of the OWL 2 syntaxes. We use HermiT as a reasoner engine for
-deducing which pragmatics are appropriate for a selected net element.
-
-\section{Summary}
-After picking these technologies, since many of the componets have Eclipse in
-common, it was an easy decision to develop \thename{} as an Eclipse plugin.
-This also let us centralise all our development in Eclipse.
+ontologies in any of the OWL 2 syntaxes. We use HermiT \cite{shearer2008hermit}
+as a reasoner engine. The use of ontologies in the context of pragmatics is
+described in detail in the next chapter.
