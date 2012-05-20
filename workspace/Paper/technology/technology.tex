@@ -87,12 +87,17 @@ There are other utilities as well, like search tools, build configuration, and
 the update manager which keeps plugins up to date and handles installation of
 new plugins. Together these plugins form a basic generic IDE.
 
-Additional plugins exist that build on this to . Plugins are the building blocks
+Plugins are the building blocks
 of Eclipse, and there exists a wide range of plugins that can specialise the
 environment for a particular programming language and/or type of application,
-and add tools, functionality and services. For example, this thesis was written
-in \LaTeX{} using the Texlipse plugin, and managed with the Git version
+as well as add tools, functionality and services. For example, this thesis was
+written in \LaTeX{} using the Texlipse plugin, and managed with the Git version
 control system through the EGit plugin.
+
+Plugins connect to each other through the so-called extension points they
+declare, which include a schema to define instructions and requirements.
+Where one plugin declares an extension point, another plugin can extend that
+point according to its defined schema.
 
 It is possible to package Eclipse with sets of plugins to form custom
 distributions of Eclipse that are tailored for specific environments and

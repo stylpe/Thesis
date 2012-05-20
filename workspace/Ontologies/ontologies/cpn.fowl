@@ -1,7 +1,6 @@
 Prefix(:=<http://hib.no/ontologypetrinets/cpn/>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
-Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
  
 Ontology(<http://hib.no/ontologypetrinets/cpn/>
  

@@ -1,4 +1,4 @@
-\chapter{Analysis and Design}
+\chapter{Analysis, Design and Implementation}
 \label{chap:analysis}
 
 
@@ -8,20 +8,10 @@ the componets have Eclipse in common, it was an easy decision to develop
 in Eclipse.
 
 Our analysis of available software solutions and platforms showed that the basic
-p that are required to develop the desired code generation pragmatic framework are available as part of the Eclipse
-eco system. It is therefore natural to develop \thename{} as an Eclipse Plugin
-and base all software develpoment in the context of this thesis on the Eclipse
-Platform.
-
-\section{Defining Pragmatics}
-\com{TODO: Detaljert info om pragmatikker og hva de er}
-
-A Pragmatic is an annotation on a model element that describes how it should be
-translated into code. Each pragmatic has restrictions on which model elements it
-can annotate.
-
-Pragmatics come in three types: General, domain-specific and model-specific.
-
+primitives that are required to develop the desired code generation pragmatic
+framework are available as part of the Eclipse eco system. It is therefore
+natural to develop \thename{} as an Eclipse Plugin and base all software
+develpoment in the context of this thesis on the Eclipse Platform.
 
 
 \section{The CPN Ontology with Pragmatics}
@@ -29,25 +19,142 @@ As mentioned in section \ref{sec:ontologies}, Pragmatics are defined and modeled
 as ontologies, using OWL 2 Web Ontology Language.  
 
 There exists two ontologies that function as a base for pragmatics: One that
-defines Coloured Petri Nets, and one that defines base classes for pragmatics
+defines Coloured Petri Nets, and one that defines basic classes for pragmatics
 
-\com{TODO: Beskrive ontologiene}
+\begin{lstlisting}[label=lst:cpn.owl,caption=The CPN Ontology] 
+Prefix(:=<http://hib.no/ontologypetrinets/cpn/>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+ 
+Ontology(<http://hib.no/ontologypetrinets/cpn/>
+ 
 
-An ontology document can import other ontologies 
+Declaration(Class(:ColoredPetriNet))
+SubClassOf(:ColoredPetriNet :HighLevelPetriNet)
+SubClassOf(:HighLevelPetriNet :PetriNet)
+
+Declaration(Class(:Page))
+
+Declaration(Class(:Node))
+SubClassOf(:Node ObjectMaxCardinality(1 :page))
+SubClassOf(:Node DataMaxCardinality(1 :name))
+
+Declaration(Class(:Place))
+SubClassOf(:Place :Node)
+
+Declaration(Class(:Transition))
+SubClassOf(:Transition :Node)
+
+Declaration(Class(:Arc))
+SubClassOf(:Arc ObjectMaxCardinality(1 :dest))
+SubClassOf(:Arc ObjectMaxCardinality(1 :source))
+SubClassOf(:Arc DataMaxCardinality(1 :inscription))
+
+Declaration(Class(:NormalTransition))
+SubClassOf(:NormalTransition :Transition)
+SubClassOf(:NormalTransition DataMaxCardinality(1 :codeSegment))
+SubClassOf(:NormalTransition DataMaxCardinality(1 :guard))
+SubClassOf(:NormalTransition DataMaxCardinality(1 :timing))
+SubClassOf(:Place DataMaxCardinality(1 :colorType))
+SubClassOf(:Place DataMaxCardinality(1 :initialMarking))
+
+Declaration(Class(:Port))
+Declaration(Class(:Socket))
+SubClassOf(:Socket :Place)
+SubClassOf(:Port :Place)
+SubClassOf(:Socket ObjectMaxCardinality(1 :direction))
+SubClassOf(:Socket ObjectMaxCardinality(1 :port))
+Declaration(Class(:SocketDirection))
+EquivalentClasses(:SocketDirection ObjectOneOf(:Out :InOut :In))
+
+Declaration(Class(:SubstiutionTransition))
+SubClassOf(:SubstiutionTransition :Transition)
+SubClassOf(:SubstiutionTransition ObjectMaxCardinality(1 :page))
+
+DisjointClasses(:Page :Place :Transition :Arc)
+DisjointClasses(:NormalTransition :SubstiutionTransition)
+
+Declaration(ObjectProperty(:arcs))
+ObjectPropertyDomain(:arcs :Page)
+ObjectPropertyRange(:arcs :Arc)
+Declaration(ObjectProperty(:dest))
+ObjectPropertyDomain(:dest :Arc)
+ObjectPropertyRange(:dest :Node)
+Declaration(ObjectProperty(:direction))
+ObjectPropertyDomain(:direction :Socket)
+ObjectPropertyRange(:direction :SocketDirection)
+Declaration(ObjectProperty(:nodes))
+InverseObjectProperties(:page :nodes)
+ObjectPropertyDomain(:nodes :Page)
+ObjectPropertyRange(:nodes :Node)
+Declaration(ObjectProperty(:page))
+InverseObjectProperties(:page :nodes)
+ObjectPropertyDomain(:page ObjectUnionOf(:Node :PetriNet :SubstiutionTransition))
+ObjectPropertyRange(:page :Page)
+Declaration(ObjectProperty(:port))
+ObjectPropertyDomain(:port :Socket)
+ObjectPropertyRange(:port :Port)
+Declaration(ObjectProperty(:socket))
+ObjectPropertyDomain(:socket :Port)
+ObjectPropertyRange(:socket :Socket)
+Declaration(ObjectProperty(:source))
+ObjectPropertyDomain(:source :Arc)
+ObjectPropertyRange(:source :Node)
+Declaration(DataProperty(:codeSegment))
+DataPropertyDomain(:codeSegment :NormalTransition)
+DataPropertyRange(:codeSegment xsd:string)
+Declaration(DataProperty(:colorType))
+DataPropertyDomain(:colorType :Place)
+DataPropertyRange(:colorType xsd:string)
+Declaration(DataProperty(:guard))
+DataPropertyDomain(:guard :NormalTransition)
+DataPropertyRange(:guard xsd:string)
+Declaration(DataProperty(:initialMarking))
+DataPropertyDomain(:initialMarking :Place)
+DataPropertyRange(:initialMarking xsd:string)
+Declaration(DataProperty(:inscription))
+DataPropertyDomain(:inscription :Arc)
+DataPropertyRange(:inscription xsd:string)
+Declaration(DataProperty(:name))
+DataPropertyDomain(:name :Node)
+DataPropertyRange(:name xsd:string)
+Declaration(DataProperty(:timing))
+DataPropertyDomain(:timing :NormalTransition)
+DataPropertyRange(:timing xsd:int)
+ClassAssertion(:SocketDirection :In)
+ClassAssertion(:SocketDirection :InOut)
+ClassAssertion(:SocketDirection :Out)
+)
+
+\end{lstlisting}
+
+Every ontology must be declared with an Internationalized Resource
+Identifier (IRI) . IRI is a generalization of the Uniform Resource Identifier
+(URI) to allow all Unicode characters to be used. An IRI can point to an actual
+resource on the internet, but is not required to do so.
+
+An ontology document can import other ontologies by referring to their IRI. 
 
 \section{The Annotated CPN model type for ePNK}
 While designing the Type model for the Plugin, it was decided to separate it
-into two parts: One to define CPN Type, and one for defining Annotated CPN Type,
-extending from the first. This also adds the benefit that the pure CPN Type can
-be used for other applications.
+into two parts: One to define a CPN Type, and one for defining an Annotated CPN
+Type, extending from the first. This also adds the benefit that the pure CPN
+Type can be used for other applications.
 
 \com{Oppdater figurer! }
 \fig{CPNDefinition.pdf}{CPN model type diagram}{cpn_model_diagram}
-A custom Petri Net Type is made by first creating an Eclipse Plugin project. 
-In this project, an EMF model should be created. This is the Type Model, and
-should inherit the PNML Core Model from ePNK, or any other model that already
-does this (such as the P/T-Net or HLPNG Types). \com{Glossary for P/T-Net and
-HLPNG}
+A custom Petri Net Type needs to be contained in an Eclipse Plugin project.
+Such a project will contain configuration files that define the properties and
+capabilities of the plugin. These files include MANIFEST.MF for declaring plugin
+name, version, dependencies etc, plugin.xml for defining extensions, extension
+points etc, and build.properties for defining build parameters. However, the
+Eclipse Plugin IDE includes an editor for editing all three files in a
+convenient user interface with guides and content assistance.
+
+After creating a plugin project, an EMF model should be created. This is the
+Type Model, and should inherit the PNML Core Model from ePNK, or any other model
+that already does this (such as the P/T-Net or HLPNG Types). \com{Glossary for
+P/T-Net and HLPNG}
 
 The CPN model, shown in \figref{cpn_model_diagram}, defines the structure and
 constraints of Coloured Petri Nets. The first thing this new Model Type should
@@ -77,7 +184,7 @@ represents the net type, usually simply its formal name.
 
 \fig{plugin_manifest_1.png}{Plugin Manifest part 1}{plugin_manifest_1}
 \fig{plugin_manifest_2.png}{Plugin Manifest part 2}{plugin_manifest_2}
-Before ePNK will recognise the plugin and the Type model, the plugin manifest
+Before ePNK will recognise the plugin and the Type Model, the plugin manifest
 needs to be edited to define this plugin as an extension to the
 org.pnml.tools.epnk.pntd extension point of ePNK. All that is needed to
 configure this is supplyting a unique id, a descriptive name, and the fully
@@ -91,30 +198,39 @@ Thus, in order to change the functionality of existing classes such as Place,
 Arc and Page, they have to be subclassed. ePNK will use reflection to check a
 Type Model for subclasses with the same name as classes in the Core Type, and
 load these dynamically instead of the base classes.
-This can be seen in \figref{cpn_model_diagram}, where Place, Arc, Transition and Page are all
-subclassed from the classes referenced from the Core Model, with added
-attributes needed to represent Coloured Petri Nets.
+This can be seen in \figref{cpn_model_diagram}, where Place, Arc, Transition and
+Page are all subclassed from the classes referenced from the Core Model, with
+added attributes needed to represent Coloured Petri Nets.
 
 TODO: Constraints
 
+The Annotated CPN model, shown in \figref{ann_model_diagram}, extends the CPN
+model to enable annotation of model elements. It also handles references
+to ontology documents that define sets of pragmatics.
+
 \fig{PragmaCPNDefinition.pdf}{Annotated CPN model type
 diagram}{ann_model_diagram} 
-The Annotated CPN model, shown in \figref{ann_model_diagram}, extends the CPN
-model to enable annotation of model elements. It also handles saving and loading
-of ontologies that define sets of pragmatics.
 
-TODO: Intro Pragma Net Type
+As with the CPN Type Model, we have subclassed the classes of model elements we
+need to extend. All of these need to be extended to support the same feature:
+Being annotated with pragmatics. Ideally, we would have extended a superclass of
+these classes, for instance Node. But this will not work, since model merging is
+not possible (as discussed earlier), and subclassing Node will not work, since
+existing classes will not be subclasses of our new superclass and therefore not
+inherit anything from it. BELIEVE ME I TRIED
 
-These subclasses then have references to the Pragma class. The references are
+We needed to devise a way to extend a group of classes without access to their
+superclass, and ideally without copying code between the classes. The solution
+was to define an interface that all of the target classes implement. This is the
+OntologyMember interface. 
+
+OntologyMember has a reference to the Pragma class. The reference is
 configured to act as containment, meaning Pragma instances are created as
-children of the related classes. TODO: Smooth overgang. As we can see in
-\figref{add_child_pragma_menu}, Pragma objects are now available as children to Places.
-
-\fig[0.6]{ePNK_AddChildMenu.png}{Adding Pragma as child to
-Place}{add_child_pragma_menu}
+children of OntologyMember instances.
 
 The Pragma class inherits from Label, which lets it be represented visually as a
-text label in the graphical editor of ePNK.
+text label in the graphical diagram editor of ePNK. As a consequence, it is
+modeled as containment reference instead of a property. 
 
 \section{Importing from CPN Tools}
 Access/CPN is a framework that can parse CPN models saved by CPN Tools and
@@ -125,18 +241,18 @@ the work in this thesis.
 Access/CPN also uses EMF to represent models internally. The EMF model for CPN
 models that Access/CPN defines uses many of the same class names as ePNK, which
 makes it tedious to write and read code working between the two frameworks due
-to the need to use fully qualified classpaths to avoid name collisions.
+to the need to use fully qualified classpaths to avoid class name collisions.
 Initially we planned to extract the parser source code from Access/CPN and
-rewriting it to use the new ePNK CPN Type classes. This plan was later discarded in
-favor of depending on the Access/CPN plugin, as Access/CPN has continually been
-improved during development of the Plugin \com{Sett inn navn}, and is now also
-capable of parsing graphics data. And by depending on Access/CPN instead of writing
-our own parser, we can also benefit from further updates more easily.
+rewriting it to use the new ePNK CPN Type classes. This plan was later discarded
+in favor of depending on the Access/CPN plugin, as Access/CPN has continually
+been improved during development of \thename{}, and is now also capable of
+parsing graphics data. And by depending on Access/CPN instead of writing our own
+parser, we can also benefit from further updates more easily.
 
 The conversion is straightforward, the .cpn file is loaded with Access/CPN,
 and the resulting model is then converted object by object to the ePNK CPN type.
 
-\section{Creating annotations}
+\section{Creating Pragmatic Annotations}
 Labels on nodes, arcs and inscriptions. 
 Choose from list. Possibly write freehand with content assist. Validation, with
 problem markers (Eclipse feature).
@@ -155,8 +271,11 @@ Namespace-based? Already required for ontology
 
 	\subsection{Creating custom pragmatics}
 	Dynamically supported in content assist 
-	If ontology-based, use SADL editor
-	På sikt eget verktøy
-		Hva kan det settes på, hvilke attributter har det.
-		Oversette til ontologi
-
+	If ontology-based, use plugin editor
+	
+A specialised tool for creating model specific pragmatics would have ben ideal.
+Such a tool would give simple mechanics using GUI controls for specifying which
+model elements a pragmatic can be attached to, and which parameters it has. The
+Plugin Manifest editor is a good example of what we have in mind. However, this
+could not be included for this thesis due to time constraints.
+	
