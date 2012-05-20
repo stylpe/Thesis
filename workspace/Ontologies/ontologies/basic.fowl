@@ -2,12 +2,24 @@
  Prefix(basic:=<http://k1s.org/OntologyReastrictedNets/basic/>)
  Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
  Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+ Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
  
  Ontology(<http://k1s.org/OntologyReastrictedNets/basic/>
+  Import( <http://hib.no/ontologypetrinets/cpn/> )
  
  Declaration(Class(:Pragmatic))
  Declaration(Class(:Property))
  
+ DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page :Pragmatic :Property)
+
  SubClassOf( :Operation :Pragmatic)
 
+ Declaration( ObjectProperty( :belongsTo ) )
+ ObjectPropertyDomain( :belongsTo :Pragmatic ) 
+ ObjectPropertyRange( :belongsTo cpn:Node ) 
+ 
+ Declaration( ObjectProperty( :hasPragmatic ) )
+ ObjectPropertyDomain( :hasPragmatic cpn:Node ) 
+ ObjectPropertyRange( :hasPragmatic :Pragmatic ) 
+ 
 )

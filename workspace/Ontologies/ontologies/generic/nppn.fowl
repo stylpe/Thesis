@@ -11,44 +11,39 @@
    
 
   SubClassOf( :Principal basic:Pragmatic )
-  SubClassOf( :Principal ObjectAllValuesFrom( :belongsTo cpn:Page ) )
+  SubClassOf( :Principal ObjectAllValuesFrom( basic:belongsTo cpn:Page ) )
   
-
   SubClassOf( :Channel basic:Pragmatic )
-  SubClassOf( :Channel ObjectAllValuesFrom( :belongsTo cpn:Place )  )
+  SubClassOf( :Channel ObjectAllValuesFrom( basic:belongsTo cpn:Place )  )
   
   SubClassOf( :Id basic:Pragmatic )
-  SubClassOf( :Id ObjectAllValuesFrom( :belongsTo cpn:Place ) ) 
+  SubClassOf( :Id ObjectAllValuesFrom( basic:belongsTo cpn:Place ) ) 
 
   SubClassOf( :External basic:Pragmatic )
-  SubClassOf( :External ObjectAllValuesFrom( :belongsTo :TransitionConnectedToId ) ) 
-
+  SubClassOf( :External ObjectAllValuesFrom( basic:belongsTo :TransitionConnectedToId ) ) 
 
   SubClassOf( :Send basic:Pragmatic )
-  SubClassOf( :Send ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
-  
+  SubClassOf( :Send ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
   
   SubClassOf( :Recieve basic:Pragmatic )
-  SubClassOf( :Recieve ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  SubClassOf( :Recieve ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
   
   SubClassOf( :OpenChannel basic:Pragmatic )
-  SubClassOf( :OpenChannel ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  SubClassOf( :OpenChannel ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
   
   SubClassOf( :CloseChannel basic:Pragmatic )
-  SubClassOf( :CloseChannel ObjectAllValuesFrom( :belongsTo cpn:Transition ) )
+  SubClassOf( :CloseChannel ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
 
 
-
-  DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page basic:Pragmatic)
-  DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page :Id :External )
+  DisjointClasses(:Id :External )
   
 
-  SubClassOf( :IdPlace ObjectAllValuesFrom( :hasPragmatic :Id))
+  SubClassOf( :IdPlace ObjectAllValuesFrom( basic:hasPragmatic :Id))
 
   SubClassOf( :IdPlace ObjectIntersectionOf(
       cpn:Place
-          ObjectAllValuesFrom( :hasPragmatic :Id)
-          ObjectExactCardinality( 1 :hasPragmatic )
+          ObjectAllValuesFrom( basic:hasPragmatic :Id)
+          ObjectExactCardinality( 1 basic:hasPragmatic )
     )
   )
   

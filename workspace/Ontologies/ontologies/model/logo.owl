@@ -5,7 +5,8 @@ Prefix(:=<http://org.k1s/orn/logo/>)
  Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
  
  Ontology(<http://org.k1s/orn/logo/>
-   Import( <http://k1s.org/OntologyReastrictedNets/basic.owl> )
+   Import( <http://k1s.org/OntologyReastrictedNets/basic/> )
+   Import( <http://hib.no/ontologypetrinets/cpn/> )
    
 	Declaration( Class( :fd ) )
 
@@ -21,34 +22,30 @@ Prefix(:=<http://org.k1s/orn/logo/>)
 	
 	Declaration( Class( :repeat ) )
 	
-	Declaration( ObjectProperty( :belongsTo ) )
-	
 	
 	
 	
 	SubClassOf( :fd basic:Pragmatic )
-	SubClassOf( :fd ObjectAllValuesFrom( :belongsTo cpn:Transition ) ) 
+	SubClassOf( :fd ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) ) 
 	
 	SubClassOf( :bk basic:Pragmatic )
-	SubClassOf( :bk ObjectAllValuesFrom( :belongsTo cpn:Transition ) ) 
+	SubClassOf( :bk ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) ) 
 	
 	SubClassOf( :rt basic:Pragmatic )
-	SubClassOf( :rt ObjectAllValuesFrom( :belongsTo cpn:Place ) ) 
+	SubClassOf( :rt ObjectAllValuesFrom( basic:belongsTo cpn:Place ) ) 
 	
 	SubClassOf( :lt basic:Pragmatic )
-	SubClassOf( :lt ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	SubClassOf( :lt ObjectAllValuesFrom( basic:belongsTo cpn:Place ) )
 	
 	SubClassOf( :pu basic:Pragmatic )
-	SubClassOf( :pu ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	SubClassOf( :pu ObjectAllValuesFrom( basic:belongsTo cpn:Place ) )
 	
 	SubClassOf( :pd basic:Pragmatic )
-	SubClassOf( :pd ObjectAllValuesFrom( :belongsTo cpn:Place ) )
+	SubClassOf( :pd ObjectAllValuesFrom( basic:belongsTo cpn:Place ) )
 	
 	SubClassOf( :repeat basic:Pragmatic )
-	SubClassOf( :repeat ObjectAllValuesFrom( :belongsTo cpn:Page ) )
-	
-	
-	DisjointClasses( cpn:Place cpn:Transition cpn:Page)
+	SubClassOf( :repeat ObjectAllValuesFrom( basic:belongsTo cpn:Page ) )
+
 	   
 	DisjointClasses( :fd :bk :rt :lt :pu :pd :repeat)
 )	
