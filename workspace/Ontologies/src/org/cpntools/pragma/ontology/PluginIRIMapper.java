@@ -32,7 +32,6 @@ public class PluginIRIMapper implements OWLOntologyIRIMapper {
 		iriMap = new HashMap<IRI, IRI>();
 		try {
 			Enumeration<URL> files = BundleOntologyEnumerator.getAvailableOntologies();
-			System.out.println("Has files: " + files.hasMoreElements());
 			while(files.hasMoreElements()){
 				URL file = files.nextElement();
 				OWLOntologyDocumentSource documentSource = new StreamDocumentSource(file.openStream());
