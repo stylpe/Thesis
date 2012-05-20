@@ -6,27 +6,31 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
-import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNInscription;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Arc Inscription</b></em>'.
+ * An implementation of the model object '<em><b>CPN Inscription</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcInscriptionImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNInscriptionImpl#getText <em>Text</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
+public class CPNInscriptionImpl extends LabelImpl implements CPNInscription {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -52,7 +56,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArcInscriptionImpl() {
+	protected CPNInscriptionImpl() {
 		super();
 	}
 
@@ -63,7 +67,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CpndefinitionPackage.Literals.ARC_INSCRIPTION;
+		return CpndefinitionPackage.Literals.CPN_INSCRIPTION;
 	}
 
 	/**
@@ -84,7 +88,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC_INSCRIPTION__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.CPN_INSCRIPTION__TEXT, oldText, text));
 	}
 
 	/**
@@ -95,7 +99,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC_INSCRIPTION__TEXT:
+			case CpndefinitionPackage.CPN_INSCRIPTION__TEXT:
 				return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -109,7 +113,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC_INSCRIPTION__TEXT:
+			case CpndefinitionPackage.CPN_INSCRIPTION__TEXT:
 				setText((String)newValue);
 				return;
 		}
@@ -124,7 +128,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC_INSCRIPTION__TEXT:
+			case CpndefinitionPackage.CPN_INSCRIPTION__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
 		}
@@ -139,7 +143,7 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC_INSCRIPTION__TEXT:
+			case CpndefinitionPackage.CPN_INSCRIPTION__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 		}
 		return super.eIsSet(featureID);
@@ -161,4 +165,4 @@ public class ArcInscriptionImpl extends LabelImpl implements ArcInscription {
 		return result.toString();
 	}
 
-} //ArcInscriptionImpl
+} //CPNInscriptionImpl

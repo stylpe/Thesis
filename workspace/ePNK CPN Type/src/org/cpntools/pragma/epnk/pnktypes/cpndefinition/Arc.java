@@ -6,6 +6,8 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
 
+import org.pnml.tools.epnk.pnmlcoremodel.Label;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +17,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,29 +27,29 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Arc extends org.pnml.tools.epnk.pnmlcoremodel.Arc {
 	/**
-	 * Returns the value of the '<em><b>Inscription</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Inscription</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inscription</em>' containment reference.
-	 * @see #setInscription(ArcInscription)
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getArc_Inscription()
+	 * @return the value of the '<em>Expression</em>' containment reference.
+	 * @see #setExpression(ArcExpression)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getArc_Expression()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	ArcInscription getInscription();
+	ArcExpression getExpression();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getInscription <em>Inscription</em>}' containment reference.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc#getExpression <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inscription</em>' containment reference.
-	 * @see #getInscription()
+	 * @param value the new value of the '<em>Expression</em>' containment reference.
+	 * @see #getExpression()
 	 * @generated
 	 */
-	void setInscription(ArcInscription value);
+	void setExpression(ArcExpression value);
 
 } // Arc

@@ -24,6 +24,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelFactory;
+import org.pnml.tools.epnk.pnmlcoremodel.PnmlcoremodelPackage;
 
 /**
  * This is the item provider adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc} object.
@@ -76,7 +78,7 @@ public class ArcItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CpndefinitionPackage.Literals.ARC__INSCRIPTION);
+			childrenFeatures.add(CpndefinitionPackage.Literals.ARC__EXPRESSION);
 		}
 		return childrenFeatures;
 	}
@@ -131,7 +133,7 @@ public class ArcItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Arc.class)) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
+			case CpndefinitionPackage.ARC__EXPRESSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -151,8 +153,8 @@ public class ArcItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CpndefinitionPackage.Literals.ARC__INSCRIPTION,
-				 CpndefinitionFactory.eINSTANCE.createArcInscription()));
+				(CpndefinitionPackage.Literals.ARC__EXPRESSION,
+				 CpndefinitionFactory.eINSTANCE.createArcExpression()));
 	}
 
 	/**

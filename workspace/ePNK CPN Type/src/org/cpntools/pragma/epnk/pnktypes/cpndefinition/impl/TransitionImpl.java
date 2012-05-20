@@ -7,9 +7,12 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Guard;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -27,23 +30,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.TransitionImpl implements Transition {
 	/**
-	 * The default value of the '{@link #getGuard() <em>Guard</em>}' attribute.
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGuard()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String GUARD_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected String guard = GUARD_EDEFAULT;
+	protected Guard guard;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,7 +62,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getGuard() {
+	public Guard getGuard() {
 		return guard;
 	}
 
@@ -77,11 +71,47 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGuard(String newGuard) {
-		String oldGuard = guard;
+	public NotificationChain basicSetGuard(Guard newGuard, NotificationChain msgs) {
+		Guard oldGuard = guard;
 		guard = newGuard;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.TRANSITION__GUARD, oldGuard, guard));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.TRANSITION__GUARD, oldGuard, newGuard);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setGuard(Guard newGuard) {
+		if (newGuard != guard) {
+			NotificationChain msgs = null;
+			if (guard != null)
+				msgs = ((InternalEObject)guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.TRANSITION__GUARD, null, msgs);
+			if (newGuard != null)
+				msgs = ((InternalEObject)newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.TRANSITION__GUARD, null, msgs);
+			msgs = basicSetGuard(newGuard, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.TRANSITION__GUARD, newGuard, newGuard));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CpndefinitionPackage.TRANSITION__GUARD:
+				return basicSetGuard(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -107,7 +137,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CpndefinitionPackage.TRANSITION__GUARD:
-				setGuard((String)newValue);
+				setGuard((Guard)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,7 +152,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CpndefinitionPackage.TRANSITION__GUARD:
-				setGuard(GUARD_EDEFAULT);
+				setGuard((Guard)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,25 +167,9 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CpndefinitionPackage.TRANSITION__GUARD:
-				return GUARD_EDEFAULT == null ? guard != null : !GUARD_EDEFAULT.equals(guard);
+				return guard != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (Guard: ");
-		result.append(guard);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TransitionImpl

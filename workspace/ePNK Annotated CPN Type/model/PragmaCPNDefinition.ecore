@@ -48,4 +48,5 @@
   <eClassifiers xsi:type="ecore:EDataType" name="OWLClass" instanceClassName="org.semanticweb.owlapi.model.OWLClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Transition #//OntologyMember"/>
   <eClassifiers xsi:type="ecore:EClass" name="Arc" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Arc #//OntologyMember"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="../../ePNK%20CPN%20Type/model/CPNDefinition.ecore#//Page #//OntologyMember"/>
 </ecore:EPackage>

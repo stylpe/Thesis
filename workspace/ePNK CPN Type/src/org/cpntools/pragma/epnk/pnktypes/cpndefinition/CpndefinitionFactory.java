@@ -71,13 +71,49 @@ public interface CpndefinitionFactory extends EFactory {
 	Page createPage();
 
 	/**
-	 * Returns a new object of class '<em>Arc Inscription</em>'.
+	 * Returns a new object of class '<em>Arc Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Arc Inscription</em>'.
+	 * @return a new object of class '<em>Arc Expression</em>'.
 	 * @generated
 	 */
-	ArcInscription createArcInscription();
+	ArcExpression createArcExpression();
+
+	/**
+	 * Returns a new object of class '<em>CPN Inscription</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>CPN Inscription</em>'.
+	 * @generated
+	 */
+	CPNInscription createCPNInscription();
+
+	/**
+	 * Returns a new object of class '<em>Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Guard</em>'.
+	 * @generated
+	 */
+	Guard createGuard();
+
+	/**
+	 * Returns a new object of class '<em>Initial Marking</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Initial Marking</em>'.
+	 * @generated
+	 */
+	InitialMarking createInitialMarking();
+
+	/**
+	 * Returns a new object of class '<em>Sort</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sort</em>'.
+	 * @generated
+	 */
+	Sort createSort();
 
 	/**
 	 * Returns the package supported by this factory.

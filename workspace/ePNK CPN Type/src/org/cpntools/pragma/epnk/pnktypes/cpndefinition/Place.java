@@ -16,7 +16,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}</li>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset <em>Colorset</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getSort <em>Sort</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,55 +26,55 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	/**
-	 * Returns the value of the '<em><b>Initial Marking</b></em>' attribute.
+	 * Returns the value of the '<em><b>Initial Marking</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Initial Marking</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initial Marking</em>' attribute.
-	 * @see #setInitialMarking(String)
+	 * @return the value of the '<em>Initial Marking</em>' containment reference.
+	 * @see #setInitialMarking(InitialMarking)
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_InitialMarking()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getInitialMarking();
+	InitialMarking getInitialMarking();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}' attribute.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getInitialMarking <em>Initial Marking</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Initial Marking</em>' attribute.
+	 * @param value the new value of the '<em>Initial Marking</em>' containment reference.
 	 * @see #getInitialMarking()
 	 * @generated
 	 */
-	void setInitialMarking(String value);
+	void setInitialMarking(InitialMarking value);
 
 	/**
-	 * Returns the value of the '<em><b>Colorset</b></em>' attribute.
+	 * Returns the value of the '<em><b>Sort</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Colorset</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Sort</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Colorset</em>' attribute.
-	 * @see #setColorset(String)
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_Colorset()
-	 * @model
+	 * @return the value of the '<em>Sort</em>' containment reference.
+	 * @see #setSort(Sort)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getPlace_Sort()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getColorset();
+	Sort getSort();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getColorset <em>Colorset</em>}' attribute.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place#getSort <em>Sort</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Colorset</em>' attribute.
-	 * @see #getColorset()
+	 * @param value the new value of the '<em>Sort</em>' containment reference.
+	 * @see #getSort()
 	 * @generated
 	 */
-	void setColorset(String value);
+	void setSort(Sort value);
 
 } // Place

@@ -6,10 +6,15 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Colourset;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Sort;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -20,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl#getInitialMarking <em>Initial Marking</em>}</li>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl#getColorset <em>Colorset</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PlaceImpl#getSort <em>Sort</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,41 +33,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl implements Place {
 	/**
-	 * The default value of the '{@link #getInitialMarking() <em>Initial Marking</em>}' attribute.
+	 * The cached value of the '{@link #getInitialMarking() <em>Initial Marking</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInitialMarking()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String INITIAL_MARKING_EDEFAULT = null;
+	protected InitialMarking initialMarking;
 	/**
-	 * The cached value of the '{@link #getInitialMarking() <em>Initial Marking</em>}' attribute.
+	 * The cached value of the '{@link #getSort() <em>Sort</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitialMarking()
+	 * @see #getSort()
 	 * @generated
 	 * @ordered
 	 */
-	protected String initialMarking = INITIAL_MARKING_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getColorset() <em>Colorset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getColorset()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String COLORSET_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getColorset() <em>Colorset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getColorset()
-	 * @generated
-	 * @ordered
-	 */
-	protected String colorset = COLORSET_EDEFAULT;
+	protected Sort sort;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -87,7 +74,7 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getInitialMarking() {
+	public InitialMarking getInitialMarking() {
 		return initialMarking;
 	}
 
@@ -96,11 +83,14 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInitialMarking(String newInitialMarking) {
-		String oldInitialMarking = initialMarking;
+	public NotificationChain basicSetInitialMarking(InitialMarking newInitialMarking, NotificationChain msgs) {
+		InitialMarking oldInitialMarking = initialMarking;
 		initialMarking = newInitialMarking;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__INITIAL_MARKING, oldInitialMarking, initialMarking));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__INITIAL_MARKING, oldInitialMarking, newInitialMarking);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -108,8 +98,18 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getColorset() {
-		return colorset;
+	public void setInitialMarking(InitialMarking newInitialMarking) {
+		if (newInitialMarking != initialMarking) {
+			NotificationChain msgs = null;
+			if (initialMarking != null)
+				msgs = ((InternalEObject)initialMarking).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PLACE__INITIAL_MARKING, null, msgs);
+			if (newInitialMarking != null)
+				msgs = ((InternalEObject)newInitialMarking).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PLACE__INITIAL_MARKING, null, msgs);
+			msgs = basicSetInitialMarking(newInitialMarking, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__INITIAL_MARKING, newInitialMarking, newInitialMarking));
 	}
 
 	/**
@@ -117,13 +117,59 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setColorset(String newColorset) {
-		String oldColorset = colorset;
-		colorset = newColorset;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__COLORSET, oldColorset, colorset));
+	public Sort getSort() {
+		return sort;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSort(Sort newSort, NotificationChain msgs) {
+		Sort oldSort = sort;
+		sort = newSort;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__SORT, oldSort, newSort);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSort(Sort newSort) {
+		if (newSort != sort) {
+			NotificationChain msgs = null;
+			if (sort != null)
+				msgs = ((InternalEObject)sort).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PLACE__SORT, null, msgs);
+			if (newSort != null)
+				msgs = ((InternalEObject)newSort).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.PLACE__SORT, null, msgs);
+			msgs = basicSetSort(newSort, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.PLACE__SORT, newSort, newSort));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
+				return basicSetInitialMarking(null, msgs);
+			case CpndefinitionPackage.PLACE__SORT:
+				return basicSetSort(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,8 +181,8 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 		switch (featureID) {
 			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
 				return getInitialMarking();
-			case CpndefinitionPackage.PLACE__COLORSET:
-				return getColorset();
+			case CpndefinitionPackage.PLACE__SORT:
+				return getSort();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -150,10 +196,10 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
-				setInitialMarking((String)newValue);
+				setInitialMarking((InitialMarking)newValue);
 				return;
-			case CpndefinitionPackage.PLACE__COLORSET:
-				setColorset((String)newValue);
+			case CpndefinitionPackage.PLACE__SORT:
+				setSort((Sort)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -168,10 +214,10 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
-				setInitialMarking(INITIAL_MARKING_EDEFAULT);
+				setInitialMarking((InitialMarking)null);
 				return;
-			case CpndefinitionPackage.PLACE__COLORSET:
-				setColorset(COLORSET_EDEFAULT);
+			case CpndefinitionPackage.PLACE__SORT:
+				setSort((Sort)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -186,29 +232,11 @@ public class PlaceImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.PlaceImpl 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
-				return INITIAL_MARKING_EDEFAULT == null ? initialMarking != null : !INITIAL_MARKING_EDEFAULT.equals(initialMarking);
-			case CpndefinitionPackage.PLACE__COLORSET:
-				return COLORSET_EDEFAULT == null ? colorset != null : !COLORSET_EDEFAULT.equals(colorset);
+				return initialMarking != null;
+			case CpndefinitionPackage.PLACE__SORT:
+				return sort != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (InitialMarking: ");
-		result.append(initialMarking);
-		result.append(", Colorset: ");
-		result.append(colorset);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PlaceImpl

@@ -102,8 +102,24 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createPageAdapter();
 			}
 			@Override
-			public Adapter caseArcInscription(ArcInscription object) {
-				return createArcInscriptionAdapter();
+			public Adapter caseArcExpression(ArcExpression object) {
+				return createArcExpressionAdapter();
+			}
+			@Override
+			public Adapter caseCPNInscription(CPNInscription object) {
+				return createCPNInscriptionAdapter();
+			}
+			@Override
+			public Adapter caseGuard(Guard object) {
+				return createGuardAdapter();
+			}
+			@Override
+			public Adapter caseInitialMarking(InitialMarking object) {
+				return createInitialMarkingAdapter();
+			}
+			@Override
+			public Adapter caseSort(Sort object) {
+				return createSortAdapter();
 			}
 			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
@@ -240,16 +256,72 @@ public class CpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription <em>Arc Inscription</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression <em>Arc Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression
 	 * @generated
 	 */
-	public Adapter createArcInscriptionAdapter() {
+	public Adapter createArcExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNInscription <em>CPN Inscription</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNInscription
+	 * @generated
+	 */
+	public Adapter createCPNInscriptionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Guard <em>Guard</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Guard
+	 * @generated
+	 */
+	public Adapter createGuardAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking <em>Initial Marking</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking
+	 * @generated
+	 */
+	public Adapter createInitialMarkingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Sort <em>Sort</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Sort
+	 * @generated
+	 */
+	public Adapter createSortAdapter() {
 		return null;
 	}
 

@@ -25,29 +25,29 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  */
 public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition {
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' attribute.
+	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Guard</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Guard</em>' attribute.
-	 * @see #setGuard(String)
+	 * @return the value of the '<em>Guard</em>' containment reference.
+	 * @see #setGuard(Guard)
 	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getTransition_Guard()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getGuard();
+	Guard getGuard();
 
 	/**
-	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}' attribute.
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' attribute.
+	 * @param value the new value of the '<em>Guard</em>' containment reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
-	void setGuard(String value);
+	void setGuard(Guard value);
 
 } // Transition

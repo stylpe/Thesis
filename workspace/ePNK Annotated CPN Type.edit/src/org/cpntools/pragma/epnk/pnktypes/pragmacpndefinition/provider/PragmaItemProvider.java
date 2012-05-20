@@ -110,7 +110,7 @@ public class PragmaItemProvider
 		String label = ((Pragma)object).getText();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Pragma_type") :
-			getString("_UI_Pragma_type") + " " + label;
+			getString("_UI_Pragma_type") + " <<" + label + ">>";
 	}
 
 	/**

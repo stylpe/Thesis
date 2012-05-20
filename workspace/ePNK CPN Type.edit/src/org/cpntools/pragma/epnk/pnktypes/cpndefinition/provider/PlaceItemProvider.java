@@ -10,11 +10,13 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionFactory;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Place;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -62,54 +64,39 @@ public class PlaceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addInitialMarkingPropertyDescriptor(object);
-			addColorsetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Initial Marking feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addInitialMarkingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Place_InitialMarking_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Place_InitialMarking_feature", "_UI_Place_type"),
-				 CpndefinitionPackage.Literals.PLACE__INITIAL_MARKING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(CpndefinitionPackage.Literals.PLACE__INITIAL_MARKING);
+			childrenFeatures.add(CpndefinitionPackage.Literals.PLACE__SORT);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This adds a property descriptor for the Colorset feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addColorsetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Place_Colorset_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Place_Colorset_feature", "_UI_Place_type"),
-				 CpndefinitionPackage.Literals.PLACE__COLORSET,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -151,8 +138,8 @@ public class PlaceItemProvider
 
 		switch (notification.getFeatureID(Place.class)) {
 			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
-			case CpndefinitionPackage.PLACE__COLORSET:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			case CpndefinitionPackage.PLACE__SORT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -169,6 +156,16 @@ public class PlaceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CpndefinitionPackage.Literals.PLACE__INITIAL_MARKING,
+				 CpndefinitionFactory.eINSTANCE.createInitialMarking()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(CpndefinitionPackage.Literals.PLACE__SORT,
+				 CpndefinitionFactory.eINSTANCE.createSort()));
 	}
 
 	/**

@@ -7,6 +7,7 @@
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.eclipse.emf.common.notify.Notification;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.pnml.tools.epnk.pnmlcoremodel.Label;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl#getInscription <em>Inscription</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.ArcImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,14 +32,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl implements Arc {
 	/**
-	 * The cached value of the '{@link #getInscription() <em>Inscription</em>}' containment reference.
+	 * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInscription()
+	 * @see #getExpression()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArcInscription inscription;
+	protected ArcExpression expression;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -62,8 +64,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArcInscription getInscription() {
-		return inscription;
+	public ArcExpression getExpression() {
+		return expression;
 	}
 
 	/**
@@ -71,11 +73,11 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetInscription(ArcInscription newInscription, NotificationChain msgs) {
-		ArcInscription oldInscription = inscription;
-		inscription = newInscription;
+	public NotificationChain basicSetExpression(ArcExpression newExpression, NotificationChain msgs) {
+		ArcExpression oldExpression = expression;
+		expression = newExpression;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__INSCRIPTION, oldInscription, newInscription);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__EXPRESSION, oldExpression, newExpression);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -86,18 +88,18 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInscription(ArcInscription newInscription) {
-		if (newInscription != inscription) {
+	public void setExpression(ArcExpression newExpression) {
+		if (newExpression != expression) {
 			NotificationChain msgs = null;
-			if (inscription != null)
-				msgs = ((InternalEObject)inscription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__INSCRIPTION, null, msgs);
-			if (newInscription != null)
-				msgs = ((InternalEObject)newInscription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__INSCRIPTION, null, msgs);
-			msgs = basicSetInscription(newInscription, msgs);
+			if (expression != null)
+				msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__EXPRESSION, null, msgs);
+			if (newExpression != null)
+				msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CpndefinitionPackage.ARC__EXPRESSION, null, msgs);
+			msgs = basicSetExpression(newExpression, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__INSCRIPTION, newInscription, newInscription));
+			eNotify(new ENotificationImpl(this, Notification.SET, CpndefinitionPackage.ARC__EXPRESSION, newExpression, newExpression));
 	}
 
 	/**
@@ -108,8 +110,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
-				return basicSetInscription(null, msgs);
+			case CpndefinitionPackage.ARC__EXPRESSION:
+				return basicSetExpression(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -122,8 +124,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
-				return getInscription();
+			case CpndefinitionPackage.ARC__EXPRESSION:
+				return getExpression();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,8 +138,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
-				setInscription((ArcInscription)newValue);
+			case CpndefinitionPackage.ARC__EXPRESSION:
+				setExpression((ArcExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -151,8 +153,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
-				setInscription((ArcInscription)null);
+			case CpndefinitionPackage.ARC__EXPRESSION:
+				setExpression((ArcExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -166,8 +168,8 @@ public class ArcImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.ArcImpl impl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CpndefinitionPackage.ARC__INSCRIPTION:
-				return inscription != null;
+			case CpndefinitionPackage.ARC__EXPRESSION:
+				return expression != null;
 		}
 		return super.eIsSet(featureID);
 	}

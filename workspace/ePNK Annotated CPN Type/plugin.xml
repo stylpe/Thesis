@@ -3,7 +3,7 @@
 <plugin>
    <extension
          id="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition"
-         name="Annotated CPN"
+         name="Pragms/CPN"
          point="org.pnml.tools.epnk.pntd">
       <type
             class="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaCPNImpl"

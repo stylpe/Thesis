@@ -155,7 +155,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PLACE__IN = CpndefinitionPackage.PLACE__IN;
 
 	/**
-	 * The feature id for the '<em><b>Initial Marking</b></em>' attribute.
+	 * The feature id for the '<em><b>Initial Marking</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,13 +164,13 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PLACE__INITIAL_MARKING = CpndefinitionPackage.PLACE__INITIAL_MARKING;
 
 	/**
-	 * The feature id for the '<em><b>Colorset</b></em>' attribute.
+	 * The feature id for the '<em><b>Sort</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE__COLORSET = CpndefinitionPackage.PLACE__COLORSET;
+	int PLACE__SORT = CpndefinitionPackage.PLACE__SORT;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
@@ -549,7 +549,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int TRANSITION__IN = CpndefinitionPackage.TRANSITION__IN;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' attribute.
+	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -649,13 +649,13 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int ARC__TARGET = CpndefinitionPackage.ARC__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>Inscription</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARC__INSCRIPTION = CpndefinitionPackage.ARC__INSCRIPTION;
+	int ARC__EXPRESSION = CpndefinitionPackage.ARC__EXPRESSION;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.

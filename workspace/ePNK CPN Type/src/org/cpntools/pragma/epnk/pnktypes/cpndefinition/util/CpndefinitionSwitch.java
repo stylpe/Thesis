@@ -129,10 +129,42 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CpndefinitionPackage.ARC_INSCRIPTION: {
-				ArcInscription arcInscription = (ArcInscription)theEObject;
-				T result = caseArcInscription(arcInscription);
-				if (result == null) result = caseLabel(arcInscription);
+			case CpndefinitionPackage.ARC_EXPRESSION: {
+				ArcExpression arcExpression = (ArcExpression)theEObject;
+				T result = caseArcExpression(arcExpression);
+				if (result == null) result = caseCPNInscription(arcExpression);
+				if (result == null) result = caseLabel(arcExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CpndefinitionPackage.CPN_INSCRIPTION: {
+				CPNInscription cpnInscription = (CPNInscription)theEObject;
+				T result = caseCPNInscription(cpnInscription);
+				if (result == null) result = caseLabel(cpnInscription);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CpndefinitionPackage.GUARD: {
+				Guard guard = (Guard)theEObject;
+				T result = caseGuard(guard);
+				if (result == null) result = caseCPNInscription(guard);
+				if (result == null) result = caseLabel(guard);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CpndefinitionPackage.INITIAL_MARKING: {
+				InitialMarking initialMarking = (InitialMarking)theEObject;
+				T result = caseInitialMarking(initialMarking);
+				if (result == null) result = caseCPNInscription(initialMarking);
+				if (result == null) result = caseLabel(initialMarking);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CpndefinitionPackage.SORT: {
+				Sort sort = (Sort)theEObject;
+				T result = caseSort(sort);
+				if (result == null) result = caseCPNInscription(sort);
+				if (result == null) result = caseLabel(sort);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -216,17 +248,77 @@ public class CpndefinitionSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Arc Inscription</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Arc Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Arc Inscription</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Arc Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseArcInscription(ArcInscription object) {
+	public T caseArcExpression(ArcExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>CPN Inscription</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>CPN Inscription</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCPNInscription(CPNInscription object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Guard</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Guard</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGuard(Guard object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Initial Marking</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Initial Marking</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInitialMarking(InitialMarking object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sort</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sort</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSort(Sort object) {
 		return null;
 	}
 

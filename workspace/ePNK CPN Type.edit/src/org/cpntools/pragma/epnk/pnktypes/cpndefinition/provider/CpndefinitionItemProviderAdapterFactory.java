@@ -189,26 +189,118 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription} instances.
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArcInscriptionItemProvider arcInscriptionItemProvider;
+	protected ArcExpressionItemProvider arcExpressionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription}.
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createArcInscriptionAdapter() {
-		if (arcInscriptionItemProvider == null) {
-			arcInscriptionItemProvider = new ArcInscriptionItemProvider(this);
+	public Adapter createArcExpressionAdapter() {
+		if (arcExpressionItemProvider == null) {
+			arcExpressionItemProvider = new ArcExpressionItemProvider(this);
 		}
 
-		return arcInscriptionItemProvider;
+		return arcExpressionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNInscription} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CPNInscriptionItemProvider cpnInscriptionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPNInscription}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCPNInscriptionAdapter() {
+		if (cpnInscriptionItemProvider == null) {
+			cpnInscriptionItemProvider = new CPNInscriptionItemProvider(this);
+		}
+
+		return cpnInscriptionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Guard} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GuardItemProvider guardItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Guard}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGuardAdapter() {
+		if (guardItemProvider == null) {
+			guardItemProvider = new GuardItemProvider(this);
+		}
+
+		return guardItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InitialMarkingItemProvider initialMarkingItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInitialMarkingAdapter() {
+		if (initialMarkingItemProvider == null) {
+			initialMarkingItemProvider = new InitialMarkingItemProvider(this);
+		}
+
+		return initialMarkingItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Sort} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SortItemProvider sortItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Sort}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSortAdapter() {
+		if (sortItemProvider == null) {
+			sortItemProvider = new SortItemProvider(this);
+		}
+
+		return sortItemProvider;
 	}
 
 	/**
@@ -315,7 +407,11 @@ public class CpndefinitionItemProviderAdapterFactory extends CpndefinitionAdapte
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (pageItemProvider != null) pageItemProvider.dispose();
-		if (arcInscriptionItemProvider != null) arcInscriptionItemProvider.dispose();
+		if (arcExpressionItemProvider != null) arcExpressionItemProvider.dispose();
+		if (cpnInscriptionItemProvider != null) cpnInscriptionItemProvider.dispose();
+		if (guardItemProvider != null) guardItemProvider.dispose();
+		if (initialMarkingItemProvider != null) initialMarkingItemProvider.dispose();
+		if (sortItemProvider != null) sortItemProvider.dispose();
 	}
 
 }

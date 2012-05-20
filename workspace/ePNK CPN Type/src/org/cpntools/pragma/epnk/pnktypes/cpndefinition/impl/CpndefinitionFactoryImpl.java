@@ -70,7 +70,11 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 			case CpndefinitionPackage.ARC: return createArc();
 			case CpndefinitionPackage.TRANSITION: return createTransition();
 			case CpndefinitionPackage.PAGE: return createPage();
-			case CpndefinitionPackage.ARC_INSCRIPTION: return createArcInscription();
+			case CpndefinitionPackage.ARC_EXPRESSION: return createArcExpression();
+			case CpndefinitionPackage.CPN_INSCRIPTION: return createCPNInscription();
+			case CpndefinitionPackage.GUARD: return createGuard();
+			case CpndefinitionPackage.INITIAL_MARKING: return createInitialMarking();
+			case CpndefinitionPackage.SORT: return createSort();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -131,9 +135,49 @@ public class CpndefinitionFactoryImpl extends EFactoryImpl implements Cpndefinit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArcInscription createArcInscription() {
-		ArcInscriptionImpl arcInscription = new ArcInscriptionImpl();
-		return arcInscription;
+	public ArcExpression createArcExpression() {
+		ArcExpressionImpl arcExpression = new ArcExpressionImpl();
+		return arcExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CPNInscription createCPNInscription() {
+		CPNInscriptionImpl cpnInscription = new CPNInscriptionImpl();
+		return cpnInscription;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Guard createGuard() {
+		GuardImpl guard = new GuardImpl();
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InitialMarking createInitialMarking() {
+		InitialMarkingImpl initialMarking = new InitialMarkingImpl();
+		return initialMarking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Sort createSort() {
+		SortImpl sort = new SortImpl();
+		return sort;
 	}
 
 	/**
