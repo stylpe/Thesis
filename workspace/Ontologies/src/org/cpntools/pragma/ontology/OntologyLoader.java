@@ -17,8 +17,7 @@ public class OntologyLoader {
 							.create(BundleOntologyEnumerator
 									.getOntologyBasePath()
 									+ "generic/nppn.fowl"));
-
-			System.out.println(cpnOntology);
+			//System.out.println(cpnOntology);
 		} catch (OWLOntologyCreationException e) {
 			System.out.println("Could not load ontology: " + e.getMessage());
 		}
