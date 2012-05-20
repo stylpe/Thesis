@@ -6,6 +6,7 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.cpndefinition.util;
 
+import org.cpntools.pragma.epnk.pnktypes.cpndefinition.*;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcInscription;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CPN;

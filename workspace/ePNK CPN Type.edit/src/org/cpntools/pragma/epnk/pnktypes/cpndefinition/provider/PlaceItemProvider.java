@@ -128,22 +128,14 @@ public class PlaceItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		Place p = (Place) object;
-		Name name = p.getName();
-		if (name != null) {
-			String text = name.getText();
-			if (text != null && text.length() > 0) {
-				return getString("_UI_Place_type") + " " + name.getText();
-			}
-		}
-		String label = p.getId();
+		String label = ((Place)object).getId();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Place_type") :
-			getString("_UI_Place_type") + " id: " + label;
+			getString("_UI_Place_type") + " " + label;
 	}
 
 	/**
@@ -151,28 +143,17 @@ public class PlaceItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		
-		if(notification.getFeatureID(Name.class) == PnmlcoremodelPackage.NAME__TEXT) { // Name text has changed
-			fireNotifyChanged(new ViewerNotification(notification, ((Name)notification.getNotifier()).eContainer(), false, true));
-			return;
-		} else {
-			switch (notification.getFeatureID(Place.class)) {
-				case CpndefinitionPackage.PLACE__INITIAL_MARKING:
-				case CpndefinitionPackage.PLACE__COLORSET:
-					fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-					return;
-				case CpndefinitionPackage.PLACE__NAME: // Name added or removed
-					fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-					Name oldName = (Name) notification.getOldValue();
-					Name newName = (Name) notification.getNewValue();
-					if(oldName != null) oldName.eAdapters().remove(this); // Unregister
-					if(newName != null) newName.eAdapters().add(this); // Register for change notifications
-			}
+
+		switch (notification.getFeatureID(Place.class)) {
+			case CpndefinitionPackage.PLACE__INITIAL_MARKING:
+			case CpndefinitionPackage.PLACE__COLORSET:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
