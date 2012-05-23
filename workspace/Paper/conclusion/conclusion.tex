@@ -4,6 +4,14 @@
 
 \section{Results}
 
+We have constructed a fully functional proof of concept that demonstrates the
+advantage of using ontologies to manage code generation pragmatics and applying
+them to a model.
+
+The name \thename{} was decided very late in the development process, which has
+led to some naming inconsistencies between it and existing projects, package
+names etc.
+
 \subsection{Limitations}
 
 The graphical diagram editor of ePNK has some shortcomings and we do not
@@ -11,6 +19,19 @@ conisder it fully mature. Arc appearance is not serialised, making it impossible
 to accurately copy layout from CPN Tools. Labels are not attached to their
 parent elements, and by default are placed at coordinates 0,0. We look forward
 to improvements to this part of ePNK.
+
+Accurate modeling of module instancing (the fact that a module can be a
+submodule of several modules) is impractical in the current version of ePNK if
+we are to only subclass existing leaf classes.
+RefPlaces can only reference a single other place. It could be used to represent
+either the port place or the socket place, but either case presents problems. As
+a port place, it could be on a module that has several instances, so it would
+either need to contain a reference for each instance (which is not possible due
+to being limited to 1) or the module itself would need to be duplicated (which
+is impractical from a user perspective since all annotations would have to be
+placed once on each module). As a socket place, it could be connected to several
+submodules (as is the case with the Connection status place in the WebSocket
+CPN model) and would need to have a reference to the ports in each of them. 
 
 \section{Further work}
 

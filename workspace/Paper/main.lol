@@ -17,3 +17,10 @@
 \contentsline {lstlisting}{\numberline {3.2}One message}{45}{lstlisting.3.2}
 \contentsline {lstlisting}{\numberline {3.3}One ping then one message}{46}{lstlisting.3.3}
 \contentsline {lstlisting}{\numberline {5.1}The CPN Ontology}{59}{lstlisting.5.1}
+\contentsline {lstlisting}{\numberline {5.2}The Basic Pragmatics Ontology}{63}{lstlisting.5.2}
+\contentsline {lstlisting}{\numberline {5.3}The Generic Pragmatics Ontology}{64}{lstlisting.5.3}
+\contentsline {lstlisting}{\numberline {5.4}constraintProvider extension}{70}{lstlisting.5.4}
+\contentsline {lstlisting}{\numberline {5.5}Constraint Implementation}{71}{lstlisting.5.5}
+\contentsline {lstlisting}{\numberline {5.6}Add Ontology Menu Extension}{74}{lstlisting.5.6}
+\contentsline {lstlisting}{\numberline {5.7}AddOntologyAction setActivePart() and selectionChanged()}{76}{lstlisting.5.7}
+\contentsline {lstlisting}{\numberline {5.8}AddOntologyAction run()}{77}{lstlisting.5.8}
