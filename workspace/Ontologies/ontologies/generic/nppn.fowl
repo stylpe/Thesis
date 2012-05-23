@@ -42,8 +42,8 @@
 
   SubClassOf( :IdPlace ObjectIntersectionOf(
       cpn:Place
-          ObjectAllValuesFrom( basic:hasPragmatic :Id)
-          ObjectExactCardinality( 1 basic:hasPragmatic )
+      ObjectAllValuesFrom( basic:hasPragmatic :Id)
+      ObjectExactCardinality( 1 basic:hasPragmatic )
     )
   )
   

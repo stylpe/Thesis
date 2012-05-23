@@ -10,16 +10,18 @@
  Declaration(Class(:Pragmatic))
  Declaration(Class(:Property))
  
- DisjointClasses(cpn:Place cpn:Transition cpn:Arc cpn:Page :Pragmatic :Property)
+ DisjointClasses(cpn:Element cpn:Page :Pragmatic :Property)
 
  SubClassOf( :Operation :Pragmatic)
 
  Declaration( ObjectProperty( :belongsTo ) )
  ObjectPropertyDomain( :belongsTo :Pragmatic ) 
- ObjectPropertyRange( :belongsTo cpn:Node ) 
+ ObjectPropertyRange( :belongsTo cpn:Element ) 
  
  Declaration( ObjectProperty( :hasPragmatic ) )
- ObjectPropertyDomain( :hasPragmatic cpn:Node ) 
+ ObjectPropertyDomain( :hasPragmatic cpn:Element ) 
  ObjectPropertyRange( :hasPragmatic :Pragmatic ) 
+ 
+InverseObjectProperties(:belongsTo :hasPragmatic)
  
 )
