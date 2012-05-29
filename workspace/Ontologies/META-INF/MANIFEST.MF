@@ -4,7 +4,13 @@ Bundle-Name: Ontologies
 Bundle-SymbolicName: Ontologies
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.cpntools.pragma.ontology;uses:="org.osgi.framework,org.semanticweb.owlapi.model",
+Export-Package: com.clarkparsia.owlapi.explanation,
+ com.clarkparsia.owlapi.explanation.io.manchester,
+ com.clarkparsia.pellet.owlapiv3,
+ eu.trowl.owl,
+ eu.trowl.owl.api3,
+ eu.trowl.owlapi3.rel.reasoner.dl,
+ org.cpntools.pragma.ontology;uses:="org.osgi.framework,org.semanticweb.owlapi.model",
  org.semanticweb.HermiT,
  org.semanticweb.owlapi,
  org.semanticweb.owlapi.apibinding,
@@ -22,10 +28,36 @@ Export-Package: org.cpntools.pragma.ontology;uses:="org.osgi.framework,org.seman
  org.semanticweb.owlapi.reasoner.impl,
  org.semanticweb.owlapi.reasoner.structural,
  org.semanticweb.owlapi.util,
- org.semanticweb.owlapi.vocab
+ org.semanticweb.owlapi.vocab,
+ uk.ac.manchester.cs.factplusplus,
+ uk.ac.manchester.cs.factplusplus.owlapiv3,
+ uk.ac.manchester.cs.owl.owlapi
 Bundle-ClassPath: lib/owlapi-bin.jar,
  .,
- lib/org.semanticweb.HermiT.jar
+ lib/org.semanticweb.HermiT.jar,
+ lib/FaCTpp-OWLAPI-3.2-v1.5.3.jar,
+ lib/pellet/aterm-java-1.6.jar,
+ lib/pellet/pellet-core.jar,
+ lib/pellet/pellet-datatypes.jar,
+ lib/pellet/pellet-dig.jar,
+ lib/pellet/pellet-el.jar,
+ lib/pellet/pellet-explanation.jar,
+ lib/pellet/pellet-jena.jar,
+ lib/pellet/pellet-modularity.jar,
+ lib/pellet/pellet-owlapi.jar,
+ lib/pellet/pellet-owlapiv3.jar,
+ lib/pellet/pellet-pellint.jar,
+ lib/pellet/pellet-query.jar,
+ lib/pellet/pellet-rules.jar,
+ lib/pellet/pellet-test.jar,
+ lib/pellet/antlr/antlr-runtime-3.2.jar,
+ lib/pellet/jaxb/jaxb-api.jar,
+ lib/pellet/jetty/commons-logging-api.jar,
+ lib/pellet/jetty/jetty.jar,
+ lib/pellet/jgrapht/jgrapht-jdk1.5.jar,
+ lib/pellet/xsdlib/relaxngDatatype.jar,
+ lib/pellet/xsdlib/xsdlib.jar,
+ lib/TrOWLCore.jar
 Bundle-Activator: org.cpntools.pragma.ontology.Activator
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.framework

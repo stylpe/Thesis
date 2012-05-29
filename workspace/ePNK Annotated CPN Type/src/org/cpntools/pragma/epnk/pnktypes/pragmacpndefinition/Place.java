@@ -6,8 +6,6 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
-import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->

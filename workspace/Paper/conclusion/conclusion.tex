@@ -5,12 +5,16 @@
 \section{Results}
 
 We have constructed a fully functional proof of concept that demonstrates the
-advantage of using ontologies to manage code generation pragmatics and applying
-them to a model.
+advantages and disadvantages of using ontologies to manage code generation
+pragmatics and applying them to a cpn model. Through our evaluation by using it to annotate CPN models
+of different sizes, we have shown that ontology reasoning using CWA yields
+decreasing performance to a point that makes our prototype unusable for the
+WebSocket CPN model.
 
-The name \thename{} was decided very late in the development process, which has
-led to some naming inconsistencies between it and existing projects, package
-names etc.
+At the time of writing, we are using unreleased development versions of parts of
+ePNK, and are therefore unable to make \thename{} avaialble for download as an
+Eclipse plugin.
+ePNK is scheduled for an update release later this summer.
 
 \subsection{Limitations}
 
@@ -33,11 +37,15 @@ placed once on each module). As a socket place, it could be connected to several
 submodules (as is the case with the Connection status place in the WebSocket
 CPN model) and would need to have a reference to the ports in each of them. 
 
-\section{Further work}
+\section{Future work}
 
 Continue the work of Simonsen, defining more domain-specific pragmatics
 
-Integrating a better ontology editor
+Expand generic pragmatics to describe pragmatics properties
+
+Developing ontology reasoner tailored for CWA.
+
+Integrating a better ontology editor tailored for pragmatics
 
 Implement structured labels for the CPN Type.
 

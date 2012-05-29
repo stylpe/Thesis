@@ -62,6 +62,8 @@ public class PragmaItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTextPropertyDescriptor(object);
+			addIriPropertyDescriptor(object);
+			addArgsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -80,6 +82,50 @@ public class PragmaItemProvider
 				 getString("_UI_Pragma_text_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Pragma_text_feature", "_UI_Pragma_type"),
 				 PragmacpndefinitionPackage.Literals.PRAGMA__TEXT,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Iri feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIriPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Pragma_iri_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pragma_iri_feature", "_UI_Pragma_type"),
+				 PragmacpndefinitionPackage.Literals.PRAGMA__IRI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Args feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addArgsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Pragma_args_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Pragma_args_feature", "_UI_Pragma_type"),
+				 PragmacpndefinitionPackage.Literals.PRAGMA__ARGS,
 				 true,
 				 false,
 				 false,
@@ -110,7 +156,7 @@ public class PragmaItemProvider
 		String label = ((Pragma)object).getText();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Pragma_type") :
-			getString("_UI_Pragma_type") + " <<" + label + ">>";
+			getString("_UI_Pragma_type") + " " + label;
 	}
 
 	/**
@@ -126,6 +172,8 @@ public class PragmaItemProvider
 
 		switch (notification.getFeatureID(Pragma.class)) {
 			case PragmacpndefinitionPackage.PRAGMA__TEXT:
+			case PragmacpndefinitionPackage.PRAGMA__IRI:
+			case PragmacpndefinitionPackage.PRAGMA__ARGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

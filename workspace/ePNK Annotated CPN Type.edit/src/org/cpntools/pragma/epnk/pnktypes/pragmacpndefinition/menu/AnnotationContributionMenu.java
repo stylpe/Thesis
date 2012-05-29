@@ -1,9 +1,12 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.menu;
 
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.CausesInconcistencyException;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
@@ -19,13 +22,19 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.internal.menus.DynamicMenuContributionItem;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLException;
+
+import com.clarkparsia.owlapi.explanation.io.manchester.ManchesterSyntaxExplanationRenderer;
 
 
 	
@@ -60,17 +69,32 @@ public class AnnotationContributionMenu extends CompoundContributionItem {
 		OntologyMember member = getSelectedItem();
 		domain = TransactionUtil.getEditingDomain(member);
 		PragmaticsOntology ontology = resolveOntology(member);
-		Set<OWLClass> pragmas = ontology.getValidPragmatics(member);
+		if(ontology == null) 
+			return createDisabledMenu("Missing PragmaticsOntology");
+		
+		Set<OWLClass> pragmas;
+		try {
+			pragmas = ontology.getValidPragmatics(member);
+		} catch (CausesInconcistencyException e) {
+			IContributionItem[] item = {new ActionContributionItem(
+					new ShowInconsistencyErrorAction(e.getSet(), getWorkbench().getShell())
+					)};
+			return item;
+		}
 		if(!pragmas.isEmpty()) {
 			List<IContributionItem> items = new ArrayList<IContributionItem>();
 			for(OWLClass pragma : pragmas) {
 				items.add(new ActionContributionItem(AddPragmaAction.create(domain, getSelection(), 
-						pragma.toString())));
+						pragma.getIRI().toString())));
 			}
 			return items.toArray(new IContributionItem[items.size()]);
 		}
+		return createDisabledMenu("No applicable pragmatics");
+	}
+	
+	IContributionItem[] createDisabledMenu(String text) {
 		return new IContributionItem[]{ new ActionContributionItem(
-			new Action("No applicable pragmatics") {
+			new Action(text) {
 				@Override
 				public boolean isEnabled() {
 					return false;
@@ -107,11 +131,49 @@ public class AnnotationContributionMenu extends CompoundContributionItem {
 		public static AddPragmaAction create(EditingDomain editingDomain,
 				IStructuredSelection selection, String pragmaIRI) {
 			Pragma p = PragmacpndefinitionFactory.eINSTANCE.createPragma();
-			p.setText(pragmaIRI);
+			p.setIri(pragmaIRI);
 			CommandParameter desc = new CommandParameter(selection.getFirstElement(), PragmacpndefinitionPackage.Literals.ONTOLOGY_MEMBER__ANNOTATION, p);
 			AddPragmaAction action = new AddPragmaAction(editingDomain, selection, desc);
 			action.setText(pragmaIRI);
 			return action;
+		}
+	}
+	
+	private static class ShowInconsistencyErrorAction extends Action {
+
+		private Set<Set<OWLAxiom>> set;
+		private Shell shell;
+
+		public ShowInconsistencyErrorAction(Set<Set<OWLAxiom>> set, Shell shell) {
+			this.set = set;
+			this.shell = shell;
+			setText("Inconsistency (click for explanation)");
+		}
+		
+		@Override
+		public void run() {
+			StringBuilder msgBuilder = new StringBuilder();
+			msgBuilder.append("Adding a pragmatic here would cause the ontology to become inconsistent.\n");
+			if(set == null) {
+				msgBuilder.append("Explanation unavailable.");
+			} else {
+				msgBuilder.append("Explanation(s):\n\n");
+				
+				ManchesterSyntaxExplanationRenderer renderer = new
+						ManchesterSyntaxExplanationRenderer();
+				StringWriter explanation = new StringWriter();
+				renderer.startRendering(explanation);
+				try {
+					renderer.render(set);
+					renderer.endRendering();
+					msgBuilder.append(explanation.getBuffer());
+				} catch (Exception e) {
+					msgBuilder.append("Problem generating explanation: \n");
+					msgBuilder.append(e);
+				} 
+			}
+			
+			MessageDialog.openError(shell, "Inconsistent Ontology Detected", msgBuilder.toString());
 		}
 	}
 	

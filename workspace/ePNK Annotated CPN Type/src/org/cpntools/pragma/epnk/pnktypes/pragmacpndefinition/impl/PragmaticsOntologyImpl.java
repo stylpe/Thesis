@@ -6,14 +6,17 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.ArcExpression;
 import org.cpntools.pragma.epnk.pnktypes.cpndefinition.InitialMarking;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.CausesInconcistencyException;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
@@ -46,6 +49,7 @@ import org.eclipse.ui.PlatformUI;
 import org.pnml.tools.epnk.helpers.NetFunctions;
 import org.pnml.tools.epnk.pnmlcoremodel.Name;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
+import org.semanticweb.owlapi.io.OWLFunctionalSyntaxOntologyFormat;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.AddImport;
 import org.semanticweb.owlapi.model.IRI;
@@ -53,21 +57,33 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDifferentIndividualsAxiom;
+import org.semanticweb.owlapi.model.OWLEquivalentClassesAxiom;
 import org.semanticweb.owlapi.model.OWLImportsDeclaration;
+import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectAllValuesFrom;
-import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
+import org.semanticweb.owlapi.model.OWLObjectExactCardinality;
+import org.semanticweb.owlapi.model.OWLObjectOneOf;
 import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyFormat;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.PrefixManager;
-import org.semanticweb.owlapi.reasoner.Node;
+import org.semanticweb.owlapi.model.RemoveAxiom;
+import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
 import org.semanticweb.owlapi.reasoner.NodeSet;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
+import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
+import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
-import org.semanticweb.HermiT.Reasoner;
+import org.semanticweb.owlapi.util.OWLOntologyMerger;
+
+import com.clarkparsia.pellet.owlapiv3.PelletReasoner;
+import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
+
+
 
 /**
  * <!-- begin-user-doc -->
@@ -252,18 +268,22 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 	}
 	
 	static final private String cpnurl = "http://hib.no/ontologypetrinets/cpn/";
-	static final private String basicurl = "http://k1s.org/OntologyReastrictedNets/basic/";
-	static final private String localurl = "http://local.model/";
+	static final private String basicurl = "http://k1s.org/OntologyRestrictedNets/basic/";
+	static final private String nppnurl = "http://org.k1s/orn/nppn/";
+	static private String localurl = "http://local.model/";
 	static private PrefixManager cpnPrefix = new DefaultPrefixManager(cpnurl);
 	static private PrefixManager basicPrefix = new DefaultPrefixManager(basicurl);
+	static private PrefixManager nppnPrefix = new DefaultPrefixManager(nppnurl);
 	static private PrefixManager localPrefix = new DefaultPrefixManager(localurl);
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return 
+	 * @throws CausesInconcistencyException 
 	 * @generated NOT
 	 */
-	public Set<OWLClass> getValidPragmatics(OntologyMember member) {
+	public Set<OWLClass> getValidPragmatics(OntologyMember member) throws CausesInconcistencyException {
+		// Create an empty ontology
 		OWLOntology ontology;
 		try {
 			ontology = createModelOntology();
@@ -272,26 +292,107 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 			return Collections.emptySet();
 		}
 		
+		// Get factories
 		OWLDataFactory dataFactory = getManager().getOWLDataFactory();
-		OWLReasonerFactory reasonerFactory = new Reasoner.ReasonerFactory();
-		OWLReasoner reasoner = reasonerFactory.createReasoner(ontology);
+		PelletReasonerFactory reasonerFactory = PelletReasonerFactory.getInstance();
+		boolean notDirect = false;
 		
-//		boolean notDirect = false;
+		// Create mock pragmatic and get target member
+        OWLNamedIndividual pragmaInd = dataFactory.getOWLNamedIndividual(":_pragma",localPrefix);
+        OWLNamedIndividual memberInd = dataFactory.getOWLNamedIndividual(":"+member.getId(), localPrefix);
+        // Create axiom for "member hasPragmatic _pragma"
+		OWLObjectProperty hasPragmatic = dataFactory.getOWLObjectProperty(":hasPragmatic", basicPrefix);
+		OWLObjectPropertyAssertionAxiom hasPragmaticAxiom = 
+				dataFactory.getOWLObjectPropertyAssertionAxiom(hasPragmatic, memberInd, pragmaInd);
+		getManager().applyChange(new AddAxiom(ontology, hasPragmaticAxiom));
 		
+		// Axioms for closed world assumption: 
+		//   Limiting individuals to those declared
+		Set<OWLNamedIndividual> allInds = ontology.getIndividualsInSignature(); System.out.println(allInds.size());
+		OWLObjectOneOf oneOfAllInds = dataFactory.getOWLObjectOneOf(allInds);
+		OWLEquivalentClassesAxiom cwaAxiom = dataFactory.getOWLEquivalentClassesAxiom(dataFactory.getOWLThing(), oneOfAllInds);
+		getManager().applyChange(new AddAxiom(ontology, cwaAxiom));
+		//   Ensuring they are different individuals
+		OWLDifferentIndividualsAxiom diffInds = dataFactory.getOWLDifferentIndividualsAxiom(allInds);
+		getManager().applyChange(new AddAxiom(ontology, diffInds));
+		//   Asserting object property cardinality, effectively
+		//   limiting property values to those explicitly declared 
+		Set<OWLClassAssertionAxiom> cardAxioms = new HashSet<OWLClassAssertionAxiom>();
+		for(OWLNamedIndividual ind : allInds){
+			Set<OWLIndividual> pragmas = ind.getObjectPropertyValues(hasPragmatic, ontology);
+			OWLObjectExactCardinality cardExp = dataFactory.getOWLObjectExactCardinality(pragmas.size(), hasPragmatic);
+			OWLClassAssertionAxiom cardAxiom = dataFactory.getOWLClassAssertionAxiom(cardExp, ind);
+			cardAxioms.add(cardAxiom);
+			getManager().applyChange(new AddAxiom(ontology, cardAxiom));
+		}
+		
+		// Create a reasoner and an explainer
+		OWLReasonerConfiguration config = new SimpleConfiguration(new ConsoleProgressMonitor());
+		PelletReasoner reasoner = reasonerFactory.createNonBufferingReasoner(ontology, config);
+//		PelletExplanation explanationGen = new PelletExplanation(reasoner);
+		
+			saveTempFile();
+		// Check for inconsistency
+		if(!reasoner.isConsistent()) {
+			// Throw exception with explanation
+//			Set<Set<OWLAxiom>> explanation = explanationGen.getInconsistencyExplanations();
+			reasoner.dispose();
+//			throw new CausesInconcistencyException(explanation);
+			throw new CausesInconcistencyException();
+		}
+		
+		// Get all Pragmatic subclasses
+		Set<OWLClass> classes = new HashSet<OWLClass>();
         OWLClass pragmaClass = dataFactory.getOWLClass(":Pragmatic", basicPrefix);
-		//print(reasoner.getSubClasses(pragmaClass, notDirect));
-
-        OWLClass memberClass = dataFactory.getOWLClass(":"+member.eClass().getName(), cpnPrefix);
-//        OWLNamedIndividual memberInd = dataFactory.getOWLNamedIndividual(":", localPrefix);
-
-
-		OWLObjectProperty belongsTo = dataFactory.getOWLObjectProperty(":belongsTo", basicPrefix);
-		OWLObjectAllValuesFrom belongsToMember = dataFactory.getOWLObjectAllValuesFrom(belongsTo, memberClass);
+		NodeSet<OWLClass> pragmaSubClasses = reasoner.getSubClasses(pragmaClass, notDirect);
 		
-		OWLObjectIntersectionOf intersection = dataFactory.getOWLObjectIntersectionOf(pragmaClass, belongsToMember);
+		// Iterate the subclasses
+		for(OWLClass pragmaclass : pragmaSubClasses.getFlattened()) {
+			// Declare the mock pragma individual as subclass of current iteration item
+			OWLClassAssertionAxiom newClass = dataFactory.getOWLClassAssertionAxiom(pragmaclass, pragmaInd);
+			getManager().applyChange(new AddAxiom(ontology, newClass));
+			// Check if ontology is still consistent, and include class if it is
+			if(reasoner.isConsistent()) {
+				classes.add(pragmaclass);
+			}
+			// Remove the subclass declaration axiom
+			getManager().applyChange(new RemoveAxiom(ontology, newClass));
+		}
 		
-		NodeSet<OWLClass> subClasses = reasoner.getSubClasses(intersection, false);
-		return subClasses.getFlattened();
+		reasoner.dispose();
+		return classes;
+	}
+	
+	
+//	private OWLAxiom closeConcept(OWLDataFactory factory, IRI iri) {
+//		OWLAnnotationProperty property = factory.getOWLAnnotationProperty(IRI.create("http://TrOWL.eu/REL#NBox"));
+//		OWLAnnotation annotation = factory.getOWLAnnotation(property, factory.getOWLLiteral("close", "en"));
+//		return factory.getOWLAnnotationAssertionAxiom(iri, annotation);
+//	}
+
+	private void saveTempFile() {
+		OWLOntologyMerger merger = new OWLOntologyMerger(manager);
+		IRI mergedOntologyIRI = IRI.create("http://local.model/mergedont" + java.lang.System.currentTimeMillis());
+		OWLOntology merged = null;
+		try {
+			merged = merger.createMergedOntology(manager, mergedOntologyIRI);
+		} catch (OWLOntologyCreationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		OWLOntologyFormat format = manager.getOntologyFormat(merged);
+		OWLFunctionalSyntaxOntologyFormat owlFuncFormat = new OWLFunctionalSyntaxOntologyFormat();
+		if(format.isPrefixOWLOntologyFormat()) {
+		    owlFuncFormat.copyPrefixesFrom(format.asPrefixOWLOntologyFormat());
+		}
+		File file = new File("d:/pellet/local.owl");
+		try {
+			manager.saveOntology(merged, owlFuncFormat, IRI.create(file.toURI()));
+		} catch (OWLOntologyStorageException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
@@ -311,7 +412,9 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 	private OWLOntology createModelOntology() throws OWLOntologyCreationException {
 		if(previousModelOntology != null) 
 			unloadOntology(previousModelOntology);
-		IRI iri = IRI.create(localurl);
+		String newiri = localurl+java.lang.System.currentTimeMillis()+"/";
+		IRI iri = IRI.create(newiri); 
+		localPrefix = new DefaultPrefixManager(newiri);
 		OWLOntology ontology = getManager().createOntology(iri);
 		previousModelOntology = ontology;
 		
@@ -332,7 +435,9 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 			Name name = o.getName();
 			if(name!=null) {
 				OWLDataProperty nameProperty = factory.getOWLDataProperty(":name", cpnPrefix);
-				factory.getOWLDataPropertyAssertionAxiom(nameProperty, individual, name.getText());
+//				getManager().applyChange(new AddAxiom(ontology,
+//						factory.getOWLDataPropertyAssertionAxiom(nameProperty, individual, name.getText())
+//						));
 			}
 			
 			if(o instanceof Place){
@@ -376,9 +481,9 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 				OntologyMember member = (OntologyMember) o;
 				for(Pragma pragma : member.getAnnotation()) {
 					OWLClass pragmaClass = 
-							factory.getOWLClass(IRI.create(pragma.getText()));
+							factory.getOWLClass(IRI.create(pragma.getIri()));
 					OWLNamedIndividual pragmaInd = 
-							factory.getOWLNamedIndividual(":"+o.getId()+pragma.hashCode(), localPrefix);
+							factory.getOWLNamedIndividual(":"+o.getId()+"_pragma"+pragma.hashCode(), localPrefix);
 					classAssertion = factory.getOWLClassAssertionAxiom(pragmaClass, pragmaInd);
 					getManager().applyChange(new AddAxiom(ontology, classAssertion));
 					
@@ -395,11 +500,15 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 
 	private void addDefaultOntologyImports(OWLOntology ont) {
 		OWLDataFactory fac = getManager().getOWLDataFactory();
+		
 		OWLImportsDeclaration imp = 
 				fac.getOWLImportsDeclaration(IRI.create(cpnurl));
 		getManager().applyChange(new AddImport(ont, imp));
 
 		imp = fac.getOWLImportsDeclaration(IRI.create(basicurl));
+		getManager().applyChange(new AddImport(ont, imp));
+		
+		imp = fac.getOWLImportsDeclaration(IRI.create(nppnurl));
 		getManager().applyChange(new AddImport(ont, imp));
 	}
 

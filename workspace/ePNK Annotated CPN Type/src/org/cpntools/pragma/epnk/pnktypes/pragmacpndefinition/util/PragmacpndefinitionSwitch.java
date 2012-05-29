@@ -134,6 +134,7 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 			case PragmacpndefinitionPackage.ONTOLOGY_MEMBER: {
 				OntologyMember ontologyMember = (OntologyMember)theEObject;
 				T result = caseOntologyMember(ontologyMember);
+				if (result == null) result = caseID(ontologyMember);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -158,6 +159,18 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 				if (result == null) result = casePnmlcoremodel_Arc(arc);
 				if (result == null) result = caseObject(arc);
 				if (result == null) result = caseID(arc);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PragmacpndefinitionPackage.PAGE: {
+				Page page = (Page)theEObject;
+				T result = casePage(page);
+				if (result == null) result = caseCpndefinition_Page(page);
+				if (result == null) result = caseOntologyMember(page);
+				if (result == null) result = casePnmlcoremodel_Page(page);
+				if (result == null) result = caseNode(page);
+				if (result == null) result = caseObject(page);
+				if (result == null) result = caseID(page);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -297,6 +310,21 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseArc(Arc object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePage(Page object) {
 		return null;
 	}
 
@@ -522,6 +550,36 @@ public class PragmacpndefinitionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCpndefinition_Arc(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCpndefinition_Page(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page object) {
 		return null;
 	}
 

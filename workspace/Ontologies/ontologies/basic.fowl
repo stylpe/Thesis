@@ -1,25 +1,22 @@
- Prefix(:=<http://k1s.org/OntologyReastrictedNets/basic/>)
- Prefix(basic:=<http://k1s.org/OntologyReastrictedNets/basic/>)
+ Prefix(:=<http://k1s.org/OntologyRestrictedNets/basic/>)
+ Prefix(basic:=<http://k1s.org/OntologyRestrictedNets/basic/>)
  Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
  Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
  Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
  
- Ontology(<http://k1s.org/OntologyReastrictedNets/basic/>
+ Ontology(<http://k1s.org/OntologyRestrictedNets/basic/>
   Import( <http://hib.no/ontologypetrinets/cpn/> )
  
  Declaration(Class(:Pragmatic))
- Declaration(Class(:Property))
  
- DisjointClasses(cpn:Element cpn:Page :Pragmatic :Property)
-
- SubClassOf( :Operation :Pragmatic)
+ DisjointClasses(cpn:Element cpn:Page :Pragmatic)
 
  Declaration( ObjectProperty( :belongsTo ) )
  ObjectPropertyDomain( :belongsTo :Pragmatic ) 
- ObjectPropertyRange( :belongsTo cpn:Element ) 
+ ObjectPropertyRange( :belongsTo ObjectUnionOf(cpn:Element cpn:Page) ) 
  
  Declaration( ObjectProperty( :hasPragmatic ) )
- ObjectPropertyDomain( :hasPragmatic cpn:Element ) 
+ ObjectPropertyDomain( :hasPragmatic ObjectUnionOf(cpn:Element cpn:Page) ) 
  ObjectPropertyRange( :hasPragmatic :Pragmatic ) 
  
 InverseObjectProperties(:belongsTo :hasPragmatic)

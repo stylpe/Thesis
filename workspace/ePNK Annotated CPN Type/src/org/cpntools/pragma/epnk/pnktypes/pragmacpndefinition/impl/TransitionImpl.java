@@ -23,8 +23,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.semanticweb.owlapi.model.OWLClass;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Transition</b></em>'.
@@ -78,17 +76,6 @@ public class TransitionImpl extends org.cpntools.pragma.epnk.pnktypes.cpndefinit
 			annotation = new EObjectContainmentEList<Pragma>(Pragma.class, this, PragmacpndefinitionPackage.TRANSITION__ANNOTATION);
 		}
 		return annotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OWLClass getOWLClass() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**

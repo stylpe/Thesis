@@ -7,6 +7,7 @@
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
 import java.util.Set;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.EList;
 import org.pnml.tools.epnk.pnmlcoremodel.Label;
@@ -108,6 +109,6 @@ public interface PragmaticsOntology extends Label {
 	 * @model dataType="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OWLClassSet"
 	 * @generated
 	 */
-	Set<OWLClass> getValidPragmatics(OntologyMember object);
+	Set<OWLClass> getValidPragmatics(OntologyMember object) throws CausesInconcistencyException;
 
 } // PragmaticsOntology

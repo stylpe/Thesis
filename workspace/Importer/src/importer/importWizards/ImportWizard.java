@@ -461,7 +461,7 @@ public class ImportWizard extends Wizard implements IImportWizard {
 		pnmlObject.setGraphics(pnmlGraphics);
 
 		Name nameLabel = pnmlObject.getName();
-		if(nameLabel != null) {
+		if(nameLabel != null && nameLabel.getText() != null) {
 			AnnotationGraphics nameGfx = core.createAnnotationGraphics();
 			float height = 9; //nameGfx.getFont().getSize().getSize(); <-- gives null
 			float width = height * nameLabel.getText().length() * 0.5f;

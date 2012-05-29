@@ -11,6 +11,7 @@ import org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
@@ -100,6 +101,13 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * @generated
 	 */
 	private EClass arcEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +242,24 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPragma_Iri() {
+		return (EAttribute)pragmaEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPragma_Args() {
+		return (EAttribute)pragmaEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOntologyDocument() {
 		return ontologyDocumentEClass;
 	}
@@ -360,6 +386,15 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPage() {
+		return pageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getOntologyFile() {
 		return ontologyFileEDataType;
 	}
@@ -425,6 +460,8 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 
 		pragmaEClass = createEClass(PRAGMA);
 		createEAttribute(pragmaEClass, PRAGMA__TEXT);
+		createEAttribute(pragmaEClass, PRAGMA__IRI);
+		createEAttribute(pragmaEClass, PRAGMA__ARGS);
 
 		ontologyDocumentEClass = createEClass(ONTOLOGY_DOCUMENT);
 		createEAttribute(ontologyDocumentEClass, ONTOLOGY_DOCUMENT__IRI);
@@ -445,6 +482,8 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		transitionEClass = createEClass(TRANSITION);
 
 		arcEClass = createEClass(ARC);
+
+		pageEClass = createEClass(PAGE);
 
 		// Create data types
 		ontologyFileEDataType = createEDataType(ONTOLOGY_FILE);
@@ -491,10 +530,13 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		pragmaEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		pragmaticsOntologyEClass.getESuperTypes().add(thePnmlcoremodelPackage.getLabel());
 		petriNetEClass.getESuperTypes().add(thePnmlcoremodelPackage.getPetriNet());
+		ontologyMemberEClass.getESuperTypes().add(thePnmlcoremodelPackage.getID());
 		transitionEClass.getESuperTypes().add(theCpndefinitionPackage.getTransition());
 		transitionEClass.getESuperTypes().add(this.getOntologyMember());
 		arcEClass.getESuperTypes().add(theCpndefinitionPackage.getArc());
 		arcEClass.getESuperTypes().add(this.getOntologyMember());
+		pageEClass.getESuperTypes().add(theCpndefinitionPackage.getPage());
+		pageEClass.getESuperTypes().add(this.getOntologyMember());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(pragmaCPNEClass, PragmaCPN.class, "PragmaCPN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -502,7 +544,9 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pragmaEClass, Pragma.class, "Pragma", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPragma_Text(), ecorePackage.getEString(), "text", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPragma_Text(), ecorePackage.getEString(), "text", "", 0, 1, Pragma.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPragma_Iri(), ecorePackage.getEString(), "iri", null, 0, 1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPragma_Args(), ecorePackage.getEString(), "args", null, 0, -1, Pragma.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ontologyDocumentEClass, OntologyDocument.class, "OntologyDocument", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOntologyDocument_Iri(), ecorePackage.getEString(), "iri", null, 0, 1, OntologyDocument.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -526,11 +570,11 @@ public class PragmacpndefinitionPackageImpl extends EPackageImpl implements Prag
 		initEClass(ontologyMemberEClass, OntologyMember.class, "OntologyMember", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOntologyMember_Annotation(), this.getPragma(), null, "Annotation", null, 0, -1, OntologyMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(ontologyMemberEClass, this.getOWLClass(), "getOWLClass", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(arcEClass, Arc.class, "Arc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(pageEClass, Page.class, "Page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(ontologyFileEDataType, IFile.class, "OntologyFile", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

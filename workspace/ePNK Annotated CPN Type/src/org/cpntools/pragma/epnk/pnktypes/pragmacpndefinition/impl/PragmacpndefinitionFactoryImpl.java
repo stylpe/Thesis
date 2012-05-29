@@ -75,6 +75,7 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 			case PragmacpndefinitionPackage.PETRI_NET: return createPetriNet();
 			case PragmacpndefinitionPackage.TRANSITION: return createTransition();
 			case PragmacpndefinitionPackage.ARC: return createArc();
+			case PragmacpndefinitionPackage.PAGE: return createPage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -188,6 +189,16 @@ public class PragmacpndefinitionFactoryImpl extends EFactoryImpl implements Prag
 	public Arc createArc() {
 		ArcImpl arc = new ArcImpl();
 		return arc;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Page createPage() {
+		PageImpl page = new PageImpl();
+		return page;
 	}
 
 	/**

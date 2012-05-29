@@ -6,11 +6,14 @@
  */
 package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl;
 
+import java.util.Collection;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PragmacpndefinitionPackage;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
 
 /**
@@ -21,6 +24,8 @@ import org.pnml.tools.epnk.pnmlcoremodel.impl.LabelImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaImpl#getIri <em>Iri</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmaImpl#getArgs <em>Args</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,17 +40,34 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
+	protected static final String TEXT_EDEFAULT = "";
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The default value of the '{@link #getIri() <em>Iri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getIri()
 	 * @generated
 	 * @ordered
 	 */
-	protected String text = TEXT_EDEFAULT;
-
+	protected static final String IRI_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getIri() <em>Iri</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIri()
+	 * @generated
+	 * @ordered
+	 */
+	protected String iri = IRI_EDEFAULT;
+	/**
+	 * The cached value of the '{@link #getArgs() <em>Args</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArgs()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> args;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,10 +90,10 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public String getText() {
-		return text;
+		return "<<"+iri+">>";
 	}
 
 	/**
@@ -79,11 +101,32 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
+	public String getIri() {
+		return iri;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIri(String newIri) {
+		String oldIri = iri;
+		iri = newIri;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PragmacpndefinitionPackage.PRAGMA__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, PragmacpndefinitionPackage.PRAGMA__IRI, oldIri, iri));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<String> getArgs() {
+		if (args == null) {
+			args = new EDataTypeUniqueEList<String>(String.class, this, PragmacpndefinitionPackage.PRAGMA__ARGS);
+		}
+		return args;
 	}
 
 	/**
@@ -96,6 +139,10 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PRAGMA__TEXT:
 				return getText();
+			case PragmacpndefinitionPackage.PRAGMA__IRI:
+				return getIri();
+			case PragmacpndefinitionPackage.PRAGMA__ARGS:
+				return getArgs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -105,11 +152,16 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PRAGMA__TEXT:
-				setText((String)newValue);
+			case PragmacpndefinitionPackage.PRAGMA__IRI:
+				setIri((String)newValue);
+				return;
+			case PragmacpndefinitionPackage.PRAGMA__ARGS:
+				getArgs().clear();
+				getArgs().addAll((Collection<? extends String>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -123,8 +175,11 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PragmacpndefinitionPackage.PRAGMA__TEXT:
-				setText(TEXT_EDEFAULT);
+			case PragmacpndefinitionPackage.PRAGMA__IRI:
+				setIri(IRI_EDEFAULT);
+				return;
+			case PragmacpndefinitionPackage.PRAGMA__ARGS:
+				getArgs().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -139,7 +194,11 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case PragmacpndefinitionPackage.PRAGMA__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+				return TEXT_EDEFAULT == null ? getText() != null : !TEXT_EDEFAULT.equals(getText());
+			case PragmacpndefinitionPackage.PRAGMA__IRI:
+				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
+			case PragmacpndefinitionPackage.PRAGMA__ARGS:
+				return args != null && !args.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -154,8 +213,10 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
+		result.append(" (iri: ");
+		result.append(iri);
+		result.append(", args: ");
+		result.append(args);
 		result.append(')');
 		return result.toString();
 	}

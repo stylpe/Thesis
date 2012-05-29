@@ -8,8 +8,7 @@ package org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-import org.semanticweb.owlapi.model.OWLClass;
+import org.pnml.tools.epnk.pnmlcoremodel.ID;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +26,7 @@ import org.semanticweb.owlapi.model.OWLClass;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface OntologyMember extends EObject {
+public interface OntologyMember extends ID {
 	/**
 	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma}.
@@ -43,13 +42,5 @@ public interface OntologyMember extends EObject {
 	 * @generated
 	 */
 	EList<Pragma> getAnnotation();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OWLClass"
-	 * @generated
-	 */
-	OWLClass getOWLClass();
 
 } // OntologyMember

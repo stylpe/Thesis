@@ -237,13 +237,31 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int PRAGMA__TEXT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Iri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMA__IRI = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Args</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRAGMA__ARGS = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Pragma</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRAGMA_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 1;
+	int PRAGMA_FEATURE_COUNT = PnmlcoremodelPackage.LABEL_FEATURE_COUNT + 3;
 
 
 	/**
@@ -458,13 +476,22 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int ONTOLOGY_MEMBER = 6;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ONTOLOGY_MEMBER__ID = PnmlcoremodelPackage.ID__ID;
+
+	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ONTOLOGY_MEMBER__ANNOTATION = 0;
+	int ONTOLOGY_MEMBER__ANNOTATION = PnmlcoremodelPackage.ID_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Ontology Member</em>' class.
@@ -473,7 +500,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ONTOLOGY_MEMBER_FEATURE_COUNT = 1;
+	int ONTOLOGY_MEMBER_FEATURE_COUNT = PnmlcoremodelPackage.ID_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.TransitionImpl <em>Transition</em>}' class.
@@ -676,6 +703,124 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int ARC_FEATURE_COUNT = CpndefinitionPackage.ARC_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PageImpl <em>Page</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PageImpl
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPage()
+	 * @generated
+	 */
+	int PAGE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__ID = CpndefinitionPackage.PAGE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__NAME = CpndefinitionPackage.PAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__TOOLSPECIFIC = CpndefinitionPackage.PAGE__TOOLSPECIFIC;
+
+	/**
+	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__GRAPHICS = CpndefinitionPackage.PAGE__GRAPHICS;
+
+	/**
+	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__UNKNOWN = CpndefinitionPackage.PAGE__UNKNOWN;
+
+	/**
+	 * The feature id for the '<em><b>Out</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__OUT = CpndefinitionPackage.PAGE__OUT;
+
+	/**
+	 * The feature id for the '<em><b>In</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__IN = CpndefinitionPackage.PAGE__IN;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__OBJECT = CpndefinitionPackage.PAGE__OBJECT;
+
+	/**
+	 * The feature id for the '<em><b>Page Label Proxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PAGE_LABEL_PROXY = CpndefinitionPackage.PAGE__PAGE_LABEL_PROXY;
+
+	/**
+	 * The feature id for the '<em><b>Labelproxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__LABELPROXY = CpndefinitionPackage.PAGE__LABELPROXY;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__ANNOTATION = CpndefinitionPackage.PAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Page</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_FEATURE_COUNT = CpndefinitionPackage.PAGE_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '<em>Ontology File</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -683,7 +828,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyFile()
 	 * @generated
 	 */
-	int ONTOLOGY_FILE = 9;
+	int ONTOLOGY_FILE = 10;
 
 
 	/**
@@ -694,7 +839,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOntologyManager()
 	 * @generated
 	 */
-	int ONTOLOGY_MANAGER = 10;
+	int ONTOLOGY_MANAGER = 11;
 
 
 	/**
@@ -705,7 +850,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClassSet()
 	 * @generated
 	 */
-	int OWL_CLASS_SET = 11;
+	int OWL_CLASS_SET = 12;
 
 
 	/**
@@ -716,7 +861,7 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getOWLClass()
 	 * @generated
 	 */
-	int OWL_CLASS = 12;
+	int OWL_CLASS = 13;
 
 
 	/**
@@ -759,6 +904,28 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPragma_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma#getIri <em>Iri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Iri</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma#getIri()
+	 * @see #getPragma()
+	 * @generated
+	 */
+	EAttribute getPragma_Iri();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma#getArgs <em>Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Args</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma#getArgs()
+	 * @see #getPragma()
+	 * @generated
+	 */
+	EAttribute getPragma_Args();
 
 	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument <em>Ontology Document</em>}'.
@@ -909,6 +1076,16 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	EClass getArc();
 
 	/**
+	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Page</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page
+	 * @generated
+	 */
+	EClass getPage();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.core.resources.IFile <em>Ontology File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1011,6 +1188,22 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRAGMA__TEXT = eINSTANCE.getPragma_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRAGMA__IRI = eINSTANCE.getPragma_Iri();
+
+		/**
+		 * The meta object literal for the '<em><b>Args</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRAGMA__ARGS = eINSTANCE.getPragma_Args();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.OntologyDocumentImpl <em>Ontology Document</em>}' class.
@@ -1135,6 +1328,16 @@ public interface PragmacpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ARC = eINSTANCE.getArc();
+
+		/**
+		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PageImpl <em>Page</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PageImpl
+		 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.impl.PragmacpndefinitionPackageImpl#getPage()
+		 * @generated
+		 */
+		EClass PAGE = eINSTANCE.getPage();
 
 		/**
 		 * The meta object literal for the '<em>Ontology File</em>' data type.

@@ -119,6 +119,10 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 				return createArcAdapter();
 			}
 			@Override
+			public Adapter casePage(Page object) {
+				return createPageAdapter();
+			}
+			@Override
 			public Adapter casePetriNetType(PetriNetType object) {
 				return createPetriNetTypeAdapter();
 			}
@@ -177,6 +181,14 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCpndefinition_Arc(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Arc object) {
 				return createCpndefinition_ArcAdapter();
+			}
+			@Override
+			public Adapter casePnmlcoremodel_Page(org.pnml.tools.epnk.pnmlcoremodel.Page object) {
+				return createPnmlcoremodel_PageAdapter();
+			}
+			@Override
+			public Adapter caseCpndefinition_Page(org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page object) {
+				return createCpndefinition_PageAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -321,6 +333,20 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createArcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page
+	 * @generated
+	 */
+	public Adapter createPageAdapter() {
 		return null;
 	}
 
@@ -531,6 +557,34 @@ public class PragmacpndefinitionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCpndefinition_ArcAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.pnml.tools.epnk.pnmlcoremodel.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.pnml.tools.epnk.pnmlcoremodel.Page
+	 * @generated
+	 */
+	public Adapter createPnmlcoremodel_PageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page <em>Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page
+	 * @generated
+	 */
+	public Adapter createCpndefinition_PageAdapter() {
 		return null;
 	}
 

@@ -258,6 +258,29 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PageItemProvider pageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPageAdapter() {
+		if (pageItemProvider == null) {
+			pageItemProvider = new PageItemProvider(this);
+		}
+
+		return pageItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -364,6 +387,7 @@ public class PragmacpndefinitionItemProviderAdapterFactory extends Pragmacpndefi
 		if (petriNetItemProvider != null) petriNetItemProvider.dispose();
 		if (transitionItemProvider != null) transitionItemProvider.dispose();
 		if (arcItemProvider != null) arcItemProvider.dispose();
+		if (pageItemProvider != null) pageItemProvider.dispose();
 	}
 
 }

@@ -1,7 +1,7 @@
 \chapter{Technology and Foundations}
 \label{chap:technology}
 
-One of the fundamental decisions that had to be made for the wwork conducted
+One of the fundamental decisions that had to be made for the work conducted
 in this thesis was whether to base \thename{} on an existing platform or to
 create a new platform from scratch. In this chapter we describe the
 reasoning behind the choices made, taking into account the requirements stated
@@ -95,7 +95,7 @@ written in \LaTeX{} using the Texlipse plugin, and managed with the Git version
 control system through the EGit plugin.
 
 Plugins connect to each other through the so-called extension points they
-declare, which include a schema to define instructions and requirements.
+declare, which includes a schema to define requirements and instructions.
 Where one plugin declares an extension point, another plugin can extend that
 point according to its defined schema.
 
@@ -176,17 +176,18 @@ editor to inform the user.
 Neither of these two types conform exactly to the Coloured Petri Nets created by
 CPN Tools. HLPNG comes close, but is missing a few things like ports and sockets
 (RefPlaces can emulate this), and substitution transitions. Also, the
-structured labels are not compatible with the CPN ML syntax from CPN Tools, and
-for our prototype, these structured labels are not necessary with regard to
-annotations, as there does not exist any pragmatics that depend on this level
-of detail yet. They might be useful in a future version, where for example
-pragmatics are available depending on things like the colourset of a place or
-the variables on an arc, but initially this is considered to be outside the
-scope of this thesis; simple string representation is sufficient.
+structured labels of HLPNG are not compatible with the CPN ML syntax from CPN
+Tools, and for our prototype, these structured labels are not necessary with regard to
+pragmatics, as we do not define any pragmatics for this prototype that depend on
+this level of detail. This might be desired in a future version, where for
+example  pragmatics are available depending on things like the colour set of a
+place or the variables on an arc, but initially this is considered to be outside the
+scope of this thesis; simple string representations of inscriptions are
+sufficient.
 
-Our decision was therefore to develop our own Petri Net type that matches the
-type supported by CPN Tools, and we present this Type as part of the next
-chapter.
+In light of this, our decision was therefore to develop our own Petri Net type
+that matches the structure of CPN Tools models as well as supporting annotation
+with pragmatics, and we present this Type as part of the next chapter.
 
 \section{Eclipse Modeling Framework}
 EMF is an open source framework for Model Driven Architecture (MDA) in Java. It
@@ -198,9 +199,9 @@ modeling specification once and target multiple technology implementations by
 using precise transformations/mappings. 
 
 EMF is an example of the use of MDA to enable creation of a UML model
-representation of a tool or application and to use this model to automate (some
-or all) of the Java interface, implementation, as well as any XML serialization
-for the modeled objects.
+representation of a tool or application and to use this model to automatically
+generate some or all of the Java interface, implementation, as well as any XML
+serialization for the modelled objects.
 Other generated artifacts include a set of adapter classes that enable
 viewing and command-based editing of models, and a basic editor. This serves as
 the foundation used to build ePNK, including CPN model editing and PNML
@@ -210,8 +211,8 @@ serialisation.
 	GMF builds on EMF to provide tools to implement more advanced graphical viewing
 	and editing of models. It works by creation of model transformations that use
 	the metamodels created with EMF to generate implementations of graphical views and
-	editors that plug in to the Eclipse workbench. It is used in ePNK to generate
-	the graphical diagram editor.
+	editors that plug in to the Eclipse workbench. It is used by ePNK to generate
+	its graphical diagram editor.
 	
 \section{Access/CPN: Java interface for CPN Tools}
 CPN Tools has a sister project called Access/CPN. This is an
@@ -225,30 +226,61 @@ will be discussed more in detail in the next chapter.
 
 \section{Ontologies: OWL 2 and OWL API}\label{sec:ontologies}
 
-Ontologies are a way to formally represent and structure information and
-knowledge within a domain as a set of concepts. Essentially, this is done
-by defining classes that have properties, relations and constraints, and then present
-information with these classes.
+Ontologies, as they relate to information science, are a way to formally
+represent and structure information and knowledge within a domain as a set of
+concepts. Essentially, this is done by defining classes that have properties,
+relations and constraints, and then describing individuals and known information
+about them. 
 
 There is a lot of ongoing research on this subject, especially in the context of
 the Semantic Web \cite{bernerslee2001semantic}, that is extending web pages to
 provide meta-information about the content they contain and enabling software to
-understand it and reason about it.
+understand its meaning and draw conclusions that are not explicitly asserted.
+Use of ontologies is also prevalent in other fields, like in medicine to
+describe and relate symptoms and diseases.
 
 The OWL 2 Web Ontology Language \cite{owl2-overview} is the World Wide Web
-Consortium (W3C) recommended standard for representing ontologies. The primary
+Consortium (W3C) recommended standard for representing ontologies.  The primary
 exchange syntax for OWL 2 is RDF/XML \cite{rdf-xml}. There also exist
-other syntaxes, like Manchester syntax which improves readability,and
+other syntaxes, like Manchester syntax which improves readability, and
 Functional syntax which emphasises formal structure.
+
+To give a clearer impression of ontologies, consider this small example
+ontology:
+Person is a class. Man and Woman are subclasses of Person. Parent is also a
+subclass of Person, and can be described with the property hasChild with values
+of type Person. Mother is a class equivalent to the intersection of Woman and
+Parent. Anne and Bob are individuals, and we assert that Anne is
+a Woman and that Anne hasChild Bob.
 
 The power of ontologies lies in the potential to use a reasoner engine to
 explore and describe the domain, draw conclusions, and infer implicit facts.
+From the above example, we can infer that Bob is a Person, and Anne is a Parent,
+from the definition of the hasChild property. Thus we can further infer that
+Anne is also a Mother, since she is both a Woman and a Parent.
 
-TODO: Lite eksempel på ontology.
+OWL~2 uses an open world assumption, meaning that a fact does not have to be
+explicitly asserted for it to be true. We discuss the consequences of this more
+in the next chapter.
 
 The code generation pragmatics are defined as OWL 2 ontologies, primarily using
-Functional syntax. To parse and reason with these ontologies, we use OWL API
-\cite{owlapi}, the reference Java implementation, which is capable of reading
-ontologies in any of the OWL 2 syntaxes. We use HermiT \cite{shearer2008hermit}
-as a reasoner engine. The use of ontologies in the context of pragmatics is
-described in detail in the next chapter.
+Functional syntax. Together with an ontology describing the structure of CPN
+models, this allows us to describe pragmatics using the full expressiveness of
+OWL 2, and enables complex restrictions to be defined for placement of
+pragmatics on model elements. This acts as a basis to enable the \thename{}
+model editor to determine appropriate pragmatics for selected model elements, as
+well as for model validation. 
+
+To parse these ontologies, we use OWL API \cite{owlapi}, the reference Java
+implementation for OWL 2, which is capable of reading ontologies in any of the
+standard OWL 2 syntaxes, as well as programatically creating and modifying ontologies.
+Implementation details are given in the next chapter.
+
+There exists many reasoner engine implementations, with some that support OWL
+API. Dentler et al. \cite{dentler2011comparison} higlight the different
+advantages and weaknesses of several such reasoners.
+We give our own evaluation of some of them in context of \thename{} in Chapter
+\ref{chap:evaluation}. The selected reasoners were chosen for being freely
+available, and include Pellet \cite{sirin2007pellet}, HermiT
+\cite{shearer2008hermit}, FaCT++ \cite{tsarkov2006fact++} and TrOWL
+\cite{TPR2010}.

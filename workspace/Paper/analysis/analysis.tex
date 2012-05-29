@@ -1,98 +1,126 @@
 \chapter{Analysis, Design and Implementation}
 \label{chap:analysis}
 
-
-After picking the technologies described in the previous chapter, since many of
-the componets have Eclipse in common, it was an easy decision to develop
-\thename{} as an Eclipse plugin. This also let us centralise all our development
-in Eclipse.
-
-Our analysis of available software solutions and platforms showed that the basic
-primitives that are required to develop the desired code generation pragmatic
-framework are available as part of the Eclipse eco system. It is therefore
-natural to develop \thename{} as an Eclipse Plugin and base all software
-develpoment in the context of this thesis on the Eclipse Platform.
-
-Note that both Access/CPN and ePNK use the term Page instead of Module, so for
-convenience we have done the same in the implementation of \thename{}.
+Our analysis of available software solutions and platforms in the previous
+chapter showed that the basic primitives that are required to develop the
+desired code generation pragmatic framework are available as part of the Eclipse
+eco-system. It is therefore natural to develop \thename{} as an Eclipse Plugin
+and base all software develpoment in the context of this thesis on the Eclipse
+Platform.
 
 \section{The CPN Ontology with Pragmatics}
 
 As mentioned in section \ref{sec:ontologies}, Pragmatics are defined and modeled
-as ontologies, using OWL 2 Web Ontology Language.  
+as ontologies, using the OWL 2 Web Ontology Language.  
 
 There exists two ontologies that function as a base for pragmatics: One that
-defines Coloured Petri Nets, and one that defines basic classes for pragmatics
+defines Coloured Petri Nets, and one that defines basic classes for pragmatics.
+The ontology defining CPN will be explained in several parts, with line
+numbering continuing across parts.
 
-\lstinputlisting[label=lst:cpn.owl,numbers=left,stepnumber=5,
-caption=The CPN Ontology]
+\lstinputlisting[label=lst:cpn.owl:start,numbers=left,stepnumber=5,firstline=1,lastline=5,float,
+caption=The CPN Ontology: Opening]
 {D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl}
 
+\lstref{owl:start} shows the beginning of the CPN ontology. Every ontology must
+be declared with |Ontology()| containing an Internationalized Resource
+Identifier (IRI) and a series of declarations and axioms. IRI is a
+generalization of the Uniform Resource Identifier (URI) to allow all Unicode
+characters to be used. An IRI can point to an actual resource on the Internet,
+but is not required to do so. Each concept in an ontology is also identified
+with an IRI, but to avoid repetition we define ``:`` as a prefix representing
+this document's IRI (line 1). Prefixes can also be declared for other
+ontologies, and some (like owl: and xsd:) are predefined (and stated on lines 2
+and 3 for clarity). 
 
-Every ontology must be declared with |Ontology()| containing an
-Internationalized Resource Identifier (IRI) and a series of declarations and
-axioms. IRI is a generalization of the Uniform Resource Identifier (URI) to
-allow all Unicode characters to be used. An IRI can point to an actual resource
-on the internet, but is not required to do so. Each concept in an ontology is
-also identified with an IRI, but to avoid reprtition we define ``:`` as a prefix
-representing this document's IRI. Prefixes can also be declared for other
-ontologies, and some (like owl: and xsd:) are predefined.
+\lstinputlisting[label=lst:cpn.owl:base,numbers=left,stepnumber=5,firstline=7,lastline=42,float,firstnumber=7,
+caption=The CPN Ontology: Base Classes]
+{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
 
-Inside the |Ontology()| declaration we write declarations and axioms to describe
-the domain. Whitespace and indentation is syntactically irrelevant and only used
-for readability. We first declare the class |:ColouredPetriNet|. We then declare
-the object property |:pages|, and restrict its domain to |:ColouredPetriNet| and
-its range to |:Page|. The class |:Page| is defined just below, but the order of
-declaration is not important, as the whole document must loaded before any
-processing or reasoning can be performed. Also note that there are two kinds of
-properties: Object (which rnage must be a class) and Data (which range must be
-a datatype primitive, like string or integer, as defined in the xsd: ontology).
+Inside the
+|Ontology()| declaration we write declarations and axioms to describe the
+domain. \lstref{cpn.owl:base} shows the first such declarations. Whitespace and
+indentation is syntactically irrelevant and only used for readability. We first
+declare the class |:ColouredPetriNet| (line 7). We then
+declare the object property |:pages|, and restrict its domain to |:ColouredPetriNet| and its range
+to |:Page|\footnote{Note that both Access/CPN and ePNK use the term Page instead
+of Module, so for convenience we will also use the term Page in the
+implementation of \thename{}.} (lines 8-10). This means that there exists a
+property |:pages|, that instances of |:ColouredPetriNet| can have this property,
+and that the value of the property must be a |:Page|. The class |:Page| is
+defined just below on line 12, but the order of declaration is not important, as
+the whole document must be loaded before any processing or reasoning can be performed on
+the ontology. Also note that there are two kinds of properties:
+Object (which range must be a class) and Data (which range must be a datatype
+primitive, like string or integer, defined in the xsd: ontology).
 
-We then continue declaring all model elements in a similar manner. We will
-point out only new axiom types in the order they are declared, referencing them
-by line number. 
-
-Line 20 states |InverseObjectProperties(:page :elements)|, defining these
+We then continue declaring all model elements in a similar manner. A |:Page| can
+have many |:elements|. An |:Element| has a |:page|. Line 23 states
+|SubClassOf(:Element ObjectMaxCardinality(1 :page))|, meaning an :Element can
+have at most 1 |:page|.
+Line 22 states |InverseObjectProperties(:page :elements)|, defining these
 properties as inversely related. An example consequence of this is if we define
-an individual :Element and specify its :page, it is implicitly known that the
-:Page contains that individual in its :elements.
+an individual |:Element| and specify its |:page|, it is implicitly known that
+the |:Page| contains that individual in its |:elements|. An |:Element| can also
+have an |:id|.
 
-Line 23 states |SubClassOf(:Element ObjectMaxCardinality(1 :page))|, meaning an
-:Element can have at most 1 :page.
+Lines 29-42 describe the class |:Node| as a subclass of :Element with a |:name|
+property and |:in| and |:out| properties for connected |:Arc|s.
 
-Line 26 has a normal subclass axiom, defining that every :Node is a kind of
-:Element.
+\lstinputlisting[label=lst:cpn.owl:place,numbers=left,stepnumber=5,firstline=44,lastline=55,float,firstnumber=44,
+caption=The CPN Ontology: Place Class]
+{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
 
-Line 58-61 define three individuals |:In :InOut and :Out|. Line 61 means that
-any instance of |:PortType| is restricted to these three individuals.
+\lstref{cpn.owl:place} shows declarations relating to the |:Place| class, and
+follows the same pattern as the earlier classes to describe the properties |:sort| and
+|:initialMarking|.
 
-Line 96 declares the property |:codeSegment|, a feature in CPN Tools we have not
-used, but include for completeness.
+\lstinputlisting[label=lst:cpn.owl:trans,numbers=left,stepnumber=5,firstline=57,lastline=75,float,firstnumber=57,
+caption=The CPN Ontology: Transition Classes]
+{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
 
-Lines 120-123 declare classes as disjoint. This is neccessary, as ontologies by
-default use open world assumptions, meaning even though something is not
+\lstref{cpn.owl:trans} shows declarations relating to the |:Transition| and
+|:SubstitutionTransition| classes.
+
+\lstinputlisting[label=lst:cpn.owl:arc,numbers=left,stepnumber=5,firstline=77,lastline=96,float,firstnumber=77,
+caption=The CPN Ontology: Arc Class]
+{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
+
+\lstref{cpn.owl:arc} shows declarations relating to the |:Arc| class. The
+properties |:dest| and |:source| are declared as inverse of |:in| and |:out|
+(from |:Node|).
+
+\lstinputlisting[label=lst:cpn.owl:disjoint,numbers=left,stepnumber=5,firstline=99,lastline=102,float,firstnumber=99,
+caption=The CPN Ontology: Arc Class]
+{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
+Finally, \lstref{cpn.owl:disjoint} declare classes as disjoint. This is
+neccessary, as ontologies by default use open world assumptions, meaning even though something is not
 explicitly stated does not mean it isn't true. Thus, without these declarations,
 it is possible for an individual to for instance be a :Place and an :Arc at the
 same time. Thus, we need to ``close the world'' by defining classes as disjoint,
 meaning a member of one class is never a member of any of the other classes in
 the list.
 
-Next, we show the basic framework ontology for pragmatics.
-
+\lstref{basic.owl} provides the base ontology for pragmatics. The purpose of the
+base is to link CPN elements and pragmatic annotations. The specific pragmatics
+that can be attached to CPN elements will be defined in subsequent ontologies.
+ 
 \lstinputlisting[label=lst:basic.owl,numbers=left,stepnumber=5,
 caption=The Basic Pragmatics Ontology]
 {D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/basic.fowl}
 
 An ontology document can import other ontologies by referring to their IRI.  We
 describe later how this is taken into account when loading ontology documents
-from projects and plugins. In this ontology we import the CPN Ontology and
-assign it the prefix |cpn:|.
+from projects and plugins. In this ontology, we import the CPN Ontology (line 8)
+and also assign it the prefix |cpn:| (line 5).
 
-This ontology is much shorter, declaring only three new classes |:Pragmatic|,
-|:Property| and |:Operation|, as well as their disjointness and properties. It
-also adds the property |:hasPragmatic| to |cpn:Element|
+This ontology is much shorter than the CPN ontology, declaring only one new
+class |:Pragmatic|, as well as its disjointness with other classes and its |:belongsTo| property. It
+also declares the property |:hasPragmatic| for |cpn:Element|, and declares the
+two properties as the inverse of each other.
 
-Next, we have the ontology for Generic pragmatics.
+Next, we have the ontology for the Generic pragmatics that provide the
+fundamental set of pragmatics for the protocol domain. \com{Hvis tid, figurer}
 
 \lstinputlisting[label=lst:nppn.owl,numbers=left,stepnumber=5,
 caption=The Generic Pragmatics Ontology]
@@ -100,25 +128,31 @@ caption=The Generic Pragmatics Ontology]
 
 This is the first ontology that defines actual usable pragmatics. The second
 line of each pragmatic declaration is a form of property restriction. The first
-one (line 14) states that a |:Principal| can only belong ot a |cpn:Page|.
+one (line 14) states that a |:Principal| can only belong to a
+|cpn:SubstitutionTransition|.
 
-The |:External| pragmatic (line 24 and 25) shows why ontologies are well suited
-for defining pragmatics. It can belong to |:TransitionConnectedToId|, which is
-defined as the last part of the document. We first define |:IdPlace| to be
-anything that is a |cpn:Place| and has exactly one |:Id| pragmatic. We further
-define |:ArcFromId| as anything that is a |cpn:Arc| coming from an |:IdPlace|.
-Finally, a |:TransitionConnectedToId| must have an incoming |:ArcFromId|. All
-together this forms a complex requirement that can easily be checked with the
-help of a reasoner.
+\com{Trenger litt mer info fra Kent om disse\ldots}
+The |:External| pragmatic (line 22 and 23) shows why ontologies are well suited
+for defining pragmatics. It can belong to |:TransitionConnectedToId|, which is a
+complex class defined through a chain of classes. We first define |:IdPlace| on
+line 40 to be equivalent to the set of individuals that are a |cpn:Place|, and
+has a |:hasPragmatic| property with a value that is an instance of |:Id|, and
+has exactly one |:hasPragmatic| property associated. In the same manner we
+further define |:ArcFromId| on line 47 as anything that is a |cpn:Arc| coming
+from an |:IdPlace|. Finally on line 54, a |:TransitionConnectedToId| must have
+an incoming |:ArcFromId|. Alltogether this describes the circumstance where an
+|:External| pragmatic can be placed, which is on any transition with an incoming
+arc from a place annotated with an |:Id| pragmatic. We demonstrate the practical
+effect of this on model annotation in Chapter \ref{chap:evaluation}.
 
-Refer to \cite{Simonsen2011} for further explanation?
+\com{Forklar hva pragmaene betyr}
 
 \subsection{The Ontology Containment Project}
-The ontologies described above are not subject to change by the user, and will
-always be used when annotating a model. We need a way to conveniently provide
-them to the model, as well as utilities for managing them. For this purpose we
-created a separate plugin called Ontologies. It contains the ontology documents,
-utility classes for listing all ontologies the plugin provides, the
+The ontologies described above are not subject to change by the user of \thename{},
+and will always be available when annotating a model. We need a way to
+conveniently provide them to the model, as well as utilities for managing them. For this purpose we
+created a separate Eclipse plugin called Ontologies. It contains the ontology
+documents, utility classes for listing all ontologies the plugin provides, the
 PluginIRIMapper which can translate the IRI of import statements to the ontology
 documents available in the plugin, and the OntologyLoader, which creates a
 manager and includes the PluginIRIMapper automatically.
@@ -128,33 +162,36 @@ let other plugins use them. This gives a central point of upgrading should it be
 desired in the future.
 
 \section{The Annotated CPN model type for ePNK}
-While designing the Type model for the Plugin, it was decided to separate it
-into two parts: One to define a CPN Type, and one for defining an Annotated CPN
-Type, extending from the first. This also adds the benefit that the pure CPN
-Type can be used for other applications.
+While designing the ePNK Petri Net Type model for \thename{}, it was decided to
+separate it into two parts: One to define a CPN Type that corresponds to CPN
+Tools including the various inscriptions and model constraints, and one
+for defining an Annotated CPN Type, extending from the first and capturing how
+pragmatics relate to elements of the CPN Type model.
+This also adds the benefit that the CPN Type can be used in other
+applications.
 
 A custom Petri Net Type needs to be contained in an Eclipse Plugin project.
 Such a project will contain configuration files that define the properties and
 capabilities of the plugin. These files include MANIFEST.MF for declaring plugin
-name, version, dependencies etc, plugin.xml for defining extensions, extension
-points etc, and build.properties for defining build parameters. However, the
-Eclipse Plugin IDE includes an editor for editing all three files in a
-convenient user interface with guides and content assistance.
+name, version and dependencies, plugin.xml for defining extensions and extension
+points, and build.properties for defining build parameters. The Eclipse Plugin
+IDE includes an editor for editing all three files in a convenient user
+interface with guides and content assistance.
 
 After creating a plugin project, an EMF model should be created. This is the
 Type Model, and should inherit the PNML Core Model from ePNK, or any other model
-that already does this (such as the P/T-Net or HLPNG Types). \com{Glossary for
-P/T-Net and HLPNG} We will refer to the PNML Core Model as the Core
-Model.
+that already does this (such as the P/T-Net or HLPNG Types\footnote{These
+ePNK Types were briefly introduced in Section \ref{sec:epnk}}).
+We will refer to the PNML Core Model as the Core Model.
 
-\subsection{CPN Type}
-The CPN model, shown in \figref{cpn_model_diagram}, defines the structure and
-constraints of Coloured Petri Nets. The first thing this new Model Type should
-define is a subclass of the PetriNetType class from the Core Model (we will
-refer to this as the Core Type), with the name of the new Model Type, which in
+\subsection{CPN Type Model}
+The CPN Type model is shown in \figref{cpn_model_diagram}, and defines the
+structure and constraints of Coloured Petri Nets. The first thing a new Type
+model should define is a subclass of the PetriNetType class from the Core Model
+(we will refer to this as the Core Type), with the name of the new Type, which in
 our case is CPN. This can be seen in the top left corner of the diagram in
-\figref{cpn_model_diagram}. This class is what identifies the Type, and is what
-will appear in the menu to let a user extend a model with the new Type.
+\figref{cpn_model_diagram}. This class is used to identify the Type, and is
+what will appear in the menu to let a user extend a model with the new Type.
 \com{Oppdater figurer! }
 \fig{CPNDefinition.pdf}{CPN model type diagram}{cpn_model_diagram}
 
@@ -162,7 +199,7 @@ will appear in the menu to let a user extend a model with the new Type.
 EMF does not support merging of models, meaning it is not possible to define new
 properties or relations directly on the original classes of the Core Model.
 Thus, in order to change the functionality of existing classes such as Place,
-Arc and Page, they have to be subclassed. ePNK will use reflection to check a
+Arc and Page, they have to be subclassed. ePNK uses reflection to check a
 Type Model for subclasses with the same name as classes in the Core Type, and
 load these dynamically instead of the base classes.
 This can be seen in \figref{cpn_model_diagram}, where Place, Arc, Transition and
@@ -179,11 +216,11 @@ different names to be distinguishable in the user editor context menu for adding
 child elements.
 
 \subsection{Code generation}
-After creating this model, EMF can generate source code for interfaces and
-implementations of the new classes. This is done by creating a ``genfile''
+After creating the CPN Type model, EMF can generate source code for interfaces
+and implementations of the new classes. This is done by creating a ``genfile''
 linked to the EMF model. The genfile can define metainfo such as the base
 package of generated source files, and configuration parameters for the
-individual classes. EMF can then generate different groups of code, but for a
+individual classes. EMF can then generate different groups of code, but for an
 ePNK Type we only need Model code and Edit code. the Model code includes
 interfaces and corresponding basic implementations of the classes as well as
 factories for instantiating them, while the Edit code contains classes for
@@ -199,25 +236,36 @@ represents the net type, usually simply its formal name.
 Before ePNK will recognise the plugin and the Type Model, the plugin manifest
 needs to be edited to define this plugin as an extension to the
 org.pnml.tools.epnk.pntd extension point of ePNK. All that is needed to
-configure this is supplyting a unique id, a descriptive name, and the fully
-qualified classpath to th ePetriNetType subclass. \figref{plugin_manifest_1} and
-\figref{plugin_manifest_2} shows the finished configuration for the CPN model
-type. \com{Kan bytte ut figurene med XML-data istedet, skal jeg det?}
-\fig{plugin_manifest_1.png}{Plugin Manifest part 1}{plugin_manifest_1}
-\fig{plugin_manifest_2.png}{Plugin Manifest part 2}{plugin_manifest_2}
+configure this is supplying a unique id, a descriptive name, and the fully
+qualified classpath to the PetriNetType subclass. The resulting
+element in plugin.xml is shown in \lstref{pntd_xml}. 
+
+\begin{lstlisting}[language=XML,label=lst:pntd_xml,float,
+caption=ePNK Petri Net Type Definition Extension]
+   <extension
+         id="org.cpntools.pragma.epnk.pnktypes.cpndefinition"
+         name="CPN"
+         point="org.pnml.tools.epnk.pntd">
+      <type
+            class="org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.CPNImpl"
+            description="Coloured Petri Net from CPN Tools">
+      </type>
+   </extension> 
+\end{lstlisting}
 
 \subsection{Constraints}
 
 We define one constraint for the CPN Type: An Arc must go between a Place and a
 Transition. The mechanic for defining this is the EMF extension point
 ``org.eclipse.emf.validation.constraintProviders''. There are several ways of
-extending this point, some of which are explained in \cite{kindler2011epnk}. Our
-extension is shown in listing \lstref{constraintextension}. The class
-ArcSourceAndTargetLimitation that implements the model checking is shown in
-\lstref{constraintimpl}.
+defining extensions for this point, some of which are explained in
+\cite{kindler2011epnk}. Our extension declaration is shown in listing
+\lstref{constraintextension}, and is configured to use a Java class to perform
+validation (defined in the \textless{}constraint\textgreater{} element's class
+attribute).
 
 \begin{lstlisting}[language=XML,label=lst:constraintextension,float,
-caption=constraintProvider extension] 
+caption=constraintProvider Extension] 
    <extension
          point="org.eclipse.emf.validation.constraintProviders">
       <category
@@ -256,6 +304,12 @@ caption=constraintProvider extension]
    </extension>
 \end{lstlisting}
 
+This class, ArcSourceAndTargetLimitation, is shown in \lstref{constraintimpl}.
+The IValidationContext argument provides both the target model element to be
+validated, and facilities for creating an appropriate return object representing
+failure or success. The algorithm for checking the arc's source and target is
+straightforward.
+
 \begin{lstlisting}[language=Java,label=lst:constraintimpl,float,
 caption=Constraint Implementation]
 public class ArcSourceAndTargetLimitation extends AbstractModelConstraint {
@@ -287,8 +341,8 @@ public class ArcSourceAndTargetLimitation extends AbstractModelConstraint {
 \end{lstlisting}
 
 \subsection{Annotated CPN Type}
-The Annotated CPN model, shown in \figref{ann_model_diagram}, extends the CPN
-model to enable annotation of model elements. It also handles references
+The Annotated CPN Type model is shown in \figref{ann_model_diagram}. It extends
+the CPN model to enable annotation of model elements. It also handles references
 to ontology documents that define sets of pragmatics.
 
 \fig{PragmaCPNDefinition.pdf}{Annotated CPN model type
@@ -300,7 +354,7 @@ Being annotated with pragmatics. Ideally, we would have extended a superclass of
 these classes, for instance Node. But this will not work, since model merging is
 not possible (as discussed earlier), and subclassing Node will not work, since
 existing classes will not be subclasses of our new superclass and therefore not
-inherit anything from it. BELIEVE ME I TRIED HAHAHAHAHA *cough*
+inherit anything from it. 
 
 We needed to devise a way to extend a group of classes without access to their
 superclass, and ideally without copying code between the classes. The solution
@@ -313,33 +367,36 @@ er ikke i bruk}
 OntologyMember has a reference to the Pragma class. The reference is
 configured to act as containment, meaning Pragma instances are created as
 children of OntologyMember instances. A Pragma instance is a pragmatic, and is
-defined by the IRI from the ontology, set in the text attribute. Like the
-inscriptions from the CPN Type, Pragma inherits the Label class to be able to
-display in the diagram editor.
+defined by an IRI of a class from an ontology. Like the inscriptions from the
+CPN Type, Pragma inherits the Label class to be able to be displayed in the
+diagram editor. The text attribute is configured to be virtual, and manually
+implemented to return the iri enclosed in \textless\textless and
+\textgreater\textgreater.
 
-\subsection{Remembering Pragmatics Sets}
-We've already shown how pragmatics sets can be defined using ontology documents.
-But we also need a way to include them in the models we want to annotate.
-In other words: a model needs to store which pragmatic sets it utilises. This is
-encapsualted in the OntologyDocument class, which can store the IRI of the
+\subsection{Persisting Pragmatics Sets in the Model}
+We have already shown how pragmatics sets can be defined using ontology
+documents. But we also need a way to include them in the models we want to
+annotate. In other words: a model needs to store which pragmatic sets it
+utilises. This is encapsualted in the OntologyDocument class
+(\figref{ann_model_diagram}, lower right), which can store the IRI of the
 ontology and the path to the document that contains it. This is sufficient to be
-able to reload the ontology if the model is closed and later reopened.
+able to reload the ontology if the CPN model is closed and later reopened.
 
 These OntologyDocument instances need to be serialised somewhere in the model.
-Our first thought was to model them as contained by the PragmaCPN class (i.e.
+Our first idea was to model them as contained in the PragmaCPN class (i.e.
 the Type), however due to the fact that this element is serialised only as an
 attribute this was not possible. We decided to create a new class which instance
-is contained by the PetriNet class. This is the PragmaticsOntology class, and
-the intention is to have a central entity to manage the ontologies of the entire
-net, including loading and reasoning. For these purposes we defined one property
-to contain the OWL API ontology manager, as well as two operations for including
-new ontology documents and deduce which pragmatics are valid for a given
-OntologyMemeber.
+is contained by the PetriNet class. This is the PragmaticsOntology class
+(\figref{ann_model_diagram}, right), and the intention is to have a central
+entity to manage the ontologies of the entire net, including loading and
+reasoning. For these purposes we defined one property to contain the OWL API
+ontology manager, as well as two operations for including new ontology documents
+and deduce which pragmatics are valid for a given OntologyMemeber.
 
 \subsection{Adding Pragmatics Sets}\label{sec:menufirsttime}
-There needs to be a convenient way to add pragmatics sets to a model from
-ontology documents. We decided to extend the context menu of the
-PragmaticsOntology class for this purpose. 
+There needs to be a convenient way to add domain and model specific pragmatics
+sets to a model from ontology documents. We decided to extend the context menu
+of the PragmaticsOntology class for this purpose.
 
 Eclipse defines several extension points for extending every part of the UI.
 Menus in particular have more than one way of being extended. The ePNK manual
@@ -348,7 +405,7 @@ example of how to implement such an extension. By following this example we have
 created the menu command ``Add Ontology'' under the submenu Pragmatics. The
 extension is listed in \lstref{addOntologyMenu}. 
 
-\begin{lstlisting}[language=XML,float,label=lst:addOntologyMenu,
+\begin{lstlisting}[language=XML,float,label=lst:addOntologyMenu,numbers=left,stepnumber=5,
 caption=Add Ontology Menu Extension]
    <extension
          point="org.eclipse.ui.popupMenus">
@@ -380,24 +437,25 @@ referenced by external code. This is the case for all the elements in this
 listing, so we explain it here to avoid repetition.
 
 The extension defines an
-|<objectContribution>| element, stating that this menu item should only appear
-in the context menu when an object of the specified type is selected. The
+|<objectContribution>| element (line 3-8), stating that this menu item should
+only appear in the context menu when an object of the specified type is selected. The
 |adaptable| attribute is only relevant to IResource objects, but is a required
-attribute qith a default value of false. The |objectClass| is the
+attribute with a default value of false. The |objectClass| is the
 target class that will have its context menu include the new menu, in this case
 our PragmaticsOntology class.
 
-We then define a |<menu>| element that will create a submenu intended to group
-together all menu contributions related to pragmatics. The |label| is simply
-the label, and |path| specifies where in the parent menu it should be
-placed, whith the value ``additions'' being recommended. The menu has a
-|separator| child element that acts as an anchor for positioning items. 
+We then define a |<menu>| element (line 9-13) that will create a submenu
+intended to group together all menu contributions related to pragmatics. The
+|label| is simply the label, and |path| specifies where in the parent menu it
+should be placed, whith the value ``additions'' being recommended. The menu has
+a |separator| child element (line 14-16) that acts as an anchor for positioning
+items.
 
-Last, there is the |action| element, defining the menu item that performs the
-action. It specifies the |class| that performs an action, which should be a
+Last, there is the |action| element (starting line 18), defining the menu item
+that performs the action. It specifies the |class| that performs an action, which should be a
 class implementing the IObjectActionDelegate interface. We have implemented this
 as the |AddOntologyAction| class, described below. The |enablesFor| attribute
-specifies that the actionis enabled (clickable) when exactly 1 element is
+specifies that the actionis enabled (clickable) when exactly one element is
 selected. |label| is the displayed label. |menubarPath| defines
 placement by referencing the |id| and |separator| we defined for |<menu>|.
 
@@ -408,7 +466,8 @@ get the current shell to be able to display error messages)
 and |selectionChanged()| (which gives us the current model selection). These two
 methods are shown in \lstref{AddOntologyAction_config}.
 
-\fig{AddOntologyMenu.png}{Add Ontology Menu}{addOntologyMenu}
+\fig{AddOntologyMenu.png}{Add Ontology Menu}{addOntologyMenu}\com{flytt til kap
+6}
 
 \begin{lstlisting}[language=Java,float,label=lst:AddOntologyAction_config,
 caption=AddOntologyAction setActivePart() and selectionChanged()]
@@ -435,11 +494,11 @@ caption=AddOntologyAction setActivePart() and selectionChanged()]
 \end{lstlisting}
 
 When the menu item is clicked, the |run()| method will be called, shown in
-\lstref{AddOntologyAction_run}. This method will open the file selection dialog
-shown in \figref{addOntologyDialog}. This dialog shows the current project's
-resources and asks the user to select an ontology document. It does not filter
-files on their extension, as there exist editors that save ontologies with
-different extensions than those defined by W3C.
+\lstref{AddOntologyAction_run}. This method uses standard Eclipse classes to
+open the file selection dialog shown in \figref{addOntologyDialog}. This dialog
+shows the current project's resources and asks the user to select an ontology
+document. It does not filter files on their extension, as there exist editors
+that save ontologies with different extensions than those defined by W3C.
 
 \begin{lstlisting}[language=Java,float,label=lst:AddOntologyAction_run,
 caption=AddOntologyAction run()]
@@ -468,7 +527,8 @@ caption=AddOntologyAction run()]
 		}
 	}
 \end{lstlisting}
-\fig{AddOntologyDialog.png}{Add Ontology Dialog}{addOntologyDialog}
+\fig{AddOntologyDialog.png}{Add Ontology Dialog}{addOntologyDialog}\com{flytt til kap
+6}
 
 If the user selects a file and clicks OK, the |run()| method continues by
 calling |addOntologyFromFile()| on the selected |PragmaticsOntology|.
@@ -489,7 +549,7 @@ rewriting it to use the new ePNK CPN Type classes. This plan was later discarded
 in favor of depending on the Access/CPN plugin, as Access/CPN has continually
 been improved during development of \thename{}, and is now also capable of
 parsing graphics data. And by depending on Access/CPN instead of writing our own
-parser, we can also benefit from further updates more easily.
+parser, we can benefit from further updates and improvements.
 
 The Eclipse Plugin IDE includes several template plugin projects, and one of
 them is for creating an Import Wizard, that is a step-by-step dialog for
@@ -497,13 +557,13 @@ importing resources into the Eclipse workbench, for instance copying a file from
 the file system to a project, or importing entire projects from version control.
 The template also preconfigures the plugin manifest with an extension that makes
 the wizard available in Eclipse's Import Dialog. This is shown in
-\figref{import_wizard}
+\figref{import_wizard} (left)\com{double figure}
 
 The import wizard for importing CPN Tools models only has one step, which
 requires the user to select the .cpn file from the file system, and select a
 destination in the workspace for the converted model. It is shown in
-\figref{import_wizard}. AFter selecting the source file, the wizard suggests a
-new name for the converted model based on the original file name but with the
+\figref{import_wizard} (right). After selecting the source file, the wizard
+suggests a new name for the converted model based on the original file name but with the
 .pnml extension.
 \fig{import_wizard.png}{Import Wizard}{import_wizard}
 
@@ -531,7 +591,7 @@ entry can be divided into three parts, and we will explain each part in the
 following subsections.
 
 	\subsection{Providing a Dynamic Context Menu}
-	
+	\com{TODO}
 	
 	\subsection{Determining Appropriate Pragmatics}
 	
@@ -543,18 +603,21 @@ following subsections.
 	it should be possible to leverage this to efficiently maintain an accurate
 	ontology of the loaded CPN model. But as a proof of concept our approach is
 	sufficient.
+	\com{TODO}
 	
 	\subsection{Creating the Pragma Model Element}
+	\com{TODO}
 	
 \section{Defining Model Specific Pragmatics Sets}
+\com{vurder å flytte til kap 7}
 Creating a set of model specific pragmatics (or any set of pragmatics) is as
-simple as writing an ontology for it, but this isn't easy if you're not already
-familiar with ontologies and the OWL 2 specification and syntaxes. There exist
+simple as writing an ontology for it, but this is not easy if you are not
+already familiar with ontologies and the OWL 2 specification and syntaxes. There exist
 a number of tools for writing ontologies, 
 
 Dynamically supported in content assist 
 If ontology-based, use plugin editor
-	
+
 A specialised tool for creating model specific pragmatics would have ben ideal.
 Such a tool would give simple mechanics using GUI controls for specifying which
 model elements a pragmatic can be attached to, and which parameters it has. The

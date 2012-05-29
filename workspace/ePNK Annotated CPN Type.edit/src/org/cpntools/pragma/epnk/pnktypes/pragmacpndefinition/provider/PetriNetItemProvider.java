@@ -164,6 +164,11 @@ public class PetriNetItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(PnmlcoremodelPackage.Literals.PETRI_NET__PAGE,
+				 PragmacpndefinitionFactory.eINSTANCE.createPage()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PnmlcoremodelPackage.Literals.PETRI_NET__PAGE,
 				 CpndefinitionFactory.eINSTANCE.createPage()));
 
 		newChildDescriptors.add
