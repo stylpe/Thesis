@@ -1,18 +1,1 @@
-Importer
-- Read inscriptions
-- Use PragmaCPN type
-- Generate Diagram Information Extension
-
-CPN Type
-- Confirm inscription attributes OK
-- Visualise inscriptions
-- Constraints
-- Declarations? 
-- Ports and sockets?
-
-PragmaCPN Type
-- Select Pragma ontologies from plugin 
-- And from project OK
-- Load ontologies OK
-- Annotate OK
-	- Content assist OK
+Forklare nppn

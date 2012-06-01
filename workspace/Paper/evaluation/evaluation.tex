@@ -1,25 +1,124 @@
 \chapter{Evaluation}
 \label{chap:evaluation}
 
-In this chapter we will first demonstrate how to use \thename{} by working with
-a simple example that highlights  
+In this chapter we will first demonstrate how to use \thename{} by annotating
+the WebSocket CPN model from Chapter \ref{chap:background}. We also briefly
+show examples from other CPN models of protocols.
+We discuss performance of the reasoner engine, and explain some of the
+limitations of \thename{}
 
-\section{Annotation of the WebSocket Protocol Model}
+\section{Annotating the WebSocket CPN Model}
+We begin by showing an overview of the full Eclipse window in
+\figref{full_overview}. We have already imported the WebSocket CPN model created
+with CPN Tools, using the Import Wizard presented in Section
+\ref{sec:import_wizard}. We have opened both the tree editor and the
+graphical diagram editor, and laid them out side by side. 
 
-The WebSocket Protocol
+\fig[0.32]{eval/first.png}{Eclipse Overview}{full_overview}
 
+The diagram editor cannot precisely replicate the look of CPN Tools, but is
+sufficient to easily recognise the intended layout. The elements can also be
+manually moved to clean up mistakes made by the Import Wizard. 
 
-Simple protocol (TCP)
+At the bottom, the Properties View is open, showing the properties of the
+selected transition. Any of the properties can be directly edited here.
 
-Kao-chow authentication protocol (alt fra Kent sitt paper)
+To annotate an element with a pragmatic, we right-click it and open the Annotate
+With submenu, shown in \figref{place_channel} (a). The menu shows only
+pragmatics that are applicable to this particular place, in this case Id and
+Channel. By selecting one of the available pragmatics, it will be added as a
+child of the place. The final result is seen in \figref{place_channel} (b),
+showing both the tree editor and the Properties View.
 
-The Edge Router Discovery Protocol (ERDP) for mobile ad-hoc networks
+\figDbl{eval/place_menu.png}{Pragmatics
+Choices}{eval/place_Channel.png}{Result}{Annotating Place with Channel
+Pragmatic}{place_channel}
 
+In \figref{overview_annotated}, we show the diagram view of the Overview module
+with several pragmatics annotations applied. The Client WebSocket and Server
+Websocket substitution transitions have been annotated with \pragma{Principal}
+to signify that these are physical endpoints of the protocol. The places between
+them have the \pragma{Channel} pragmatic, representing 
 
-LOGO
+\fig[0.4]{eval/overview_annotated.png} {Overview Module Annotated}
+{overview_annotated}
 
-\section{User Feedback}
+After creating the model-specific pragmatics ontology, we must load it into the
+model. This is done by right-clicking the PragmaticsOntology in the model,
+choosing Add Ontology under the Pragmatics menu (\figref{addOntology} (a)), and
+selecting the desired ontology document from the project browser
+(\figref{addOntology} (b)).
 
+\figDbl[0.45]{AddOntologyMenu.png}{Add Ontology Menu}
+{AddOntologyDialog.png}{Add Ontology Dialog}
+{Steps for Adding Pragmatics Ontology}{addOntology}
 
+When we now open the Annotate With submenu, we see the new pragmatic is
+available. 
 
+\subsection{The Kao-Chow Protocol Model}
 
+\fig[0.7]{eval/kc_overview.pdf}{KC}{kc}
+
+\section{Performance}
+
+We discovered that the Annotate With submenu takes several minutes to appear.
+This is due to the axioms that are added to the ontology to enforce closed world
+assumption, causing the reasoner engine to take a long time to classify the
+ontology. These axioms consist of the axiom stating that owl:Thing is
+equivalent to the asserted individuals and the axiom stating that asserted
+individuals are different. As a test, we temporarily commented out these two
+axioms, and the Annotate With submenu would then show up almost instantly.
+However, its contents would not always be correct, for instance the :External
+pragmatic would be incorrectly available on all transitions. Another workaround
+is to split the model into several files with one page in each file,
+which is what we did to be able to annotate the WebSocket CPN model.
+Hypothetically it is possible to design pragmatics with constraints spanning 
+
+A delay of more than a couple of seconds on a frequently used part of an
+interactive user interface is not acceptable. We found through gradually
+constructing a test model that the delay becomes noticeable when the model has
+25 elements, giving a delay of about one second. The Kao-Chow model has 96
+elements, which requires about 7 seconds to compute the valid pragmatics. The
+WebSocket model has 372 elements, and takes several minutes to classify.
+
+An obvious inefficiency in our approach is that we are constantly recreating the
+entire ontology representing the current state of the model. It is worth noting
+that EMF has an extensive notification framework for reacting to model changes,
+and it should be possible to leverage this to efficiently maintain an accurate
+ontology of the loaded CPN model. However, the crucial axioms that enforce CWA
+cannot be edited in place, and would thus still need to be removed and added
+every time the model is changed.
+
+We believe this problem needs to be addressed at the level of the reasoner
+engine implementation. Thanks to the design of OWL API, switching reasoners is
+fast and simple. However, none of the four reasoner engines we tested (listed in
+Section \ref{sec:ontologies}) gave acceptable performance. Still, as a proof of
+concept for the usefulness and expressiveness of ontologies, our approach is
+sufficient.
+
+\section{Limitations}\label{sec:limitations}
+
+The graphical diagram editor of ePNK has some shortcomings and we do not
+consider it fully mature. Arc appearance is not serialised, making it impossible
+to accurately copy layout from CPN Tools. Labels are not attached to their
+parent elements, and by default are placed at coordinates 0,0. As ePNK is
+continually being updated, we look forward to improvements to this part of
+the framework.
+
+Accurate modeling of module instancing (the fact that a module can be a
+submodule of several modules) is impractical in the current version of ePNK.
+This is again due to the fact that merging EMF models is not possible, meaning
+we must subclass existing leaf classes for model elements and therefore inherit
+their properties. A subclass of RefPlaces could be used to represent either a
+port place or a socket place, but either case presents problems as a RefPlaces
+can only reference a single other place.
+
+As a port place, it could be on a module that has several instances, so it would
+either need to contain a reference for each instance (which is not possible due
+to being limited to one) or the module itself would need to be duplicated
+(which is impractical from a user perspective since all annotations would have to be
+placed once on each module instance). As a socket place, it could be connected
+to several submodules (as is the case with the Connection status place in the
+WebSocket CPN model) and would need to have a reference to the ports in each of
+them.

@@ -41,7 +41,7 @@ selected.
 	with ontologies, together with the HermiT ontology reasoner
 	\cite{shearer2008hermit}.
 	
-	\fig{AppOverviewDiagram.pdf}{Application Overview Diagram}{app_overview}
+	\fig[0.42]{AppOverviewDiagram.pdf}{Application Overview Diagram}{app_overview}
 	
 	\figref{app_overview} shows the different elements that make up \thename{}.
 	The elements with a thick border are the ones created as part of this thesis,
@@ -73,8 +73,9 @@ give a short explanation of each element:
 	is built using these two frameworks to provide a scalable multi-window editing
 	environment.
 	
-	\item The Workspace defines API for creating and managing resources (projects,
-	files, and folders) that are produced by tools and kept in the file system.
+	\item The Workspace defines API for creating and managing resources 
+	(pro-jects, files, and folders) that are produced by tools and kept in the file
+	system.
 	
 	\item The Team plugin is a foundation for collaboration and versioning systems.
 	It unifies many operations that are common between version control systems.
@@ -149,7 +150,7 @@ Core Model Type. Its Type Model is shown in \figref{pnmlcoremodel}. This Type is
 intended to be generic, and only defines the basic classes that most Petri Net variants
 contain, like Pages (modules), Places, Transitions and Arcs. The only constraint
 defined is that an arc must go between two nodes on the same page.
-\fig{PNMLCoreModel.pdf}{PNML Core Model}{pnmlcoremodel}
+\fig[0.4]{PNMLCoreModel.pdf}{PNML Core Model}{pnmlcoremodel}
 
 The user can choose to extend a Model with features and capabilities of a more 
 advanced Petri Net Type. This is done by adding a Type as a child of the Petri Net
@@ -218,7 +219,7 @@ serialisation.
 CPN Tools has a sister project called Access/CPN. This is an
 EMF-based tool to parse .cpn files (files created with CPN Tools) and represent
 them as an EMF-model. The .cpn files saved by CPN Tools are XML-based, which makes them
-easy to parse. However, having an existing solution for this is preferrable, as
+easy to parse. However, having an existing solution for this is preferable, as
 we can rely on it to keep up to date with new versions of CPN Tools.
 
 The model definition used by Access/CPN is very similar to that of ePNK. This
@@ -271,13 +272,14 @@ pragmatics on model elements. This acts as a basis to enable the \thename{}
 model editor to determine appropriate pragmatics for selected model elements, as
 well as for model validation. 
 
-To parse these ontologies, we use OWL API \cite{owlapi}, the reference Java
+To parse these ontologies, we use OWL API \cite{horridge2009owl}, the reference Java
 implementation for OWL 2, which is capable of reading ontologies in any of the
-standard OWL 2 syntaxes, as well as programatically creating and modifying ontologies.
+standard OWL 2 syntaxes, as well as programmatically creating and modifying
+ontologies.
 Implementation details are given in the next chapter.
 
 There exists many reasoner engine implementations, with some that support OWL
-API. Dentler et al. \cite{dentler2011comparison} higlight the different
+API. Dentler et al. \cite{dentler2011comparison} highlight the different
 advantages and weaknesses of several such reasoners.
 We give our own evaluation of some of them in context of \thename{} in Chapter
 \ref{chap:evaluation}. The selected reasoners were chosen for being freely

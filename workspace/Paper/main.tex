@@ -26,14 +26,15 @@
 	breaklines=true,
 	frame=lines
 }
-
+ 
 \lstMakeShortInline[showstringspaces=false]{|}
 
 \input{newcommands}
 
-\begin{document}
+\begin{document} 
 
 \lstset{language=CPNML,tabsize=1,float,showstringspaces=false,basicstyle=\ttfamily\footnotesize}
+\lstset{numberstyle=\scriptsize}
 %\begin{comment}
 
 \pagestyle{empty}
@@ -62,6 +63,7 @@
 \input{conclusion/conclusion}
 
 \appendix
+\input{downloading}
 \bibliographystyle{alpha}\bibliography{literature,rfc}
 \listoffigures
 \lstlistoflistings

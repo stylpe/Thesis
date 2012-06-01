@@ -1,62 +1,46 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
-
-\section{Results}
-
-We have constructed a fully functional proof of concept that demonstrates the
-advantages and disadvantages of using ontologies to manage code generation
-pragmatics and applying them to a cpn model. Through our evaluation by using it to annotate CPN models
-of different sizes, we have shown that ontology reasoning using CWA yields
-decreasing performance to a point that makes our prototype unusable for the
-WebSocket CPN model.
-
-At the time of writing, we are using unreleased development versions of parts of
-ePNK, and are therefore unable to make \thename{} avaialble for download as an
-Eclipse plugin.
-ePNK is scheduled for an update release later this summer.
-
-\subsection{Limitations}
-
-The graphical diagram editor of ePNK has some shortcomings and we do not
-conisder it fully mature. Arc appearance is not serialised, making it impossible
-to accurately copy layout from CPN Tools. Labels are not attached to their
-parent elements, and by default are placed at coordinates 0,0. We look forward
-to improvements to this part of ePNK.
-
-Accurate modeling of module instancing (the fact that a module can be a
-submodule of several modules) is impractical in the current version of ePNK if
-we are to only subclass existing leaf classes.
-RefPlaces can only reference a single other place. It could be used to represent
-either the port place or the socket place, but either case presents problems. As
-a port place, it could be on a module that has several instances, so it would
-either need to contain a reference for each instance (which is not possible due
-to being limited to 1) or the module itself would need to be duplicated (which
-is impractical from a user perspective since all annotations would have to be
-placed once on each module). As a socket place, it could be connected to several
-submodules (as is the case with the Connection status place in the WebSocket
-CPN model) and would need to have a reference to the ports in each of them. 
+With \thename{}, we have constructed a fully functional proof of concept that
+demonstrates the advantages and disadvantages of using ontologies to manage code
+generation pragmatics and applying them to a CPN model. As shown in Chapter
+\ref{chap:analysis}, this prototype meets all of the requirements in Section
+\ref{sec:requirements}. Through our evaluation by using it to annotate CPN
+models of different sizes, we have shown that using ontologies gives a highly
+expressive means to defining pragmatics as well as providing automatic
+validation of the annotated model. However ontology reasoning using CWA yields
+decreasing performance as model size increases, to a point that makes our
+prototype unusable for the WebSocket CPN model. Still, we believe our approach
+has potential, and warrants further optimisation and research.
 
 \section{Future work}
 
-Continue the work of Simonsen, defining more domain-specific pragmatics
+Continue the work of Simonsen, defining more general and domain-specific
+pragmatics. Also, assert required configuration arguments.
 
-Expand generic pragmatics to describe pragmatics properties
+Finding or developing ontology reasoner tailored for CWA.
 
-Developing ontology reasoner tailored for CWA.
+A specialised tool for creating model specific pragmatics would have been ideal.
+Such a tool would give simple mechanics using GUI controls for specifying which
+model elements a pragmatic can be attached to, and which parameters it has. The
+Plugin Manifest editor is a good example of what we have in mind. However, this
+could not be included for this thesis due to time constraints.
 
-Integrating a better ontology editor tailored for pragmatics
-
-Implement structured labels for the CPN Type.
+Implement structured labels for the CPN Type. Could enable placement of
+pragmatics inside expressions.
 
 When importing, let user choose between CPN and Pragma CPN. Alternatively,
 mechanic for upgrading the Type.
+
+Accurately model sub-modules, ports and sockets. This enables more advanced
+pragmatics; for instance the Principal pragmatic could be specified to only be
+available for substitution transitions on top-level modules.
 
 \section{Acknowledgments}
 
 Thank supervisor Lars Michael Kristensen
 
-Kent Inge Fagerland Simonsen
+Kent Inge Fagerland Simonsen 
 
 Michael Westergaard for help with Access/CPN
 
