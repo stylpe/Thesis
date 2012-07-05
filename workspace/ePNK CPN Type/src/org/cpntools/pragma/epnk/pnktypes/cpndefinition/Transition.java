@@ -16,6 +16,7 @@ package org.cpntools.pragma.epnk.pnktypes.cpndefinition;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#getGuard <em>Guard</em>}</li>
+ *   <li>{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#isIsSubstitutionTransition <em>Is Substitution Transition</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,5 +50,32 @@ public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition
 	 * @generated
 	 */
 	void setGuard(Guard value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Substitution Transition</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Substitution Transition</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Substitution Transition</em>' attribute.
+	 * @see #setIsSubstitutionTransition(boolean)
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.CpndefinitionPackage#getTransition_IsSubstitutionTransition()
+	 * @model default="false" required="true"
+	 * @generated
+	 */
+	boolean isIsSubstitutionTransition();
+
+	/**
+	 * Sets the value of the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#isIsSubstitutionTransition <em>Is Substitution Transition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Substitution Transition</em>' attribute.
+	 * @see #isIsSubstitutionTransition()
+	 * @generated
+	 */
+	void setIsSubstitutionTransition(boolean value);
 
 } // Transition

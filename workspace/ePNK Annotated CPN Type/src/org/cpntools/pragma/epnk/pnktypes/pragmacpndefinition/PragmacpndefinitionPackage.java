@@ -585,6 +585,15 @@ public interface PragmacpndefinitionPackage extends EPackage {
 	int TRANSITION__GUARD = CpndefinitionPackage.TRANSITION__GUARD;
 
 	/**
+	 * The feature id for the '<em><b>Is Substitution Transition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__IS_SUBSTITUTION_TRANSITION = CpndefinitionPackage.TRANSITION__IS_SUBSTITUTION_TRANSITION;
+
+	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

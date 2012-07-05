@@ -34,6 +34,9 @@
   SubClassOf( :CloseChannel basic:Pragmatic )
   SubClassOf( :CloseChannel ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
 
+  SubClassOf( :Operation basic:Pragmatic )
+  SubClassOf( :Operation ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
+  
   DisjointClasses(:Id :External )
 
 

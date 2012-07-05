@@ -31,22 +31,21 @@ selected.
 	
 	The ePNK framework \cite{kindler2011epnk}, an extendable framework for working
 	with Petri Nets in a graphical manner, and that makes it possible to specify
-	your own Petri Net type. It is built on the Eclipse Modeling Framework (EMF)
+	your own Petri Net type. It is built on the Eclipse Modelling Framework (EMF)
 	\cite{steinberg2008emf} (which Access/CPN is also built on). 
 
 	A central part of representing the CPM model is also to devise a means for
 	representing the code generation pragmatics that can be attached to CPN model
 	elements. It was suggested to take an ontology-based approach, and we selected
 	the reference Java implementation OWL API \cite{horridge2009owl} to define and work
-	with ontologies, together with the HermiT ontology reasoner
-	\cite{shearer2008hermit}.
+	with ontologies, together with a number of reasoner engines.
 	
 	\fig[0.42]{AppOverviewDiagram.pdf}{Application Overview Diagram}{app_overview}
 	
 	\figref{app_overview} shows the different elements that make up \thename{}.
 	The elements with a thick border are the ones created as part of this thesis,
 	while the rest represent existing solutions used and built upon. These will
-	be described in the following sections. 
+	be described in the following sections.
 
 \section{The Eclipse Platform}
 The Eclipse Rich Client Platform (RCP) \cite{eclipse} is an open source,
@@ -115,7 +114,7 @@ it will let you download and install it directly, as well as enabling update
 notifications.
 
 
-\section{ePNK: Petri Net modeling framework}
+\section{ePNK: Petri Net modelling framework}
 \label{sec:epnk}
 ePNK is an Eclipse plugin both for working with standard Petri Net models, and a
 platform for creating new tools for specialised Petri Net types, which is
@@ -190,13 +189,13 @@ In light of this, our decision was therefore to develop our own Petri Net type
 that matches the structure of CPN Tools models as well as supporting annotation
 with pragmatics, and we present this Type as part of the next chapter.
 
-\section{Eclipse Modeling Framework}
+\section{Eclipse Modelling Framework}
 EMF is an open source framework for Model Driven Architecture (MDA) in Java. It
 is an Eclipse plugin that is part of the Eclipse Platform. MDA is an
 industry architecture proposed by the OMG that aims to unify some of the
-industry best practices in software architecture, modeling, metadata management,
+industry best practices in software architecture, modelling, metadata management,
 and software transformation technologies that allow a user to develop a
-modeling specification once and target multiple technology implementations by
+modelling specification once and target multiple technology implementations by
 using precise transformations/mappings. 
 
 EMF is an example of the use of MDA to enable creation of a UML model
@@ -208,7 +207,7 @@ viewing and command-based editing of models, and a basic editor. This serves as
 the foundation used to build ePNK, including CPN model editing and PNML
 serialisation.
 
-	\subsection{Graphical Modeling Framework}
+	\subsection{Graphical Modelling Framework}
 	GMF builds on EMF to provide tools to implement more advanced graphical viewing
 	and editing of models. It works by creation of model transformations that use
 	the metamodels created with EMF to generate implementations of graphical views and
@@ -281,8 +280,7 @@ Implementation details are given in the next chapter.
 There exists many reasoner engine implementations, with some that support OWL
 API. Dentler et al. \cite{dentler2011comparison} highlight the different
 advantages and weaknesses of several such reasoners.
-We give our own evaluation of some of them in context of \thename{} in Chapter
-\ref{chap:evaluation}. The selected reasoners were chosen for being freely
-available, and include Pellet \cite{sirin2007pellet}, HermiT
+We have chosen four different reasoner engines, each of which are freely
+available. They are Pellet \cite{sirin2007pellet}, HermiT
 \cite{shearer2008hermit}, FaCT++ \cite{tsarkov2006fact++} and TrOWL
-\cite{TPR2010}.
+\cite{TPR2010}. 

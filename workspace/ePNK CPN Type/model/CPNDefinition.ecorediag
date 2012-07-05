@@ -127,6 +127,10 @@
   <children xmi:type="notation:Node" xmi:id="_zIJzgFw8EeGy57lI5uYYHQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_zILBoFw8EeGy57lI5uYYHQ" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_zILBoVw8EeGy57lI5uYYHQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_kSnfYascEeGx05-dZpjuWw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="CPNDefinition.ecore#//Transition/isSubstitutionTransition"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_kSoGcKscEeGx05-dZpjuWw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_zILosFw8EeGy57lI5uYYHQ"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_zILosVw8EeGy57lI5uYYHQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_zILoslw8EeGy57lI5uYYHQ"/>
@@ -138,7 +142,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_zIJzgVw8EeGy57lI5uYYHQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="CPNDefinition.ecore#//Transition"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zIJzglw8EeGy57lI5uYYHQ" x="250" y="310"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zIJzglw8EeGy57lI5uYYHQ" x="185" y="310"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_R-FQ4Hf_EeGItp10MMbu3g" type="1001">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R-6XUHf_EeGItp10MMbu3g" source="Shortcut">
@@ -314,10 +318,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_Z-Yy8I2CEeGDIopVF0Zgtg" type="3002" source="_wOzAwFw8EeGy57lI5uYYHQ" target="_XYXL4I2CEeGDIopVF0Zgtg">
     <children xmi:type="notation:Node" xmi:id="_Z-aoII2CEeGDIopVF0Zgtg" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_Z-aoIY2CEeGDIopVF0Zgtg" x="-41" y="-36"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Z-aoIY2CEeGDIopVF0Zgtg" x="-41" y="34"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_Z-bPMI2CEeGDIopVF0Zgtg" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_Z-b2QI2CEeGDIopVF0Zgtg" x="-41" y="12"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_Z-b2QI2CEeGDIopVF0Zgtg" x="-41" y="-8"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_Z-Yy8Y2CEeGDIopVF0Zgtg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_Z-Yy8o2CEeGDIopVF0Zgtg" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
@@ -339,10 +343,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_j7ABYKKcEeGfLulQUvvT1g" type="3002" source="_zIJzgFw8EeGy57lI5uYYHQ" target="_gn1ngKKcEeGfLulQUvvT1g">
     <children xmi:type="notation:Node" xmi:id="_j7ABZKKcEeGfLulQUvvT1g" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_j7ABZaKcEeGfLulQUvvT1g" x="-46" y="-22"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j7ABZaKcEeGfLulQUvvT1g" x="-49" y="23"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_j7ABZqKcEeGfLulQUvvT1g" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_j7ABZ6KcEeGfLulQUvvT1g" x="-46" y="15"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_j7ABZ6KcEeGfLulQUvvT1g" x="-49" y="-15"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_j7ABYaKcEeGfLulQUvvT1g" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_j7ABYqKcEeGfLulQUvvT1g" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
@@ -351,10 +355,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_seu9AKKcEeGfLulQUvvT1g" type="3002" source="_kX8ukVw8EeGy57lI5uYYHQ" target="_hAKA4KKcEeGfLulQUvvT1g">
     <children xmi:type="notation:Node" xmi:id="_seu9BKKcEeGfLulQUvvT1g" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_seu9BaKcEeGfLulQUvvT1g" x="-39" y="44"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_seu9BaKcEeGfLulQUvvT1g" x="-45" y="42"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_seu9BqKcEeGfLulQUvvT1g" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_seu9B6KcEeGfLulQUvvT1g" x="-47" y="-15"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_seu9B6KcEeGfLulQUvvT1g" x="-45" y="-14"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_seu9AaKcEeGfLulQUvvT1g" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_seu9AqKcEeGfLulQUvvT1g" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
@@ -365,10 +369,10 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_tl4LQKKcEeGfLulQUvvT1g" type="3002" source="_kX8ukVw8EeGy57lI5uYYHQ" target="_pb-WoKKcEeGfLulQUvvT1g">
     <children xmi:type="notation:Node" xmi:id="_tl4LRKKcEeGfLulQUvvT1g" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_tl4LRaKcEeGfLulQUvvT1g" x="-38" y="-30"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tl4LRaKcEeGfLulQUvvT1g" x="-45" y="16"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_tl-R4KKcEeGfLulQUvvT1g" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_tl-R4aKcEeGfLulQUvvT1g" x="-52" y="13"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_tl-R4aKcEeGfLulQUvvT1g" x="-45" y="-11"/>
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_tl4LQaKcEeGfLulQUvvT1g" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_tl4LQqKcEeGfLulQUvvT1g" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>

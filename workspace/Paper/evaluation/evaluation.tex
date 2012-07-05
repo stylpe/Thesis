@@ -3,9 +3,10 @@
 
 In this chapter we will first demonstrate how to use \thename{} by annotating
 the WebSocket CPN model from Chapter \ref{chap:background}. We also briefly
-show examples from other CPN models of protocols.
-We discuss performance of the reasoner engine, and explain some of the
-limitations of \thename{}
+show examples from other CPN models of protocols. We stress that these are not
+exhaustive examples, and only serve to demonstrate the capabilities of the
+prototype. At the end of the chapter, we discuss performance of the reasoner
+engine, and explain some of the limitations of \thename{}
 
 \section{Annotating the WebSocket CPN Model}
 We begin by showing an overview of the full Eclipse window in
@@ -30,41 +31,124 @@ Channel. By selecting one of the available pragmatics, it will be added as a
 child of the place. The final result is seen in \figref{place_channel} (b),
 showing both the tree editor and the Properties View.
 
-\figDbl{eval/place_menu.png}{Pragmatics
+\figDbl[0.6]{eval/place_menu.png}{Pragmatics
 Choices}{eval/place_Channel.png}{Result}{Annotating Place with Channel
 Pragmatic}{place_channel}
 
+\subsection{Annotated Overview Module}
 In \figref{overview_annotated}, we show the diagram view of the Overview module
 with several pragmatics annotations applied. The Client WebSocket and Server
 Websocket substitution transitions have been annotated with \pragma{Principal}
-to signify that these are physical endpoints of the protocol. The places between
-them have the \pragma{Channel} pragmatic, representing 
+to signify that these are physical entities or endpoints of the protocol. The
+places between them are annotated with the \pragma{Channel} pragmatic, representing
+communication channels.
 
-\fig[0.4]{eval/overview_annotated.png} {Overview Module Annotated}
+\fig[0.4]{eval/overview_annotated.png} {Annotated Overview Module}
 {overview_annotated}
+
+
+\subsection{Annotated Client WebSocket Module}
+
+The Client WebSocket Module gives the first opportunity to apply the
+\pragma{External} and \pragma{Id} pragmatics. The \pragma{External} pragmatic
+signifies a part of the API interface of the protocol, usually in the form of a
+method, and should define the appropriate method arguments it requires.
+To be able to determine which model elements are part of the method's execution,
+there needs to be an unambiguous chain of places annotated with the \pragma{Id}
+pragmatic. This is the reason for the group of complex declarations that
+characterise the \pragma{External} pragmatic: It is useless unless connected to
+a place annotated with \pragma{Id}. By enforcing this, \thename{} helps the
+user avoid or instantly recognise mistakes while annotating the model. 
+
+
+As a demonstration of usage, we have annotated the Filter Connection Request and
+Filter Messages transitions with the External pragmatic. We show the contents
+of the Add Pragmatics menu in \figref{external_before_after}, showing before and
+after annotating the connected place with \pragma{Id}. The final result is shown
+in \figref{client_ws_partial}.
+
+\figDbl{eval/external_before.png}{Without \pragma{Id}}
+{eval/external_after.png}{With \pragma{Id}}
+{Availability of \pragma{External}}{external_before_after}
+
+\fig[0.6]{eval/client_ws_partial.png}{Annotated Client WebSocket
+Module, Partial View}{client_ws_partial}
+
+Continuing, let's assume we want to treat masking and unmasking specially, and
+decide we need model-specific pragmatics for this. We start by writing the ontology shown
+in \lstref{ws_ontology}, and saving it in the same project as our model. The
+ontology defines two simple pragmatics |:Mask| and |:Unmask| that can belong to
+transitions.
+
+
+\begin{lstlisting}[label=lst:ws_ontology,float,
+caption=WebSocket Masking Pragmatics]
+Prefix(:=<hib.no/ontologypetrinets/ws/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(cpn:=<http://hib.no/ontologypetrinets/cpn/>)
+
+Ontology(<hib.no/ontologypetrinets/ws/>
+  Import( <http://k1s.org/OntologyRestrictedNets/basic/> )
+  Import( <http://hib.no/ontologypetrinets/cpn/> )
+  
+  SubClassOf( :Mask basic:Pragmatic )
+  SubClassOf( :Mask ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
+  
+  SubClassOf( :Unmask basic:Pragmatic )
+  SubClassOf( :Unmask ObjectAllValuesFrom( basic:belongsTo cpn:Transition ) )
+)
+\end{lstlisting}
 
 After creating the model-specific pragmatics ontology, we must load it into the
 model. This is done by right-clicking the PragmaticsOntology in the model,
-choosing Add Ontology under the Pragmatics menu (\figref{addOntology} (a)), and
+choosing Add Ontology under the Pragmatics menu (\figref{addOntology_menu}), and
 selecting the desired ontology document from the project browser
-(\figref{addOntology} (b)).
+(\figref{addOntology_dialog}).
 
-\figDbl[0.45]{AddOntologyMenu.png}{Add Ontology Menu}
-{AddOntologyDialog.png}{Add Ontology Dialog}
-{Steps for Adding Pragmatics Ontology}{addOntology}
+\fig[0.6]{AddOntologyMenu.png}{Add Ontology Menu}{addOntology_menu}
 
-When we now open the Annotate With submenu, we see the new pragmatic is
-available. 
+\fig{AddOntologyDialog.png}{Add Ontology Dialog}{addOntology_dialog}
+
+When we now open the Annotate With submenu on a Transition instance, we see the
+new pragmatics are available, as shown in \figref{mask_unmask_in_menu}. 
+
+\fig[0.6]{eval/mask_unmask_in_menu.png}{Model-specific
+Pragmatics Mask and Unmask}{mask_unmask_in_menu}
+
+We conclude by showing two of the submodules of the Client WebSocket Module,
+\figref{new_connection_annotated} and \figref{process_response_annotated}, which
+demonstrate the placement of \pragma{Send}, \pragma{OpenChannel} and
+\pragma{Receive}, with examples of annotating a single model element with two
+(or more) pragmatics, as well as how to use \pragma{Operation} to signify
+internal method calls.
+
+\fig[0.6]{eval/new_connection_annotated.pdf}{Annotated New
+Connection Module}{new_connection_annotated}
+\fig[0.6]{eval/process_response_annotated.pdf}{Annotated
+Process Response Module}{process_response_annotated}
 
 \subsection{The Kao-Chow Protocol Model}
 
-\fig[0.7]{eval/kc_overview.pdf}{KC}{kc}
+The Kao-Chow Protocol Model we show in \figref{kc_overview} and
+\figref{kc_authenticate} is based on a more recent version of the same model
+used in \cite{Simonsen2011}. We imported it into \thename{} and annotated it
+with the same or equivalent pragmatics. \figref{kc_overview} shows the Overview
+module annotated with \pragma{Channel} and \pragma{Principal}.
+\figref{kc_authenticate} shows the Authenticate module. We again refer to
+\cite{Simonsen2011} for a closer explanation of the model.
+
+\fig[0.7]{eval/kc_overview.pdf}{Kao-Chow Protocol - Overview
+Module}{kc_overview}
+
+
+\fig[0.55]{eval/kc_authenticate.pdf}{Kao-Chow Protocol - Authenticate
+Module}{kc_authenticate}
 
 \section{Performance}
 
 We discovered that the Annotate With submenu takes several minutes to appear.
 This is due to the axioms that are added to the ontology to enforce closed world
-assumption, causing the reasoner engine to take a long time to classify the
+assumption, causing the reasoner engine to use a long time to classify the
 ontology. These axioms consist of the axiom stating that owl:Thing is
 equivalent to the asserted individuals and the axiom stating that asserted
 individuals are different. As a test, we temporarily commented out these two
@@ -73,7 +157,8 @@ However, its contents would not always be correct, for instance the :External
 pragmatic would be incorrectly available on all transitions. Another workaround
 is to split the model into several files with one page in each file,
 which is what we did to be able to annotate the WebSocket CPN model.
-Hypothetically it is possible to design pragmatics with constraints spanning 
+This would however prevent usage of pragmatics with constraints spanning
+across modules.
 
 A delay of more than a couple of seconds on a frequently used part of an
 interactive user interface is not acceptable. We found through gradually
@@ -102,17 +187,18 @@ sufficient.
 The graphical diagram editor of ePNK has some shortcomings and we do not
 consider it fully mature. Arc appearance is not serialised, making it impossible
 to accurately copy layout from CPN Tools. Labels are not attached to their
-parent elements, and by default are placed at coordinates 0,0. As ePNK is
-continually being updated, we look forward to improvements to this part of
-the framework.
+parent elements when the element is moved. Pragmatics added through the tree
+editor do not immediately show up in the diagram editor, forcing the user to
+close and reopen it to display pragmatics. As ePNK is continually being updated,
+we look forward to improvements to this part of the framework.
 
-Accurate modeling of module instancing (the fact that a module can be a
+Accurate modelling of module instancing (the fact that a module can be a
 submodule of several modules) is impractical in the current version of ePNK.
 This is again due to the fact that merging EMF models is not possible, meaning
 we must subclass existing leaf classes for model elements and therefore inherit
 their properties. A subclass of RefPlaces could be used to represent either a
 port place or a socket place, but either case presents problems as a RefPlaces
-can only reference a single other place.
+can only reference a single other place. 
 
 As a port place, it could be on a module that has several instances, so it would
 either need to contain a reference for each instance (which is not possible due
@@ -121,4 +207,14 @@ to being limited to one) or the module itself would need to be duplicated
 placed once on each module instance). As a socket place, it could be connected
 to several submodules (as is the case with the Connection status place in the
 WebSocket CPN model) and would need to have a reference to the ports in each of
-them.
+them. We note that ePNK is designed to conform to the PNML standard, and we
+would need to change or break the standard to accurately model module
+instancing.
+
+An important feature of certain reasoner engines, including Pellet, is the
+capability of giving detailed explanations for  different aspects of an
+ontology. In particular, having an explanation for why an ontology is
+inconsistent when placing pragmatics would be welcome. But due to the way we are
+repeatedly creating and discarding ontologies while annotating models, the
+explanation feature of Pellet caused problems by trying to access obsolete
+ontologies. Thus we had to disable this feature.

@@ -19,6 +19,7 @@ import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Arc;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.CausesInconcistencyException;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyDocument;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.OntologyMember;
+import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Page;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.PetriNet;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Place;
 import org.cpntools.pragma.epnk.pnktypes.pragmacpndefinition.Pragma;
@@ -35,6 +36,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -286,7 +288,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		// Create an empty ontology
 		OWLOntology ontology;
 		try {
-			ontology = createModelOntology();
+			ontology = createPageOntology(member);
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 			return Collections.emptySet();
@@ -295,7 +297,6 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		// Get factories
 		OWLDataFactory dataFactory = getManager().getOWLDataFactory();
 		PelletReasonerFactory reasonerFactory = PelletReasonerFactory.getInstance();
-		boolean notDirect = false;
 		
 		// Create mock pragmatic and get target member
         OWLNamedIndividual pragmaInd = dataFactory.getOWLNamedIndividual(":_pragma",localPrefix);
@@ -344,7 +345,7 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		// Get all Pragmatic subclasses
 		Set<OWLClass> classes = new HashSet<OWLClass>();
         OWLClass pragmaClass = dataFactory.getOWLClass(":Pragmatic", basicPrefix);
-		NodeSet<OWLClass> pragmaSubClasses = reasoner.getSubClasses(pragmaClass, notDirect);
+		NodeSet<OWLClass> pragmaSubClasses = reasoner.getSubClasses(pragmaClass, false);
 		
 		// Iterate the subclasses
 		for(OWLClass pragmaclass : pragmaSubClasses.getFlattened()) {
@@ -408,8 +409,24 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 //	}
 	
 	private OWLOntology previousModelOntology = null;
+
+	private OWLOntology createPageOntology(OntologyMember member) throws OWLOntologyCreationException {
+		
+		if(!(member instanceof Page)) {
+			EObject container = member.eContainer();
+			if(!(container instanceof Page))
+				throw new OWLOntologyCreationException();
+			member = (OntologyMember) container;
+		}
+		return createOntology(NetFunctions.getAllPageObjects((Page) member));
+	}
+
+	private OWLOntology createNetOntology() throws OWLOntologyCreationException {
+		return createOntology(NetFunctions.getAllNetObjects(getNet()));
+	}
 	
-	private OWLOntology createModelOntology() throws OWLOntologyCreationException {
+	private OWLOntology createOntology(List<org.pnml.tools.epnk.pnmlcoremodel.Object> objects) 
+			throws OWLOntologyCreationException {
 		if(previousModelOntology != null) 
 			unloadOntology(previousModelOntology);
 		String newiri = localurl+java.lang.System.currentTimeMillis()+"/";
@@ -420,10 +437,6 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 		
 		addDefaultOntologyImports(ontology);
 		addExternalOntologyImports(ontology);
-		
-//		Set<OWLAxiom> axioms = new HashSet<OWLAxiom>();
-		List<org.pnml.tools.epnk.pnmlcoremodel.Object> objects = 
-				NetFunctions.getAllNetObjects(getNet());
 		
 		OWLDataFactory factory = getManager().getOWLDataFactory();
 		for(org.pnml.tools.epnk.pnmlcoremodel.Object o : objects){
@@ -536,6 +549,11 @@ public class PragmaticsOntologyImpl extends LabelImpl implements PragmaticsOntol
 	}
 	
 	private String getElementOWLClassName(org.pnml.tools.epnk.pnmlcoremodel.Object o){
+		if(o instanceof Transition) {
+			Transition t = (Transition) o;
+			if(t.isIsSubstitutionTransition()) return "SubstitutionTransition";
+		}
+		
 		String name = o.eClass().getName();
 		if(name.equals("RefPlace")) return "Port";
 		

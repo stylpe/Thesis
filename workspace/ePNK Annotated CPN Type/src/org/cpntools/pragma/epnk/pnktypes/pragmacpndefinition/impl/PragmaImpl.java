@@ -93,7 +93,25 @@ public class PragmaImpl extends LabelImpl implements Pragma {
 	 * @generated NOT
 	 */
 	public String getText() {
-		return "<<"+iri+">>";
+		StringBuilder sb = new StringBuilder("<<");
+		
+		int cut = iri.lastIndexOf("/");
+		if(cut > 0) sb.append(iri.substring(cut+1));
+		else sb.append(iri);
+		
+		if(getArgs() != null && getArgs().size()>0) {
+			sb.append("(");
+			boolean first = true;
+			for(String arg : getArgs()) {
+				if(first) first = false;
+				else sb.append(", ");
+				sb.append(arg);
+			}
+			sb.append(")");
+		}
+		
+		sb.append(">>");
+		return sb.toString();
 	}
 
 	/**

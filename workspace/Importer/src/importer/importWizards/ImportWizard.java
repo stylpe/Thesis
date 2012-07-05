@@ -277,19 +277,20 @@ public class ImportWizard extends Wizard implements IImportWizard {
 		idToNodeMap.put(pnmlPage.getId(), pnmlPage);
 		
 		EList<org.pnml.tools.epnk.pnmlcoremodel.Object> pageList = pnmlPage.getObject();
-		
+
 		for(org.cpntools.accesscpn.model.Place cpnPlace : cpnPage.place()) {
 			Place pnmlPlace = (Place) pragmacpn.createPlace();
 			copyNodeParams(cpnPlace, pnmlPlace);
 			
-			float dy = ((NodeGraphics)pnmlPlace.getGraphics()).getDimension().getY()/2;
+			float dx = ((NodeGraphics)pnmlPlace.getGraphics()).getDimension().getX();
+			float dy = ((NodeGraphics)pnmlPlace.getGraphics()).getDimension().getY();
 
 			String s = cpnPlace.getInitialMarking().getText();
 			if(s != null && s.length() > 0) {
 				InitialMarking im = cpnFac.createInitialMarking();
 				im.setText(s);
 				pnmlPlace.setInitialMarking(im);
-				placeLabel(im, 0, -dy);
+				placeLabel(im, dx/2, -dy);
 			}
 
 			s = cpnPlace.getSort().getText();
@@ -297,22 +298,48 @@ public class ImportWizard extends Wizard implements IImportWizard {
 				Sort sort = cpnFac.createSort();
 				sort.setText(s);
 				pnmlPlace.setSort(sort);
-				placeLabel(sort, 0, dy);
+				placeLabel(sort, 0, dy/2);
 			}
 			
 			pageList.add(pnmlPlace);
 			idToNodeMap.put(pnmlPlace.getId(), pnmlPlace);
 		}
-		for(RefPlace cpnPort : cpnPage.portPlace()) {
-			org.pnml.tools.epnk.pnmlcoremodel.RefPlace pnmlPlace = pragmacpn.createRefPlace();
-			copyNodeParams(cpnPort, pnmlPlace);
+		for(RefPlace cpnPlace : cpnPage.portPlace()) {
+			Place pnmlPlace = (Place) pragmacpn.createPlace();
+			copyNodeParams(cpnPlace, pnmlPlace);
+			
+			float dx = ((NodeGraphics)pnmlPlace.getGraphics()).getDimension().getX();
+			float dy = ((NodeGraphics)pnmlPlace.getGraphics()).getDimension().getY();
+
+			String s = cpnPlace.getInitialMarking().getText();
+			if(s != null && s.length() > 0) {
+				InitialMarking im = cpnFac.createInitialMarking();
+				im.setText(s);
+				pnmlPlace.setInitialMarking(im);
+				placeLabel(im, dx/2, -dy);
+			}
+
+			s = cpnPlace.getSort().getText();
+			if(s != null && s.length() > 0) {
+				Sort sort = cpnFac.createSort();
+				sort.setText(s);
+				pnmlPlace.setSort(sort);
+				placeLabel(sort, 0, dy/2);
+			}
+			
 			pageList.add(pnmlPlace);
 			idToNodeMap.put(pnmlPlace.getId(), pnmlPlace);
-			
-			org.cpntools.accesscpn.model.Place ref = cpnPort.getRef();
-			if(ref != null)	refPlaces.put(pnmlPlace, ref.getId());
-//			else System.out.println("No refplace");
 		}
+//		for(RefPlace cpnPort : cpnPage.portPlace()) {
+//			org.pnml.tools.epnk.pnmlcoremodel.RefPlace pnmlPlace = pragmacpn.createRefPlace();
+//			copyNodeParams(cpnPort, pnmlPlace);
+//			pageList.add(pnmlPlace);
+//			idToNodeMap.put(pnmlPlace.getId(), pnmlPlace);
+//			
+//			org.cpntools.accesscpn.model.Place ref = cpnPort.getRef();
+//			if(ref != null)	refPlaces.put(pnmlPlace, ref.getId());
+////			else System.out.println("No refplace");
+//		}
 		for(org.cpntools.accesscpn.model.Transition cpnTrans : cpnPage.transition()) {
 			Transition pnmlTrans = (Transition) pragmacpn.createTransition();
 			copyNodeParams(cpnTrans, pnmlTrans);
@@ -332,6 +359,7 @@ public class ImportWizard extends Wizard implements IImportWizard {
 		for(Instance cpnInst : cpnPage.instance()) {
 			Transition pnmlTrans = (Transition) pragmacpn.createTransition();
 			copyNodeParams(cpnInst, pnmlTrans);
+			pnmlTrans.setIsSubstitutionTransition(true);
 			pageList.add(pnmlTrans);
 			idToNodeMap.put(pnmlTrans.getId(), pnmlTrans);
 		}

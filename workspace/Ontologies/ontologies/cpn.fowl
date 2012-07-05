@@ -97,7 +97,7 @@ Declaration(Class(:Arc))
 
 
 DisjointClasses(:Page :Element)
-DisjointClasses(:Node :Arc :Page)
+DisjointClasses(:Node :Arc)
 DisjointClasses(:Place :TransitionNode)
 DisjointClasses(:Transition :SubstitutionTransition)
 

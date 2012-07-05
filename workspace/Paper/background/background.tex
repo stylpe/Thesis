@@ -411,7 +411,7 @@ manner in the following subsections.
 	The new colour sets used in this module are for HTTP requests and responses,
 	WebSocket frames, and packets. They have corresponding variables. The
 	declarations for HTTP requests and responses (\lstref{client_lib_colset_http})
-	are modeled after the  the HTTP 1.1 standard.
+	are modelled after the  the HTTP 1.1 standard.
 	
 	\begin{lstlisting}[label=lst:client_lib_colset_http,caption=HTTP colour
 	sets,gobble=1,float=h]
@@ -458,7 +458,7 @@ manner in the following subsections.
 	\end{lstlisting}
 	
 	The declarations for WebSocket frames (\lstref{client_lib_colset_ws}) have
-	been modeled to approximate the actual memory structure of such frames. To this
+	been modelled to approximate the actual memory structure of such frames. To this
 	end, the colour sets |BIT| and |BYTE| have been created, where |BIT| is a
 	relabeling of boolean values, and |BYTE| is an integer range. A |MASK| is a
 	list with exactly 4 |BYTE|s. To model that masks are optional, |MASKING| is
@@ -489,11 +489,11 @@ manner in the following subsections.
 	byte masking key.
 	The motivation for this is to prevent potential network intermediaries like proxy
 	servers from interfering with transmission of frames based on their content.
-	Masking of frames is modeled to only set the masking bit and provide a
+	Masking of frames is modelled to only set the masking bit and provide a
 	masking key. A real-world implementation would also apply the mask to the
 	payload according to the protocol specification, which involves applying the
 	XOR-operation on each octet in the payload with each octet in the masking key.
-	XOR is not defined in CPN ML and would thus have to be modeled manually. Since
+	XOR is not defined in CPN ML and would thus have to be modelled manually. Since
 	the effects of masking the payload do not change the overall execution of the
 	protocol, we opted to omit it completely, and let the presence of a masking key
 	abstractly represent that the payload has been masked. The |mask| function is
@@ -705,15 +705,15 @@ manner in the following subsections.
 		(bottom) can be processed in three different manners:
 		
 		\begin{itemize}
-			\item The first one is modeled by the \nodename{Receive} transition, and
+			\item The first one is modelled by the \nodename{Receive} transition, and
 			happens if the connection is in the |CONN_OPEN| state (checked on the arc
 			from place \nodename{Connection Status}) and the frame is not a close frame
 			(checked in the guard of the Receive transition). The WebSocket frame is put
 			in the Received WS Frame place, and if it is a Ping frame, a Pong frame is
-			immediately queued for sending with identical message body. This is modeled
+			immediately queued for sending with identical message body. This is modelled
 			by the arc expression on the arc going to \nodename{Send Pong}.
 			
-			\item The second manner a frame can be processed is modeled by the
+			\item The second manner a frame can be processed is modelled by the
 			\nodename{Close} transition, and happens if the connection is in the
 			|CONN_OPEN| state (checked on the arc from \nodename{Connection
 			Status}) and the frame is a close frame (checked in the guard of the \nodename{Close} transition). A close frame is
@@ -726,7 +726,7 @@ manner in the following subsections.
 			
 			\item The third case happens if the connection state is in
 			|CONN_CLOSING|, which means a close frame has been sent and we are
-			waiting for a reply. This is modeled by the \nodename{Waiting for Close}
+			waiting for a reply. This is modelled by the \nodename{Waiting for Close}
 			transition. Any payload is ignored, and the connection state stays the same
 			until a close frame is received, in which case the connection state is set to |CONN_CLOSED|. 
 		\end{itemize}
@@ -785,11 +785,11 @@ manner in the following subsections.
 
 	\fig[0.45]{Connection.eps}{The Connection module}{connection}
 	
-	\figref{connection} shows the connection layer as modeled by the
+	\figref{connection} shows the connection layer as modelled by the
 	\nodename{Connection} module. The packets that come from the \nodename{Client
 	Send} place go to the \nodename{Server Receive} place, and from the
 	\nodename{Server Send} place to the \nodename{Client Receive} place. It has
-	purposely been modeled abstractly, since the transportation of data between the
+	purposely been modelled abstractly, since the transportation of data between the
 	client and the server as well as establishing and ensuring a stable
 	connection is assumed to be taken care of by TCP as the WebSocket protocol
 	specifies, hence is not necessary to model TCP in detail to capture the

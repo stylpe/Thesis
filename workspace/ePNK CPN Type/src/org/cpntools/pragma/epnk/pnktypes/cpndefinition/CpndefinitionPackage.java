@@ -353,13 +353,22 @@ public interface CpndefinitionPackage extends EPackage {
 	int TRANSITION__GUARD = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Is Substitution Transition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__IS_SUBSTITUTION_TRANSITION = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Transition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 1;
+	int TRANSITION_FEATURE_COUNT = PnmlcoremodelPackage.TRANSITION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl <em>Page</em>}' class.
@@ -830,6 +839,17 @@ public interface CpndefinitionPackage extends EPackage {
 	EReference getTransition_Guard();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#isIsSubstitutionTransition <em>Is Substitution Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Substitution Transition</em>'.
+	 * @see org.cpntools.pragma.epnk.pnktypes.cpndefinition.Transition#isIsSubstitutionTransition()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EAttribute getTransition_IsSubstitutionTransition();
+
+	/**
 	 * Returns the meta object for class '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.Page <em>Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -993,6 +1013,14 @@ public interface CpndefinitionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSITION__GUARD = eINSTANCE.getTransition_Guard();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Substitution Transition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSITION__IS_SUBSTITUTION_TRANSITION = eINSTANCE.getTransition_IsSubstitutionTransition();
 
 		/**
 		 * The meta object literal for the '{@link org.cpntools.pragma.epnk.pnktypes.cpndefinition.impl.PageImpl <em>Page</em>}' class.

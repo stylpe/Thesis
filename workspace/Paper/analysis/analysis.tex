@@ -10,7 +10,7 @@ Platform.
 
 \section{The CPN Ontology with Pragmatics}
 
-As mentioned in section \ref{sec:ontologies}, Pragmatics are defined and modeled
+As mentioned in section \ref{sec:ontologies}, Pragmatics are defined and modelled
 as ontologies, using the OWL 2 Web Ontology Language. We have created two
 ontologies to act as a basis for specifying individual pragmatics:
 One that defines Coloured Petri Nets, and one that defines basic classes for pragmatics.
@@ -65,8 +65,8 @@ have an |:id|.
 Lines 29-42 describe the class |:Node| as a subclass of :Element with a |:name|
 property and |:in| and |:out| properties for connected |:Arc|s.
 
-\lstinputlisting[label=lst:cpn.owl:place,numbers=left,stepnumber=1,firstline=44,lastline=55,float,firstnumber=44,
-caption=The CPN Ontology: Place Class]
+\lstinputlisting[label=lst:cpn.owl:place,numbers=left,stepnumber=1,firstline=44,lastline=75,float,firstnumber=44,
+caption=The CPN Ontology: Place and Transition Classes]
 {D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
 
 \lstref{cpn.owl:place} shows declarations relating to the |:Place| class, and
@@ -74,12 +74,7 @@ follows the same pattern as the earlier classes to describe the properties
 |:sort|\footnote{The term Sort comes from Description Logic, which is 
 sometimes used in relation to CPN inscriptions. Sort is used in Access/CPN
 instead of the term Colour Set. We opted to do the same.} and |:initialMarking|.
-
-\lstinputlisting[label=lst:cpn.owl:trans,numbers=left,stepnumber=1,firstline=57,lastline=75,float,firstnumber=57,
-caption=The CPN Ontology: Transition Classes]
-{D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} 
-
-\lstref{cpn.owl:trans} shows declarations relating to the |:Transition| and\\
+It continues with declarations relating to the |:Transition| and
 |:SubstitutionTransition| classes.
 
 \lstinputlisting[label=lst:cpn.owl:arc,numbers=left,stepnumber=1,firstline=77,lastline=96,float,firstnumber=77,
@@ -91,7 +86,7 @@ properties |:dest| and |:source| are declared as inverse of |:in| and |:out|
 (from |:Node|).
 
 \lstinputlisting[label=lst:cpn.owl:disjoint,numbers=left,stepnumber=1,firstline=99,lastline=102,float,firstnumber=99,
-caption=The CPN Ontology: Arc Class]
+caption=The CPN Ontology: Disjoint Classes]
 {D:/Documents/Master/Thesis/workspace/Ontologies/ontologies/cpn.fowl} Finally,
 \lstref{cpn.owl:disjoint} declare classes as disjoint. This is necessary, as
 ontologies by default use open world assumptions, meaning that even though
@@ -130,7 +125,7 @@ pragmatics. Each of these pragmatics are defined using two declarations, where
 the first asserts it as a subclass of |basic:Pragmatic|, and the second is a
 form of property restriction. In the case of the first pragmatic, line 14 states
 that a |:Principal| can only belong to a |cpn:SubstitutionTransition|. We will
-give a brief explanation of the purpose and usage each of the pragmatics in
+give a brief explanation of the purpose and usage each of the pragmatics in 
 Chapter \ref{chap:evaluation}, where we apply them to various CPN models. Note
 that this is not an exhaustive list of all generic pragmatics, and is only meant
 to be a working example.
@@ -142,11 +137,13 @@ caption=The Generic Pragmatics Ontology]
 The |:External| pragmatic (line 22 and 23) shows why ontologies are well suited
 for defining pragmatics. It can belong to |:TransitionConnectedToId|, which is a
 complex class defined through a chain of class assertions: We first define
-|:IdPlace| on line 40 to be equivalent to the set of individuals that are a |cpn:Place|, and
+|:IdPlace| on line 43 to be equivalent to the set of individuals that are a |cpn:Place|, and
 has a |:hasPragmatic| property with a value that is an instance of |:Id|, and
-has exactly one |:hasPragmatic| property associated. In the same manner we
-further define |:ArcFromId| on line 47 as anything that is a |cpn:Arc| coming
-from an |:IdPlace|. Finally on line 54, a |:TransitionConnectedToId| must have
+has exactly one |:hasPragmatic| property associated. 
+
+In the same manner we
+further define |:ArcFromId| on line 50 as anything that is a |cpn:Arc| coming
+from an |:IdPlace|. Finally on line 57, a |:TransitionConnectedToId| must have
 an incoming |:ArcFromId|. All together this describes the circumstance where an
 |:External| pragmatic can be placed, which is on any transition with an incoming
 arc from a place annotated with an |:Id| pragmatic. We demonstrate the practical
@@ -162,7 +159,7 @@ connection.
 
 To solve this we created a separate Eclipse plugin called Ontologies.
 It contains the ontology documents, utility classes for listing all ontologies the
-plugin provides, a custom PluginIRIMapper which can translate the IRI of import
+plugin provides, a custom PluginIRIMapper which can map the IRI of import
 statements to the ontology documents available in the plugin, and an
 OntologyLoader utility which creates an OWL API ontology manager loaded
 with a PluginIRIMapper.
@@ -202,7 +199,8 @@ model should define is a subclass of the PetriNetType class from the Core Model
 our case is CPN. This can be seen in the top left corner of the diagram in
 \figref{cpn_model_diagram}. This class is used to identify the Type, and is
 what will appear in the menu to let a user extend a model with the new Type.
-\fig{CPNDefinition.pdf}{CPN model type diagram}{cpn_model_diagram}
+
+\fig[0.6]{CPNDefinition.pdf}{CPN model type diagram}{cpn_model_diagram}
 
 
 EMF does not support merging of models, meaning it is not possible to define new
@@ -215,8 +213,8 @@ This can be seen in \figref{cpn_model_diagram}, where Place, Arc, Transition and
 Page are all subclassed from the classes referenced from the Core Model, with
 added relations to inscription classes.
 
-Due to limitations of the PNML specification, which we discuss in Section
-\ref{sec:limitations}, we need to simplify the representation of substitution
+Due to limitations in ePNK and the PNML specification, which we discuss in
+Section \ref{sec:limitations}, we need to simplify the representation of substitution
 transitions by defining an attribute on the Transition class to be able to
 designate an instance of it as a substitution transition. We do not want to use
 the RefTransition from the Core Type for this, as it is intended to reference
@@ -225,7 +223,7 @@ RefTransition (for the same reasons discussed in the previous paragraph) it
 could potentially confuse users.
 
 To represent the different inscriptions of a CPN model, we define classes that
-inherit the Label class from the Core Model. From a data modeling
+inherit the Label class from the Core Model. From a data modelling
 perspective, it would make more sense to make inscriptions simple
 string attributes of the classes they belong to, but the Label class includes
 functionality required for displaying in the graphical diagram editor of ePNK.
@@ -460,14 +458,14 @@ referenced by external code. This is the case for all the elements in this
 listing, so we explain it here to avoid repetition.
 
 The extension defines an
-|<objectContribution>| element (line 3-8), stating that this menu item should
+|<objectContribution>| element (line 3-6), stating that this menu item should
 only appear in the context menu when an object of the specified type is selected. The
 |adaptable| attribute is only relevant to IResource objects, but is a required
 attribute with a default value of false. The |objectClass| is the
 target class that will have its context menu extended with the new menu, in this
 case our PragmaticsOntology class.
 
-We then define a |<menu>| element (line 9-14) that will create a submenu
+We then define a |<menu>| element (line 7-14) that will create a submenu
 intended to group together all menu contributions related to pragmatics. The
 |label| is simply the label, and |path| specifies where in the parent menu it
 should be placed, with the value ``additions'' being recommended. The menu has

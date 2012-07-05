@@ -7,12 +7,42 @@
   <foreignModel>PragmaCPNDefinition.ecore</foreignModel>
   <genPackages prefix="Pragmacpndefinition" basePackage="org.cpntools.pragma.epnk.pnktypes"
       disposableProviderFactory="true" ecorePackage="PragmaCPNDefinition.ecore#/">
-    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//PragmaCPN">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//PragmaCPN/LoadedPragmaSets"/>
-    </genClasses>
+    <genDataTypes ecoreDataType="PragmaCPNDefinition.ecore#//OntologyFile"/>
+    <genDataTypes ecoreDataType="PragmaCPNDefinition.ecore#//OntologyManager"/>
+    <genDataTypes ecoreDataType="PragmaCPNDefinition.ecore#//OWLClassSet"/>
+    <genDataTypes ecoreDataType="PragmaCPNDefinition.ecore#//OWLClass"/>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//PragmaCPN"/>
     <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Place"/>
     <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Pragma">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//Pragma/Annotation"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//Pragma/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//Pragma/iri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//Pragma/args"/>
     </genClasses>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//OntologyDocument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//OntologyDocument/iri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//OntologyDocument/path"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//OntologyDocument/ontology"/>
+    </genClasses>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//PragmaticsOntology">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//PragmaticsOntology/documents"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//PragmaticsOntology/net"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute PragmaCPNDefinition.ecore#//PragmaticsOntology/manager"/>
+      <genOperations ecoreOperation="PragmaCPNDefinition.ecore#//PragmaticsOntology/addOntologyFromFile">
+        <genParameters ecoreParameter="PragmaCPNDefinition.ecore#//PragmaticsOntology/addOntologyFromFile/file"/>
+      </genOperations>
+      <genOperations ecoreOperation="PragmaCPNDefinition.ecore#//PragmaticsOntology/getValidPragmatics">
+        <genParameters ecoreParameter="PragmaCPNDefinition.ecore#//PragmaticsOntology/getValidPragmatics/object"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//PetriNet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//PetriNet/ontology"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="PragmaCPNDefinition.ecore#//OntologyMember">
+      <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+          ecoreFeature="ecore:EReference PragmaCPNDefinition.ecore#//OntologyMember/Annotation"/>
+    </genClasses>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Transition"/>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Arc"/>
+    <genClasses ecoreClass="PragmaCPNDefinition.ecore#//Page"/>
   </genPackages>
 </genmodel:GenModel>

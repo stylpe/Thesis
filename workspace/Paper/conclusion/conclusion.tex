@@ -1,4 +1,4 @@
-\chapter{Conclusion}
+\chapter{Conclusion and Future Work}
 \label{chap:conclusion}
 
 With \thename{}, we have constructed a fully functional proof of concept that
@@ -13,35 +13,37 @@ decreasing performance as model size increases, to a point that makes our
 prototype unusable for the WebSocket CPN model. Still, we believe our approach
 has potential, and warrants further optimisation and research.
 
-\section{Future work}
+This thesis also acts as an example of applied Model Driven Engineering. From
+modelling the WebSocket Protocol in CPN Tools, to designing the Annotated CPN
+Type for ePNK using EMF, the development process has always focused on the
+models. 
 
-Continue the work of Simonsen, defining more general and domain-specific
-pragmatics. Also, assert required configuration arguments.
+\thename{} is still just a prototype and has a long way to go to be considered a
+finished product. We will outline some of the ideas we had that
+we ultimately deemed out of scope for this thesis. 
 
-Finding or developing ontology reasoner tailored for CWA.
+The performance issues discussed in Chapter \ref{chap:evaluation} need to
+be resolved. We believe the first path to investigate should be finding or
+developing an ontology reasoner tailored for CWA.
 
-A specialised tool for creating model specific pragmatics would have been ideal.
+While writing ontologies by hand is possible, a specialised tool for creating
+model specific pragmatics would have been ideal.
 Such a tool would give simple mechanics using GUI controls for specifying which
 model elements a pragmatic can be attached to, and which parameters it has. The
-Plugin Manifest editor is a good example of what we have in mind. However, this
-could not be included for this thesis due to time constraints.
+Plugin Manifest editor is a good example of what we have in mind. 
 
-Implement structured labels for the CPN Type. Could enable placement of
-pragmatics inside expressions.
+The CPN Type should be further refined to accurately model sub-modules, ports
+and sockets. This would enable more advanced pragmatics; for instance the
+Principal pragmatic could be specified to only be available for substitution
+transitions on top-level modules, and pragmatics could automatically propagate
+through linked ports and sockets. This might require changes to ePNK as well.
 
-When importing, let user choose between CPN and Pragma CPN. Alternatively,
-mechanic for upgrading the Type.
+The structured labels used in the HLPNG Model Type of ePNK could be adapted to
+support CPN ML for  the CPN Type. This could potentially allow advanced pragmatics
+placement directly inside the expressions.
 
-Accurately model sub-modules, ports and sockets. This enables more advanced
-pragmatics; for instance the Principal pragmatic could be specified to only be
-available for substitution transitions on top-level modules.
+The CPN Tools importer could be improved by letting the user choose if the
+imported model should be based on the CPN Type or the Annotated CPN Type.
+Alternatively, there could be a mechanic for ``upgrading'' the Type from CPN to
+Annotated CPN.
 
-\section{Acknowledgments}
-
-Thank supervisor Lars Michael Kristensen
-
-Kent Inge Fagerland Simonsen 
-
-Michael Westergaard for help with Access/CPN
-
-Ekkart Kindler for extensive help with ePNK

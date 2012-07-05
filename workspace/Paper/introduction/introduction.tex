@@ -16,7 +16,7 @@ methods for unleashing this potential.
 \section{Model Driven Software Engineering}
 
 Models and diagrams have been used in software design for a long time, and have
-been standardised with the introduction of Unified Modeling Language (UML)
+been standardised with the introduction of Unified Modelling Language (UML)
 \cite{umlInfra} and the methods and tools developed for and around it (like
 Rational Unified Process \cite{kruchten2004rational}).
 However, models largely play a secondary role, primarily playing the role of
@@ -38,7 +38,7 @@ important when soliciting requirements from customers.
 
 MDE is based on two central concepts:
 \begin{itemize}
-	\item Domain specific modeling languages (DSML), which are used to formalise
+	\item Domain specific modelling languages (DSML), which are used to formalise
 	application structure, behavior, and requirements of specific domains, such as
 	financial services, warehouse management, task scheduling, and protocol and
 	communication software. A DSML is defined with a model to describe concepts
@@ -56,7 +56,7 @@ metamodel definition. This language is itself defined with a model, hence termed
 the meta-metamodel, and needs to be capable of describing itself. There exist many such
 languages, including the Meta-Object Facility (MOF) \cite{mof} created by the
 Object Management Group (OMG) to provide the basis for metamodel definition in
-OMG’s family of modeling languages. \figref{metamodel}
+OMG’s family of modelling languages. \figref{metamodel}
 shows the relationships between the abstraction layers using UML as an example
 DSML for the domain of object-oriented software systems. The layers have
 been termed M0 to M3 by OMG, although the number of layers is not rigid and can
@@ -70,7 +70,7 @@ implementation are synchronised, and boilerplate code and automatic testing is
 managed, thus enhancing quality, productivity, reliability, maintainability,
 portability and reusability.
 
-One modeling language that is being used as a DSML is Petri Nets. 
+One modelling language that is being used as a DSML is Petri Nets. 
 Petri Nets are a type of directed graph used to model processes,
 especially with an asynchronous and/or concurrent nature. Common
 example domains are communication networks and protocols, as
@@ -128,10 +128,11 @@ bind to source code. Simonsen's approach consists of three parts:
 
 \figref{kaochow} shows the top level module of the Kao-Chow CPN model from
 \cite{Simonsen2011}, with pragmatics enclosed in \textless\textless and
-\textgreater\textgreater. These pragmatics have been inserted manually using
-auxiliary labels and workarounds to avoid CPN ML syntax errors. This approach is
-cumbersome, and there is a need for developing specialised tool support for this
-purpose.
+\textgreater\textgreater. These pragmatics have been inserted manually in CPN
+Tools using auxiliary labels and workarounds to avoid CPN ML syntax errors.
+This approach is cumbersome, and there is a need for developing specialised tool
+support for this purpose. Additionally, having such a tool would also help
+generate interest in this research.
 
 Based on the very initial ideas of \cite{Simonsen2011}, the aim of this thesis
 is to investigate how to support annotation of CPN models with code generation
@@ -179,7 +180,7 @@ developed in this thesis are categorised into three classes.
 \end{description}
 
 \thename{} builds on the ePNK framework \cite{kindler2011epnk}, which uses the
-Eclipse Modeling Framework (EMF) to provide an extensible platform for working
+Eclipse Modelling Framework (EMF) to provide an extensible platform for working
 with CPN models. The prototype is designed as a plugin for the Eclipse platform,
 and can import models created by CPN Tools. It lets the user annotate the models
 with pragmatics through a tree editor. Pragmatics are defined using ontologies,
@@ -204,7 +205,7 @@ evaluate benefits of the model architecture.
 
 Lassen and Tjell \cite{lassen2010automatic}  present a method for developing
 Java applications from Coloured Control Flow Nets (CCFN), a specialised type of
-CPN. CCFN forces the modeler to describe the system in an
+CPN. CCFN forces the modeller to describe the system in an
 imperative manner, making it easier to automatically map to Java code.
 
 \section{Thesis Organisation}
@@ -224,7 +225,7 @@ constructed CPN model of the WebSocket protocol is behaviourally correct.
 \item [Chapter~\ref{chap:technology}:~\nameref{chap:technology}.] \thename{} is built
 on top of a number of software frameworks and technologies.
 This chapter gives an introduction to these as well as the reasons for choosing
-them: The Eclipse Platform and its modules; the Eclipse Modeling Framework; the ePNK
+them: The Eclipse Platform and its modules; the Eclipse Modelling Framework; the ePNK
 framework (which makes up the foundation of \thename{}); Access/CPN (the engine
 used to import models from CPN Tools). This chapter also provides an
 introduction to ontologies, the format used to specify pragmatics classes.
@@ -252,5 +253,5 @@ limitations and suggested focus of future work.
 The reader is assumed to be familiar with Java programming, the basics of
 functional programming languages, and the TCP/IP Protocol Suite. Some basic
 knowledge of Petri Nets is also an advantage, but not a strict requirement as we
-briefly introduce the basic constructs of the CPN modeling language as part of
+briefly introduce the basic constructs of the CPN modelling language as part of
 describing the WebSocket protocol in Chapter~\ref{chap:background}.

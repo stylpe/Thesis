@@ -17,6 +17,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Transition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSubstitutionTransition"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Page" eSuperTypes="platform:/plugin/org.pnml.tools.epnk/model/PNMLCoreModel.ecore#//Page"/>
   <eClassifiers xsi:type="ecore:EClass" name="ArcExpression" eSuperTypes="#//CPNInscription"/>
