@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="no.hib.pragmacpn"
+      label="Pragma/CPN"
+      version="0.1.0"
+      provider-name="Høgskolen i Bergen">
+
+   <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <url>
+      <discovery label="ePNK" url="http://www2.imm.dtu.dk/~eki/projects/ePNK/helios/update/"/>
+   </url>
+
+   <requires>
+      <import plugin="ePNK_CPN_Type" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.pnml.tools.epnk" version="0.9.3" match="greaterOrEqual"/>
+      <import plugin="Ontologies" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.101" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.pnml.tools.epnk.edit" version="0.9.3"/>
+      <import plugin="org.pnml.tools.epnk.actions" version="0.9.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.validation"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.pnml.tools.epnk.pntypes" version="0.9.2" match="greaterOrEqual"/>
+      <import plugin="org.pnml.tools.epnk.pntypes.hlpng.pntd" version="0.9.2" match="greaterOrEqual"/>
+      <import plugin="org.cpntools.accesscpn.model" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.cpntools.accesscpn.model.importer" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="ePNK_Annotated_CPN_Type" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi"/>
+   </requires>
+
+   <plugin
+         id="ePNK_Annotated_CPN_Type"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ePNK_Annotated_CPN_Type.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ePNK_CPN_Type"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ePNK_CPN_Type.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="Importer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="Ontologies"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
